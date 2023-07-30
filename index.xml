@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cengdong的技术博客</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on cengdong的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 31 Jul 2023 00:02:07 +0800</lastBuildDate>
+    
+        <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>RabbitMQ学习笔记</title>
+      <link>http://localhost:1313/post/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 31 Jul 2023 00:02:07 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      
+        <description>&lt;h3 id=&#34;1-介绍&#34;&gt;1. 介绍&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;RabbitMQ is the most widely deployed open source message broker.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;直接把RabbitMQ官网的介绍抄过来：它是部署最广泛的消息代理&lt;/p&gt;
+&lt;h3 id=&#34;2-作用&#34;&gt;2. 作用&lt;/h3&gt;
+&lt;p&gt;消息代理中间件的作用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;削峰：大量请求写入消息中间件，服务器按照自己能力去消费&lt;/li&gt;
+&lt;li&gt;解耦：服务上游与下游解耦，上游只需把请求写入消息代理，下游只需要去消息中间件消费&lt;/li&gt;
+&lt;li&gt;异步：实时性不高的功能放入代理，快速响应客户端请求&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-竞品&#34;&gt;3. 竞品&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;ActiveMQ(已经寄了)&lt;/li&gt;
+&lt;li&gt;RocketMQ（阿里开源，广泛应用在电商场景）&lt;/li&gt;
+&lt;li&gt;Kafka（大数据利器，日志系统重要组件）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-系统架构&#34;&gt;4. 系统架构&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;生产者：消息发送方&lt;/li&gt;
+&lt;li&gt;channel：通信信道，一个连接里有多个可用信道（感觉是资源池），生产者和消费者都会与broker建立连接&lt;/li&gt;
+&lt;li&gt;exchange：交换机，生产者将消息发送给对应交换机（生产者只与交换机打交道），交换机通过routingKey将消息发送给消息队列&lt;/li&gt;
+&lt;li&gt;queue：消息队列，存放消息的实体&lt;/li&gt;
+&lt;li&gt;消费者：从消息队列中消费消息&lt;/li&gt;
+&lt;li&gt;虚拟主机：感觉是多租户的资源隔离（不想深入，也不做过多了解）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-工作模式&#34;&gt;5. 工作模式&lt;/h3&gt;
+&lt;p&gt;RabbitMQ官方给出了七种工作模式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Hello World&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Work Queues&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Publish/Subscribe&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Routing&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Topics&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RPC&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Publisher confirms&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;6-安装rabbitmq&#34;&gt;6. 安装RabbitMQ&lt;/h3&gt;
+&lt;p&gt;我的虚拟机已经安装好&lt;code&gt;Docker&lt;/code&gt;，通过Docker安装带web可视化插件的&lt;code&gt;RabbitMQ&lt;/code&gt;，其中5672是服务端的端口，15672是web可视化的端口&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker run --name rabbit --restart&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;always -p 15672:15672 -p 5672:5672 -d rabbitmq:management
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/hugo/WechatIMG75.jpg&#34; alt=&#34;WechatIMG75.jpeg&#34;&gt;
+访问web管理界面，用户名密码都是&lt;code&gt;guest&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/hugo/WechatIMG76.jpg&#34; alt=&#34;WechatIMG76.jpeg&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;7-创建仓库&#34;&gt;7. 创建仓库&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;github创建仓库：&lt;a href=&#34;https://github.com/testerxiaodong/rabbitmq-demo&#34;&gt;https://github.com/testerxiaodong/rabbitmq-demo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;初始化项目：&lt;code&gt;go mod init rabbitmq-demo&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;go客户端选用：老规矩，最多star的项目，虽然已经停止维护很久了&lt;a href=&#34;github.com/streadway/amqp&#34;&gt;github.com/streadway/amqp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>
