@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on cengdong的技术博客</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://www.cengdong.top/categories/</link>
     <description>Recent content in Categories on cengdong的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 31 Jul 2023 00:02:07 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 Jul 2023 00:02:07 +0800</lastBuildDate><atom:link href="https://www.cengdong.top/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RabbitMQ</title>
-      <link>http://localhost:1313/categories/rabbitmq/</link>
+      <link>https://www.cengdong.top/categories/rabbitmq/</link>
       <pubDate>Mon, 31 Jul 2023 00:02:07 +0800</pubDate>
       
-      <guid>http://localhost:1313/categories/rabbitmq/</guid>
+      <guid>https://www.cengdong.top/categories/rabbitmq/</guid>
       <description></description>
     </item>
     

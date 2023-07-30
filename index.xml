@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>cengdong的技术博客</title>
-    <link>http://localhost:1313/</link>
+    <link>https://www.cengdong.top/</link>
     <description>Recent content on cengdong的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 31 Jul 2023 00:02:07 +0800</lastBuildDate>
     
-        <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://www.cengdong.top/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>RabbitMQ学习笔记</title>
-      <link>http://localhost:1313/post/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <link>https://www.cengdong.top/post/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Mon, 31 Jul 2023 00:02:07 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://www.cengdong.top/post/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
       
         <description>&lt;h3 id=&#34;1-介绍&#34;&gt;1. 介绍&lt;/h3&gt;
 &lt;blockquote&gt;
@@ -59,9 +59,9 @@
 &lt;h3 id=&#34;6-安装rabbitmq&#34;&gt;6. 安装RabbitMQ&lt;/h3&gt;
 &lt;p&gt;我的虚拟机已经安装好&lt;code&gt;Docker&lt;/code&gt;，通过Docker安装带web可视化插件的&lt;code&gt;RabbitMQ&lt;/code&gt;，其中5672是服务端的端口，15672是web可视化的端口&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker run --name rabbit --restart&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;always -p 15672:15672 -p 5672:5672 -d rabbitmq:management
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/hugo/WechatIMG75.jpg&#34; alt=&#34;WechatIMG75.jpeg&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://www.cengdong.top/img/hugo/WechatIMG75.jpg&#34; alt=&#34;WechatIMG75.jpeg&#34;&gt;
 访问web管理界面，用户名密码都是&lt;code&gt;guest&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/hugo/WechatIMG76.jpg&#34; alt=&#34;WechatIMG76.jpeg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.cengdong.top/img/hugo/WechatIMG76.jpg&#34; alt=&#34;WechatIMG76.jpeg&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;7-创建仓库&#34;&gt;7. 创建仓库&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;github创建仓库：&lt;a href=&#34;https://github.com/testerxiaodong/rabbitmq-demo&#34;&gt;https://github.com/testerxiaodong/rabbitmq-demo&lt;/a&gt;&lt;/li&gt;
