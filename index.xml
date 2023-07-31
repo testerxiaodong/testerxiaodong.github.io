@@ -12,6 +12,26 @@
     
     
     <item>
+      <title>About</title>
+      <link>https://www.cengdong.top/about/</link>
+      <pubDate>Mon, 31 Jul 2023 23:34:32 +0800</pubDate>
+      
+      <guid>https://www.cengdong.top/about/</guid>
+      
+        <description>&lt;h3 id=&#34;关于我&#34;&gt;关于我&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;大学通信工程混了四年&lt;/li&gt;
+&lt;li&gt;毕业之后测试点点点&lt;/li&gt;
+&lt;li&gt;测试写点python调接口&lt;/li&gt;
+&lt;li&gt;目前在学Go后端开发&lt;/li&gt;
+&lt;li&gt;无时无刻想躺和润&lt;/li&gt;
+&lt;li&gt;裸辞高手&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>RabbitMQ学习笔记</title>
       <link>https://www.cengdong.top/post/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Mon, 31 Jul 2023 00:02:07 +0800</pubDate>
