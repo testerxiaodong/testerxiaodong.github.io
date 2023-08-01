@@ -88,7 +88,7 @@ figure {
     transform: translateY(-5px);
 }
 
-/* img / a styles */
+/* images / a styles */
 
 .gallery .img {
     position: absolute;
@@ -107,7 +107,7 @@ figure {
 
 .gallery img {
     display: none;
-    /* only show the img if not inside a gallery */
+    /* only show the images if not inside a gallery */
 }
 
 figure a {

@@ -17,7 +17,7 @@ $( document ).ready(function() {
   var items = []; // array of slide objects that will be passed to PhotoSwipe()
 
   // for every figure & image element on the page:
-  $('.post-content p > img, figure').each(function () {
+  $('.post-content p > images, figure').each(function () {
     var $this = $(this);
     var $a, $img, $src, $title, $msrc;
     if ($this.attr('class') == 'no-photoswipe') return true; // ignore any figures where class="no-photoswipe"
@@ -68,7 +68,7 @@ $( document ).ready(function() {
           clearInterval(wait);
           item.w = w;
           item.h = h;
-          // console.log("Got actual dimensions for " + img.src);
+          // console.log("Got actual dimensions for " + images.src);
         }
       }, 30);
        }

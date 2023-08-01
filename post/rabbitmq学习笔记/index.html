@@ -80,7 +80,7 @@
 <meta itemprop="name" content="RabbitMQ学习笔记">
 <meta itemprop="description" content=""><meta itemprop="datePublished" content="2023-07-31T00:02:07+08:00" />
 <meta itemprop="dateModified" content="2023-07-31T00:02:07+08:00" />
-<meta itemprop="wordCount" content="694">
+<meta itemprop="wordCount" content="1896">
 <meta itemprop="keywords" content="消息中间件," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="RabbitMQ学习笔记"/>
 <meta name="twitter:description" content=""/>
@@ -376,7 +376,7 @@
 <li>exchange：交换机，生产者将消息发送给对应交换机（生产者只与交换机打交道），交换机通过routingKey将消息发送给消息队列</li>
 <li>queue：消息队列，存放消息的实体</li>
 <li>消费者：从消息队列中消费消息</li>
-<li>虚拟主机：感觉是多租户的资源隔离（不想深入，也不做过多了解）</li>
+<li>虚拟主机：多租户的资源隔离（不想深入，也不做过多了解）</li>
 </ul>
 <h3 id="5-工作模式">5. 工作模式</h3>
 <p>RabbitMQ官方给出了七种工作模式</p>
@@ -392,15 +392,209 @@
 <h3 id="6-安装rabbitmq">6. 安装RabbitMQ</h3>
 <p>我的虚拟机已经安装好<code>Docker</code>，通过Docker安装带web可视化插件的<code>RabbitMQ</code>，其中5672是服务端的端口，15672是web可视化的端口</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run --name rabbit --restart<span style="color:#f92672">=</span>always -p 15672:15672 -p 5672:5672 -d rabbitmq:management
-</span></span></code></pre></div><p><img src="/img/hugo/WechatIMG75.jpg" alt="WechatIMG75.jpeg">
+</span></span></code></pre></div><p><img src="/images/hugo/WechatIMG75.jpg" alt="WechatIMG75.jpeg">
 访问web管理界面，用户名密码都是<code>guest</code></p>
-<p><img src="/img/hugo/WechatIMG76.jpg" alt="WechatIMG76.jpeg"></p>
-<h3 id="7-创建仓库">7. 创建仓库</h3>
+<p><img src="/images/hugo/WechatIMG76.jpg" alt="WechatIMG76.jpeg"></p>
+<h3 id="7-创建项目">7. 创建项目</h3>
 <ul>
-<li>github创建仓库：<a href="https://github.com/testerxiaodong/rabbitmq-demo">https://github.com/testerxiaodong/rabbitmq-demo</a></li>
+<li>创建目录：<code>mkdir rabbitmq-demo</code></li>
 <li>初始化项目：<code>go mod init rabbitmq-demo</code></li>
 <li>go客户端选用：老规矩，最多star的项目，虽然已经停止维护很久了<a href="github.com/streadway/amqp">github.com/streadway/amqp</a></li>
 </ul>
+<h3 id="8-发送消息以简单模式为例">8. 发送消息：以简单模式为例</h3>
+<p>简单模式就是点对点的消息传输模型，官网称之为<code>Hello World</code>模式。生产者发送消息给指定队列，消费者从指定队列消费消息，其中生产者以及消费者都绑定的是默认交换机。</p>
+<p><img src="/images/hugo/rabbitmq-hello-world.png" alt="rabbitmq-hello-world"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/streadway/amqp&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;amqp://guest:guest@192.168.18.3:5672/&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 连接服务器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">conn</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Dial</span>(<span style="color:#a6e22e">url</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 获取channel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">channel</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Channel</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">channel</span>.<span style="color:#a6e22e">Close</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 声明队列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">queue</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">channel</span>.<span style="color:#a6e22e">QueueDeclare</span>(<span style="color:#e6db74">&#34;test&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 发布消息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">channel</span>.<span style="color:#a6e22e">Publish</span>(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#a6e22e">queue</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Publishing</span>{<span style="color:#a6e22e">ContentType</span>: <span style="color:#e6db74">&#34;text/plain&#34;</span>, <span style="color:#a6e22e">Body</span>: []byte(<span style="color:#e6db74">&#34;hello world&#34;</span>)})
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="9-接受消息以简单模式为例">9. 接受消息：以简单模式为例</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;github.com/streadway/amqp&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">rabbit_url</span> = <span style="color:#e6db74">&#34;amqp://guest:guest@192.168.18.3:5672/&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 链接服务器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">conn</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Dial</span>(<span style="color:#a6e22e">rabbit_url</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 	建立链接
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">channel</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Channel</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">channel</span>.<span style="color:#a6e22e">Close</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 声明队列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">queue</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">channel</span>.<span style="color:#a6e22e">QueueDeclare</span>(<span style="color:#e6db74">&#34;test&#34;</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 消费消息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">channel</span>.<span style="color:#a6e22e">Consume</span>(<span style="color:#a6e22e">queue</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#66d9ef">true</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 遍历管道，读取消息
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">msg</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(string(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">Body</span>))
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="10-如何保障消息不丢失">10. 如何保障消息不丢失</h3>
+<h4 id="101-消息应答机制">10.1 消息应答机制</h4>
+<p>RabbitMQ有两种消息应答机制：<code>自动应答</code>和<code>手动应答</code>，<code>自动应答</code>即NOACK，不需要接收方回应ACK消息，默认是这种应答方式。要开启手动应答，首先要把channel.Consume方法的第三个参数设置为false</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">ch</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Channel</span>) <span style="color:#a6e22e">Consume</span>(<span style="color:#a6e22e">queue</span>, <span style="color:#a6e22e">consumer</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">autoAck</span>, <span style="color:#a6e22e">exclusive</span>, <span style="color:#a6e22e">noLocal</span>, <span style="color:#a6e22e">noWait</span> <span style="color:#66d9ef">bool</span>, <span style="color:#a6e22e">args</span> <span style="color:#a6e22e">Table</span>) (<span style="color:#f92672">&lt;-</span><span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">Delivery</span>, <span style="color:#66d9ef">error</span>)
+</span></span></code></pre></div><p>还需要在消费消息时调用<code>Ack</code>或<code>Reject</code>或N<code>ack</code>方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">d</span> <span style="color:#a6e22e">Delivery</span>) <span style="color:#a6e22e">Ack</span>(<span style="color:#a6e22e">multiple</span> <span style="color:#66d9ef">bool</span>) <span style="color:#66d9ef">error</span>
+</span></span></code></pre></div><h4 id="102-消息持久化">10.2 消息持久化</h4>
+<p>要保障消息不丢失，就要保障消息的持久化，避免服务器故障或重启时内存中的消息丢失。消息持久化分为两部分：队列持久化、消息持久化。</p>
+<p>队列持久化需要在声明队列时把参数durable传为true</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">ch</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Channel</span>) <span style="color:#a6e22e">QueueDeclare</span>(<span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">durable</span>, <span style="color:#a6e22e">autoDelete</span>, <span style="color:#a6e22e">exclusive</span>, <span style="color:#a6e22e">noWait</span> <span style="color:#66d9ef">bool</span>, <span style="color:#a6e22e">args</span> <span style="color:#a6e22e">Table</span>) (<span style="color:#a6e22e">Queue</span>, <span style="color:#66d9ef">error</span>)
+</span></span></code></pre></div><p>消息持久化需要在实例化消息时把<code>Publishing</code>结构体的<code>DeliveryMode</code>字段设置为<code>Persistent</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">channel</span>.<span style="color:#a6e22e">Publish</span>(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#a6e22e">queue</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#66d9ef">false</span>, <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Publishing</span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">DeliveryMode</span>: <span style="color:#a6e22e">amqp</span>.<span style="color:#a6e22e">Persistent</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ContentType</span>: <span style="color:#e6db74">&#34;text/plain&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">Body</span>: []byte(<span style="color:#e6db74">&#34;hello world&#34;</span>),
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h4 id="103-生产方发布确认">10.3 生产方发布确认</h4>
+<p>生产方发布确认又叫<code>发布确认模式</code>，是一种保障生产方能确认发布消息到Broker的机制</p>
+<p>要开启发布确认模式需要调用channel.Conform方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Confirm puts this channel into confirm mode so that the client can ensure all
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">publishings have successfully been received by the server.  After entering this
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">mode, the server will send a basic.ack or basic.nack message with the deliver
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">tag set to a 1 based incremental index corresponding to every publishing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">received after the this method returns.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Add a listener to Channel.NotifyPublish to respond to the Confirmations. If
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Channel.NotifyPublish is not called, the Confirmations will be silently
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">ignored.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">The order of acknowledgments is not bound to the order of deliveries.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Ack and Nack confirmations will arrive at some point in the future.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Unroutable mandatory or immediate messages are acknowledged immediately after
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">any Channel.NotifyReturn listeners have been notified.  Other messages are
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">acknowledged when all queues that should have the message routed to them have
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">either received acknowledgment of delivery or have enqueued the message,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">persisting the message if necessary.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">When noWait is true, the client will not wait for a response.  A channel
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">exception could occur if the server does not support this method.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">ch</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Channel</span>) <span style="color:#a6e22e">Confirm</span>(<span style="color:#a6e22e">noWait</span> <span style="color:#66d9ef">bool</span>) <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ch</span>.<span style="color:#a6e22e">call</span>(
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">confirmSelect</span>{<span style="color:#a6e22e">Nowait</span>: <span style="color:#a6e22e">noWait</span>},
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">confirmSelectOk</span>{},
+</span></span><span style="display:flex;"><span>	); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ch</span>.<span style="color:#a6e22e">confirmM</span>.<span style="color:#a6e22e">Lock</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ch</span>.<span style="color:#a6e22e">confirming</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ch</span>.<span style="color:#a6e22e">confirmM</span>.<span style="color:#a6e22e">Unlock</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>再调用<code>NotifyPublish</code>方法或<code>NotifyConfirm</code>注册发布消息的回调函数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">NotifyConfirm calls NotifyPublish and starts a goroutine sending
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">ordered Ack and Nack DeliveryTag to the respective channels.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">For strict ordering, use NotifyPublish instead.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">ch</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Channel</span>) <span style="color:#a6e22e">NotifyConfirm</span>(<span style="color:#a6e22e">ack</span>, <span style="color:#a6e22e">nack</span> <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">uint64</span>) (<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">uint64</span>, <span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">uint64</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">confirms</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ch</span>.<span style="color:#a6e22e">NotifyPublish</span>(make(<span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">Confirmation</span>, cap(<span style="color:#a6e22e">ack</span>)<span style="color:#f92672">+</span>cap(<span style="color:#a6e22e">nack</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">confirms</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Ack</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">ack</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">DeliveryTag</span>
+</span></span><span style="display:flex;"><span>			} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">nack</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">DeliveryTag</span>
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		close(<span style="color:#a6e22e">ack</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nack</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">ack</span> {
+</span></span><span style="display:flex;"><span>			close(<span style="color:#a6e22e">nack</span>)
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ack</span>, <span style="color:#a6e22e">nack</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">NotifyPublish registers a listener for reliable publishing. Receives from this
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">chan for every publish after Channel.Confirm will be in order starting with
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">DeliveryTag 1.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">There will be one and only one Confirmation Publishing starting with the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">delivery tag of 1 and progressing sequentially until the total number of
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Publishings have been seen by the server.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Acknowledgments will be received in the order of delivery from the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">NotifyPublish channels even if the server acknowledges them out of order.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">The listener chan will be closed when the Channel is closed.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">The capacity of the chan Confirmation must be at least as large as the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">number of outstanding publishings.  Not having enough buffered chans will
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">create a deadlock if you attempt to perform other operations on the Connection
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">or Channel while confirms are in-flight.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">It&#39;s advisable to wait for all Confirmations to arrive before calling
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Channel.Close() or Connection.Close().
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">ch</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Channel</span>) <span style="color:#a6e22e">NotifyPublish</span>(<span style="color:#a6e22e">confirm</span> <span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">Confirmation</span>) <span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">Confirmation</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ch</span>.<span style="color:#a6e22e">notifyM</span>.<span style="color:#a6e22e">Lock</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">ch</span>.<span style="color:#a6e22e">notifyM</span>.<span style="color:#a6e22e">Unlock</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ch</span>.<span style="color:#a6e22e">noNotify</span> {
+</span></span><span style="display:flex;"><span>		close(<span style="color:#a6e22e">confirm</span>)
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">ch</span>.<span style="color:#a6e22e">confirms</span>.<span style="color:#a6e22e">Listen</span>(<span style="color:#a6e22e">confirm</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">confirm</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
         </div>
 
         
