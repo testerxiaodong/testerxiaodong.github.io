@@ -30,7 +30,7 @@
 &lt;h2 id=&#34;3-选用方案&#34;&gt;3. 选用方案&lt;/h2&gt;
 &lt;p&gt;最终选择flink-cdc的方案，一是go-canal的仓库不活跃，就三个issue，提了bug也没人修，而且后续可能有实时分析的大数据需求，本身就有flink集群的需求。
 二是canal的release版本要最近才会更新，最后一次更新是21年4月，害怕烂尾。三是俺尝试部署canal，最后失败了💦。&lt;/p&gt;
-&lt;h2 id=&#34;5-部署环境&#34;&gt;5. 部署环境&lt;/h2&gt;
+&lt;h2 id=&#34;4-部署环境&#34;&gt;4. 部署环境&lt;/h2&gt;
 &lt;p&gt;选用docker-compose部署mysql、link与elasticsearch&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;version&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -137,7 +137,7 @@ socket=/var/run/mysqld/mysqld.sock
 
 !includedir /etc/mysql/conf.d/
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主要是为了开启binlog&lt;/p&gt;
-&lt;h2 id=&#34;6-配置&#34;&gt;6. 配置&lt;/h2&gt;
+&lt;h2 id=&#34;5-配置&#34;&gt;5. 配置&lt;/h2&gt;
 &lt;p&gt;先启动集群&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker-compose up -d
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;检查binlog是否开启&lt;/p&gt;
@@ -152,7 +152,7 @@ socket=/var/run/mysqld/mysqld.sock
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker cp ./flink-sql-connector-elasticsearch7-3.0.1-1.17.jar jobmanager:/opt/flink/lib/
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker cp ./flink-sql-connector-mysql-cdc-2.4.1.jar jobmanager:/opt/flink/lib/
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker restart jobmanager
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;7-测试&#34;&gt;7. 测试&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;6-测试&#34;&gt;6. 测试&lt;/h2&gt;
 &lt;p&gt;进入mysql容器/连接mysql创建mysql数据库表&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;CREATE DATABASE mydb;
 USE mydb;

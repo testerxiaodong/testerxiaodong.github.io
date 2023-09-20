@@ -363,7 +363,7 @@
 <h2 id="3-选用方案">3. 选用方案</h2>
 <p>最终选择flink-cdc的方案，一是go-canal的仓库不活跃，就三个issue，提了bug也没人修，而且后续可能有实时分析的大数据需求，本身就有flink集群的需求。
 二是canal的release版本要最近才会更新，最后一次更新是21年4月，害怕烂尾。三是俺尝试部署canal，最后失败了💦。</p>
-<h2 id="5-部署环境">5. 部署环境</h2>
+<h2 id="4-部署环境">4. 部署环境</h2>
 <p>选用docker-compose部署mysql、link与elasticsearch</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3&#39;</span>
 </span></span><span style="display:flex;"><span>
@@ -470,7 +470,7 @@ socket=/var/run/mysqld/mysqld.sock
 
 !includedir /etc/mysql/conf.d/
 </code></pre><p>主要是为了开启binlog</p>
-<h2 id="6-配置">6. 配置</h2>
+<h2 id="5-配置">5. 配置</h2>
 <p>先启动集群</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker-compose up -d
 </span></span></code></pre></div><p>检查binlog是否开启</p>
@@ -485,7 +485,7 @@ socket=/var/run/mysqld/mysqld.sock
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker cp ./flink-sql-connector-elasticsearch7-3.0.1-1.17.jar jobmanager:/opt/flink/lib/
 </span></span><span style="display:flex;"><span>docker cp ./flink-sql-connector-mysql-cdc-2.4.1.jar jobmanager:/opt/flink/lib/
 </span></span><span style="display:flex;"><span>docker restart jobmanager
-</span></span></code></pre></div><h2 id="7-测试">7. 测试</h2>
+</span></span></code></pre></div><h2 id="6-测试">6. 测试</h2>
 <p>进入mysql容器/连接mysql创建mysql数据库表</p>
 <pre tabindex="0"><code>CREATE DATABASE mydb;
 USE mydb;
@@ -641,9 +641,9 @@ VALUES (default, &#39;2020-07-30 10:08:22&#39;, &#39;Jark&#39;, 50.50, 102, fals
     <li><a href="#1-需求">1. 需求</a></li>
     <li><a href="#2-解决方案">2. 解决方案</a></li>
     <li><a href="#3-选用方案">3. 选用方案</a></li>
-    <li><a href="#5-部署环境">5. 部署环境</a></li>
-    <li><a href="#6-配置">6. 配置</a></li>
-    <li><a href="#7-测试">7. 测试</a></li>
+    <li><a href="#4-部署环境">4. 部署环境</a></li>
+    <li><a href="#5-配置">5. 配置</a></li>
+    <li><a href="#6-测试">6. 测试</a></li>
   </ul>
 </nav>
     </div>
