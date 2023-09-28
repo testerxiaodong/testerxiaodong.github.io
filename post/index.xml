@@ -6,7 +6,25 @@
     <description>Recent content in Posts on cengdong的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 20 Sep 2023 22:34:29 +0800</lastBuildDate><atom:link href="https://www.cengdong.top/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Sep 2023 09:30:39 +0800</lastBuildDate><atom:link href="https://www.cengdong.top/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【分布式锁】利用Redis实现分布式锁</title>
+      <link>https://www.cengdong.top/post/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%88%A9%E7%94%A8redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</link>
+      <pubDate>Thu, 28 Sep 2023 09:30:39 +0800</pubDate>
+      
+      <guid>https://www.cengdong.top/post/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%88%A9%E7%94%A8redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</guid>
+      <description>1. go-zero分布式锁实现 看下go-zero中redis分布式锁的实现 var ( lockScript = NewScript(`if redis.call(&amp;#34;GET&amp;#34;, KEYS[1]) == ARGV[1] then redis.call(&amp;#34;SET&amp;#34;, KEYS[1], ARGV[1], &amp;#34;PX&amp;#34;, ARGV[2]) return &amp;#34;OK&amp;#34; else return redis.call(&amp;#34;SET&amp;#34;, KEYS[1], ARGV[1], &amp;#34;NX&amp;#34;, &amp;#34;PX&amp;#34;, ARGV[2]) end`) delScript = NewScript(`if redis.call(&amp;#34;GET&amp;#34;, KEYS[1]) == ARGV[1] then</description>
+    </item>
+    
+    <item>
+      <title>【MySQL】解决软删除中的唯一索引问题</title>
+      <link>https://www.cengdong.top/post/mysql%E8%A7%A3%E5%86%B3%E8%BD%AF%E5%88%A0%E9%99%A4%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 28 Sep 2023 08:37:51 +0800</pubDate>
+      
+      <guid>https://www.cengdong.top/post/mysql%E8%A7%A3%E5%86%B3%E8%BD%AF%E5%88%A0%E9%99%A4%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E9%97%AE%E9%A2%98/</guid>
+      <description>1. 起因 最近在学习go-zero，用go-zero自带的sqlx+sqlc操作数据库。因为sqlx+sqlc不会像gorm一样自动管理软删除字</description>
+    </item>
+    
     <item>
       <title>【Flink】利用flink Cdc同步mysql数据到es</title>
       <link>https://www.cengdong.top/post/flink%E5%88%A9%E7%94%A8flink-cdc%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%B0es/</link>

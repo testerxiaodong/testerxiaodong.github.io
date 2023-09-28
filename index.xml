@@ -6,10 +6,104 @@
     <description>Recent content on cengdong的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 20 Sep 2023 22:34:29 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 Sep 2023 09:30:39 +0800</lastBuildDate>
     
         <atom:link href="https://www.cengdong.top/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【分布式锁】利用Redis实现分布式锁</title>
+      <link>https://www.cengdong.top/post/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%88%A9%E7%94%A8redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</link>
+      <pubDate>Thu, 28 Sep 2023 09:30:39 +0800</pubDate>
+      
+      <guid>https://www.cengdong.top/post/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%88%A9%E7%94%A8redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</guid>
+      
+        <description>&lt;h2 id=&#34;1-go-zero分布式锁实现&#34;&gt;1. go-zero分布式锁实现&lt;/h2&gt;
+&lt;p&gt;看下go-zero中redis分布式锁的实现&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;lockScript&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;NewScript&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;`if redis.call(&amp;#34;GET&amp;#34;, KEYS[1]) == ARGV[1] then
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    redis.call(&amp;#34;SET&amp;#34;, KEYS[1], ARGV[1], &amp;#34;PX&amp;#34;, ARGV[2])
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    return &amp;#34;OK&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;else
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    return redis.call(&amp;#34;SET&amp;#34;, KEYS[1], ARGV[1], &amp;#34;NX&amp;#34;, &amp;#34;PX&amp;#34;, ARGV[2])
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;end`&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#a6e22e&#34;&gt;delScript&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;NewScript&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;`if redis.call(&amp;#34;GET&amp;#34;, KEYS[1]) == ARGV[1] then
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    return redis.call(&amp;#34;DEL&amp;#34;, KEYS[1])
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;else
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    return 0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;end`&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;加锁和解锁的过程都是通过lua脚本实现的，因为lua脚本能够保证redis的原子性。&lt;/p&gt;
+&lt;h2 id=&#34;2-分布式锁必须拥有的属性&#34;&gt;2. 分布式锁必须拥有的属性&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;排他性(只能有一个协程持有)&lt;/li&gt;
+&lt;li&gt;可重入(已经获取锁的协程能再次访问)&lt;/li&gt;
+&lt;li&gt;防死锁(必须有超时时间，达到后持有者自动释放)&lt;/li&gt;
+&lt;li&gt;高性能高可用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-go-zero分布式锁加锁流程&#34;&gt;3. go-zero分布式锁加锁流程&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 判断ARGV[1]是否等于KEY[1]的值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 如果相等，说明是该锁的持有者重入，更新锁的过期时间，返回OK&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 如果不想等，说明锁不存在或者该用户不是锁的持有者，用set nx px命令操作该key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lockScript &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; NewScript&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; redis.call&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GET&amp;#34;&lt;/span&gt;, KEYS&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; ARGV&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    redis.call&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SET&amp;#34;&lt;/span&gt;, KEYS&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, ARGV&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;PX&amp;#34;&lt;/span&gt;, ARGV&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;2&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;OK&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; redis.call&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SET&amp;#34;&lt;/span&gt;, KEYS&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, ARGV&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;NX&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;PX&amp;#34;&lt;/span&gt;, ARGV&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;2&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;4-go-zero分布式锁解锁流程&#34;&gt;4. go-zero分布式锁解锁流程&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 判断ARGV[1]是否等于KEY[1]的值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 如果相等，说明是锁的拥有者，删除分布式锁的KEY&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 如果不想等，说明不是锁的拥有者，返回0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;delScript &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; NewScript&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; redis.call&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GET&amp;#34;&lt;/span&gt;, KEYS&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; ARGV&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; redis.call&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;DEL&amp;#34;&lt;/span&gt;, KEYS&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>【MySQL】解决软删除中的唯一索引问题</title>
+      <link>https://www.cengdong.top/post/mysql%E8%A7%A3%E5%86%B3%E8%BD%AF%E5%88%A0%E9%99%A4%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 28 Sep 2023 08:37:51 +0800</pubDate>
+      
+      <guid>https://www.cengdong.top/post/mysql%E8%A7%A3%E5%86%B3%E8%BD%AF%E5%88%A0%E9%99%A4%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E9%97%AE%E9%A2%98/</guid>
+      
+        <description>&lt;h2 id=&#34;1-起因&#34;&gt;1. 起因&lt;/h2&gt;
+&lt;p&gt;最近在学习&lt;code&gt;go-zero&lt;/code&gt;，用&lt;code&gt;go-zero&lt;/code&gt;自带的&lt;code&gt;sqlx+sqlc&lt;/code&gt;操作数据库。因为&lt;code&gt;sqlx+sqlc&lt;/code&gt;不会像&lt;code&gt;gorm&lt;/code&gt;一样自动管理软删除字段，所以对表结构进行重新的设计。
+下面是新的表结构：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;DROP&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;IF&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;EXISTS&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;user&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;CREATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;TABLE&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;user&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;id&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; bigint unsigned &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt; AUTO_INCREMENT &lt;span style=&#34;color:#66d9ef&#34;&gt;COMMENT&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;用户id&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;username&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; varchar(&lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;) CHARACTER &lt;span style=&#34;color:#66d9ef&#34;&gt;SET&lt;/span&gt; utf8mb4 &lt;span style=&#34;color:#66d9ef&#34;&gt;COLLATE&lt;/span&gt; utf8mb4_0900_ai_ci &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COMMENT&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;用户名&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;password&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; varchar(&lt;span style=&#34;color:#ae81ff&#34;&gt;255&lt;/span&gt;) CHARACTER &lt;span style=&#34;color:#66d9ef&#34;&gt;SET&lt;/span&gt; utf8mb4 &lt;span style=&#34;color:#66d9ef&#34;&gt;COLLATE&lt;/span&gt; utf8mb4_0900_ai_ci &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COMMENT&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;密码&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;create_time&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; datetime &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;DEFAULT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;CURRENT_TIMESTAMP&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COMMENT&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;创建时间&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;update_time&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; datetime &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;DEFAULT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;CURRENT_TIMESTAMP&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;UPDATE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;CURRENT_TIMESTAMP&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COMMENT&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;更新时间&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;delete_time&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; datetime &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;DEFAULT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;CURRENT_TIMESTAMP&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COMMENT&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;删除时间&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;is_delete&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; tinyint unsigned &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;DEFAULT&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COMMENT&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;是否被删除&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;version&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; bigint unsigned &lt;span style=&#34;color:#66d9ef&#34;&gt;NOT&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;NULL&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;DEFAULT&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;COMMENT&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;版本号&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;PRIMARY&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;KEY&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;id&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;UNIQUE&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;KEY&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;idx_username&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;username&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;,&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;is_delete&lt;span style=&#34;color:#f92672&#34;&gt;`&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;USING&lt;/span&gt; BTREE
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;) ENGINE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;InnoDB AUTO_INCREMENT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;DEFAULT&lt;/span&gt; CHARSET&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;utf8mb4 &lt;span style=&#34;color:#66d9ef&#34;&gt;COLLATE&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;utf8mb4_0900_ai_ci &lt;span style=&#34;color:#66d9ef&#34;&gt;COMMENT&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;用户记录&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;业务上需要&lt;code&gt;username&lt;/code&gt;上这个唯一索引，同时当业务需要删除数据时只能软删除，方便数据溯源与恢复。&lt;/p&gt;
+&lt;h2 id=&#34;2-遇到的问题&#34;&gt;2. 遇到的问题&lt;/h2&gt;
+&lt;p&gt;当时只考虑到业务语义上&lt;code&gt;username&lt;/code&gt;需要唯一索引，写完代码后用postman进行测试，插入一条数据，再删除这条数据。再插入一条相同用户名的数据时，
+接口报错唯一索引冲突。参考&lt;code&gt;go-zero&lt;/code&gt;微信群的建议，给软删除字段&lt;code&gt;is_delete&lt;/code&gt;也加上唯一索引。插入一条数据，再删除这条数据。再插入一条相同用户名的数据，
+再删除这条数据时，接口还是报错唯一索引冲突。&lt;/p&gt;
+&lt;h2 id=&#34;3-再加索引&#34;&gt;3. 再加索引&lt;/h2&gt;
+&lt;p&gt;群里立马又有大佬说还需要给删除时间加上唯一索引，因为删除时业务上会把删除时间更新为当前时间，不会有冲突。一顿操作下来，就给三个字段加上了唯一索引。
+个人感觉这个索引还是有点大，又去网上找了不少相关博客。首先确定的是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有唯一索引需要的字段必须加上唯一索引，不能因为业务上有校验就删除该索引。&lt;/li&gt;
+&lt;li&gt;同时删除数据时应该使用软删除。&lt;/li&gt;
+&lt;li&gt;但是有一点可以优化，就是标记软删除的字段不必只是0和1，当删除数据时，更新该字段为该记录的&lt;code&gt;主键值&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-又遇到问题&#34;&gt;4. 又遇到问题&lt;/h2&gt;
+&lt;p&gt;因为&lt;code&gt;go-zero&lt;/code&gt;的数据库操作代码是靠代码生成的，会根据索引字段自动生成方法名，当有唯一索引需求是，自动生成的方法名会带上索引的所有字段，包括
+软删除字段，方法名格外尴尬不说，内部生成的代码还多判断了一次&lt;code&gt;is_delete = 0&lt;/code&gt;，请教了looklook项目作者，这种需要fork &lt;code&gt;go-zero&lt;/code&gt;源代码再自己进行魔改。&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>【Flink】利用flink Cdc同步mysql数据到es</title>
