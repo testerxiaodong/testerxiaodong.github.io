@@ -6,7 +6,16 @@
     <description>Recent content in Posts on cengdong的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 28 Sep 2023 09:30:39 +0800</lastBuildDate><atom:link href="https://www.cengdong.top/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Sep 2023 22:44:05 +0800</lastBuildDate><atom:link href="https://www.cengdong.top/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【English】英语学习Day1</title>
+      <link>https://www.cengdong.top/post/english%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0day1/</link>
+      <pubDate>Sat, 30 Sep 2023 22:44:05 +0800</pubDate>
+      
+      <guid>https://www.cengdong.top/post/english%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0day1/</guid>
+      <description>1. 听力短句 August is coming to an end. 八月就要结束了。 How old is this temple? 这座寺庙有多古老？ Please don&amp;#39;t call me after ten 请不要在十点以后给我打电话！ You are going to wait for a little bit. 你要稍微等一下。</description>
+    </item>
+    
     <item>
       <title>【分布式锁】利用Redis实现分布式锁</title>
       <link>https://www.cengdong.top/post/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%88%A9%E7%94%A8redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</link>
