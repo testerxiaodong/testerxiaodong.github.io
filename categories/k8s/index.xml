@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>k8s on cengdong的技术博客</title>
-    <link>https://www.cengdong.top/categories/k8s/</link>
+    <link>https://www.cengdong.store/categories/k8s/</link>
     <description>Recent content in k8s on cengdong的技术博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 28 Aug 2023 19:51:03 +0800</lastBuildDate><atom:link href="https://www.cengdong.top/categories/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Aug 2023 19:51:03 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/k8s/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【Kubernetes】arm架构Centos7通过kubeadm安装k8s集群</title>
-      <link>https://www.cengdong.top/post/kubernetesarm%E6%9E%B6%E6%9E%84centos7%E9%80%9A%E8%BF%87kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</link>
+      <link>https://www.cengdong.store/post/kubernetesarm%E6%9E%B6%E6%9E%84centos7%E9%80%9A%E8%BF%87kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Mon, 28 Aug 2023 19:51:03 +0800</pubDate>
       
-      <guid>https://www.cengdong.top/post/kubernetesarm%E6%9E%B6%E6%9E%84centos7%E9%80%9A%E8%BF%87kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</guid>
+      <guid>https://www.cengdong.store/post/kubernetesarm%E6%9E%B6%E6%9E%84centos7%E9%80%9A%E8%BF%87kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</guid>
       <description>1. 环境准备 M1 Mac Vmware Fusion Tech Preview 终端连接工具Termius Centos7虚拟机三台，内存都为4G，磁盘30G，线程数为4 master: 192.168.2.3 node-1: 192.168.2.4 node-2: 192.168.2.5 2. 修改主机名 在三台</description>
     </item>
     
