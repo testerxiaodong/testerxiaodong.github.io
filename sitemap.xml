@@ -1,179 +1,98 @@
-<?xml-stylesheet type="text/xsl" href="https://www.cengdong.store/sitemap.xsl"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.cengdong.store/post/english%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0day1/</loc>
+    <loc>https://www.cengdong.store/p/english%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0day1/</loc>
     <lastmod>2023-09-30T22:44:05+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/categories/</loc>
     <lastmod>2023-09-30T22:44:05+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/</loc>
     <lastmod>2023-09-30T22:44:05+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/tags/english/</loc>
     <lastmod>2023-09-30T22:44:05+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/categories/english/</loc>
     <lastmod>2023-09-30T22:44:05+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/post/</loc>
     <lastmod>2023-09-30T22:44:05+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/tags/</loc>
     <lastmod>2023-09-30T22:44:05+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cengdong.store/post/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%88%A9%E7%94%A8redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</loc>
+  </url><url>
+    <loc>https://www.cengdong.store/p/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%88%A9%E7%94%A8redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</loc>
     <lastmod>2023-09-28T09:30:39+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cengdong.store/post/mysql%E8%A7%A3%E5%86%B3%E8%BD%AF%E5%88%A0%E9%99%A4%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E9%97%AE%E9%A2%98/</loc>
+  </url><url>
+    <loc>https://www.cengdong.store/categories/redis/</loc>
+    <lastmod>2023-09-28T09:30:39+08:00</lastmod>
+  </url><url>
+    <loc>https://www.cengdong.store/p/mysql%E8%A7%A3%E5%86%B3%E8%BD%AF%E5%88%A0%E9%99%A4%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2023-09-28T08:37:51+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cengdong.store/post/flink%E5%88%A9%E7%94%A8flink-cdc%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%B0es/</loc>
+  </url><url>
+    <loc>https://www.cengdong.store/categories/mysql/</loc>
+    <lastmod>2023-09-28T08:37:51+08:00</lastmod>
+  </url><url>
+    <loc>https://www.cengdong.store/p/flink%E5%88%A9%E7%94%A8flink-cdc%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%B0es/</loc>
     <lastmod>2023-09-20T22:34:29+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/tags/flink/</loc>
     <lastmod>2023-09-20T22:34:29+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/categories/flink/</loc>
     <lastmod>2023-09-20T22:34:29+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cengdong.store/post/linuxcentos7%E8%A7%A3%E5%86%B3%E6%97%B6%E9%97%B4%E4%B8%8D%E6%AD%A3%E7%A1%AE%E9%97%AE%E9%A2%98/</loc>
+  </url><url>
+    <loc>https://www.cengdong.store/p/linuxcentos7%E8%A7%A3%E5%86%B3%E6%97%B6%E9%97%B4%E4%B8%8D%E6%AD%A3%E7%A1%AE%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2023-09-15T02:58:36+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/tags/linux/</loc>
     <lastmod>2023-09-15T02:58:36+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/categories/linux/</loc>
     <lastmod>2023-09-15T02:58:36+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cengdong.store/post/kubernetesarm%E6%9E%B6%E6%9E%84centos7%E9%80%9A%E8%BF%87kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</loc>
+  </url><url>
+    <loc>https://www.cengdong.store/p/kubernetesarm%E6%9E%B6%E6%9E%84centos7%E9%80%9A%E8%BF%87kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</loc>
     <lastmod>2023-08-28T19:51:03+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/tags/k8s/</loc>
     <lastmod>2023-08-28T19:51:03+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/categories/k8s/</loc>
     <lastmod>2023-08-28T19:51:03+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cengdong.store/post/git%E6%B7%BB%E5%8A%A0gitignore%E6%96%87%E4%BB%B6%E4%B9%8B%E5%90%8E%E5%88%A0%E9%99%A4github%E4%B8%8A%E5%A4%9A%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/</loc>
+  </url><url>
+    <loc>https://www.cengdong.store/p/git%E6%B7%BB%E5%8A%A0gitignore%E6%96%87%E4%BB%B6%E4%B9%8B%E5%90%8E%E5%88%A0%E9%99%A4github%E4%B8%8A%E5%A4%9A%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/</loc>
     <lastmod>2023-08-12T15:00:13+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/tags/git/</loc>
     <lastmod>2023-08-12T15:00:13+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/categories/git/</loc>
     <lastmod>2023-08-12T15:00:13+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/about/</loc>
     <lastmod>2023-07-31T23:34:32+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.cengdong.store/post/gorabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+  </url><url>
+    <loc>https://www.cengdong.store/p/gorabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-07-31T00:02:07+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/categories/rabbitmq/</loc>
     <lastmod>2023-07-31T00:02:07+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cengdong.store/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/</loc>
     <lastmod>2023-07-31T00:02:07+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.cengdong.store/archives/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.cengdong.store/page/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.cengdong.store/links/</loc>
+  </url><url>
+    <loc>https://www.cengdong.store/search/</loc>
+  </url><url>
+    <loc>https://www.cengdong.store/%E5%85%B3%E4%BA%8E/</loc>
   </url>
-  
 </urlset>
