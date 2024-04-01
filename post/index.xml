@@ -7,7 +7,121 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Mon, 01 Apr 2024 10:04:06 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 01 Apr 2024 14:36:49 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【前端】HTML标签下</title>
+        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFhtml%E6%A0%87%E7%AD%BE%E4%B8%8B/</link>
+        <pubDate>Mon, 01 Apr 2024 14:36:49 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFhtml%E6%A0%87%E7%AD%BE%E4%B8%8B/</guid>
+        <description>&lt;h2 id=&#34;表格标签&#34;&gt;表格标签&lt;/h2&gt;
+&lt;h3 id=&#34;表格的作用&#34;&gt;表格的作用&lt;/h3&gt;
+&lt;p&gt;表格标签用于展示数据&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;table&amp;gt;&amp;lt;/table&amp;gt;&lt;/code&gt;标签定义一个表格&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;tr&amp;gt;&amp;lt;/tr&amp;gt;&lt;/code&gt;标签表示一行(table row)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;&lt;/code&gt;标签表示一个单元格(table data)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;&lt;/code&gt;标签表示表头单元格(table header)，内容会加粗居中展示&lt;/p&gt;
+&lt;h3 id=&#34;表格属性&#34;&gt;表格属性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;align：对齐方式&lt;/li&gt;
+&lt;li&gt;border：边框&lt;/li&gt;
+&lt;li&gt;cellpadding：边缘与内容之间的距离(默认 1 像素)&lt;/li&gt;
+&lt;li&gt;cellspacing：单元格之间的距离(默认 2 像素)&lt;/li&gt;
+&lt;li&gt;width：表格宽度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;表格标签结构&#34;&gt;表格标签结构&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;table&amp;gt;&amp;lt;/table&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;thead&amp;gt;&amp;lt;/thead&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;tbody&amp;gt;&amp;lt;/tbody&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;合并单元格&#34;&gt;合并单元格&lt;/h3&gt;
+&lt;p&gt;合并单元格方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;跨行合并：rowspan=&amp;ldquo;个数&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;跨列合并：colspan=&amp;ldquo;个数&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;列表标签&#34;&gt;列表标签&lt;/h2&gt;
+&lt;h3 id=&#34;列表的作用&#34;&gt;列表的作用&lt;/h3&gt;
+&lt;p&gt;列表标签用于布局&lt;/p&gt;
+&lt;h3 id=&#34;列表分类&#34;&gt;列表分类&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;无序列表：&lt;code&gt;&amp;lt;ul&amp;gt;&amp;lt;/ul&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;有序列表：&lt;code&gt;&amp;lt;ol&amp;gt;&amp;lt;/ol&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;自定义列表：&lt;code&gt;&amp;lt;dl&amp;gt;&amp;lt;/dl&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;dt&amp;gt;&amp;lt;/dt&amp;gt;&lt;/code&gt;、&lt;code&gt;&amp;lt;dd&amp;gt;&amp;lt;/dd&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;自定义列表用于对名词或者专业术语进行解释&lt;/p&gt;
+&lt;h2 id=&#34;表单标签&#34;&gt;表单标签&lt;/h2&gt;
+&lt;h3 id=&#34;表单的作用&#34;&gt;表单的作用&lt;/h3&gt;
+&lt;p&gt;表单标签用于收集用户信息&lt;/p&gt;
+&lt;h3 id=&#34;表单组成&#34;&gt;表单组成&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;表单域：&lt;code&gt;&amp;lt;form&amp;gt;&amp;lt;/form&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;表单控件：表单元素&lt;/li&gt;
+&lt;li&gt;提示信息：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;表单域属性&#34;&gt;表单域属性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;action：提交地址&lt;/li&gt;
+&lt;li&gt;method：提交方式(get/post)&lt;/li&gt;
+&lt;li&gt;name: 表单域名称&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;input-表单元素&#34;&gt;input 表单元素&lt;/h3&gt;
+&lt;h4 id=&#34;input-元素作用&#34;&gt;input 元素作用&lt;/h4&gt;
+&lt;p&gt;input 元素用于收集用户信息&lt;/p&gt;
+&lt;h4 id=&#34;input-标签属性&#34;&gt;input 标签属性&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;type：
+&lt;ul&gt;
+&lt;li&gt;button：按钮&lt;/li&gt;
+&lt;li&gt;cehckbox：复选框&lt;/li&gt;
+&lt;li&gt;file：文件选择&lt;/li&gt;
+&lt;li&gt;hidden：隐藏&lt;/li&gt;
+&lt;li&gt;image：图片&lt;/li&gt;
+&lt;li&gt;password：密码&lt;/li&gt;
+&lt;li&gt;text：文本&lt;/li&gt;
+&lt;li&gt;radio：单选框&lt;/li&gt;
+&lt;li&gt;reset 重置按钮&lt;/li&gt;
+&lt;li&gt;submit：提交按钮&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;name：&lt;code&gt;name&lt;/code&gt;是表单的名字，&lt;code&gt;单选框&lt;/code&gt;必须有&lt;code&gt;相同的名字&lt;/code&gt;才可以实现&lt;code&gt;多选一&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;value：表单的默认值，使用&lt;code&gt;placeholder&lt;/code&gt;更好&lt;/li&gt;
+&lt;li&gt;checked：规定 &lt;code&gt;input&lt;/code&gt; 元素首次加载时&lt;code&gt;自动被选中&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;maxlength：输入字段中&lt;code&gt;字符最大长度&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;label-标签&#34;&gt;label 标签&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;label&lt;/code&gt; 标签用于 &lt;code&gt;input&lt;/code&gt; 聚焦&lt;/p&gt;
+&lt;p&gt;通过&lt;code&gt;label&lt;/code&gt;标签的&lt;code&gt;for&lt;/code&gt;属性与&lt;code&gt;input&lt;/code&gt;标签的&lt;code&gt;id&lt;/code&gt;属性&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;lable for=&amp;quot;sex&amp;quot;&amp;gt;男&amp;lt;/lable&amp;gt;&lt;/code&gt;
+&lt;code&gt;&amp;lt;input type=&amp;quot;radio&amp;quot; id=&amp;quot;sex&amp;quot;/&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;select-下拉表单元素&#34;&gt;select 下拉表单元素&lt;/h3&gt;
+&lt;h4 id=&#34;下拉表单元素的作用&#34;&gt;下拉表单元素的作用&lt;/h4&gt;
+&lt;p&gt;如果有多个选项提供用户选择，节约空间&lt;/p&gt;
+&lt;h4 id=&#34;标签&#34;&gt;标签&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;select&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;lt;option&amp;gt;选项1&amp;lt;/option&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;lt;option&amp;gt;选项2&amp;lt;/option&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &amp;lt;option&amp;gt;选项3&amp;lt;/option&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;/select&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;属性&#34;&gt;属性&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;option&lt;/code&gt;标签有一个&lt;code&gt;selected=&amp;quot;selected&amp;quot;&lt;/code&gt;属性，表示&lt;code&gt;默认选中&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;textarea-文本域元素&#34;&gt;textarea 文本域元素&lt;/h3&gt;
+&lt;h4 id=&#34;textarea-使用场景&#34;&gt;textarea 使用场景&lt;/h4&gt;
+&lt;p&gt;当用户要输入的内容比较多时，不应使用&lt;code&gt;text&lt;/code&gt;类型的&lt;code&gt;input&lt;/code&gt;标签，而是应该使用&lt;code&gt;textarea&lt;/code&gt;标签&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【前端】HTML标签</title>
         <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFhtml%E6%A0%87%E7%AD%BE/</link>
         <pubDate>Mon, 01 Apr 2024 10:04:06 +0800</pubDate>
