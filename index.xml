@@ -7,7 +7,118 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Thu, 28 Mar 2024 04:20:36 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 01 Apr 2024 10:04:06 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【前端】HTML标签</title>
+        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFhtml%E6%A0%87%E7%AD%BE/</link>
+        <pubDate>Mon, 01 Apr 2024 10:04:06 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFhtml%E6%A0%87%E7%AD%BE/</guid>
+        <description>&lt;h2 id=&#34;浏览器内核&#34;&gt;浏览器内核&lt;/h2&gt;
+&lt;p&gt;浏览器内核就是浏览器的渲染引擎，目前引擎分类：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;浏览器&lt;/th&gt;
+&lt;th&gt;内核&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;IE&lt;/td&gt;
+&lt;td&gt;Trident&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;firefox&lt;/td&gt;
+&lt;td&gt;Gecko&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;safari&lt;/td&gt;
+&lt;td&gt;Webkit&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;chrome/opera&lt;/td&gt;
+&lt;td&gt;Blink&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;web-标准&#34;&gt;Web 标准&lt;/h2&gt;
+&lt;p&gt;W3C 主要包括：结构(HTML)、表现(CSS)、行为(JAVASCRIPT)三个部分。&lt;/p&gt;
+&lt;p&gt;WEB 标准提出的最佳解决方案：结构、样式、行为相分离。&lt;/p&gt;
+&lt;h2 id=&#34;html-语法规范&#34;&gt;Html 语法规范&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;标签一般成对出现，也有单标签&lt;/li&gt;
+&lt;li&gt;标签之间的关系：包含/并列&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;html-基本结构标签&#34;&gt;Html 基本结构标签&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;html&amp;gt;&amp;lt;/html&amp;gt;&lt;/code&gt;标签&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;&lt;/code&gt;标签
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt;标签&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;&lt;/code&gt;标签&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;body&amp;gt;&amp;lt;/body&amp;gt;&lt;/code&gt;标签&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;html-常用标签&#34;&gt;html 常用标签&lt;/h2&gt;
+&lt;h3 id=&#34;标题标签&#34;&gt;标题标签&lt;/h3&gt;
+&lt;p&gt;h1-h6 分别代表不同级别标题&lt;/p&gt;
+&lt;h3 id=&#34;段落标签&#34;&gt;段落标签&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;&lt;/code&gt;标签表示一个段落&lt;/p&gt;
+&lt;h3 id=&#34;换行标签&#34;&gt;换行标签&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;br/&amp;gt;&lt;/code&gt;标签表示换行&lt;/p&gt;
+&lt;h3 id=&#34;空格&#34;&gt;空格&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;&amp;amp;nbsp;&lt;/code&gt;表示空格&lt;/p&gt;
+&lt;h3 id=&#34;文本格式化标签&#34;&gt;文本格式化标签&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;粗体：&lt;code&gt;&amp;lt;b&amp;gt;&amp;lt;/b&amp;gt;&lt;/code&gt;或者&lt;code&gt;&amp;lt;strong&amp;gt;&amp;lt;/strong&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;倾斜：&lt;code&gt;&amp;lt;em&amp;gt;&amp;lt;/em&amp;gt;&lt;/code&gt;或者&lt;code&gt;&amp;lt;i&amp;gt;&amp;lt;/i&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除线：&lt;code&gt;&amp;lt;del&amp;gt;&amp;lt;/del&amp;gt;&lt;/code&gt;或者&lt;code&gt;&amp;lt;s&amp;gt;&amp;lt;/s&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;下划线：&lt;code&gt;&amp;lt;ins&amp;gt;&amp;lt;/ins&amp;gt;&lt;/code&gt;或者&lt;code&gt;&amp;lt;u&amp;gt;&amp;lt;/u&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;盒子标签&#34;&gt;盒子标签&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt;标签，独占一行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&lt;/code&gt;标签，多个在同一行展示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;图像标签&#34;&gt;图像标签&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;img/&amp;gt;&lt;/code&gt;标签表示一张图片，是一个单标签&lt;/p&gt;
+&lt;p&gt;图像标签的属性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;src：图片路径&lt;/li&gt;
+&lt;li&gt;title：图片标题，提示文本&lt;/li&gt;
+&lt;li&gt;alt：替换文本(图片展示不了时的文本)&lt;/li&gt;
+&lt;li&gt;width：图片宽度&lt;/li&gt;
+&lt;li&gt;height：图片高度&lt;/li&gt;
+&lt;li&gt;border：图片边框&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;超链接标签&#34;&gt;超链接标签&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&lt;/code&gt;标签表示一个超链接&lt;/p&gt;
+&lt;p&gt;超链接标签的属性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;href：链接的地址&lt;/li&gt;
+&lt;li&gt;target：以何种方式打开：&lt;code&gt;_self&lt;/code&gt;(默认)、&lt;code&gt;_blank&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;超链接的种类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;外部链接：跳转到外部网站&lt;/li&gt;
+&lt;li&gt;内部链接：跳转到内部 html 页面&lt;/li&gt;
+&lt;li&gt;空链接：href=&amp;quot;#&amp;quot;&lt;/li&gt;
+&lt;li&gt;下载链接：地址链接的是文件&lt;/li&gt;
+&lt;li&gt;网页元素链接：为网页元素添加超链接：文本、图片、表格、音频、视频&lt;/li&gt;
+&lt;li&gt;锚点链接：href=&amp;quot;#id&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;注释标签与特殊字符&#34;&gt;注释标签与特殊字符&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;!-- 注释 --&amp;gt;&lt;/code&gt;进行注释&lt;/p&gt;
+&lt;p&gt;特殊字符：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;空格：&lt;code&gt;&amp;amp;nbsp;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;大于：&lt;code&gt;&amp;amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;小于：&lt;code&gt;&amp;amp;lt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>【Devops】GitLabCI实践</title>
         <link>https://www.cengdong.store/p/devopsgitlabci%E5%AE%9E%E8%B7%B5/</link>
         <pubDate>Thu, 28 Mar 2024 04:20:36 +0800</pubDate>
