@@ -7,7 +7,156 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Mon, 01 Apr 2024 14:36:49 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 01 Apr 2024 18:40:44 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【前端】CSS</title>
+        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss/</link>
+        <pubDate>Mon, 01 Apr 2024 18:40:44 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss/</guid>
+        <description>&lt;h2 id=&#34;css-简介&#34;&gt;CSS 简介&lt;/h2&gt;
+&lt;h3 id=&#34;html-局限性&#34;&gt;HTML 局限性&lt;/h3&gt;
+&lt;p&gt;用&lt;code&gt;html&lt;/code&gt;修改网页外观代价太大&lt;/p&gt;
+&lt;h3 id=&#34;css-的作用&#34;&gt;CSS 的作用&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;CSS&lt;/code&gt;(Cascading style sheets)用于进行网页布局&lt;/p&gt;
+&lt;p&gt;用于改变文字、图片、网页布局、外观&lt;/p&gt;
+&lt;h2 id=&#34;css-语法规范&#34;&gt;CSS 语法规范&lt;/h2&gt;
+&lt;h3 id=&#34;构成&#34;&gt;构成&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;选择器&lt;/code&gt; + 一个或者多个&lt;code&gt;声明&lt;/code&gt;：&lt;code&gt;属性&lt;/code&gt;: &lt;code&gt;值&lt;/code&gt;;&lt;/p&gt;
+&lt;h3 id=&#34;书写位置&#34;&gt;书写位置&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;内部样式表：&lt;code&gt;&amp;lt;head&amp;gt;&amp;lt;/head&amp;gt;&lt;/code&gt;标签中，用&lt;code&gt;&amp;lt;style&amp;gt;&amp;lt;/style&amp;gt;&lt;/code&gt;标签声明&lt;/li&gt;
+&lt;li&gt;行内样式表：标签内部&lt;code&gt;style&lt;/code&gt;属性，&lt;code&gt;style=&amp;quot;key: value; key: value&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;外部样式表(推荐)：&lt;code&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;文件路径&amp;quot;&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;规范&#34;&gt;规范&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;一般采用分散式：一行设置一个属性值&lt;/li&gt;
+&lt;li&gt;选择器与括号、属性 key/value 之间需要一个空格&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;css-选择器&#34;&gt;CSS 选择器&lt;/h2&gt;
+&lt;h3 id=&#34;选择器的作用&#34;&gt;选择器的作用&lt;/h3&gt;
+&lt;p&gt;选出需求的标签&lt;/p&gt;
+&lt;h3 id=&#34;选择器分类&#34;&gt;选择器分类&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;基础选择器
+&lt;ul&gt;
+&lt;li&gt;标签选择器&lt;/li&gt;
+&lt;li&gt;id 选择器&lt;/li&gt;
+&lt;li&gt;class 选择器&lt;/li&gt;
+&lt;li&gt;通配符选择器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;复合选择器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;选择器使用方式&#34;&gt;选择器使用方式&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;基础选择器&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;th&gt;特点&lt;/th&gt;
+&lt;th&gt;使用情况&lt;/th&gt;
+&lt;th&gt;用法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;标签选择器&lt;/td&gt;
+&lt;td&gt;选出所有相同标签&lt;/td&gt;
+&lt;td&gt;不能差异化选择&lt;/td&gt;
+&lt;td&gt;较多&lt;/td&gt;
+&lt;td&gt;p {color: red;}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;类选择器&lt;/td&gt;
+&lt;td&gt;选出一个或多个标签&lt;/td&gt;
+&lt;td&gt;可以根据需求选择&lt;/td&gt;
+&lt;td&gt;非常多&lt;/td&gt;
+&lt;td&gt;.nav {color: red;}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;id 选择器&lt;/td&gt;
+&lt;td&gt;一次只能选择一个标签&lt;/td&gt;
+&lt;td&gt;id 具有唯一性&lt;/td&gt;
+&lt;td&gt;一般和 js 搭配使用&lt;/td&gt;
+&lt;td&gt;#red {color: red;}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;通配符选择器&lt;/td&gt;
+&lt;td&gt;选择所有标签&lt;/td&gt;
+&lt;td&gt;一般用于设置盒子间距&lt;/td&gt;
+&lt;td&gt;特殊情况使用&lt;/td&gt;
+&lt;td&gt;* {color: red;}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;class-多类名&#34;&gt;class 多类名&lt;/h3&gt;
+&lt;p&gt;一个标签可以使用多个类选择器定义的&lt;code&gt;css&lt;/code&gt; 样式，多个类名之间使用空格分隔&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;https://www.baidu.com&amp;quot; class=&amp;quot;red green&amp;quot;&amp;gt;百度一下，你就知道&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;字体属性&#34;&gt;字体属性&lt;/h2&gt;
+&lt;p&gt;CSS 字体属性用于定义字体&lt;code&gt;系列&lt;/code&gt;、&lt;code&gt;大小&lt;/code&gt;、&lt;code&gt;粗细&lt;/code&gt;、&lt;code&gt;文字样式&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;font-family&#34;&gt;font-family&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;font-family&lt;/code&gt;用于给字体设置系列&lt;/p&gt;
+&lt;p&gt;多种字体之间使用逗号分隔，从左至右依次匹配&lt;/p&gt;
+&lt;p&gt;有空格分开的多个单词组成的字体，使用单引号包裹&lt;/p&gt;
+&lt;h3 id=&#34;font-size&#34;&gt;font-size&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;font-size&lt;/code&gt;用于设置字体大小，必须使用单位&lt;code&gt;px&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;可以给&lt;code&gt;&amp;lt;body&amp;gt;&amp;lt;/body&amp;gt;&lt;/code&gt;标签设置整个 html 文档的字体大小&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;标题标签&lt;/code&gt;应使用额外样式设置字体大小&lt;/p&gt;
+&lt;h3 id=&#34;font-weight&#34;&gt;font-weight&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;font-weight&lt;/code&gt;用于给字体设置粗细，值可以设置以下几种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;normal(默认，400)&lt;/li&gt;
+&lt;li&gt;bold(粗体，700)&lt;/li&gt;
+&lt;li&gt;bolder(特粗体)&lt;/li&gt;
+&lt;li&gt;lighter(细体)&lt;/li&gt;
+&lt;li&gt;number(100-900)，不能跟单位&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;font-style&#34;&gt;font-style&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;font-style&lt;/code&gt;用于设置字体样式，有以下属性值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;normal&lt;/li&gt;
+&lt;li&gt;italic(斜体)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;复合属性&#34;&gt;复合属性&lt;/h3&gt;
+&lt;p&gt;复合属性通过&lt;code&gt;font&lt;/code&gt;属性设置&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;font: font-style font-weight font-size/line-height font-family&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;必须严格&lt;code&gt;按照顺序&lt;/code&gt;书写&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;font-size&lt;/code&gt;与&lt;code&gt;font-family&lt;/code&gt;必须设置，其他可以省略&lt;/p&gt;
+&lt;h2 id=&#34;文本属性&#34;&gt;文本属性&lt;/h2&gt;
+&lt;h3 id=&#34;color&#34;&gt;color&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;color&lt;/code&gt;属性用于设置标签内字体颜色&lt;/p&gt;
+&lt;p&gt;颜色有三种表示方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;英语单词(red、green 等)&lt;/li&gt;
+&lt;li&gt;#16 进制表示(用的最多)&lt;/li&gt;
+&lt;li&gt;rgb 表示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;text-align&#34;&gt;text-align&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;text-align&lt;/code&gt;用于设置文本对齐方式，有以下三种值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;center&lt;/li&gt;
+&lt;li&gt;left(默认值)&lt;/li&gt;
+&lt;li&gt;right&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;text-decoration&#34;&gt;text-decoration&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;text-decoration&lt;/code&gt;用于设置文本装饰，有以下四种值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;none&lt;/li&gt;
+&lt;li&gt;underline&lt;/li&gt;
+&lt;li&gt;overline&lt;/li&gt;
+&lt;li&gt;line-through&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;text-indent&#34;&gt;text-indent&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;text-indent&lt;/code&gt;用于设置文本缩进，单位是 &lt;code&gt;px&lt;/code&gt;/&lt;code&gt;em&lt;/code&gt;，&lt;code&gt;1em&lt;/code&gt; 等于一个文字大小&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;p {text-indent: 2em;}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;注意，只缩进&lt;code&gt;首行&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;line-height&#34;&gt;line-height&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;line-height&lt;/code&gt;用于设置文字行间距离&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;line-height = font-size + 上间距 + 下间距&lt;/code&gt;，上下间距相等&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【前端】HTML标签下</title>
         <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFhtml%E6%A0%87%E7%AD%BE%E4%B8%8B/</link>
         <pubDate>Mon, 01 Apr 2024 14:36:49 +0800</pubDate>
