@@ -266,9 +266,27 @@
         <li><a href="#外边距简写">外边距简写</a></li>
         <li><a href="#外边距应用场景">外边距应用场景</a></li>
         <li><a href="#外边距注意点">外边距注意点</a></li>
-        <li><a href="#清除内外边距">清除内外边距</a></li>
       </ol>
     </li>
+    <li><a href="#内外边距注意事项">内外边距注意事项</a>
+      <ol>
+        <li><a href="#清除内外边距">清除内外边距</a></li>
+        <li><a href="#开发建议">开发建议</a></li>
+      </ol>
+    </li>
+    <li><a href="#圆角边框">圆角边框</a>
+      <ol>
+        <li><a href="#语法格式">语法格式</a></li>
+      </ol>
+    </li>
+    <li><a href="#盒子阴影">盒子阴影</a>
+      <ol>
+        <li><a href="#语法格式-1">语法格式</a></li>
+        <li><a href="#属性值">属性值</a></li>
+        <li><a href="#注意事项">注意事项</a></li>
+      </ol>
+    </li>
+    <li><a href="#文字阴影">文字阴影</a></li>
   </ol>
 </nav>
         </div>
@@ -464,6 +482,7 @@
 <li>给<code>父元素</code>添加<code>上内边距</code></li>
 <li>给<code>父元素</code>添加<code>overflow: hidden;</code></li>
 </ul>
+<h2 id="内外边距注意事项">内外边距注意事项</h2>
 <h3 id="清除内外边距">清除内外边距</h3>
 <p>清除网页元素自带的内外边距</p>
 <div class="highlight"><div class="chroma">
@@ -480,7 +499,69 @@
 </span></span><span class="line"><span class="cl">}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><code>行内元素</code>一般只设置<code>左右内外边距</code></p>
+</div><h3 id="开发建议">开发建议</h3>
+<ul>
+<li><code>行内元素</code>一般只设置<code>左右内外边距</code></li>
+<li><code>块元素</code>之间使用<code>外边距</code></li>
+<li><code>块元素</code>内部使用<code>内边距</code></li>
+<li>取消列表原点：<code>lisr-style: none;</code></li>
+</ul>
+<h2 id="圆角边框">圆角边框</h2>
+<p><code> 圆角边框</code>的作用是可以把<code>盒子变成圆形</code></p>
+<h3 id="语法格式">语法格式</h3>
+<ul>
+<li><code>border-radius: length;</code></li>
+<li><code>length</code>既可以是<code>单位/px</code>，也可以是<code>百分比</code>.</li>
+<li>可以设置<code>4个值</code>，从<code>左上角</code>开始<code>顺时针</code>变化</li>
+<li><code>length</code>越大，<code>弧度</code>越大</li>
+</ul>
+<h2 id="盒子阴影">盒子阴影</h2>
+<p>使用<code>box-shadow</code>属性为盒子添加阴影</p>
+<h3 id="语法格式-1">语法格式</h3>
+<p><code>box-shadow: h-shadow v-shadow blur spread color inset;</code></p>
+<h3 id="属性值">属性值</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h-shadow</td>
+<td>必需。水平阴影。允许负值</td>
+</tr>
+<tr>
+<td>v-shadow</td>
+<td>必需。垂直阴影。允许负值</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>可选。模糊距离</td>
+</tr>
+<tr>
+<td>spread</td>
+<td>可选。阴影尺寸</td>
+</tr>
+<tr>
+<td>color</td>
+<td>可选。阴影颜色</td>
+</tr>
+<tr>
+<td>inset</td>
+<td>可选。将外部阴影(outset)改为内部阴影</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="注意事项">注意事项</h3>
+<ul>
+<li>阴影默认 outset，但是不可以书写，<code>否则失效</code></li>
+<li>阴影不占位置，不影响其他元素布局</li>
+</ul>
+<h2 id="文字阴影">文字阴影</h2>
+<p><code>text-shadow: h-shadow v-shadow blur color;</code></p>
+<p>相关属性的意义与盒子阴影一样</p>
 
 </section>
 
