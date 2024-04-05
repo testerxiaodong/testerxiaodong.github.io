@@ -7,7 +7,196 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Wed, 03 Apr 2024 21:32:09 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/tags/css/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 04 Apr 2024 19:32:48 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/tags/css/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【前端】网页布局</title>
+        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/</link>
+        <pubDate>Thu, 04 Apr 2024 19:32:48 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/</guid>
+        <description>&lt;h2 id=&#34;网页布局入门&#34;&gt;网页布局入门&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;网页布局&lt;/code&gt;的本质就是通过&lt;code&gt;CSS&lt;/code&gt;把&lt;code&gt;盒子&lt;/code&gt;摆到相应位置。&lt;/p&gt;
+&lt;h3 id=&#34;网页布局方式&#34;&gt;网页布局方式&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;网页布局&lt;/code&gt;有以下三种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;普通流&lt;/code&gt;布局&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;浮动&lt;/code&gt;布局&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;定位&lt;/code&gt;布局&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;网页布局准则&#34;&gt;网页布局准则&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;网页布局&lt;/code&gt;第一准则：多个块级元素&lt;code&gt;纵向排列&lt;/code&gt;找&lt;code&gt;标准流&lt;/code&gt;，多个块级元素&lt;code&gt;横向排列&lt;/code&gt;找&lt;code&gt;浮动&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;网页布局&lt;/code&gt;第二准则：先设置&lt;code&gt;盒子大小&lt;/code&gt;，再设置&lt;code&gt;盒子位置&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;网页布局流程&#34;&gt;网页布局流程&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;确认页面&lt;code&gt;版心(可视区)&lt;/code&gt;，可视区&lt;code&gt;水平居中&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;分析页面中&lt;code&gt;行模块&lt;/code&gt;，以及&lt;code&gt;每个行&lt;/code&gt;中的&lt;code&gt;列模块&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;一行中列模块经常&lt;code&gt;浮动布局&lt;/code&gt;，先确定&lt;code&gt;列大小&lt;/code&gt;，再确定&lt;code&gt;列位置&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;先制作 html 结构。&lt;code&gt;先结构，后样式&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;标准流普通流&#34;&gt;标准流/普通流&lt;/h2&gt;
+&lt;p&gt;标准流就是元素按照规定的&lt;code&gt;默认方式&lt;/code&gt;排序&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;行内元素&lt;/li&gt;
+&lt;li&gt;块元素&lt;/li&gt;
+&lt;li&gt;行内块元素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;浮动布局&#34;&gt;浮动布局&lt;/h2&gt;
+&lt;h3 id=&#34;为什么需要浮动&#34;&gt;为什么需要浮动&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;使多个&lt;code&gt;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt;在同一行展示：在标准流中使用&lt;code&gt;display: inline-block&lt;/code&gt;，但是盒子之间会有缝隙&lt;/li&gt;
+&lt;li&gt;实现两个盒子&lt;code&gt;左右对齐&lt;/code&gt;：标准流很难实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;什么是浮动&#34;&gt;什么是浮动&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;float&lt;/code&gt;属性用于创建浮动框，将其移动到一边，直至左边缘/右边缘遇到其他块，或者是另一个浮动框的边缘&lt;/p&gt;
+&lt;p&gt;浮动语法：&lt;code&gt;float: 属性值&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;none(默认值)&lt;/li&gt;
+&lt;li&gt;left&lt;/li&gt;
+&lt;li&gt;right&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;浮动的特性&#34;&gt;浮动的特性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;加了浮动的元素会&lt;code&gt;脱离标准流&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;浮动的元素会&lt;code&gt;一行显示&lt;/code&gt;并且元素&lt;code&gt;顶部对齐&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;浮动的元素具有&lt;code&gt;行内块元素&lt;/code&gt;特性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;浮动的注意点&#34;&gt;浮动的注意点&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;浮动和&lt;code&gt;标准流父盒子&lt;/code&gt;搭配使用&lt;/li&gt;
+&lt;li&gt;一个元素浮动，其他元素&lt;code&gt;也要浮动&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;浮动的盒子只会影响&lt;code&gt;后面的标准流&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;清除浮动&#34;&gt;清除浮动&lt;/h3&gt;
+&lt;p&gt;不一定需要&lt;code&gt;给父盒子设置高度&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;理想的状态：&lt;code&gt;子盒子撑开父盒子&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;浮动的元素不占位置&lt;/code&gt;(浮动布局中没有子盒子撑开父盒子)&lt;/p&gt;
+&lt;p&gt;因此需要清除浮动，清除浮动有以下几种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;额外标签法(w3c 推荐)：在最后一个浮动的元素添加块级元素并添加属性&lt;code&gt;clear: left/right/both(推荐)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;父级元素添加&lt;code&gt;overflow: hidden/auto/scroll&lt;/code&gt;属性&lt;/li&gt;
+&lt;li&gt;父级添加&lt;code&gt;after伪元素&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;父级添加&lt;code&gt;双伪元素&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.clearfix:after {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  content: &amp;#34;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  display: block;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  clear: both;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.clearfix::before, .clearfix::after {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  content: &amp;#34;&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  display: table;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  clear: both;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;切图&#34;&gt;切图&lt;/h2&gt;
+&lt;h3 id=&#34;常见的图片格式&#34;&gt;常见的图片格式&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;jpg：对色彩保留信息好，产品类图片&lt;/li&gt;
+&lt;li&gt;gif：显示简单的图形及字体，图片动画。特点：保存透明背景和动画效果&lt;/li&gt;
+&lt;li&gt;png：结合 jpg 与 gif&lt;/li&gt;
+&lt;li&gt;psd：photoshop 的专用格式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;切图方式&#34;&gt;切图方式&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;图层切图：移动工具、合并图层(&lt;code&gt;ctrl + e&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;切片切图：切片工具&lt;/li&gt;
+&lt;li&gt;插件切图：Cutterman&lt;/li&gt;
+&lt;li&gt;其他软件：蓝湖、幕客&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;定位&#34;&gt;定位&lt;/h2&gt;
+&lt;h3 id=&#34;为什么需要定位&#34;&gt;为什么需要定位&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;盒子&lt;code&gt;自由移动&lt;/code&gt;，并且&lt;code&gt;压住&lt;/code&gt;其他盒子&lt;/li&gt;
+&lt;li&gt;盒子&lt;code&gt;位置固定&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;定位组成&#34;&gt;定位组成&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;定位方式
+&lt;ul&gt;
+&lt;li&gt;static(默认值)&lt;/li&gt;
+&lt;li&gt;relative&lt;/li&gt;
+&lt;li&gt;absolute&lt;/li&gt;
+&lt;li&gt;fixed&lt;/li&gt;
+&lt;li&gt;sticky&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;边偏移
+&lt;ul&gt;
+&lt;li&gt;top&lt;/li&gt;
+&lt;li&gt;right&lt;/li&gt;
+&lt;li&gt;bottom&lt;/li&gt;
+&lt;li&gt;left&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;相对定位relative&#34;&gt;相对定位：relative&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;相对定位&lt;/code&gt;是相对于&lt;code&gt;盒子自己原来位置&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;相对定位&lt;/code&gt;原来位置&lt;code&gt;继续占有&lt;/code&gt;(不脱标，保留原来位置)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;绝对定位absolute&#34;&gt;绝对定位：absolute&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;没有父元素/父元素没有定位&lt;/code&gt;则&lt;code&gt;相对浏览器&lt;/code&gt;进行移动&lt;/li&gt;
+&lt;li&gt;父元素&lt;code&gt;有定位(相对/决定/固定)&lt;/code&gt;则&lt;code&gt;相对最近一级有定位的父元素&lt;/code&gt;进行移动&lt;/li&gt;
+&lt;li&gt;绝对定位&lt;code&gt;脱标&lt;/code&gt;，不占有原来位置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;子绝父相&#34;&gt;子绝父相&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;子级&lt;/code&gt;使用&lt;code&gt;绝对定位&lt;/code&gt;，&lt;code&gt;父亲&lt;/code&gt;需要&lt;code&gt;相对定位&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;子级绝对定位，&lt;code&gt;不会占有位置&lt;/code&gt;，可以放在任何地方&lt;/li&gt;
+&lt;li&gt;父级相对定位，&lt;code&gt;约束子级&lt;/code&gt;相对自己移动，并且相对定位占有原来位置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;固定定位&#34;&gt;固定定位&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;固定定位&lt;/code&gt;是固定于浏览器&lt;code&gt;可视区&lt;/code&gt;的位置&lt;/li&gt;
+&lt;li&gt;固定定位会&lt;code&gt;脱标&lt;/code&gt;，可以看做是&lt;code&gt;特殊的绝对定位&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;固定&lt;code&gt;版心右侧&lt;/code&gt;：&lt;code&gt;left: 50%; margin-left: 1/2版心宽度&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;粘性定位&#34;&gt;粘性定位&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;position: sticky&lt;/li&gt;
+&lt;li&gt;必须设置&lt;code&gt;top/right/bottom/left&lt;/code&gt;中的一个&lt;/li&gt;
+&lt;li&gt;不脱标&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;定位的叠放顺序&#34;&gt;定位的叠放顺序&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;z-index&lt;/code&gt;，值越大，越在上面&lt;/p&gt;
+&lt;h3 id=&#34;绝对定位的盒子水平垂直居中&#34;&gt;绝对定位的盒子水平/垂直居中&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;left: 50%; margin-left: -1/2自己宽度&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;top: 50%; margin-top: -1/2自己宽度&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;定位特性&#34;&gt;定位特性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;加了&lt;code&gt;绝对/固定定位&lt;/code&gt;/&lt;code&gt;浮动&lt;/code&gt;的盒子会变成&lt;code&gt;行内块元素&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;加了&lt;code&gt;绝对/固定定位&lt;/code&gt;/&lt;code&gt;浮动&lt;/code&gt;的元素默认宽度是&lt;code&gt;内容宽度&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;绝对/固定定位&lt;/code&gt;/&lt;code&gt;浮动&lt;/code&gt;的盒子不会发生&lt;code&gt;外边距合并&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;绝对/固定定位&lt;/code&gt;会压住&lt;code&gt;标准流所有(盒子+文字)&lt;/code&gt;，浮动&lt;code&gt;不会压住文字&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>【前端】CSS盒子模型</title>
         <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/</link>
         <pubDate>Wed, 03 Apr 2024 21:32:09 +0800</pubDate>
@@ -123,8 +312,8 @@
 &lt;p&gt;行内元素/行内块元素水平居中，给其父亲添加：&lt;code&gt;text-align: center;&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;外边距注意点&#34;&gt;外边距注意点&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;垂直外边距合并：只给一个元素添加外边距&lt;/li&gt;
-&lt;li&gt;嵌套外边距塌陷：&lt;/li&gt;
+&lt;li&gt;相邻垂直外边距合并：只给一个元素添加外边距&lt;/li&gt;
+&lt;li&gt;嵌套垂直外边距塌陷：&lt;/li&gt;
 &lt;li&gt;给&lt;code&gt;父元素&lt;/code&gt;添加&lt;code&gt;上边框&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;给&lt;code&gt;父元素&lt;/code&gt;添加&lt;code&gt;上内边距&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;给&lt;code&gt;父元素&lt;/code&gt;添加&lt;code&gt;overflow: hidden;&lt;/code&gt;&lt;/li&gt;

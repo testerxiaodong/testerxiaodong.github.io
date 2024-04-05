@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='浏览器内核 浏览器内核就是浏览器的渲染引擎，目前引擎分类： 浏览器 内核 IE Trident firefox Gecko safari Webkit chrome/opera Blink Web 标准 W3C 主要包括：结构(HTML)、表现(CSS)、行为('>
-<title>【前端】HTML标签</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='网页布局入门 网页布局的本质就是通过CSS把盒子摆到相应位置。 网页布局方式 网页布局有以下三种方式： 普通流布局 浮动布局 定位布局 网页布局准则 网页布'>
+<title>【前端】网页布局</title>
 
-<link rel='canonical' href='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFhtml%E6%A0%87%E7%AD%BE/'>
+<link rel='canonical' href='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/'>
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【前端】HTML标签'>
-<meta property='og:description' content='浏览器内核 浏览器内核就是浏览器的渲染引擎，目前引擎分类： 浏览器 内核 IE Trident firefox Gecko safari Webkit chrome/opera Blink Web 标准 W3C 主要包括：结构(HTML)、表现(CSS)、行为('>
-<meta property='og:url' content='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFhtml%E6%A0%87%E7%AD%BE/'>
+<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【前端】网页布局'>
+<meta property='og:description' content='网页布局入门 网页布局的本质就是通过CSS把盒子摆到相应位置。 网页布局方式 网页布局有以下三种方式： 普通流布局 浮动布局 定位布局 网页布局准则 网页布'>
+<meta property='og:url' content='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-04-01T10:04:06&#43;08:00'/><meta property='article:modified_time' content='2024-04-01T10:04:06&#43;08:00'/>
-<meta name="twitter:title" content="【前端】HTML标签">
-<meta name="twitter:description" content="浏览器内核 浏览器内核就是浏览器的渲染引擎，目前引擎分类： 浏览器 内核 IE Trident firefox Gecko safari Webkit chrome/opera Blink Web 标准 W3C 主要包括：结构(HTML)、表现(CSS)、行为(">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CSS' /><meta property='article:published_time' content='2024-04-04T19:32:48&#43;08:00'/><meta property='article:modified_time' content='2024-04-04T19:32:48&#43;08:00'/>
+<meta name="twitter:title" content="【前端】网页布局">
+<meta name="twitter:description" content="网页布局入门 网页布局的本质就是通过CSS把盒子摆到相应位置。 网页布局方式 网页布局有以下三种方式： 普通流布局 浮动布局 定位布局 网页布局准则 网页布">
     </head>
     <body class="
     article-page
@@ -245,21 +245,41 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#浏览器内核">浏览器内核</a></li>
-    <li><a href="#web-标准">Web 标准</a></li>
-    <li><a href="#html-语法规范">Html 语法规范</a></li>
-    <li><a href="#html-基本结构标签">Html 基本结构标签</a></li>
-    <li><a href="#html-常用标签">html 常用标签</a>
+    <li><a href="#网页布局入门">网页布局入门</a>
       <ol>
-        <li><a href="#标题标签">标题标签</a></li>
-        <li><a href="#段落标签">段落标签</a></li>
-        <li><a href="#换行标签">换行标签</a></li>
-        <li><a href="#空格">空格</a></li>
-        <li><a href="#文本格式化标签">文本格式化标签</a></li>
-        <li><a href="#盒子标签">盒子标签</a></li>
-        <li><a href="#图像标签">图像标签</a></li>
-        <li><a href="#超链接标签">超链接标签</a></li>
-        <li><a href="#注释标签与特殊字符">注释标签与特殊字符</a></li>
+        <li><a href="#网页布局方式">网页布局方式</a></li>
+        <li><a href="#网页布局准则">网页布局准则</a></li>
+        <li><a href="#网页布局流程">网页布局流程</a></li>
+      </ol>
+    </li>
+    <li><a href="#标准流普通流">标准流/普通流</a></li>
+    <li><a href="#浮动布局">浮动布局</a>
+      <ol>
+        <li><a href="#为什么需要浮动">为什么需要浮动</a></li>
+        <li><a href="#什么是浮动">什么是浮动</a></li>
+        <li><a href="#浮动的特性">浮动的特性</a></li>
+        <li><a href="#浮动的注意点">浮动的注意点</a></li>
+        <li><a href="#清除浮动">清除浮动</a></li>
+      </ol>
+    </li>
+    <li><a href="#切图">切图</a>
+      <ol>
+        <li><a href="#常见的图片格式">常见的图片格式</a></li>
+        <li><a href="#切图方式">切图方式</a></li>
+      </ol>
+    </li>
+    <li><a href="#定位">定位</a>
+      <ol>
+        <li><a href="#为什么需要定位">为什么需要定位</a></li>
+        <li><a href="#定位组成">定位组成</a></li>
+        <li><a href="#相对定位relative">相对定位：relative</a></li>
+        <li><a href="#绝对定位absolute">绝对定位：absolute</a></li>
+        <li><a href="#子绝父相">子绝父相</a></li>
+        <li><a href="#固定定位">固定定位</a></li>
+        <li><a href="#粘性定位">粘性定位</a></li>
+        <li><a href="#定位的叠放顺序">定位的叠放顺序</a></li>
+        <li><a href="#绝对定位的盒子水平垂直居中">绝对定位的盒子水平/垂直居中</a></li>
+        <li><a href="#定位特性">定位特性</a></li>
       </ol>
     </li>
   </ol>
@@ -289,7 +309,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E5%89%8D%E7%AB%AFhtml%E6%A0%87%E7%AD%BE/">【前端】HTML标签</a>
+            <a href="/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/">【前端】网页布局</a>
         </h2>
     
         
@@ -311,7 +331,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Apr 01, 2024</time>
+                <time class="article-time--published">Apr 04, 2024</time>
             </div>
         
 
@@ -341,108 +361,186 @@
     <section class="article-content">
     
     
-    <h2 id="浏览器内核">浏览器内核</h2>
-<p>浏览器内核就是浏览器的渲染引擎，目前引擎分类：</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>浏览器</th>
-<th>内核</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IE</td>
-<td>Trident</td>
-</tr>
-<tr>
-<td>firefox</td>
-<td>Gecko</td>
-</tr>
-<tr>
-<td>safari</td>
-<td>Webkit</td>
-</tr>
-<tr>
-<td>chrome/opera</td>
-<td>Blink</td>
-</tr>
-</tbody>
-</table></div>
-<h2 id="web-标准">Web 标准</h2>
-<p>W3C 主要包括：结构(HTML)、表现(CSS)、行为(JAVASCRIPT)三个部分。</p>
-<p>WEB 标准提出的最佳解决方案：结构、样式、行为相分离。</p>
-<h2 id="html-语法规范">Html 语法规范</h2>
+    <h2 id="网页布局入门">网页布局入门</h2>
+<p><code>网页布局</code>的本质就是通过<code>CSS</code>把<code>盒子</code>摆到相应位置。</p>
+<h3 id="网页布局方式">网页布局方式</h3>
+<p><code>网页布局</code>有以下三种方式：</p>
 <ul>
-<li>标签一般成对出现，也有单标签</li>
-<li>标签之间的关系：包含/并列</li>
+<li><code>普通流</code>布局</li>
+<li><code>浮动</code>布局</li>
+<li><code>定位</code>布局</li>
 </ul>
-<h2 id="html-基本结构标签">Html 基本结构标签</h2>
+<h3 id="网页布局准则">网页布局准则</h3>
+<p><code>网页布局</code>第一准则：多个块级元素<code>纵向排列</code>找<code>标准流</code>，多个块级元素<code>横向排列</code>找<code>浮动</code></p>
+<p><code>网页布局</code>第二准则：先设置<code>盒子大小</code>，再设置<code>盒子位置</code></p>
+<h3 id="网页布局流程">网页布局流程</h3>
 <ul>
-<li><code>&lt;html&gt;&lt;/html&gt;</code>标签</li>
-<li><code>&lt;head&gt;&lt;/head&gt;</code>标签
+<li>确认页面<code>版心(可视区)</code>，可视区<code>水平居中</code></li>
+<li>分析页面中<code>行模块</code>，以及<code>每个行</code>中的<code>列模块</code></li>
+<li>一行中列模块经常<code>浮动布局</code>，先确定<code>列大小</code>，再确定<code>列位置</code></li>
+<li>先制作 html 结构。<code>先结构，后样式</code>。</li>
+</ul>
+<h2 id="标准流普通流">标准流/普通流</h2>
+<p>标准流就是元素按照规定的<code>默认方式</code>排序</p>
 <ul>
-<li><code>&lt;meta&gt;</code>标签</li>
-<li><code>&lt;title&gt;&lt;/title&gt;</code>标签</li>
+<li>行内元素</li>
+<li>块元素</li>
+<li>行内块元素</li>
+</ul>
+<h2 id="浮动布局">浮动布局</h2>
+<h3 id="为什么需要浮动">为什么需要浮动</h3>
+<ul>
+<li>使多个<code>&lt;div&gt;&lt;/div&gt;</code>在同一行展示：在标准流中使用<code>display: inline-block</code>，但是盒子之间会有缝隙</li>
+<li>实现两个盒子<code>左右对齐</code>：标准流很难实现</li>
+</ul>
+<h3 id="什么是浮动">什么是浮动</h3>
+<p><code>float</code>属性用于创建浮动框，将其移动到一边，直至左边缘/右边缘遇到其他块，或者是另一个浮动框的边缘</p>
+<p>浮动语法：<code>float: 属性值</code></p>
+<ul>
+<li>none(默认值)</li>
+<li>left</li>
+<li>right</li>
+</ul>
+<h3 id="浮动的特性">浮动的特性</h3>
+<ul>
+<li>加了浮动的元素会<code>脱离标准流</code></li>
+<li>浮动的元素会<code>一行显示</code>并且元素<code>顶部对齐</code></li>
+<li>浮动的元素具有<code>行内块元素</code>特性</li>
+</ul>
+<h3 id="浮动的注意点">浮动的注意点</h3>
+<ul>
+<li>浮动和<code>标准流父盒子</code>搭配使用</li>
+<li>一个元素浮动，其他元素<code>也要浮动</code></li>
+<li>浮动的盒子只会影响<code>后面的标准流</code></li>
+</ul>
+<h3 id="清除浮动">清除浮动</h3>
+<p>不一定需要<code>给父盒子设置高度</code></p>
+<p>理想的状态：<code>子盒子撑开父盒子</code></p>
+<p><code>浮动的元素不占位置</code>(浮动布局中没有子盒子撑开父盒子)</p>
+<p>因此需要清除浮动，清除浮动有以下几种方式：</p>
+<ul>
+<li>额外标签法(w3c 推荐)：在最后一个浮动的元素添加块级元素并添加属性<code>clear: left/right/both(推荐)</code></li>
+<li>父级元素添加<code>overflow: hidden/auto/scroll</code>属性</li>
+<li>父级添加<code>after伪元素</code></li>
+<li>父级添加<code>双伪元素</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">.clearfix:after {
+</span></span><span class="line"><span class="cl">  content: &#34;&#34;;
+</span></span><span class="line"><span class="cl">  display: block;
+</span></span><span class="line"><span class="cl">  clear: both;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">.clearfix::before, .clearfix::after {
+</span></span><span class="line"><span class="cl">  content: &#34;&#34;;
+</span></span><span class="line"><span class="cl">  display: table;
+</span></span><span class="line"><span class="cl">  clear: both;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="切图">切图</h2>
+<h3 id="常见的图片格式">常见的图片格式</h3>
+<ul>
+<li>jpg：对色彩保留信息好，产品类图片</li>
+<li>gif：显示简单的图形及字体，图片动画。特点：保存透明背景和动画效果</li>
+<li>png：结合 jpg 与 gif</li>
+<li>psd：photoshop 的专用格式</li>
+</ul>
+<h3 id="切图方式">切图方式</h3>
+<ul>
+<li>图层切图：移动工具、合并图层(<code>ctrl + e</code>)</li>
+<li>切片切图：切片工具</li>
+<li>插件切图：Cutterman</li>
+<li>其他软件：蓝湖、幕客</li>
+</ul>
+<h2 id="定位">定位</h2>
+<h3 id="为什么需要定位">为什么需要定位</h3>
+<ul>
+<li>盒子<code>自由移动</code>，并且<code>压住</code>其他盒子</li>
+<li>盒子<code>位置固定</code></li>
+</ul>
+<h3 id="定位组成">定位组成</h3>
+<ul>
+<li>定位方式
+<ul>
+<li>static(默认值)</li>
+<li>relative</li>
+<li>absolute</li>
+<li>fixed</li>
+<li>sticky</li>
 </ul>
 </li>
-<li><code>&lt;body&gt;&lt;/body&gt;</code>标签</li>
-</ul>
-<h2 id="html-常用标签">html 常用标签</h2>
-<h3 id="标题标签">标题标签</h3>
-<p>h1-h6 分别代表不同级别标题</p>
-<h3 id="段落标签">段落标签</h3>
-<p><code>&lt;p&gt;&lt;/p&gt;</code>标签表示一个段落</p>
-<h3 id="换行标签">换行标签</h3>
-<p><code>&lt;br/&gt;</code>标签表示换行</p>
-<h3 id="空格">空格</h3>
-<p><code>&amp;nbsp;</code>表示空格</p>
-<h3 id="文本格式化标签">文本格式化标签</h3>
+<li>边偏移
 <ul>
-<li>粗体：<code>&lt;b&gt;&lt;/b&gt;</code>或者<code>&lt;strong&gt;&lt;/strong&gt;</code></li>
-<li>倾斜：<code>&lt;em&gt;&lt;/em&gt;</code>或者<code>&lt;i&gt;&lt;/i&gt;</code></li>
-<li>删除线：<code>&lt;del&gt;&lt;/del&gt;</code>或者<code>&lt;s&gt;&lt;/s&gt;</code></li>
-<li>下划线：<code>&lt;ins&gt;&lt;/ins&gt;</code>或者<code>&lt;u&gt;&lt;/u&gt;</code></li>
+<li>top</li>
+<li>right</li>
+<li>bottom</li>
+<li>left</li>
 </ul>
-<h3 id="盒子标签">盒子标签</h3>
-<ul>
-<li><code>&lt;div&gt;&lt;/div&gt;</code>标签，独占一行</li>
-<li><code>&lt;span&gt;&lt;/span&gt;</code>标签，多个在同一行展示</li>
+</li>
 </ul>
-<h3 id="图像标签">图像标签</h3>
-<p><code>&lt;img/&gt;</code>标签表示一张图片，是一个单标签</p>
-<p>图像标签的属性：</p>
+<h3 id="相对定位relative">相对定位：relative</h3>
 <ul>
-<li>src：图片路径</li>
-<li>title：图片标题，提示文本</li>
-<li>alt：替换文本(图片展示不了时的文本)</li>
-<li>width：图片宽度</li>
-<li>height：图片高度</li>
-<li>border：图片边框</li>
+<li><code>相对定位</code>是相对于<code>盒子自己原来位置</code></li>
+<li><code>相对定位</code>原来位置<code>继续占有</code>(不脱标，保留原来位置)</li>
 </ul>
-<h3 id="超链接标签">超链接标签</h3>
-<p><code>&lt;a&gt;&lt;/a&gt;</code>标签表示一个超链接</p>
-<p>超链接标签的属性：</p>
+<h3 id="绝对定位absolute">绝对定位：absolute</h3>
 <ul>
-<li>href：链接的地址</li>
-<li>target：以何种方式打开：<code>_self</code>(默认)、<code>_blank</code></li>
+<li><code>没有父元素/父元素没有定位</code>则<code>相对浏览器</code>进行移动</li>
+<li>父元素<code>有定位(相对/决定/固定)</code>则<code>相对最近一级有定位的父元素</code>进行移动</li>
+<li>绝对定位<code>脱标</code>，不占有原来位置</li>
 </ul>
-<p>超链接的种类：</p>
+<h3 id="子绝父相">子绝父相</h3>
+<p><code>子级</code>使用<code>绝对定位</code>，<code>父亲</code>需要<code>相对定位</code></p>
 <ul>
-<li>外部链接：跳转到外部网站</li>
-<li>内部链接：跳转到内部 html 页面</li>
-<li>空链接：href=&quot;#&quot;</li>
-<li>下载链接：地址链接的是文件</li>
-<li>网页元素链接：为网页元素添加超链接：文本、图片、表格、音频、视频</li>
-<li>锚点链接：href=&quot;#id&quot;</li>
+<li>子级绝对定位，<code>不会占有位置</code>，可以放在任何地方</li>
+<li>父级相对定位，<code>约束子级</code>相对自己移动，并且相对定位占有原来位置</li>
 </ul>
-<h3 id="注释标签与特殊字符">注释标签与特殊字符</h3>
-<p><code>&lt;!-- 注释 --&gt;</code>进行注释</p>
-<p>特殊字符：</p>
+<h3 id="固定定位">固定定位</h3>
 <ul>
-<li>空格：<code>&amp;nbsp;</code></li>
-<li>大于：<code>&amp;gt;</code></li>
-<li>小于：<code>&amp;lt;</code></li>
+<li><code>固定定位</code>是固定于浏览器<code>可视区</code>的位置</li>
+<li>固定定位会<code>脱标</code>，可以看做是<code>特殊的绝对定位</code></li>
+<li>固定<code>版心右侧</code>：<code>left: 50%; margin-left: 1/2版心宽度</code></li>
+</ul>
+<h3 id="粘性定位">粘性定位</h3>
+<ul>
+<li>position: sticky</li>
+<li>必须设置<code>top/right/bottom/left</code>中的一个</li>
+<li>不脱标</li>
+</ul>
+<h3 id="定位的叠放顺序">定位的叠放顺序</h3>
+<p><code>z-index</code>，值越大，越在上面</p>
+<h3 id="绝对定位的盒子水平垂直居中">绝对定位的盒子水平/垂直居中</h3>
+<ul>
+<li><code>left: 50%; margin-left: -1/2自己宽度</code></li>
+<li><code>top: 50%; margin-top: -1/2自己宽度</code></li>
+</ul>
+<h3 id="定位特性">定位特性</h3>
+<ul>
+<li>加了<code>绝对/固定定位</code>/<code>浮动</code>的盒子会变成<code>行内块元素</code></li>
+<li>加了<code>绝对/固定定位</code>/<code>浮动</code>的元素默认宽度是<code>内容宽度</code></li>
+<li><code>绝对/固定定位</code>/<code>浮动</code>的盒子不会发生<code>外边距合并</code></li>
+<li><code>绝对/固定定位</code>会压住<code>标准流所有(盒子+文字)</code>，浮动<code>不会压住文字</code></li>
 </ul>
 
 </section>
@@ -450,6 +548,12 @@
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/css/">CSS</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -477,19 +581,6 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【前端】网页布局</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="">
@@ -538,6 +629,19 @@
 
         <div class="article-details">
             <h2 class="article-title">【前端】HTML标签下</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E5%89%8D%E7%AB%AFhtml%E6%A0%87%E7%AD%BE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【前端】HTML标签</h2>
         </div>
     </a>
 </article>
