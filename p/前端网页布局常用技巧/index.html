@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='网页布局入门 网页布局的本质就是通过CSS把盒子摆到相应位置。 网页布局方式 网页布局有以下三种方式： 普通流布局 浮动布局 定位布局 网页布局准则 网页布'>
-<title>【前端】网页布局</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='精灵图 为什么需要精灵图技术 很多小图片，每一个小图片请求一次，浪费网络 IO 为了减少服务器发送/接受请求次数，提高页面加载速度 精灵图技术原理 精灵图'>
+<title>【前端】网页布局常用技巧</title>
 
-<link rel='canonical' href='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/'>
+<link rel='canonical' href='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/'>
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【前端】网页布局'>
-<meta property='og:description' content='网页布局入门 网页布局的本质就是通过CSS把盒子摆到相应位置。 网页布局方式 网页布局有以下三种方式： 普通流布局 浮动布局 定位布局 网页布局准则 网页布'>
-<meta property='og:url' content='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/'>
+<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【前端】网页布局常用技巧'>
+<meta property='og:description' content='精灵图 为什么需要精灵图技术 很多小图片，每一个小图片请求一次，浪费网络 IO 为了减少服务器发送/接受请求次数，提高页面加载速度 精灵图技术原理 精灵图'>
+<meta property='og:url' content='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CSS' /><meta property='article:published_time' content='2024-04-04T19:32:48&#43;08:00'/><meta property='article:modified_time' content='2024-04-04T19:32:48&#43;08:00'/>
-<meta name="twitter:title" content="【前端】网页布局">
-<meta name="twitter:description" content="网页布局入门 网页布局的本质就是通过CSS把盒子摆到相应位置。 网页布局方式 网页布局有以下三种方式： 普通流布局 浮动布局 定位布局 网页布局准则 网页布">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CSS' /><meta property='article:published_time' content='2024-04-06T18:33:34&#43;08:00'/><meta property='article:modified_time' content='2024-04-06T18:33:34&#43;08:00'/>
+<meta name="twitter:title" content="【前端】网页布局常用技巧">
+<meta name="twitter:description" content="精灵图 为什么需要精灵图技术 很多小图片，每一个小图片请求一次，浪费网络 IO 为了减少服务器发送/接受请求次数，提高页面加载速度 精灵图技术原理 精灵图">
     </head>
     <body class="
     article-page
@@ -245,50 +245,53 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#网页布局入门">网页布局入门</a>
+    <li><a href="#精灵图">精灵图</a>
       <ol>
-        <li><a href="#网页布局方式">网页布局方式</a></li>
-        <li><a href="#网页布局准则">网页布局准则</a></li>
-        <li><a href="#网页布局流程">网页布局流程</a></li>
+        <li><a href="#为什么需要精灵图技术">为什么需要精灵图技术</a></li>
+        <li><a href="#精灵图技术原理">精灵图技术原理</a></li>
       </ol>
     </li>
-    <li><a href="#标准流普通流">标准流/普通流</a></li>
-    <li><a href="#浮动布局">浮动布局</a>
+    <li><a href="#字体图标">字体图标</a>
       <ol>
-        <li><a href="#为什么需要浮动">为什么需要浮动</a></li>
-        <li><a href="#什么是浮动">什么是浮动</a></li>
-        <li><a href="#浮动的特性">浮动的特性</a></li>
-        <li><a href="#浮动的注意点">浮动的注意点</a></li>
-        <li><a href="#清除浮动">清除浮动</a></li>
+        <li><a href="#字体图标产生的原因">字体图标产生的原因</a></li>
+        <li><a href="#字体图标的优点">字体图标的优点</a></li>
+        <li><a href="#字体图标使用">字体图标使用</a></li>
       </ol>
     </li>
-    <li><a href="#切图">切图</a>
+    <li><a href="#css-三角">CSS 三角</a>
       <ol>
-        <li><a href="#常见的图片格式">常见的图片格式</a></li>
-        <li><a href="#切图方式">切图方式</a></li>
+        <li><a href="#css-三角的原理">CSS 三角的原理</a></li>
       </ol>
     </li>
-    <li><a href="#定位">定位</a>
+    <li><a href="#用户界面控制">用户界面控制</a>
       <ol>
-        <li><a href="#为什么需要定位">为什么需要定位</a></li>
-        <li><a href="#定位组成">定位组成</a></li>
-        <li><a href="#相对定位relative">相对定位：relative</a></li>
-        <li><a href="#绝对定位absolute">绝对定位：absolute</a></li>
-        <li><a href="#子绝父相">子绝父相</a></li>
-        <li><a href="#固定定位">固定定位</a></li>
-        <li><a href="#粘性定位">粘性定位</a></li>
-        <li><a href="#定位的叠放顺序">定位的叠放顺序</a></li>
-        <li><a href="#绝对定位的盒子水平垂直居中">绝对定位的盒子水平/垂直居中</a></li>
-        <li><a href="#定位特性">定位特性</a></li>
+        <li><a href="#鼠标样式">鼠标样式</a></li>
+        <li><a href="#表单轮廓">表单轮廓</a></li>
+        <li><a href="#防止表单拖拽">防止表单拖拽</a></li>
       </ol>
     </li>
-    <li><a href="#元素的显示与隐藏">元素的显示与隐藏</a>
+    <li><a href="#行内块元素与文本垂直居中">行内块元素与文本垂直居中</a></li>
+    <li><a href="#图片底部空白缝隙">图片底部空白缝隙</a>
       <ol>
-        <li><a href="#display">display</a></li>
-        <li><a href="#visibility">visibility</a></li>
-        <li><a href="#overflow">overflow</a></li>
+        <li><a href="#产生原因">产生原因</a></li>
+        <li><a href="#解决方案">解决方案</a></li>
       </ol>
     </li>
+    <li><a href="#溢出文字省略号显示">溢出文字省略号显示</a>
+      <ol>
+        <li><a href="#单行文字溢出">单行文字溢出</a></li>
+        <li><a href="#多行文字溢出">多行文字溢出</a></li>
+      </ol>
+    </li>
+    <li><a href="#常见布局技巧">常见布局技巧</a>
+      <ol>
+        <li><a href="#margin-负值的应用">margin 负值的应用</a></li>
+        <li><a href="#文字围绕浮动元素">文字围绕浮动元素</a></li>
+        <li><a href="#行内块元素巧妙应用">行内块元素巧妙应用</a></li>
+        <li><a href="#css-三角强化">CSS 三角强化</a></li>
+      </ol>
+    </li>
+    <li><a href="#css-初始化">CSS 初始化</a></li>
   </ol>
 </nav>
         </div>
@@ -316,7 +319,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/">【前端】网页布局</a>
+            <a href="/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">【前端】网页布局常用技巧</a>
         </h2>
     
         
@@ -338,7 +341,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Apr 04, 2024</time>
+                <time class="article-time--published">Apr 06, 2024</time>
             </div>
         
 
@@ -368,68 +371,155 @@
     <section class="article-content">
     
     
-    <h2 id="网页布局入门">网页布局入门</h2>
-<p><code>网页布局</code>的本质就是通过<code>CSS</code>把<code>盒子</code>摆到相应位置。</p>
-<h3 id="网页布局方式">网页布局方式</h3>
-<p><code>网页布局</code>有以下三种方式：</p>
+    <h2 id="精灵图">精灵图</h2>
+<h3 id="为什么需要精灵图技术">为什么需要精灵图技术</h3>
+<p>很多小图片，每一个小图片请求一次，浪费网络 IO</p>
+<p>为了减少服务器<code>发送/接受请求次数</code>，提高<code>页面加载速度</code></p>
+<h3 id="精灵图技术原理">精灵图技术原理</h3>
 <ul>
-<li><code>普通流</code>布局</li>
-<li><code>浮动</code>布局</li>
-<li><code>定位</code>布局</li>
+<li>精灵图技术主要针对<code>背景图片</code></li>
+<li>将多个背景图片<code>整合到一张图片中</code></li>
+<li>使用<code>background-position/width/height</code>属性将图片<code>进行切割</code>得到想要的图片</li>
+<li>一般<code>background-position</code>都是负值</li>
 </ul>
-<h3 id="网页布局准则">网页布局准则</h3>
-<p><code>网页布局</code>第一准则：多个块级元素<code>纵向排列</code>找<code>标准流</code>，多个块级元素<code>横向排列</code>找<code>浮动</code></p>
-<p><code>网页布局</code>第二准则：先设置<code>盒子大小</code>，再设置<code>盒子位置</code></p>
-<h3 id="网页布局流程">网页布局流程</h3>
+<h2 id="字体图标">字体图标</h2>
+<h3 id="字体图标产生的原因">字体图标产生的原因</h3>
+<p>网页上有许多<code>小图标</code>，使用<code>精灵图</code>技术实现有<code>很多缺点</code></p>
 <ul>
-<li>确认页面<code>版心(可视区)</code>，可视区<code>水平居中</code></li>
-<li>分析页面中<code>行模块</code>，以及<code>每个行</code>中的<code>列模块</code></li>
-<li>一行中列模块经常<code>浮动布局</code>，先确定<code>列大小</code>，再确定<code>列位置</code></li>
-<li>先制作 html 结构。<code>先结构，后样式</code>。</li>
+<li>精灵图是背景图片，图片<code>占用存储</code>比较大</li>
+<li>图片进行<code>放大缩小</code>时会<code>失真</code></li>
+<li>精灵图一旦确定，修改很麻烦</li>
 </ul>
-<h2 id="标准流普通流">标准流/普通流</h2>
-<p>标准流就是元素按照规定的<code>默认方式</code>排序</p>
+<h3 id="字体图标的优点">字体图标的优点</h3>
 <ul>
-<li>行内元素</li>
-<li>块元素</li>
-<li>行内块元素</li>
+<li>展示的是<code>图标</code>，其实是<code>字体</code></li>
+<li>放大缩小<code>不失真</code>，可以随便<code>改变颜色</code></li>
 </ul>
-<h2 id="浮动布局">浮动布局</h2>
-<h3 id="为什么需要浮动">为什么需要浮动</h3>
+<h3 id="字体图标使用">字体图标使用</h3>
 <ul>
-<li>使多个<code>&lt;div&gt;&lt;/div&gt;</code>在同一行展示：在标准流中使用<code>display: inline-block</code>，但是盒子之间会有缝隙</li>
-<li>实现两个盒子<code>左右对齐</code>：标准流很难实现</li>
+<li>下载字体图标</li>
+<li>引入字体图标
+<ul>
+<li>下载的字体图标放在<code>项目根目录</code></li>
+<li>通过 <code>CSS</code> 引入</li>
+<li>在页面中通过<code>font-family</code>使用图标</li>
 </ul>
-<h3 id="什么是浮动">什么是浮动</h3>
-<p><code>float</code>属性用于创建浮动框，将其移动到一边，直至左边缘/右边缘遇到其他块，或者是另一个浮动框的边缘</p>
-<p>浮动语法：<code>float: 属性值</code></p>
+</li>
+<li>更新下载图标
 <ul>
-<li>none(默认值)</li>
-<li>left</li>
-<li>right</li>
+<li>原来的文件<code>不能删除</code></li>
+<li>导入<code>selection.json</code></li>
 </ul>
-<h3 id="浮动的特性">浮动的特性</h3>
-<ul>
-<li>加了浮动的元素会<code>脱离标准流</code></li>
-<li>浮动的元素会<code>一行显示</code>并且元素<code>顶部对齐</code></li>
-<li>浮动的元素具有<code>行内块元素</code>特性</li>
+</li>
 </ul>
-<h3 id="浮动的注意点">浮动的注意点</h3>
+<h2 id="css-三角">CSS 三角</h2>
+<h3 id="css-三角的原理">CSS 三角的原理</h3>
+<p>通过<code>边框</code>实现</p>
 <ul>
-<li>浮动和<code>标准流父盒子</code>搭配使用</li>
-<li>一个元素浮动，其他元素<code>也要浮动</code></li>
-<li>浮动的盒子只会影响<code>后面的标准流</code></li>
+<li>一个没有大小的盒子：<code>box { width: 0; height: 0;}</code></li>
+<li>为盒子设置边框：大小为三角底边长度，颜色为透明，风格为实线：<code>border: 10px solid transparent;</code></li>
+<li>想要的三角形底边在哪，哪个方向的边框设置颜色<code>border-left: red;</code></li>
 </ul>
-<h3 id="清除浮动">清除浮动</h3>
-<p>不一定需要<code>给父盒子设置高度</code></p>
-<p>理想的状态：<code>子盒子撑开父盒子</code></p>
-<p><code>浮动的元素不占位置</code>(浮动布局中没有子盒子撑开父盒子)</p>
-<p>因此需要清除浮动，清除浮动有以下几种方式：</p>
+<h2 id="用户界面控制">用户界面控制</h2>
+<p>用户<code>界面样式</code>，提高用户体验</p>
+<h3 id="鼠标样式">鼠标样式</h3>
+<p>通过<code>li {cursor: value;}</code>控制</p>
 <ul>
-<li>额外标签法(w3c 推荐)：在最后一个浮动的元素添加块级元素并添加属性<code>clear: left/right/both(推荐)</code></li>
-<li>父级元素添加<code>overflow: hidden/auto/scroll</code>属性</li>
-<li>父级添加<code>after伪元素</code></li>
-<li>父级添加<code>双伪元素</code></li>
+<li>default(小白，默认)</li>
+<li>pointer(小手)</li>
+<li>move(移动)</li>
+<li>text(文本)</li>
+<li>not-allow(禁止)</li>
+</ul>
+<h3 id="表单轮廓">表单轮廓</h3>
+<p>文本框默认有边框轮廓，通过<code>outline: none;</code>取消</p>
+<h3 id="防止表单拖拽">防止表单拖拽</h3>
+<p>文本域防拖拽，默认可以拖拽：<code>resize: none;</code></p>
+<h2 id="行内块元素与文本垂直居中">行内块元素与文本垂直居中</h2>
+<p><code>行内块元素</code>(图片/表单)与<code>文本</code>垂直对齐</p>
+<p>为<code>行内块元素</code>设置<code>vertical-align</code>属性</p>
+<p><code>vertical-align: baseline | top | middle | bottom;</code></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>baseline</td>
+<td>基线</td>
+</tr>
+<tr>
+<td>top</td>
+<td>顶线</td>
+</tr>
+<tr>
+<td>middle</td>
+<td>中线</td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>底线</td>
+</tr>
+</tbody>
+</table></div>
+<p>图片和文字默认是<code>基线对齐</code></p>
+<h2 id="图片底部空白缝隙">图片底部空白缝隙</h2>
+<h3 id="产生原因">产生原因</h3>
+<p>因为图片默认和文字<code>基线对齐</code>，所以底部有缝隙</p>
+<h3 id="解决方案">解决方案</h3>
+<ul>
+<li>设置<code>vertical-align: bottom | middle | top;</code></li>
+<li>把图片<code>转换为块元素</code></li>
+</ul>
+<h2 id="溢出文字省略号显示">溢出文字省略号显示</h2>
+<h3 id="单行文字溢出">单行文字溢出</h3>
+<p>单行文本溢出省略显示的三个条件：</p>
+<ul>
+<li>强制文本一行显示：<code>white-space: nowrap; 默认normal自动换行</code></li>
+<li>超出部分隐藏：<code>overflow: hidden;</code></li>
+<li>文字用省略号替代超出的部分：<code>text-overflow: ellipsis;</code></li>
+</ul>
+<h3 id="多行文字溢出">多行文字溢出</h3>
+<p>多行文本溢出显示省略号，适用于 web-kit 内核，有较大的兼容性问题</p>
+<ul>
+<li>overflow: hidden;</li>
+<li>text-overflow: ellipsis;</li>
+<li>display: -webkit-box;</li>
+<li>-wbekit-line-clamp: 2;</li>
+<li>-webkit-box-orient: vertical;</li>
+</ul>
+<h2 id="常见布局技巧">常见布局技巧</h2>
+<h3 id="margin-负值的应用">margin 负值的应用</h3>
+<p>盒子细线边框(合并边框)：</p>
+<ul>
+<li><code>margin-left: -边框宽度;</code>，右边盒子压住左边盒子<code>右边框</code></li>
+<li>鼠标经过，边框变换颜色：
+<ul>
+<li>盒子没有定位，添加相对定位(不脱标)</li>
+<li>盒子有定位：z-index: 9999</li>
+</ul>
+</li>
+</ul>
+<h3 id="文字围绕浮动元素">文字围绕浮动元素</h3>
+<p>利用<code>浮动不会压住文字</code>的特点，添加浮动之后，文字就会围绕浮动元素</p>
+<h3 id="行内块元素巧妙应用">行内块元素巧妙应用</h3>
+<p><code>页码布局</code>的实现</p>
+<ul>
+<li>利用行内块元素间<code>自带的间隙</code></li>
+<li>文字水平居中：<code>text-align: center;</code></li>
+<li>文字垂直居中：<code>line-height: 行内块元素高度</code></li>
+<li>所有的行内块元素与行内元素水平居中：给父元素<code>text-align: center;</code></li>
+</ul>
+<h3 id="css-三角强化">CSS 三角强化</h3>
+<p><code>非等腰三角</code>的实现</p>
+<ul>
+<li>等腰三角的实现：<code>宽度高度为0</code>的盒子</li>
+<li>四条边框颜色不一样，除了<code>直角边</code>设置颜色，其他边设置为<code>transparent</code></li>
+<li>无关的边框设置为 0</li>
+<li>短边对面的边框<code>调整宽度</code></li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -438,141 +528,164 @@
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">.clearfix:after {
-</span></span><span class="line"><span class="cl">  content: &#34;&#34;;
-</span></span><span class="line"><span class="cl">  display: block;
-</span></span><span class="line"><span class="cl">  clear: both;
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
 </span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">.clearfix::before, .clearfix::after {
-</span></span><span class="line"><span class="cl">  content: &#34;&#34;;
-</span></span><span class="line"><span class="cl">  display: table;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">box {
+</span></span><span class="line"><span class="cl">  width: 0;
+</span></span><span class="line"><span class="cl">  height: 0;
+</span></span><span class="line"><span class="cl">  border-color: transparent red transparent transparent;
+</span></span><span class="line"><span class="cl">  border-style: solid;
+</span></span><span class="line"><span class="cl">  border-width: 22px 8px 0 0;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">``
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="css-初始化">CSS 初始化</h2>
+<p>不同浏览器对于有些标签的默认值不一样，为了消除这个，需要对 CSS 进行初始化</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/* 清除元素默认内外边距 */
+</span></span><span class="line"><span class="cl">* {
+</span></span><span class="line"><span class="cl">  margin: 0;
+</span></span><span class="line"><span class="cl">  padding: 0
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/* 斜体样式正常化 */
+</span></span><span class="line"><span class="cl">em,
+</span></span><span class="line"><span class="cl">i {
+</span></span><span class="line"><span class="cl">  font-style: normal
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/* 清除列表默认样式：小圆点 */
+</span></span><span class="line"><span class="cl">li {
+</span></span><span class="line"><span class="cl">  list-style: none
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/* 图片与文字垂直对齐 */
+</span></span><span class="line"><span class="cl">img {
+</span></span><span class="line"><span class="cl">  border: 0;
+</span></span><span class="line"><span class="cl">  vertical-align: middle
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/* 用户界面：按钮鼠标变为小手 */
+</span></span><span class="line"><span class="cl">button {
+</span></span><span class="line"><span class="cl">  cursor: pointer
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/* 清除链接下划线 */
+</span></span><span class="line"><span class="cl">a {
+</span></span><span class="line"><span class="cl">  color: #666;
+</span></span><span class="line"><span class="cl">  text-decoration: none
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">a:hover {
+</span></span><span class="line"><span class="cl">  color: #c81623
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">button,
+</span></span><span class="line"><span class="cl">input {
+</span></span><span class="line"><span class="cl">  font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, &#34;\5B8B\4F53&#34;, sans-serif
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">body {
+</span></span><span class="line"><span class="cl">  -webkit-font-smoothing: antialiased;
+</span></span><span class="line"><span class="cl">  background-color: #fff;
+</span></span><span class="line"><span class="cl">  font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, &#34;\5B8B\4F53&#34;, sans-serif;
+</span></span><span class="line"><span class="cl">  color: #666
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">.hide,
+</span></span><span class="line"><span class="cl">.none {
+</span></span><span class="line"><span class="cl">  display: none
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/* 清除浮动 */
+</span></span><span class="line"><span class="cl">.clearfix:after {
+</span></span><span class="line"><span class="cl">  visibility: hidden;
 </span></span><span class="line"><span class="cl">  clear: both;
+</span></span><span class="line"><span class="cl">  display: block;
+</span></span><span class="line"><span class="cl">  content: &#34;.&#34;;
+</span></span><span class="line"><span class="cl">  height: 0
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">.clearfix {
+</span></span><span class="line"><span class="cl">  *zoom: 1
 </span></span><span class="line"><span class="cl">}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="切图">切图</h2>
-<h3 id="常见的图片格式">常见的图片格式</h3>
-<ul>
-<li>jpg：对色彩保留信息好，产品类图片</li>
-<li>gif：显示简单的图形及字体，图片动画。特点：保存透明背景和动画效果</li>
-<li>png：结合 jpg 与 gif</li>
-<li>psd：photoshop 的专用格式</li>
-</ul>
-<h3 id="切图方式">切图方式</h3>
-<ul>
-<li>图层切图：移动工具、合并图层(<code>ctrl + e</code>)</li>
-<li>切片切图：切片工具</li>
-<li>插件切图：Cutterman</li>
-<li>其他软件：蓝湖、幕客</li>
-</ul>
-<h2 id="定位">定位</h2>
-<h3 id="为什么需要定位">为什么需要定位</h3>
-<ul>
-<li>盒子<code>自由移动</code>，并且<code>压住</code>其他盒子</li>
-<li>盒子<code>位置固定</code></li>
-</ul>
-<h3 id="定位组成">定位组成</h3>
-<ul>
-<li>定位方式
-<ul>
-<li>static(默认值)</li>
-<li>relative</li>
-<li>absolute</li>
-<li>fixed</li>
-<li>sticky</li>
-</ul>
-</li>
-<li>边偏移
-<ul>
-<li>top</li>
-<li>right</li>
-<li>bottom</li>
-<li>left</li>
-</ul>
-</li>
-</ul>
-<h3 id="相对定位relative">相对定位：relative</h3>
-<ul>
-<li><code>相对定位</code>是相对于<code>盒子自己原来位置</code></li>
-<li><code>相对定位</code>原来位置<code>继续占有</code>(不脱标，保留原来位置)</li>
-</ul>
-<h3 id="绝对定位absolute">绝对定位：absolute</h3>
-<ul>
-<li><code>没有父元素/父元素没有定位</code>则<code>相对浏览器</code>进行移动</li>
-<li>父元素<code>有定位(相对/决定/固定)</code>则<code>相对最近一级有定位的父元素</code>进行移动</li>
-<li>绝对定位<code>脱标</code>，不占有原来位置</li>
-</ul>
-<h3 id="子绝父相">子绝父相</h3>
-<p><code>子级</code>使用<code>绝对定位</code>，<code>父亲</code>需要<code>相对定位</code></p>
-<ul>
-<li>子级绝对定位，<code>不会占有位置</code>，可以放在任何地方</li>
-<li>父级相对定位，<code>约束子级</code>相对自己移动，并且相对定位占有原来位置</li>
-</ul>
-<h3 id="固定定位">固定定位</h3>
-<ul>
-<li><code>固定定位</code>是固定于浏览器<code>可视区</code>的位置</li>
-<li>固定定位会<code>脱标</code>，可以看做是<code>特殊的绝对定位</code></li>
-<li>固定<code>版心右侧</code>：<code>left: 50%; margin-left: 1/2版心宽度</code></li>
-</ul>
-<h3 id="粘性定位">粘性定位</h3>
-<ul>
-<li>position: sticky</li>
-<li>必须设置<code>top/right/bottom/left</code>中的一个</li>
-<li>不脱标</li>
-</ul>
-<h3 id="定位的叠放顺序">定位的叠放顺序</h3>
-<p><code>z-index</code>，值越大，越在上面</p>
-<h3 id="绝对定位的盒子水平垂直居中">绝对定位的盒子水平/垂直居中</h3>
-<ul>
-<li><code>left: 50%; margin-left: -1/2自己宽度</code></li>
-<li><code>top: 50%; margin-top: -1/2自己宽度</code></li>
-</ul>
-<h3 id="定位特性">定位特性</h3>
-<ul>
-<li>加了<code>绝对/固定定位</code>/<code>浮动</code>的盒子会变成<code>行内块元素</code></li>
-<li>加了<code>绝对/固定定位</code>/<code>浮动</code>的元素默认宽度是<code>内容宽度</code></li>
-<li><code>绝对/固定定位</code>/<code>浮动</code>的盒子不会发生<code>外边距合并</code></li>
-<li><code>绝对/固定定位</code>会压住<code>标准流所有(盒子+文字)</code>，浮动<code>不会压住文字</code></li>
-</ul>
-<h2 id="元素的显示与隐藏">元素的显示与隐藏</h2>
-<h3 id="display">display</h3>
-<p>通过<code>display</code>控制隐藏的元素<code>不会占有原来位置</code>，有以下几个主要可选的值：</p>
-<ul>
-<li>none(隐藏元素)</li>
-<li>block(显示元素/更改为块元素)</li>
-</ul>
-<h3 id="visibility">visibility</h3>
-<p>通过<code>visibility</code>控制隐藏的元素还会<code>占有原来位置</code>，有以下几个可选的值：</p>
-<ul>
-<li>inherit(继承，默认值)</li>
-<li>visible(可见的)</li>
-<li>hidden(隐藏)</li>
-<li>collapse(隐藏表格)</li>
-</ul>
-<h3 id="overflow">overflow</h3>
-<p><code>overflow</code>主要控制<code>溢出部分的</code>显示策略，有以下几个可选的值：</p>
-<ul>
-<li>hidden(隐藏)</li>
-<li>visible(可见的，默认值)</li>
-<li>auto(有溢出，才展示滚轮。<code>textarea</code>元素的<code>默认值</code>)</li>
-<li>scroll(总是展示滚轮)</li>
-</ul>
-
+</div>
 </section>
 
 
@@ -614,12 +727,12 @@
             
                 
 <article class="">
-    <a href="/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/">
+    <a href="/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【前端】网页布局常用技巧</h2>
+            <h2 class="article-title">【前端】网页布局</h2>
         </div>
     </a>
 </article>

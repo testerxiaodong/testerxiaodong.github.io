@@ -7,7 +7,337 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Thu, 04 Apr 2024 19:32:48 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 06 Apr 2024 19:02:31 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【JavaScript】JavaScript基础一</title>
+        <link>https://www.cengdong.store/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E4%B8%80/</link>
+        <pubDate>Sat, 06 Apr 2024 19:02:31 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E4%B8%80/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>【前端】网页布局常用技巧</title>
+        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
+        <pubDate>Sat, 06 Apr 2024 18:33:34 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
+        <description>&lt;h2 id=&#34;精灵图&#34;&gt;精灵图&lt;/h2&gt;
+&lt;h3 id=&#34;为什么需要精灵图技术&#34;&gt;为什么需要精灵图技术&lt;/h3&gt;
+&lt;p&gt;很多小图片，每一个小图片请求一次，浪费网络 IO&lt;/p&gt;
+&lt;p&gt;为了减少服务器&lt;code&gt;发送/接受请求次数&lt;/code&gt;，提高&lt;code&gt;页面加载速度&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;精灵图技术原理&#34;&gt;精灵图技术原理&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;精灵图技术主要针对&lt;code&gt;背景图片&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;将多个背景图片&lt;code&gt;整合到一张图片中&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;background-position/width/height&lt;/code&gt;属性将图片&lt;code&gt;进行切割&lt;/code&gt;得到想要的图片&lt;/li&gt;
+&lt;li&gt;一般&lt;code&gt;background-position&lt;/code&gt;都是负值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;字体图标&#34;&gt;字体图标&lt;/h2&gt;
+&lt;h3 id=&#34;字体图标产生的原因&#34;&gt;字体图标产生的原因&lt;/h3&gt;
+&lt;p&gt;网页上有许多&lt;code&gt;小图标&lt;/code&gt;，使用&lt;code&gt;精灵图&lt;/code&gt;技术实现有&lt;code&gt;很多缺点&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;精灵图是背景图片，图片&lt;code&gt;占用存储&lt;/code&gt;比较大&lt;/li&gt;
+&lt;li&gt;图片进行&lt;code&gt;放大缩小&lt;/code&gt;时会&lt;code&gt;失真&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;精灵图一旦确定，修改很麻烦&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;字体图标的优点&#34;&gt;字体图标的优点&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;展示的是&lt;code&gt;图标&lt;/code&gt;，其实是&lt;code&gt;字体&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;放大缩小&lt;code&gt;不失真&lt;/code&gt;，可以随便&lt;code&gt;改变颜色&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;字体图标使用&#34;&gt;字体图标使用&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;下载字体图标&lt;/li&gt;
+&lt;li&gt;引入字体图标
+&lt;ul&gt;
+&lt;li&gt;下载的字体图标放在&lt;code&gt;项目根目录&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;通过 &lt;code&gt;CSS&lt;/code&gt; 引入&lt;/li&gt;
+&lt;li&gt;在页面中通过&lt;code&gt;font-family&lt;/code&gt;使用图标&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;更新下载图标
+&lt;ul&gt;
+&lt;li&gt;原来的文件&lt;code&gt;不能删除&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;导入&lt;code&gt;selection.json&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;css-三角&#34;&gt;CSS 三角&lt;/h2&gt;
+&lt;h3 id=&#34;css-三角的原理&#34;&gt;CSS 三角的原理&lt;/h3&gt;
+&lt;p&gt;通过&lt;code&gt;边框&lt;/code&gt;实现&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个没有大小的盒子：&lt;code&gt;box { width: 0; height: 0;}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;为盒子设置边框：大小为三角底边长度，颜色为透明，风格为实线：&lt;code&gt;border: 10px solid transparent;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;想要的三角形底边在哪，哪个方向的边框设置颜色&lt;code&gt;border-left: red;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;用户界面控制&#34;&gt;用户界面控制&lt;/h2&gt;
+&lt;p&gt;用户&lt;code&gt;界面样式&lt;/code&gt;，提高用户体验&lt;/p&gt;
+&lt;h3 id=&#34;鼠标样式&#34;&gt;鼠标样式&lt;/h3&gt;
+&lt;p&gt;通过&lt;code&gt;li {cursor: value;}&lt;/code&gt;控制&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;default(小白，默认)&lt;/li&gt;
+&lt;li&gt;pointer(小手)&lt;/li&gt;
+&lt;li&gt;move(移动)&lt;/li&gt;
+&lt;li&gt;text(文本)&lt;/li&gt;
+&lt;li&gt;not-allow(禁止)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;表单轮廓&#34;&gt;表单轮廓&lt;/h3&gt;
+&lt;p&gt;文本框默认有边框轮廓，通过&lt;code&gt;outline: none;&lt;/code&gt;取消&lt;/p&gt;
+&lt;h3 id=&#34;防止表单拖拽&#34;&gt;防止表单拖拽&lt;/h3&gt;
+&lt;p&gt;文本域防拖拽，默认可以拖拽：&lt;code&gt;resize: none;&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;行内块元素与文本垂直居中&#34;&gt;行内块元素与文本垂直居中&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;行内块元素&lt;/code&gt;(图片/表单)与&lt;code&gt;文本&lt;/code&gt;垂直对齐&lt;/p&gt;
+&lt;p&gt;为&lt;code&gt;行内块元素&lt;/code&gt;设置&lt;code&gt;vertical-align&lt;/code&gt;属性&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;vertical-align: baseline | top | middle | bottom;&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;baseline&lt;/td&gt;
+&lt;td&gt;基线&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;top&lt;/td&gt;
+&lt;td&gt;顶线&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;middle&lt;/td&gt;
+&lt;td&gt;中线&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;bottom&lt;/td&gt;
+&lt;td&gt;底线&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;图片和文字默认是&lt;code&gt;基线对齐&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;图片底部空白缝隙&#34;&gt;图片底部空白缝隙&lt;/h2&gt;
+&lt;h3 id=&#34;产生原因&#34;&gt;产生原因&lt;/h3&gt;
+&lt;p&gt;因为图片默认和文字&lt;code&gt;基线对齐&lt;/code&gt;，所以底部有缝隙&lt;/p&gt;
+&lt;h3 id=&#34;解决方案&#34;&gt;解决方案&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;设置&lt;code&gt;vertical-align: bottom | middle | top;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;把图片&lt;code&gt;转换为块元素&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;溢出文字省略号显示&#34;&gt;溢出文字省略号显示&lt;/h2&gt;
+&lt;h3 id=&#34;单行文字溢出&#34;&gt;单行文字溢出&lt;/h3&gt;
+&lt;p&gt;单行文本溢出省略显示的三个条件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;强制文本一行显示：&lt;code&gt;white-space: nowrap; 默认normal自动换行&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;超出部分隐藏：&lt;code&gt;overflow: hidden;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;文字用省略号替代超出的部分：&lt;code&gt;text-overflow: ellipsis;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;多行文字溢出&#34;&gt;多行文字溢出&lt;/h3&gt;
+&lt;p&gt;多行文本溢出显示省略号，适用于 web-kit 内核，有较大的兼容性问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;overflow: hidden;&lt;/li&gt;
+&lt;li&gt;text-overflow: ellipsis;&lt;/li&gt;
+&lt;li&gt;display: -webkit-box;&lt;/li&gt;
+&lt;li&gt;-wbekit-line-clamp: 2;&lt;/li&gt;
+&lt;li&gt;-webkit-box-orient: vertical;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;常见布局技巧&#34;&gt;常见布局技巧&lt;/h2&gt;
+&lt;h3 id=&#34;margin-负值的应用&#34;&gt;margin 负值的应用&lt;/h3&gt;
+&lt;p&gt;盒子细线边框(合并边框)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;margin-left: -边框宽度;&lt;/code&gt;，右边盒子压住左边盒子&lt;code&gt;右边框&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;鼠标经过，边框变换颜色：
+&lt;ul&gt;
+&lt;li&gt;盒子没有定位，添加相对定位(不脱标)&lt;/li&gt;
+&lt;li&gt;盒子有定位：z-index: 9999&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;文字围绕浮动元素&#34;&gt;文字围绕浮动元素&lt;/h3&gt;
+&lt;p&gt;利用&lt;code&gt;浮动不会压住文字&lt;/code&gt;的特点，添加浮动之后，文字就会围绕浮动元素&lt;/p&gt;
+&lt;h3 id=&#34;行内块元素巧妙应用&#34;&gt;行内块元素巧妙应用&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;页码布局&lt;/code&gt;的实现&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;利用行内块元素间&lt;code&gt;自带的间隙&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;文字水平居中：&lt;code&gt;text-align: center;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;文字垂直居中：&lt;code&gt;line-height: 行内块元素高度&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;所有的行内块元素与行内元素水平居中：给父元素&lt;code&gt;text-align: center;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;css-三角强化&#34;&gt;CSS 三角强化&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;非等腰三角&lt;/code&gt;的实现&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;等腰三角的实现：&lt;code&gt;宽度高度为0&lt;/code&gt;的盒子&lt;/li&gt;
+&lt;li&gt;四条边框颜色不一样，除了&lt;code&gt;直角边&lt;/code&gt;设置颜色，其他边设置为&lt;code&gt;transparent&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;无关的边框设置为 0&lt;/li&gt;
+&lt;li&gt;短边对面的边框&lt;code&gt;调整宽度&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;box {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  width: 0;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  height: 0;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  border-color: transparent red transparent transparent;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  border-style: solid;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  border-width: 22px 8px 0 0;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;``
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;css-初始化&#34;&gt;CSS 初始化&lt;/h2&gt;
+&lt;p&gt;不同浏览器对于有些标签的默认值不一样，为了消除这个，需要对 CSS 进行初始化&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;67
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/* 清除元素默认内外边距 */
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;* {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  margin: 0;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  padding: 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/* 斜体样式正常化 */
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;em,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;i {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  font-style: normal
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/* 清除列表默认样式：小圆点 */
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;li {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  list-style: none
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/* 图片与文字垂直对齐 */
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;img {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  border: 0;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  vertical-align: middle
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/* 用户界面：按钮鼠标变为小手 */
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;button {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  cursor: pointer
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/* 清除链接下划线 */
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;a {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  color: #666;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  text-decoration: none
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;a:hover {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  color: #c81623
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;button,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;input {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, &amp;#34;\5B8B\4F53&amp;#34;, sans-serif
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;body {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -webkit-font-smoothing: antialiased;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  background-color: #fff;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, &amp;#34;\5B8B\4F53&amp;#34;, sans-serif;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  color: #666
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.hide,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.none {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  display: none
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/* 清除浮动 */
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.clearfix:after {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  visibility: hidden;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  clear: both;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  display: block;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  content: &amp;#34;.&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  height: 0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.clearfix {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  *zoom: 1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>【前端】网页布局</title>
         <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/</link>
         <pubDate>Thu, 04 Apr 2024 19:32:48 +0800</pubDate>
@@ -193,6 +523,29 @@
 &lt;li&gt;加了&lt;code&gt;绝对/固定定位&lt;/code&gt;/&lt;code&gt;浮动&lt;/code&gt;的元素默认宽度是&lt;code&gt;内容宽度&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;绝对/固定定位&lt;/code&gt;/&lt;code&gt;浮动&lt;/code&gt;的盒子不会发生&lt;code&gt;外边距合并&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;绝对/固定定位&lt;/code&gt;会压住&lt;code&gt;标准流所有(盒子+文字)&lt;/code&gt;，浮动&lt;code&gt;不会压住文字&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;元素的显示与隐藏&#34;&gt;元素的显示与隐藏&lt;/h2&gt;
+&lt;h3 id=&#34;display&#34;&gt;display&lt;/h3&gt;
+&lt;p&gt;通过&lt;code&gt;display&lt;/code&gt;控制隐藏的元素&lt;code&gt;不会占有原来位置&lt;/code&gt;，有以下几个主要可选的值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;none(隐藏元素)&lt;/li&gt;
+&lt;li&gt;block(显示元素/更改为块元素)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;visibility&#34;&gt;visibility&lt;/h3&gt;
+&lt;p&gt;通过&lt;code&gt;visibility&lt;/code&gt;控制隐藏的元素还会&lt;code&gt;占有原来位置&lt;/code&gt;，有以下几个可选的值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;inherit(继承，默认值)&lt;/li&gt;
+&lt;li&gt;visible(可见的)&lt;/li&gt;
+&lt;li&gt;hidden(隐藏)&lt;/li&gt;
+&lt;li&gt;collapse(隐藏表格)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;overflow&#34;&gt;overflow&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;overflow&lt;/code&gt;主要控制&lt;code&gt;溢出部分的&lt;/code&gt;显示策略，有以下几个可选的值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;hidden(隐藏)&lt;/li&gt;
+&lt;li&gt;visible(可见的，默认值)&lt;/li&gt;
+&lt;li&gt;auto(有溢出，才展示滚轮。&lt;code&gt;textarea&lt;/code&gt;元素的&lt;code&gt;默认值&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;scroll(总是展示滚轮)&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
