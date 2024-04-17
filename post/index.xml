@@ -7,7 +7,267 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Sun, 07 Apr 2024 19:32:51 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 18 Apr 2024 03:15:42 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【前端】CSS3动画</title>
+        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss3%E5%8A%A8%E7%94%BB/</link>
+        <pubDate>Thu, 18 Apr 2024 03:15:42 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss3%E5%8A%A8%E7%94%BB/</guid>
+        <description>&lt;h2 id=&#34;2d-变换&#34;&gt;2D 变换&lt;/h2&gt;
+&lt;p&gt;2D 变换有三种形式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;translate：平移&lt;/li&gt;
+&lt;li&gt;rotate：旋转&lt;/li&gt;
+&lt;li&gt;scale：伸缩&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以&lt;code&gt;同时使用多个形式&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2d-变换-平移&#34;&gt;2D 变换-平移&lt;/h3&gt;
+&lt;p&gt;语法格式：&lt;code&gt;transform: translate(x, y)&lt;/code&gt;，&lt;/p&gt;
+&lt;p&gt;x、y 的单位可以是&lt;code&gt;px&lt;/code&gt;，也可以是&lt;code&gt;百分比&lt;/code&gt;，当值是百分比时，表示&lt;code&gt;自身宽度/高度&lt;/code&gt;的比例&lt;/p&gt;
+&lt;p&gt;也可以分开写：&lt;code&gt;translateX()&lt;/code&gt;/&lt;code&gt;translateY()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;translate 对&lt;code&gt;行内标签&lt;/code&gt;没有作用&lt;/li&gt;
+&lt;li&gt;translate(x, y)表示相对于&lt;code&gt;父元素&lt;/code&gt;移动的距离，且是一种&lt;code&gt;声明式写法&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;translate 最大的特点：不会影响其他元素的位置(不脱标)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2d-变换-旋转&#34;&gt;2D 变换-旋转&lt;/h3&gt;
+&lt;p&gt;语法格式：&lt;code&gt;transform: rotate(60deg)&lt;/code&gt;，单位是&lt;code&gt;deg&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;角度为&lt;code&gt;正&lt;/code&gt;时，&lt;code&gt;顺时针&lt;/code&gt;，&lt;code&gt;负&lt;/code&gt;时，为&lt;code&gt;逆时针&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;默认旋转的中心点是元素的&lt;code&gt;中心点&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2d-旋转-中心点&#34;&gt;2D 旋转-中心点&lt;/h3&gt;
+&lt;p&gt;语法格式：&lt;code&gt;transform-origin: x y;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;的参数 x 和 y 用空格隔开，单位可以是&lt;code&gt;px/百分比/方位名词&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;x y 默认转换的中心点是元素的中心点 (50% 50%)&lt;/li&gt;
+&lt;li&gt;可以给 x y 设置 像素 或者 方位名词 &lt;code&gt;（top bottom left right center）&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2d-变换-伸缩&#34;&gt;2D 变换-伸缩&lt;/h3&gt;
+&lt;p&gt;语法格式：&lt;code&gt;transform:scale(x,y);&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;宽和高都放大一倍，相对于没有放大&lt;/li&gt;
+&lt;li&gt;只写一个参数，第二个参数则和第一个参数一样&lt;/li&gt;
+&lt;li&gt;sacle 缩放最大的优势：默认以中心点缩放的，而且不影响其他盒子(不脱标)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;css-动画&#34;&gt;CSS 动画&lt;/h2&gt;
+&lt;p&gt;制作动画可以分为两部：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定义&lt;/li&gt;
+&lt;li&gt;调用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;动画的定义&#34;&gt;动画的定义&lt;/h3&gt;
+&lt;p&gt;语法格式：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;keyframes&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;动画名称&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;px&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;200&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;px&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;0%&lt;/code&gt;是动画的开始，&lt;code&gt;100%&lt;/code&gt;是动画的完成。这样的规则就是&lt;code&gt;动画序列(关键帧)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;用关键词&lt;code&gt;from&lt;/code&gt;和&lt;code&gt;to&lt;/code&gt;，等同于&lt;code&gt;0%&lt;/code&gt;和&lt;code&gt;100%&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在&lt;code&gt;0%&lt;/code&gt;和&lt;code&gt;100%&lt;/code&gt;中间可以随意定义&lt;code&gt;多个&lt;/code&gt;百分比关键帧&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;动画的调用&#34;&gt;动画的调用&lt;/h3&gt;
+&lt;p&gt;在需要使用该动画的元素上加上&lt;code&gt;animation-name&lt;/code&gt;、&lt;code&gt;animation-duration&lt;/code&gt;等属性&lt;/p&gt;
+&lt;p&gt;动画常用属性：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;属性&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;@keyframes&lt;/td&gt;
+&lt;td&gt;定义动画&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;animation&lt;/td&gt;
+&lt;td&gt;所有动画属性的简写&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;animation-name&lt;/td&gt;
+&lt;td&gt;动画名称&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;animation-duration&lt;/td&gt;
+&lt;td&gt;动画持续时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;animation-time-function&lt;/td&gt;
+&lt;td&gt;动画速度曲线，默认是&lt;code&gt;ease&lt;/code&gt;，还有&lt;code&gt;liner/steps/ease-in&lt;/code&gt;等属性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;animation-delay&lt;/td&gt;
+&lt;td&gt;动画何时开始&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;animation-iteration-count&lt;/td&gt;
+&lt;td&gt;动画播放次数，默认是&lt;code&gt;1&lt;/code&gt;，还有&lt;code&gt;infinite&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;animation-direction&lt;/td&gt;
+&lt;td&gt;是否在下一个周期逆向播放，默认值是&lt;code&gt;normal&lt;/code&gt;，还有&lt;code&gt;alternate&lt;/code&gt;(逆向播放)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;animation-fill-mode&lt;/td&gt;
+&lt;td&gt;规定动画结束之后保持&lt;code&gt;forwards&lt;/code&gt;，回到起点&lt;code&gt;backwards&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;animation-play-state&lt;/td&gt;
+&lt;td&gt;动画播放状态，&lt;code&gt;running/paused&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;3d-变换&#34;&gt;3D 变换&lt;/h2&gt;
+&lt;p&gt;3D 变换有三种形式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;translate3d：3D 平移&lt;/li&gt;
+&lt;li&gt;rotate3d：3D 旋转&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-维坐标系&#34;&gt;3 维坐标系&lt;/h3&gt;
+&lt;p&gt;三维坐标系其实就是指立体空间，立体空间是由 3 个轴共同组成的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;x 轴：水平向右 注意： x 右边是正值，左边是负值&lt;/li&gt;
+&lt;li&gt;y 轴：垂直向下 注意： y 下面是正值，上面是负值&lt;/li&gt;
+&lt;li&gt;z 轴：垂直屏幕 注意： 往外面是正值，往里面是负值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因为 z 轴是垂直屏幕，由里指向外面，所以&lt;code&gt;默认是看不到元素在z轴的方向上移动&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;透视-perspective&#34;&gt;透视 perspective&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;perspective&lt;/code&gt;在 2D 平面产生近大远小视觉立体，但是&lt;code&gt;只是效果二维的&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;视距应该给&lt;code&gt;父元素/祖元素&lt;/code&gt;添加&lt;/li&gt;
+&lt;li&gt;透视我们也称为视距：视距就是&lt;code&gt;人的眼睛到屏幕的距离&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;距离视觉点&lt;code&gt;越近&lt;/code&gt;的在电脑平面成像&lt;code&gt;越大&lt;/code&gt;，&lt;code&gt;越远&lt;/code&gt;成像&lt;code&gt;越小&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;透视的单位是&lt;code&gt;px&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3d-变换-平移&#34;&gt;3D 变换-平移&lt;/h3&gt;
+&lt;p&gt;语法格式：&lt;code&gt;transform:translate3d(x,y,z)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;也可以分开写：&lt;code&gt;translateX&lt;/code&gt;/&lt;code&gt;translateY&lt;/code&gt;/&lt;code&gt;translateZ&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3d-变换-旋转&#34;&gt;3D 变换-旋转&lt;/h3&gt;
+&lt;p&gt;语法格式：&lt;code&gt;transform:rotate3d(x,y,z,deg)&lt;/code&gt;，了解即可&lt;/p&gt;
+&lt;p&gt;也可以按照坐标轴旋转：&lt;code&gt;rotateX(45deg)&lt;/code&gt;/&lt;code&gt;rotateY(45deg)&lt;/code&gt;/&lt;code&gt;rotateZ(45deg)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;旋转方向遵循&lt;code&gt;左手准则&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3d-呈现-transfrom-style&#34;&gt;3D 呈现 transfrom-style&lt;/h3&gt;
+&lt;p&gt;给父元素添加变换属性时，&lt;code&gt;子元素&lt;/code&gt;的变换属性可能&lt;code&gt;失效&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;为了&lt;code&gt;保持子元素&lt;/code&gt; 3D 变换效果，应该给&lt;code&gt;父元素&lt;/code&gt;添加&lt;code&gt;transfrom-style: preserve-3d;&lt;/code&gt;属性(默认值是&lt;code&gt;flat&lt;/code&gt;)&lt;/p&gt;
+&lt;h2 id=&#34;私有浏览器前缀&#34;&gt;私有浏览器前缀&lt;/h2&gt;
+&lt;p&gt;浏览器私有前缀是为了&lt;code&gt;兼容老版本&lt;/code&gt;的写法，比较新版本的浏览器无须添加。&lt;/p&gt;
+&lt;p&gt;私有前缀：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;-moz-：代表 firefox 浏览器私有属性&lt;/li&gt;
+&lt;li&gt;-ms-：代表 ie 浏览器私有属性&lt;/li&gt;
+&lt;li&gt;-webkit-：代表 safari、chrome 私有属性&lt;/li&gt;
+&lt;li&gt;-o-：代表 Opera 私有属性&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>【前端】Web端网页项目实战技巧</title>
+        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFweb%E7%AB%AF%E7%BD%91%E9%A1%B5%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/</link>
+        <pubDate>Tue, 09 Apr 2024 09:04:08 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFweb%E7%AB%AF%E7%BD%91%E9%A1%B5%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/</guid>
+        <description>&lt;h2 id=&#34;模块化开发&#34;&gt;模块化开发&lt;/h2&gt;
+&lt;h3 id=&#34;项目目录结构&#34;&gt;项目目录结构&lt;/h3&gt;
+&lt;p&gt;一个好的项目目录结构清晰：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;css(样式：通过外部样式引入)&lt;/li&gt;
+&lt;li&gt;fonts(字体图标)&lt;/li&gt;
+&lt;li&gt;images(网站静态图片)&lt;/li&gt;
+&lt;li&gt;upload(用户上传的图片)&lt;/li&gt;
+&lt;li&gt;js(javascrip 脚本)&lt;/li&gt;
+&lt;li&gt;favicon.ico(网站图标)&lt;/li&gt;
+&lt;li&gt;index.html(网站入口)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;样式的模块化开发&#34;&gt;样式的模块化开发&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;样式的初始化放在 base.css 文件中&lt;/li&gt;
+&lt;li&gt;可共用的样式放在 common.css 文件中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;网站-seo-优化&#34;&gt;网站 SEO 优化&lt;/h2&gt;
+&lt;h3 id=&#34;tdk-三大标签&#34;&gt;TDK 三大标签&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;title&lt;/code&gt;(网站标题-解释说明)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;description&lt;/code&gt;(网站说明)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Keywords&lt;/code&gt;(关键字)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;!-- 网站标题 --&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;title&amp;gt;品优购商城-正品低价、品质保障、配送及时、轻松购物！&amp;lt;/title&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;!-- 网站描述 --&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;meta
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      name=&amp;#34;description&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      content=&amp;#34;品优购商城-专业的综合网上购物商城，为您提供正品低价的购物选择、优质便捷的服务体验。商品来自全球数十万品牌商家，囊括家电、手机、电脑、服装、居家、母婴、美妆、个护、食品、生鲜等丰富品类，满足各种购物需求。&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    /&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;!-- 关键字 --&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;meta
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      name=&amp;#34;Keywords&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      content=&amp;#34;网上购物,网上商城,家电,手机,电脑,服装,居家,母婴,美妆,个护,食品,生鲜,京东&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    /&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;faviconico-图标制作与使用&#34;&gt;favicon.ico 图标制作与使用&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;figma&lt;/code&gt;切图切出 &lt;code&gt;png&lt;/code&gt; 格式的图片&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;https://favicon.io/&lt;/code&gt;进行格式转化，转化为 &lt;code&gt;ico&lt;/code&gt; 格式&lt;/li&gt;
+&lt;li&gt;放在项目根目录下，通过&lt;code&gt;&amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; href=&amp;quot;./favicon.ico&amp;quot; /&amp;gt;&lt;/code&gt;引入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;网站-logo-制作&#34;&gt;网站 logo 制作&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;先放置一个&lt;code&gt;&amp;lt;h1&amp;gt;&amp;lt;/h1&amp;gt;&lt;/code&gt;标签&lt;/li&gt;
+&lt;li&gt;标签里放置一个链接，链接里的文字是&lt;code&gt;网站名称&lt;/code&gt;，会跳转&lt;code&gt;网站首页&lt;/code&gt;，&lt;code&gt;文字不展示&lt;/code&gt;。链接的&lt;code&gt;背景图片&lt;/code&gt;是 logo&lt;/li&gt;
+&lt;li&gt;文字不展示的方法：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;text-indent: -9999px; overflow: hidden;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;font-size: 0;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;给链接一个&lt;code&gt;title&lt;/code&gt;属性&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>【前端】HTML5CSS3</title>
         <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFhtml5css3/</link>
         <pubDate>Sun, 07 Apr 2024 19:32:51 +0800</pubDate>
