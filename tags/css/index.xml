@@ -7,7 +7,273 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Thu, 18 Apr 2024 05:04:57 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/tags/css/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 20 Apr 2024 05:34:54 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/tags/css/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【前端】rem布局</title>
+        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFrem%E5%B8%83%E5%B1%80/</link>
+        <pubDate>Sat, 20 Apr 2024 05:34:54 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFrem%E5%B8%83%E5%B1%80/</guid>
+        <description>&lt;h2 id=&#34;rem-基础&#34;&gt;rem 基础&lt;/h2&gt;
+&lt;h3 id=&#34;rem-的优点&#34;&gt;rem 的优点&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;文字&lt;/code&gt;能随着屏幕大小发生变化&lt;/li&gt;
+&lt;li&gt;元素&lt;code&gt;高度和宽度&lt;/code&gt;都能随着屏幕大小发生变化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;rem-单位&#34;&gt;rem 单位&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;rem&lt;/code&gt;(root em)是一个相对单位，类似于&lt;code&gt;em&lt;/code&gt;，em 是&lt;code&gt;父元素字体大小&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rem&lt;/code&gt;的基准是相对于 &lt;code&gt;html 元素的字体大小&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;父元素文字大小可能不一致， 但是整个页面只有一个 html，可以很好来控制&lt;code&gt;整个页面的元素大小&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;媒体查询&#34;&gt;媒体查询&lt;/h2&gt;
+&lt;h3 id=&#34;什么是媒体查询&#34;&gt;什么是媒体查询&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;媒体查询（Media Query）是 CSS3 新语法&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;@media&lt;/code&gt; 查询，可以针对不同的媒体类型定义不同的样式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;媒体查询语法&#34;&gt;媒体查询语法&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;media&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;mediatype&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;not&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;|&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;only&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;media&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;feature&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;CSS-Code&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;用 @media 开头 注意@符号&lt;/li&gt;
+&lt;li&gt;mediatype 媒体类型&lt;/li&gt;
+&lt;li&gt;关键字 and not only&lt;/li&gt;
+&lt;li&gt;media feature 媒体特性 必须有小括号包含&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;mediatype-查询类型&#34;&gt;mediatype 查询类型&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;th&gt;解释说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;all&lt;/td&gt;
+&lt;td&gt;用于所有设备&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;print&lt;/td&gt;
+&lt;td&gt;用于打印机和打印预览&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;scree&lt;/td&gt;
+&lt;td&gt;用于电脑屏幕，平板电脑，智能手机等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;关键字&#34;&gt;关键字&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;and：可以将多个媒体特性连接到一起，相当于“且”的意思。&lt;/li&gt;
+&lt;li&gt;not：排除某个媒体类型，相当于“非”的意思，可以省略。&lt;/li&gt;
+&lt;li&gt;only：指定某个特定的媒体类型，可以省略。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;媒体特性&#34;&gt;媒体特性&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;th&gt;解释说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;width&lt;/td&gt;
+&lt;td&gt;定义输出设备中页面可见区域的宽度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;min-width&lt;/td&gt;
+&lt;td&gt;定义输出设备中页面最小可见区域宽度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;max-width&lt;/td&gt;
+&lt;td&gt;定义输出设备中页面最大可见区域宽度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;从小到大来写，这样代码更简洁&lt;/p&gt;
+&lt;h3 id=&#34;引入资源&#34;&gt;引入资源&lt;/h3&gt;
+&lt;p&gt;语法规范：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;rel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;media&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;mediatype and|not|only (media feature)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;mystylesheet.css&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;less-基础&#34;&gt;less 基础&lt;/h2&gt;
+&lt;h3 id=&#34;css-弊端&#34;&gt;css 弊端&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;CSS 需要书写大量看似没有逻辑的代码，CSS 冗余度是比较高的。&lt;/li&gt;
+&lt;li&gt;不方便维护及扩展，不利于复用。&lt;/li&gt;
+&lt;li&gt;CSS 没有很好的计算能力&lt;/li&gt;
+&lt;li&gt;非前端开发工程师来讲，往往会因为缺少 CSS 编写经验而很难写出组织良好且易于维护的 CSS 代码项目。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;less-介绍&#34;&gt;less 介绍&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://lesscss.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;中文官网&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Less （Leaner Style Sheets 的缩写） 是一门 &lt;code&gt;CSS 扩展语言&lt;/code&gt;，也成为 &lt;code&gt;CSS 预处理器&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;它在 CSS 的语法基础之上，引入了&lt;code&gt;变量&lt;/code&gt;，&lt;code&gt;Mixin（混入）&lt;/code&gt;，&lt;code&gt;运算&lt;/code&gt;以及&lt;code&gt;函数&lt;/code&gt;等功能，大大简化了 CSS 的编写&lt;/li&gt;
+&lt;li&gt;常见的 CSS 预处理器：&lt;code&gt;Sass&lt;/code&gt;、&lt;code&gt;Less&lt;/code&gt;、&lt;code&gt;Stylus&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;less-安装&#34;&gt;less 安装&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;安装 nodejs，可选择版本(8.0)，网址：http://nodejs.cn/download/&lt;/li&gt;
+&lt;li&gt;检查是否安装成功，使用 cmd 命令（win10 是 window +r 打开 运行输入 cmd） &amp;mdash; 输入“ node –v ”查看版本即可&lt;/li&gt;
+&lt;li&gt;基于 nodejs 在线安装 Less，使用 cmd 命令“ npm install -g less ”即可&lt;/li&gt;
+&lt;li&gt;检查是否安装成功，使用 cmd 命令“ lessc -v ”查看版本即可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;less-语法&#34;&gt;less 语法&lt;/h3&gt;
+&lt;p&gt;less 语法包括以下几个方面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Less 变量&lt;/li&gt;
+&lt;li&gt;Less 编译&lt;/li&gt;
+&lt;li&gt;Less 嵌套&lt;/li&gt;
+&lt;li&gt;Less 运算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;less-变量&#34;&gt;less 变量&lt;/h4&gt;
+&lt;p&gt;变量是指没有固定的值，可以改变的。因为我们 CSS 中的一些&lt;code&gt;颜色&lt;/code&gt;和&lt;code&gt;数值&lt;/code&gt;等经常使用。&lt;/p&gt;
+&lt;p&gt;语法规范：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@color: pink;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;使用变量：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;直接使用&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;hover&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;变量命名规范：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;必须有@为前缀&lt;/li&gt;
+&lt;li&gt;不能包含特殊字符&lt;/li&gt;
+&lt;li&gt;不能以数字开头&lt;/li&gt;
+&lt;li&gt;大小写敏感&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;less-编译&#34;&gt;less 编译&lt;/h4&gt;
+&lt;p&gt;vocode Less 插件: easy less&lt;/p&gt;
+&lt;p&gt;保存 less 文件，自动生成 css 文件&lt;/p&gt;
+&lt;h4 id=&#34;less-嵌套&#34;&gt;less 嵌套&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#header {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  .logo {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    width: 300px;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果遇到：交集|伪类|伪元素选择器&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内层选择器的前面&lt;code&gt;没有 &amp;amp; 符号&lt;/code&gt;，则它被解析为&lt;code&gt;父选择器的后代&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;如果有 &amp;amp; 符号，它就被解析为&lt;code&gt;父元素自身&lt;/code&gt;或&lt;code&gt;父元素的伪类&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;less-运算&#34;&gt;less 运算&lt;/h4&gt;
+&lt;p&gt;任何&lt;code&gt;数字&lt;/code&gt;、&lt;code&gt;颜色&lt;/code&gt;或者&lt;code&gt;变量&lt;/code&gt;都可以参与运算。就是 Less 提供了加&lt;code&gt;（+）&lt;/code&gt;、减&lt;code&gt;（-）&lt;/code&gt;、乘&lt;code&gt;（*）&lt;/code&gt;、除&lt;code&gt;（/）&lt;/code&gt;算术运算。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/*Less 里面写*/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@witdh: 10px + 5;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;div {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  border: @witdh solid red;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/*生成的css*/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;div {
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  border: 15px solid red;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/*Less 甚至还可以这样 */
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;width: (@width + 5) * 2;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;乘号（*）和除号（/）的写法&lt;/li&gt;
+&lt;li&gt;运算符中间左右有个&lt;code&gt;空格隔开&lt;/code&gt; 1px + 5&lt;/li&gt;
+&lt;li&gt;对于两个不同的单位的值之间的运算，运算结果的值取&lt;code&gt;第一个值&lt;/code&gt;的单位&lt;/li&gt;
+&lt;li&gt;如果两个值之间只有&lt;code&gt;一个值有单位&lt;/code&gt;，则运算结果就取&lt;code&gt;该单位&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;rem-适配方案&#34;&gt;rem 适配方案&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;让一些不能等比自适应的元素，达到当设备尺寸发生改变的时候，&lt;code&gt;等比例适配当前设备&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;使用媒体查询根据不同设备按比例设置 html 的字体大小，然后页面元素使用 rem 做尺寸单位，当 html 字体大小变化元素尺寸也会发生变化，从而达到&lt;code&gt;等比缩放的适配&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;rem-实际开发适配方案&#34;&gt;rem 实际开发适配方案&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;按照设计稿与设备宽度的比例，动态计算并设置 html 根标签的 &lt;code&gt;font-size&lt;/code&gt; 大小；（媒体查询）&lt;/li&gt;
+&lt;li&gt;CSS 中，设计稿元素的宽、高、相对位置等取值，按照同等比例&lt;code&gt;换算为 rem 为单位&lt;/code&gt;的值；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;rem-适配方案技术使用市场主流&#34;&gt;rem 适配方案技术使用（市场主流）&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;技术方案 1
+&lt;ul&gt;
+&lt;li&gt;less&lt;/li&gt;
+&lt;li&gt;媒体查询&lt;/li&gt;
+&lt;li&gt;rem&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;技术方案 2（推荐）
+&lt;ul&gt;
+&lt;li&gt;flexible.js&lt;/li&gt;
+&lt;li&gt;rem&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>【前端】移动端布局技巧</title>
         <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7/</link>
         <pubDate>Thu, 18 Apr 2024 05:04:57 +0800</pubDate>
@@ -446,6 +712,15 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h4 id=&#34;flex&#34;&gt;flex&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;flex&lt;/code&gt;属性定义&lt;code&gt;子项目&lt;/code&gt;分配&lt;code&gt;剩余空间&lt;/code&gt;，用 flex 来表示&lt;code&gt;占多少份数&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;align-self&#34;&gt;align-self&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;align-self&lt;/code&gt; 控制子项自己在侧轴上的排列方式&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;align-self&lt;/code&gt;属性允许单个项目有与其他项目&lt;code&gt;不一样的对齐方式&lt;/code&gt;，可&lt;code&gt;覆盖align-items&lt;/code&gt;属性。&lt;/p&gt;
+&lt;p&gt;默认值为 auto，表示&lt;code&gt;继承父元素的 align-items 属性&lt;/code&gt;，如果没有父元素，则等同于&lt;code&gt;stretch&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;order&#34;&gt;order&lt;/h4&gt;
+&lt;p&gt;order 属性定义项目的排列顺序&lt;/p&gt;
+&lt;p&gt;数值越小，排列越靠前，默认为 0&lt;/p&gt;
 </description>
         </item>
         <item>

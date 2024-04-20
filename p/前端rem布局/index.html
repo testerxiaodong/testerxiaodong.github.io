@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='2D 变换 2D 变换有三种形式： translate：平移 rotate：旋转 scale：伸缩 可以同时使用多个形式 2D 变换-平移 语法格式：transfor'>
-<title>【前端】CSS3动画</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='rem 基础 rem 的优点 文字能随着屏幕大小发生变化 元素高度和宽度都能随着屏幕大小发生变化 rem 单位 rem(root em)是一个相对单位，类似于em，em 是父元素字体大小'>
+<title>【前端】rem布局</title>
 
-<link rel='canonical' href='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss3%E5%8A%A8%E7%94%BB/'>
+<link rel='canonical' href='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFrem%E5%B8%83%E5%B1%80/'>
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【前端】CSS3动画'>
-<meta property='og:description' content='2D 变换 2D 变换有三种形式： translate：平移 rotate：旋转 scale：伸缩 可以同时使用多个形式 2D 变换-平移 语法格式：transfor'>
-<meta property='og:url' content='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss3%E5%8A%A8%E7%94%BB/'>
+<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【前端】rem布局'>
+<meta property='og:description' content='rem 基础 rem 的优点 文字能随着屏幕大小发生变化 元素高度和宽度都能随着屏幕大小发生变化 rem 单位 rem(root em)是一个相对单位，类似于em，em 是父元素字体大小'>
+<meta property='og:url' content='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFrem%E5%B8%83%E5%B1%80/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CSS' /><meta property='article:published_time' content='2024-04-18T03:15:42&#43;08:00'/><meta property='article:modified_time' content='2024-04-18T03:15:42&#43;08:00'/>
-<meta name="twitter:title" content="【前端】CSS3动画">
-<meta name="twitter:description" content="2D 变换 2D 变换有三种形式： translate：平移 rotate：旋转 scale：伸缩 可以同时使用多个形式 2D 变换-平移 语法格式：transfor">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CSS' /><meta property='article:published_time' content='2024-04-20T05:34:54&#43;08:00'/><meta property='article:modified_time' content='2024-04-20T05:34:54&#43;08:00'/>
+<meta name="twitter:title" content="【前端】rem布局">
+<meta name="twitter:description" content="rem 基础 rem 的优点 文字能随着屏幕大小发生变化 元素高度和宽度都能随着屏幕大小发生变化 rem 单位 rem(root em)是一个相对单位，类似于em，em 是父元素字体大小">
     </head>
     <body class="
     article-page
@@ -245,30 +245,46 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#2d-变换">2D 变换</a>
+    <li><a href="#rem-基础">rem 基础</a>
       <ol>
-        <li><a href="#2d-变换-平移">2D 变换-平移</a></li>
-        <li><a href="#2d-变换-旋转">2D 变换-旋转</a></li>
-        <li><a href="#2d-旋转-中心点">2D 旋转-中心点</a></li>
-        <li><a href="#2d-变换-伸缩">2D 变换-伸缩</a></li>
+        <li><a href="#rem-的优点">rem 的优点</a></li>
+        <li><a href="#rem-单位">rem 单位</a></li>
       </ol>
     </li>
-    <li><a href="#css-动画">CSS 动画</a>
+    <li><a href="#媒体查询">媒体查询</a>
       <ol>
-        <li><a href="#动画的定义">动画的定义</a></li>
-        <li><a href="#动画的调用">动画的调用</a></li>
+        <li><a href="#什么是媒体查询">什么是媒体查询</a></li>
+        <li><a href="#媒体查询语法">媒体查询语法</a>
+          <ol>
+            <li><a href="#mediatype-查询类型">mediatype 查询类型</a></li>
+            <li><a href="#关键字">关键字</a></li>
+            <li><a href="#媒体特性">媒体特性</a></li>
+          </ol>
+        </li>
+        <li><a href="#引入资源">引入资源</a></li>
       </ol>
     </li>
-    <li><a href="#3d-变换">3D 变换</a>
+    <li><a href="#less-基础">less 基础</a>
       <ol>
-        <li><a href="#3-维坐标系">3 维坐标系</a></li>
-        <li><a href="#透视-perspective">透视 perspective</a></li>
-        <li><a href="#3d-变换-平移">3D 变换-平移</a></li>
-        <li><a href="#3d-变换-旋转">3D 变换-旋转</a></li>
-        <li><a href="#3d-呈现-transfrom-style">3D 呈现 transfrom-style</a></li>
+        <li><a href="#css-弊端">css 弊端</a></li>
+        <li><a href="#less-介绍">less 介绍</a></li>
+        <li><a href="#less-安装">less 安装</a></li>
+        <li><a href="#less-语法">less 语法</a>
+          <ol>
+            <li><a href="#less-变量">less 变量</a></li>
+            <li><a href="#less-编译">less 编译</a></li>
+            <li><a href="#less-嵌套">less 嵌套</a></li>
+            <li><a href="#less-运算">less 运算</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
-    <li><a href="#私有浏览器前缀">私有浏览器前缀</a></li>
+    <li><a href="#rem-适配方案">rem 适配方案</a>
+      <ol>
+        <li><a href="#rem-实际开发适配方案">rem 实际开发适配方案</a></li>
+        <li><a href="#rem-适配方案技术使用市场主流">rem 适配方案技术使用（市场主流）</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -296,7 +312,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E5%89%8D%E7%AB%AFcss3%E5%8A%A8%E7%94%BB/">【前端】CSS3动画</a>
+            <a href="/p/%E5%89%8D%E7%AB%AFrem%E5%B8%83%E5%B1%80/">【前端】rem布局</a>
         </h2>
     
         
@@ -318,7 +334,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Apr 18, 2024</time>
+                <time class="article-time--published">Apr 20, 2024</time>
             </div>
         
 
@@ -348,52 +364,149 @@
     <section class="article-content">
     
     
-    <h2 id="2d-变换">2D 变换</h2>
-<p>2D 变换有三种形式：</p>
+    <h2 id="rem-基础">rem 基础</h2>
+<h3 id="rem-的优点">rem 的优点</h3>
 <ul>
-<li>translate：平移</li>
-<li>rotate：旋转</li>
-<li>scale：伸缩</li>
+<li><code>文字</code>能随着屏幕大小发生变化</li>
+<li>元素<code>高度和宽度</code>都能随着屏幕大小发生变化</li>
 </ul>
-<p>可以<code>同时使用多个形式</code></p>
-<h3 id="2d-变换-平移">2D 变换-平移</h3>
-<p>语法格式：<code>transform: translate(x, y)</code>，</p>
-<p>x、y 的单位可以是<code>px</code>，也可以是<code>百分比</code>，当值是百分比时，表示<code>自身宽度/高度</code>的比例</p>
-<p>也可以分开写：<code>translateX()</code>/<code>translateY()</code></p>
-<p>注意事项：</p>
+<h3 id="rem-单位">rem 单位</h3>
 <ul>
-<li>translate 对<code>行内标签</code>没有作用</li>
-<li>translate(x, y)表示相对于<code>父元素</code>移动的距离，且是一种<code>声明式写法</code></li>
-<li>translate 最大的特点：不会影响其他元素的位置(不脱标)</li>
+<li><code>rem</code>(root em)是一个相对单位，类似于<code>em</code>，em 是<code>父元素字体大小</code>。</li>
+<li><code>rem</code>的基准是相对于 <code>html 元素的字体大小</code>。</li>
+<li>父元素文字大小可能不一致， 但是整个页面只有一个 html，可以很好来控制<code>整个页面的元素大小</code></li>
 </ul>
-<h3 id="2d-变换-旋转">2D 变换-旋转</h3>
-<p>语法格式：<code>transform: rotate(60deg)</code>，单位是<code>deg</code></p>
-<p>角度为<code>正</code>时，<code>顺时针</code>，<code>负</code>时，为<code>逆时针</code></p>
-<p>默认旋转的中心点是元素的<code>中心点</code></p>
-<h3 id="2d-旋转-中心点">2D 旋转-中心点</h3>
-<p>语法格式：<code>transform-origin: x y;</code></p>
-<p>注意事项：</p>
+<h2 id="媒体查询">媒体查询</h2>
+<h3 id="什么是媒体查询">什么是媒体查询</h3>
 <ul>
-<li>的参数 x 和 y 用空格隔开，单位可以是<code>px/百分比/方位名词</code></li>
-<li>x y 默认转换的中心点是元素的中心点 (50% 50%)</li>
-<li>可以给 x y 设置 像素 或者 方位名词 <code>（top bottom left right center）</code></li>
+<li>媒体查询（Media Query）是 CSS3 新语法</li>
+<li>使用 <code>@media</code> 查询，可以针对不同的媒体类型定义不同的样式</li>
 </ul>
-<h3 id="2d-变换-伸缩">2D 变换-伸缩</h3>
-<p>语法格式：<code>transform:scale(x,y);</code></p>
-<p>注意事项：</p>
+<h3 id="媒体查询语法">媒体查询语法</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="nt">mediatype</span> <span class="nt">and</span><span class="o">|</span><span class="nt">not</span><span class="o">|</span><span class="nt">only</span> <span class="o">(</span><span class="nt">media</span> <span class="nt">feature</span><span class="o">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">CSS-Code</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>用 @media 开头 注意@符号</li>
+<li>mediatype 媒体类型</li>
+<li>关键字 and not only</li>
+<li>media feature 媒体特性 必须有小括号包含</li>
+</ul>
+<h4 id="mediatype-查询类型">mediatype 查询类型</h4>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>值</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all</td>
+<td>用于所有设备</td>
+</tr>
+<tr>
+<td>print</td>
+<td>用于打印机和打印预览</td>
+</tr>
+<tr>
+<td>scree</td>
+<td>用于电脑屏幕，平板电脑，智能手机等</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="关键字">关键字</h4>
 <ul>
-<li>宽和高都放大一倍，相对于没有放大</li>
-<li>只写一个参数，第二个参数则和第一个参数一样</li>
-<li>sacle 缩放最大的优势：默认以中心点缩放的，而且不影响其他盒子(不脱标)</li>
+<li>and：可以将多个媒体特性连接到一起，相当于“且”的意思。</li>
+<li>not：排除某个媒体类型，相当于“非”的意思，可以省略。</li>
+<li>only：指定某个特定的媒体类型，可以省略。</li>
 </ul>
-<h2 id="css-动画">CSS 动画</h2>
-<p>制作动画可以分为两部：</p>
+<h4 id="媒体特性">媒体特性</h4>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>值</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td>定义输出设备中页面可见区域的宽度</td>
+</tr>
+<tr>
+<td>min-width</td>
+<td>定义输出设备中页面最小可见区域宽度</td>
+</tr>
+<tr>
+<td>max-width</td>
+<td>定义输出设备中页面最大可见区域宽度</td>
+</tr>
+</tbody>
+</table></div>
+<p>从小到大来写，这样代码更简洁</p>
+<h3 id="引入资源">引入资源</h3>
+<p>语法规范：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nt">link</span> <span class="nt">rel</span><span class="o">=</span><span class="s2">&#34;stylesheet&#34;</span> <span class="nt">media</span><span class="o">=</span><span class="s2">&#34;mediatype and|not|only (media feature)&#34;</span> <span class="nt">href</span><span class="o">=</span><span class="s2">&#34;mystylesheet.css&#34;</span><span class="o">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="less-基础">less 基础</h2>
+<h3 id="css-弊端">css 弊端</h3>
 <ul>
-<li>定义</li>
-<li>调用</li>
+<li>CSS 需要书写大量看似没有逻辑的代码，CSS 冗余度是比较高的。</li>
+<li>不方便维护及扩展，不利于复用。</li>
+<li>CSS 没有很好的计算能力</li>
+<li>非前端开发工程师来讲，往往会因为缺少 CSS 编写经验而很难写出组织良好且易于维护的 CSS 代码项目。</li>
 </ul>
-<h3 id="动画的定义">动画的定义</h3>
-<p>语法格式：</p>
+<h3 id="less-介绍">less 介绍</h3>
+<p><a class="link" href="https://lesscss.cn/"  target="_blank" rel="noopener"
+    >中文官网</a></p>
+<ul>
+<li>Less （Leaner Style Sheets 的缩写） 是一门 <code>CSS 扩展语言</code>，也成为 <code>CSS 预处理器</code></li>
+<li>它在 CSS 的语法基础之上，引入了<code>变量</code>，<code>Mixin（混入）</code>，<code>运算</code>以及<code>函数</code>等功能，大大简化了 CSS 的编写</li>
+<li>常见的 CSS 预处理器：<code>Sass</code>、<code>Less</code>、<code>Stylus</code></li>
+</ul>
+<h3 id="less-安装">less 安装</h3>
+<ul>
+<li>安装 nodejs，可选择版本(8.0)，网址：http://nodejs.cn/download/</li>
+<li>检查是否安装成功，使用 cmd 命令（win10 是 window +r 打开 运行输入 cmd） &mdash; 输入“ node –v ”查看版本即可</li>
+<li>基于 nodejs 在线安装 Less，使用 cmd 命令“ npm install -g less ”即可</li>
+<li>检查是否安装成功，使用 cmd 命令“ lessc -v ”查看版本即可</li>
+</ul>
+<h3 id="less-语法">less 语法</h3>
+<p>less 语法包括以下几个方面：</p>
+<ul>
+<li>Less 变量</li>
+<li>Less 编译</li>
+<li>Less 嵌套</li>
+<li>Less 运算</li>
+</ul>
+<h4 id="less-变量">less 变量</h4>
+<p>变量是指没有固定的值，可以改变的。因为我们 CSS 中的一些<code>颜色</code>和<code>数值</code>等经常使用。</p>
+<p>语法规范：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@color: pink;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用变量：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -403,122 +516,111 @@
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">@</span><span class="k">keyframes</span> <span class="nt">动画名称</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">0</span><span class="o">%</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">width</span><span class="p">:</span> <span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="o">//</span><span class="nt">直接使用</span>
+</span></span><span class="line"><span class="cl"><span class="nt">body</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="o">@</span><span class="kc">color</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">a</span><span class="p">:</span><span class="nd">hover</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="o">@</span><span class="kc">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>变量命名规范：</p>
+<ul>
+<li>必须有@为前缀</li>
+<li>不能包含特殊字符</li>
+<li>不能以数字开头</li>
+<li>大小写敏感</li>
+</ul>
+<h4 id="less-编译">less 编译</h4>
+<p>vocode Less 插件: easy less</p>
+<p>保存 less 文件，自动生成 css 文件</p>
+<h4 id="less-嵌套">less 嵌套</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#header {
+</span></span><span class="line"><span class="cl">  .logo {
+</span></span><span class="line"><span class="cl">    width: 300px;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果遇到：交集|伪类|伪元素选择器</p>
+<ul>
+<li>内层选择器的前面<code>没有 &amp; 符号</code>，则它被解析为<code>父选择器的后代</code>；</li>
+<li>如果有 &amp; 符号，它就被解析为<code>父元素自身</code>或<code>父元素的伪类</code>。</li>
+</ul>
+<h4 id="less-运算">less 运算</h4>
+<p>任何<code>数字</code>、<code>颜色</code>或者<code>变量</code>都可以参与运算。就是 Less 提供了加<code>（+）</code>、减<code>（-）</code>、乘<code>（*）</code>、除<code>（/）</code>算术运算。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/*Less 里面写*/
+</span></span><span class="line"><span class="cl">@witdh: 10px + 5;
+</span></span><span class="line"><span class="cl">div {
+</span></span><span class="line"><span class="cl">  border: @witdh solid red;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">/*生成的css*/
+</span></span><span class="line"><span class="cl">div {
+</span></span><span class="line"><span class="cl">  border: 15px solid red;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">/*Less 甚至还可以这样 */
+</span></span><span class="line"><span class="cl">width: (@width + 5) * 2;
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>注意事项：</p>
 <ul>
-<li><code>0%</code>是动画的开始，<code>100%</code>是动画的完成。这样的规则就是<code>动画序列(关键帧)</code></li>
-<li>用关键词<code>from</code>和<code>to</code>，等同于<code>0%</code>和<code>100%</code></li>
-<li>在<code>0%</code>和<code>100%</code>中间可以随意定义<code>多个</code>百分比关键帧</li>
+<li>乘号（*）和除号（/）的写法</li>
+<li>运算符中间左右有个<code>空格隔开</code> 1px + 5</li>
+<li>对于两个不同的单位的值之间的运算，运算结果的值取<code>第一个值</code>的单位</li>
+<li>如果两个值之间只有<code>一个值有单位</code>，则运算结果就取<code>该单位</code></li>
 </ul>
-<h3 id="动画的调用">动画的调用</h3>
-<p>在需要使用该动画的元素上加上<code>animation-name</code>、<code>animation-duration</code>等属性</p>
-<p>动画常用属性：</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@keyframes</td>
-<td>定义动画</td>
-</tr>
-<tr>
-<td>animation</td>
-<td>所有动画属性的简写</td>
-</tr>
-<tr>
-<td>animation-name</td>
-<td>动画名称</td>
-</tr>
-<tr>
-<td>animation-duration</td>
-<td>动画持续时间</td>
-</tr>
-<tr>
-<td>animation-time-function</td>
-<td>动画速度曲线，默认是<code>ease</code>，还有<code>liner/steps/ease-in</code>等属性</td>
-</tr>
-<tr>
-<td>animation-delay</td>
-<td>动画何时开始</td>
-</tr>
-<tr>
-<td>animation-iteration-count</td>
-<td>动画播放次数，默认是<code>1</code>，还有<code>infinite</code></td>
-</tr>
-<tr>
-<td>animation-direction</td>
-<td>是否在下一个周期逆向播放，默认值是<code>normal</code>，还有<code>alternate</code>(逆向播放)</td>
-</tr>
-<tr>
-<td>animation-fill-mode</td>
-<td>规定动画结束之后保持<code>forwards</code>，回到起点<code>backwards</code></td>
-</tr>
-<tr>
-<td>animation-play-state</td>
-<td>动画播放状态，<code>running/paused</code></td>
-</tr>
-</tbody>
-</table></div>
-<h2 id="3d-变换">3D 变换</h2>
-<p>3D 变换有三种形式：</p>
+<h2 id="rem-适配方案">rem 适配方案</h2>
 <ul>
-<li>translate3d：3D 平移</li>
-<li>rotate3d：3D 旋转</li>
+<li>让一些不能等比自适应的元素，达到当设备尺寸发生改变的时候，<code>等比例适配当前设备</code>。</li>
+<li>使用媒体查询根据不同设备按比例设置 html 的字体大小，然后页面元素使用 rem 做尺寸单位，当 html 字体大小变化元素尺寸也会发生变化，从而达到<code>等比缩放的适配</code>。</li>
 </ul>
-<h3 id="3-维坐标系">3 维坐标系</h3>
-<p>三维坐标系其实就是指立体空间，立体空间是由 3 个轴共同组成的。</p>
+<h3 id="rem-实际开发适配方案">rem 实际开发适配方案</h3>
 <ul>
-<li>x 轴：水平向右 注意： x 右边是正值，左边是负值</li>
-<li>y 轴：垂直向下 注意： y 下面是正值，上面是负值</li>
-<li>z 轴：垂直屏幕 注意： 往外面是正值，往里面是负值</li>
+<li>按照设计稿与设备宽度的比例，动态计算并设置 html 根标签的 <code>font-size</code> 大小；（媒体查询）</li>
+<li>CSS 中，设计稿元素的宽、高、相对位置等取值，按照同等比例<code>换算为 rem 为单位</code>的值；</li>
 </ul>
-<p>因为 z 轴是垂直屏幕，由里指向外面，所以<code>默认是看不到元素在z轴的方向上移动</code></p>
-<h3 id="透视-perspective">透视 perspective</h3>
-<p><code>perspective</code>在 2D 平面产生近大远小视觉立体，但是<code>只是效果二维的</code></p>
-<p>注意事项：</p>
+<h3 id="rem-适配方案技术使用市场主流">rem 适配方案技术使用（市场主流）</h3>
 <ul>
-<li>视距应该给<code>父元素/祖元素</code>添加</li>
-<li>透视我们也称为视距：视距就是<code>人的眼睛到屏幕的距离</code></li>
-<li>距离视觉点<code>越近</code>的在电脑平面成像<code>越大</code>，<code>越远</code>成像<code>越小</code></li>
-<li>透视的单位是<code>px</code></li>
+<li>技术方案 1
+<ul>
+<li>less</li>
+<li>媒体查询</li>
+<li>rem</li>
 </ul>
-<h3 id="3d-变换-平移">3D 变换-平移</h3>
-<p>语法格式：<code>transform:translate3d(x,y,z)</code></p>
-<p>也可以分开写：<code>translateX</code>/<code>translateY</code>/<code>translateZ</code></p>
-<h3 id="3d-变换-旋转">3D 变换-旋转</h3>
-<p>语法格式：<code>transform:rotate3d(x,y,z,deg)</code>，了解即可</p>
-<p>也可以按照坐标轴旋转：<code>rotateX(45deg)</code>/<code>rotateY(45deg)</code>/<code>rotateZ(45deg)</code></p>
-<p>注意事项：</p>
+</li>
+<li>技术方案 2（推荐）
 <ul>
-<li>旋转方向遵循<code>左手准则</code></li>
+<li>flexible.js</li>
+<li>rem</li>
 </ul>
-<h3 id="3d-呈现-transfrom-style">3D 呈现 transfrom-style</h3>
-<p>给父元素添加变换属性时，<code>子元素</code>的变换属性可能<code>失效</code></p>
-<p>为了<code>保持子元素</code> 3D 变换效果，应该给<code>父元素</code>添加<code>transfrom-style: preserve-3d;</code>属性(默认值是<code>flat</code>)</p>
-<h2 id="私有浏览器前缀">私有浏览器前缀</h2>
-<p>浏览器私有前缀是为了<code>兼容老版本</code>的写法，比较新版本的浏览器无须添加。</p>
-<p>私有前缀：</p>
-<ul>
-<li>-moz-：代表 firefox 浏览器私有属性</li>
-<li>-ms-：代表 ie 浏览器私有属性</li>
-<li>-webkit-：代表 safari、chrome 私有属性</li>
-<li>-o-：代表 Opera 私有属性</li>
+</li>
 </ul>
 
 </section>
@@ -562,12 +664,12 @@
             
                 
 <article class="">
-    <a href="/p/%E5%89%8D%E7%AB%AFrem%E5%B8%83%E5%B1%80/">
+    <a href="/p/%E5%89%8D%E7%AB%AF%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【前端】rem布局</h2>
+            <h2 class="article-title">【前端】移动端布局技巧</h2>
         </div>
     </a>
 </article>
@@ -575,12 +677,12 @@
             
                 
 <article class="">
-    <a href="/p/%E5%89%8D%E7%AB%AF%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7/">
+    <a href="/p/%E5%89%8D%E7%AB%AFcss3%E5%8A%A8%E7%94%BB/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【前端】移动端布局技巧</h2>
+            <h2 class="article-title">【前端】CSS3动画</h2>
         </div>
     </a>
 </article>
