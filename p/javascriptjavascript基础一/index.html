@@ -306,6 +306,7 @@
         <li><a href="#显示转换">显示转换</a>
           <ol>
             <li><a href="#转换为数字型">转换为数字型</a></li>
+            <li><a href="#转换为字符串型">转换为字符串型</a></li>
           </ol>
         </li>
       </ol>
@@ -685,7 +686,7 @@
 <h3 id="隐式转换">隐式转换</h3>
 <ul>
 <li><code>任何数据</code>和字符串相加结果<code>都是字符串</code></li>
-<li>除了<code>+</code>的其他运算符，会把数字的<code>字符串</code>转换为 <code>number</code> 类型</li>
+<li>除了<code>+</code>的其他运算符(比较运算符也会)，会把数字的<code>字符串</code>转换为 <code>number</code> 类型</li>
 <li><code>+</code>号作为<code>正号解析</code>可以<code>转换为数字型</code></li>
 <li>null 类型参与运算</li>
 <li>boolean 类型数据参与运算</li>
@@ -715,7 +716,17 @@
 </span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="s2">&#34;abc1.2px&#34;</span><span class="p">));</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div>
+</div><h4 id="转换为字符串型">转换为字符串型</h4>
+<ul>
+<li>String()</li>
+<li>toString()</li>
+</ul>
+<p>区别：</p>
+<ul>
+<li>String()可以转换所有数据类型，toString()不能转换 null、undefined</li>
+<li>toString 可以传参，表示以多少进制的格式输出结果；String 方法传参无效</li>
+</ul>
+
 </section>
 
 
@@ -749,6 +760,28 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E4%BA%8C/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【JavaScript】JavaScript基础二</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
