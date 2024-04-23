@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1. 介绍 RabbitMQ is the most widely deployed open source message broker. 直接把RabbitMQ官网的介绍抄过来：它是部署最广泛的消息代理 2. 作用 消息代理中间件的作用： 削峰：大量请求写入消息'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='1. 介绍 RabbitMQ is the most widely deployed open source message broker. 直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理 2. 作用 消息代理中间件的作用： 削峰：大量请求写入消息中间件，服务器'>
 <title>【Go】RabbitMQ学习笔记</title>
 
 <link rel='canonical' href='https://www.cengdong.store/p/gorabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>
 
 <link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【Go】RabbitMQ学习笔记'>
-<meta property='og:description' content='1. 介绍 RabbitMQ is the most widely deployed open source message broker. 直接把RabbitMQ官网的介绍抄过来：它是部署最广泛的消息代理 2. 作用 消息代理中间件的作用： 削峰：大量请求写入消息'>
+<meta property='og:description' content='1. 介绍 RabbitMQ is the most widely deployed open source message broker. 直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理 2. 作用 消息代理中间件的作用： 削峰：大量请求写入消息中间件，服务器'>
 <meta property='og:url' content='https://www.cengdong.store/p/gorabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='消息中间件' /><meta property='article:published_time' content='2023-07-31T00:02:07&#43;08:00'/><meta property='article:modified_time' content='2023-07-31T00:02:07&#43;08:00'/>
 <meta name="twitter:title" content="【Go】RabbitMQ学习笔记">
-<meta name="twitter:description" content="1. 介绍 RabbitMQ is the most widely deployed open source message broker. 直接把RabbitMQ官网的介绍抄过来：它是部署最广泛的消息代理 2. 作用 消息代理中间件的作用： 削峰：大量请求写入消息">
+<meta name="twitter:description" content="1. 介绍 RabbitMQ is the most widely deployed open source message broker. 直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理 2. 作用 消息代理中间件的作用： 削峰：大量请求写入消息中间件，服务器">
     </head>
     <body class="
     article-page
@@ -21,7 +21,7 @@
         (function() {
             const colorSchemeKey = 'StackColorScheme';
             if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "light");
+                localStorage.setItem(colorSchemeKey, "dark");
             }
         })();
     </script><script>
@@ -250,7 +250,7 @@
     <li><a href="#3-竞品">3. 竞品</a></li>
     <li><a href="#4-系统架构">4. 系统架构</a></li>
     <li><a href="#5-工作模式">5. 工作模式</a></li>
-    <li><a href="#6-安装rabbitmq">6. 安装RabbitMQ</a></li>
+    <li><a href="#6-安装-rabbitmq">6. 安装 RabbitMQ</a></li>
     <li><a href="#7-创建项目">7. 创建项目</a></li>
     <li><a href="#8-发送消息以简单模式为例">8. 发送消息：以简单模式为例</a></li>
     <li><a href="#9-接受消息以简单模式为例">9. 接受消息：以简单模式为例</a></li>
@@ -350,7 +350,7 @@
 <blockquote>
 <p>RabbitMQ is the most widely deployed open source message broker.</p>
 </blockquote>
-<p>直接把RabbitMQ官网的介绍抄过来：它是部署最广泛的消息代理</p>
+<p>直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理</p>
 <h2 id="2-作用">2. 作用</h2>
 <p>消息代理中间件的作用：</p>
 <ul>
@@ -367,14 +367,14 @@
 <h2 id="4-系统架构">4. 系统架构</h2>
 <ul>
 <li>生产者：消息发送方</li>
-<li>channel：通信信道，一个连接里有多个可用信道（感觉是资源池），生产者和消费者都会与broker建立连接</li>
-<li>exchange：交换机，生产者将消息发送给对应交换机（生产者只与交换机打交道），交换机通过routingKey将消息发送给消息队列</li>
+<li>channel：通信信道，一个连接里有多个可用信道（感觉是资源池），生产者和消费者都会与 broker 建立连接</li>
+<li>exchange：交换机，生产者将消息发送给对应交换机（生产者只与交换机打交道），交换机通过 routingKey 将消息发送给消息队列</li>
 <li>queue：消息队列，存放消息的实体</li>
 <li>消费者：从消息队列中消费消息</li>
 <li>虚拟主机：多租户的资源隔离（不想深入，也不做过多了解）</li>
 </ul>
 <h2 id="5-工作模式">5. 工作模式</h2>
-<p>RabbitMQ官方给出了七种工作模式</p>
+<p>RabbitMQ 官方给出了七种工作模式</p>
 <ul>
 <li><code>Hello World</code></li>
 <li><code>Work Queues</code></li>
@@ -384,8 +384,8 @@
 <li><code>RPC</code></li>
 <li><code>Publisher confirms</code></li>
 </ul>
-<h2 id="6-安装rabbitmq">6. 安装RabbitMQ</h2>
-<p>我的虚拟机已经安装好<code>Docker</code>，通过Docker安装带web可视化插件的<code>RabbitMQ</code>，其中5672是服务端的端口，15672是web可视化的端口</p>
+<h2 id="6-安装-rabbitmq">6. 安装 RabbitMQ</h2>
+<p>我的虚拟机已经安装好<code>Docker</code>，通过 Docker 安装带 web 可视化插件的<code>RabbitMQ</code>，其中 5672 是服务端的端口，15672 是 web 可视化的端口</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -404,7 +404,7 @@
 	
 	
 >
-访问web管理界面，用户名密码都是<code>guest</code></p>
+访问 web 管理界面，用户名密码都是<code>guest</code></p>
 <p><img src="/images/WechatIMG76.jpg"
 	
 	
@@ -419,7 +419,7 @@
 <ul>
 <li>创建目录：<code>mkdir rabbitmq-demo</code></li>
 <li>初始化项目：<code>go mod init rabbitmq-demo</code></li>
-<li>go客户端选用：老规矩，最多star的项目，虽然已经停止维护很久了<a class="link" href="github.com/streadway/amqp" >github.com/streadway/amqp</a></li>
+<li>go 客户端选用：老规矩，最多 star 的项目，虽然已经停止维护很久了<a class="link" href="github.com/streadway/amqp" >github.com/streadway/amqp</a></li>
 </ul>
 <h2 id="8-发送消息以简单模式为例">8. 发送消息：以简单模式为例</h2>
 <p>简单模式就是点对点的消息传输模型，官网称之为<code>Hello World</code>模式。生产者发送消息给指定队列，消费者从指定队列消费消息，其中生产者以及消费者都绑定的是默认交换机。</p>
@@ -588,7 +588,7 @@
 </div>
 </div><h2 id="10-如何保障消息不丢失">10. 如何保障消息不丢失</h2>
 <h3 id="101-消息应答机制">10.1 消息应答机制</h3>
-<p>RabbitMQ有两种消息应答机制：<code>自动应答</code>和<code>手动应答</code>，<code>自动应答</code>即NOACK，不需要接收方回应ACK消息，默认是这种应答方式。要开启手动应答，首先要把channel.Consume方法的第三个参数设置为false</p>
+<p>RabbitMQ 有两种消息应答机制：<code>自动应答</code>和<code>手动应答</code>，<code>自动应答</code>即 NOACK，不需要接收方回应 ACK 消息，默认是这种应答方式。要开启手动应答，首先要把 channel.Consume 方法的第三个参数设置为 false</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -597,7 +597,7 @@
 <pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">ch</span> <span class="o">*</span><span class="nx">Channel</span><span class="p">)</span> <span class="nf">Consume</span><span class="p">(</span><span class="nx">queue</span><span class="p">,</span> <span class="nx">consumer</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">autoAck</span><span class="p">,</span> <span class="nx">exclusive</span><span class="p">,</span> <span class="nx">noLocal</span><span class="p">,</span> <span class="nx">noWait</span> <span class="kt">bool</span><span class="p">,</span> <span class="nx">args</span> <span class="nx">Table</span><span class="p">)</span> <span class="p">(</span><span class="o">&lt;-</span><span class="kd">chan</span> <span class="nx">Delivery</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>还需要在消费消息时调用<code>Ack</code>或<code>Reject</code>或N<code>ack</code>方法</p>
+</div><p>还需要在消费消息时调用<code>Ack</code>或<code>Reject</code>或 N<code>ack</code>方法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -608,7 +608,7 @@
 </div>
 </div><h3 id="102-消息持久化">10.2 消息持久化</h3>
 <p>要保障消息不丢失，就要保障消息的持久化，避免服务器故障或重启时内存中的消息丢失。消息持久化分为两部分：队列持久化、消息持久化。</p>
-<p>队列持久化需要在声明队列时把参数durable传为true</p>
+<p>队列持久化需要在声明队列时把参数 durable 传为 true</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -637,8 +637,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="103-生产方发布确认">10.3 生产方发布确认</h3>
-<p>生产方发布确认又叫<code>发布确认模式</code>，是一种保障生产方能确认发布消息到Broker的机制</p>
-<p>要开启发布确认模式需要调用channel.Conform方法</p>
+<p>生产方发布确认又叫<code>发布确认模式</code>，是一种保障生产方能确认发布消息到 Broker 的机制</p>
+<p>要开启发布确认模式需要调用 channel.Conform 方法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -856,7 +856,7 @@
 </div>
 </div><h2 id="11-工作队列模式">11. 工作队列模式</h2>
 <h3 id="111-公平调度的工作队列模式">11.1 公平调度的工作队列模式</h3>
-<p>工作队列模式类似于Kafka的消费者组，为了提高消费者的消费能力。生产者代码与简单模式一致，为了能从命令行控制要发送的消息，做一些改造。</p>
+<p>工作队列模式类似于 Kafka 的消费者组，为了提高消费者的消费能力。生产者代码与简单模式一致，为了能从命令行控制要发送的消息，做一些改造。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1077,7 +1077,7 @@
 	
 	
 ></p>
-<p>消费者1
+<p>消费者 1
 <img src="/images/%e6%b6%88%e8%b4%b9%e8%80%851.png"
 	
 	
@@ -1088,7 +1088,7 @@
 	
 	
 ></p>
-<p>消费者2
+<p>消费者 2
 <img src="/images/%e6%b6%88%e8%b4%b9%e8%80%852.png"
 	
 	
@@ -1099,12 +1099,12 @@
 	
 	
 ></p>
-<p>消费者1消费了消息135，消费者2消费了消息24，这样提高了消费者消费的能力，并且由于工作队列模式默认的消息分发机制是轮询，官网称之为<code>Fair dispatch</code>(公平调度)</p>
+<p>消费者 1 消费了消息 135，消费者 2 消费了消息 24，这样提高了消费者消费的能力，并且由于工作队列模式默认的消息分发机制是轮询，官网称之为<code>Fair dispatch</code>(公平调度)</p>
 <p>当有多个消费者时，每个消费者的消费能力不一样，轮询的方式会有问题。</p>
 <h3 id="112-设置预取值的工作队列方式">11.2 设置预取值的工作队列方式</h3>
 <p>为了解决公平调度带来的问题，我们可以将预取计数设置为值<code>1</code>。这告诉<code>RabbitMQ</code>不要一次向一个<code>worker</code>提供多条消息。</p>
 <p>或者，换句话说，在<code>worker</code>处理并确认前一条消息之前，不要向<code>worker</code>发送新消息。相反，它会将其调度给下一个尚未繁忙的工作人员。</p>
-<p>设置预取值需要调用channel.Qos方法</p>
+<p>设置预取值需要调用 channel.Qos 方法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1

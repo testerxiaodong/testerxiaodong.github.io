@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Emmet 语法 Emmet语法用于快速编写html标签与css样式 快速生成 html 结构 生成网页骨架：html: 5 生成标签：输入标签名，按下tab键 生成多个相'>
-<title>【前端】CSS下</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='对象 变量的声明与初始化 声明对象的方式： let obj = {} let obj = new Object() 对象的构成： 属性：冒号分隔的键值对 方法：函数 对象的操作： 查询： obg.属性名 obg['>
+<title>【JavaScript】JavaScript基础四</title>
 
-<link rel='canonical' href='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss%E4%B8%8B/'>
+<link rel='canonical' href='https://www.cengdong.store/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E5%9B%9B/'>
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【前端】CSS下'>
-<meta property='og:description' content='Emmet 语法 Emmet语法用于快速编写html标签与css样式 快速生成 html 结构 生成网页骨架：html: 5 生成标签：输入标签名，按下tab键 生成多个相'>
-<meta property='og:url' content='https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss%E4%B8%8B/'>
+<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【JavaScript】JavaScript基础四'>
+<meta property='og:description' content='对象 变量的声明与初始化 声明对象的方式： let obj = {} let obj = new Object() 对象的构成： 属性：冒号分隔的键值对 方法：函数 对象的操作： 查询： obg.属性名 obg['>
+<meta property='og:url' content='https://www.cengdong.store/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E5%9B%9B/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CSS' /><meta property='article:published_time' content='2024-04-02T18:04:46&#43;08:00'/><meta property='article:modified_time' content='2024-04-02T18:04:46&#43;08:00'/>
-<meta name="twitter:title" content="【前端】CSS下">
-<meta name="twitter:description" content="Emmet 语法 Emmet语法用于快速编写html标签与css样式 快速生成 html 结构 生成网页骨架：html: 5 生成标签：输入标签名，按下tab键 生成多个相">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='JavaScript' /><meta property='article:published_time' content='2024-04-23T16:57:54&#43;08:00'/><meta property='article:modified_time' content='2024-04-23T16:57:54&#43;08:00'/>
+<meta name="twitter:title" content="【JavaScript】JavaScript基础四">
+<meta name="twitter:description" content="对象 变量的声明与初始化 声明对象的方式： let obj = {} let obj = new Object() 对象的构成： 属性：冒号分隔的键值对 方法：函数 对象的操作： 查询： obg.属性名 obg[">
     </head>
     <body class="
     article-page
@@ -245,50 +245,19 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#emmet-语法">Emmet 语法</a>
+    <li><a href="#对象">对象</a>
       <ol>
-        <li><a href="#快速生成-html-结构">快速生成 html 结构</a></li>
-        <li><a href="#快速生成-css-样式">快速生成 css 样式</a></li>
-      </ol>
-    </li>
-    <li><a href="#css-复合选择器">CSS 复合选择器</a>
-      <ol>
-        <li><a href="#后代选择器">后代选择器</a></li>
-        <li><a href="#子选择器">子选择器</a></li>
-        <li><a href="#并集选择器">并集选择器</a></li>
-        <li><a href="#伪类选择器">伪类选择器</a>
+        <li><a href="#变量的声明与初始化">变量的声明与初始化</a></li>
+        <li><a href="#对象的操作">对象的操作：</a></li>
+        <li><a href="#对象的方法">对象的方法</a></li>
+        <li><a href="#遍历对象">遍历对象</a></li>
+        <li><a href="#内置对象math">内置对象：Math</a>
           <ol>
-            <li><a href="#链接伪类选择器">链接伪类选择器</a></li>
-            <li><a href="#focus-伪类选择器">focus 伪类选择器</a></li>
+            <li><a href="#math-对象属性">Math 对象属性</a></li>
+            <li><a href="#math-对象方法">Math 对象方法</a></li>
+            <li><a href="#随机数场景">随机数场景</a></li>
           </ol>
         </li>
-      </ol>
-    </li>
-    <li><a href="#css-元素显示模式">CSS 元素显示模式</a>
-      <ol>
-        <li><a href="#块元素">块元素</a></li>
-        <li><a href="#行内元素">行内元素</a></li>
-        <li><a href="#行内块元素">行内块元素</a></li>
-        <li><a href="#显示模式转换">显示模式转换</a></li>
-      </ol>
-    </li>
-    <li><a href="#css-背景">CSS 背景</a>
-      <ol>
-        <li><a href="#背景颜色">背景颜色</a></li>
-        <li><a href="#背景图片">背景图片</a></li>
-        <li><a href="#背景平铺">背景平铺</a></li>
-        <li><a href="#背景位置">背景位置</a></li>
-        <li><a href="#背景固定">背景固定</a></li>
-        <li><a href="#背景复合写法">背景复合写法</a></li>
-        <li><a href="#背景颜色半透明">背景颜色半透明</a></li>
-      </ol>
-    </li>
-    <li><a href="#css-三大特性">CSS 三大特性</a>
-      <ol>
-        <li><a href="#层叠性">层叠性</a></li>
-        <li><a href="#继承性">继承性</a></li>
-        <li><a href="#优先级">优先级</a></li>
-        <li><a href="#权重叠加">权重叠加</a></li>
       </ol>
     </li>
   </ol>
@@ -309,8 +278,8 @@
     
     <header class="article-category">
         
-            <a href="/categories/%E5%89%8D%E7%AB%AF/" >
-                前端
+            <a href="/categories/javascript/" >
+                JavaScript
             </a>
         
     </header>
@@ -318,7 +287,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E5%89%8D%E7%AB%AFcss%E4%B8%8B/">【前端】CSS下</a>
+            <a href="/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E5%9B%9B/">【JavaScript】JavaScript基础四</a>
         </h2>
     
         
@@ -340,7 +309,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Apr 02, 2024</time>
+                <time class="article-time--published">Apr 23, 2024</time>
             </div>
         
 
@@ -355,7 +324,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 4 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -370,189 +339,80 @@
     <section class="article-content">
     
     
-    <h2 id="emmet-语法">Emmet 语法</h2>
-<p><code>Emmet</code>语法用于快速编写<code>html</code>标签与<code>css</code>样式</p>
-<h3 id="快速生成-html-结构">快速生成 html 结构</h3>
+    <h2 id="对象">对象</h2>
+<h3 id="变量的声明与初始化">变量的声明与初始化</h3>
+<p>声明对象的方式：</p>
 <ul>
-<li>生成网页骨架：<code>html: 5</code></li>
-<li>生成标签：输入<code>标签名</code>，按下<code>tab</code>键</li>
-<li>生成多个相同标签：输入<code>标签名*number</code>，按下<code>tab</code>键</li>
-<li>生成父子关系标签：输入<code>标签名&gt;标签名</code>，按下<code>tab</code>键</li>
-<li>生成兄弟关系标签：输入<code>标签名+标签名</code>，按下<code>tab</code>键</li>
-<li>生成带类名的：输入<code>标签名#classname</code>或者<code>标签名.classname</code>，按下<code>tab</code>键</li>
-<li>类名自增</li>
+<li><code>let obj = {}</code></li>
+<li><code>let obj = new Object()</code></li>
 </ul>
-<h3 id="快速生成-css-样式">快速生成 css 样式</h3>
-<p>通过<code>单词缩写</code>快速生成 css 样式属性值</p>
-<h2 id="css-复合选择器">CSS 复合选择器</h2>
-<p><code>复合选择器</code>可以更准确、高效定位元素</p>
-<p>通过<code>两个</code>或者<code>多个``基础选择器</code>组成</p>
-<p>复合选择器主要有以下几种：</p>
+<p>对象的构成：</p>
 <ul>
-<li>后代选择器</li>
-<li>子选择器</li>
-<li>并集选择器</li>
-<li>伪类选择器</li>
+<li>属性：冒号分隔的键值对</li>
+<li>方法：函数</li>
 </ul>
-<h3 id="后代选择器">后代选择器</h3>
-<p><code>后代选择器</code>选择的是<code>父元素</code>里的<code>后代元素</code></p>
-<p>格式：<code>标签1 标签2 ... 标签n { 样式声明 }</code></p>
-<p>既可以选择孩子，也可以选择孙子。</p>
-<p>选择器可以是任意基础选择器的组合</p>
-<p><code>.nav ol li</code></p>
-<h3 id="子选择器">子选择器</h3>
-<p><code>子选择器</code>选择的是<code>父元素</code>里的<code>子元素</code></p>
-<p>格式：<code>父元素&gt;子元素 { 样式声明 }</code></p>
-<h3 id="并集选择器">并集选择器</h3>
-<p><code>并集选择器</code>可以选择多组标签，为他们设定相同的样式</p>
-<p>格式：<code>元素1, 元素2, ... 元素n { 样式声明 }</code></p>
-<h3 id="伪类选择器">伪类选择器</h3>
-<p><code>伪类选择器</code>可以给某些选择器<code>添加特殊效果</code>(链接)，或者用于选择<code>第1个</code>或者<code>第n个</code>元素</p>
-<h4 id="链接伪类选择器">链接伪类选择器</h4>
-<p>hover 伪类选择器种类：</p>
+<h3 id="对象的操作">对象的操作：</h3>
 <ul>
-<li>a:link(未访问)</li>
-<li>a:visited(已访问)</li>
-<li>a:hover(鼠标经过)</li>
-<li>a:active(鼠标点击但未抬起)</li>
-</ul>
-<p>注意事项：</p>
-<p>必须按照<code>lvha</code>顺序编写<code>链接伪类选择器</code></p>
-<h4 id="focus-伪类选择器">focus 伪类选择器</h4>
-<p><code>focus伪类选择器</code>用于选择获得焦点的表单元素</p>
-<p>格式：<code>input:focus { 样式声明 }</code></p>
-<h2 id="css-元素显示模式">CSS 元素显示模式</h2>
-<h3 id="块元素">块元素</h3>
-<p>常见的块元素有：<code>h1-h6</code>、<code>p</code>、<code>div</code>、<code>ul</code>、<code>ol</code>、<code>li</code> 等</p>
+<li>查询：
 <ul>
-<li>块元素`独占一行``</li>
-<li>可以对块元素的<code>宽</code>、<code>高</code>、<code>内外间距</code>进行设置</li>
-<li>默认宽度为<code>父元素</code>的<code>宽度</code></li>
-<li>块元素内部可以放其他<code>行内元素/块元素</code></li>
-<li>文本块元素(<code>p</code>、<code>h1-h6</code>)内部不能放置<code>块元素</code></li>
+<li><code>obg.属性名</code></li>
+<li><code>obg['属性名']</code></li>
 </ul>
-<h3 id="行内元素">行内元素</h3>
-<p>常见的行内元素有：<code>a</code>、<code>文本格式化标签</code>、<code>span</code></p>
+</li>
+<li>新增：<code>obj.新属性名 = 值</code></li>
+<li>修改：<code>obj.属性名 = 新属性值</code></li>
+<li>删除：<code>delete obj.属性名</code></li>
+</ul>
+<h3 id="对象的方法">对象的方法</h3>
+<p>方法本质是一个<code>匿名函数</code></p>
+<p>调用方法：<code>obg.方法名()</code></p>
+<h3 id="遍历对象">遍历对象</h3>
+<p>通过<code>for k in</code>遍历对象，其中 k 是<code>字符串类型</code>的，也可以用这种方法<code>遍历数组</code>(但不推荐)</p>
+<p>因为 k 是字符串类型，所以<code>遍历访问属性</code>时，应该使用<code>obg['属性名']</code>的方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">obg</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">username</span><span class="o">:</span> <span class="nx">cengdong</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">age</span><span class="o">:</span> <span class="mi">18</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">k</span> <span class="k">in</span> <span class="nx">obg</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obg</span><span class="p">.[</span><span class="nx">k</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="内置对象math">内置对象：Math</h3>
+<h4 id="math-对象属性">Math 对象属性</h4>
+<p>都是<code>静态属性</code>，直接通过<code>Math.属性名</code>方式访问</p>
 <ul>
-<li>多个行内元素<code>一行展示</code></li>
-<li>不可以直接对行内元素进行<code>宽</code>、<code>高</code>设置</li>
-<li>行内元素默认宽度为内容的宽度</li>
-<li>行内元素内部可以放<code>文本</code>或<code>其他行内元素</code></li>
-<li><code>&lt;a&gt;&lt;/a&gt;</code>标签内部不能放置<code>&lt;a&gt;&lt;/a&gt;</code></li>
-<li>特殊情况<code>&lt;a&gt;&lt;/a&gt;</code>内部可以放块元素</li>
+<li>Math.E</li>
+<li>Math.PI</li>
 </ul>
-<h3 id="行内块元素">行内块元素</h3>
-<p>常见的行内块元素有：<code>img</code>、<code>input</code>、<code>td</code>，同时具有<code>行内元素</code>和<code>块元素</code>的特点：</p>
+<h4 id="math-对象方法">Math 对象方法</h4>
 <ul>
-<li>多个<code>一行展示</code></li>
-<li>可以设置<code>宽</code>和<code>高</code></li>
-<li>默认宽度为<code>内容宽度</code></li>
+<li>Math.random()方法返回一个 0-1 的随机浮点数</li>
+<li>Math.abs()返回一个数的绝对值</li>
+<li>Math.ceil()向上取整</li>
+<li>Math.floor()向下取整</li>
+<li>Math.round()四舍五入</li>
+<li>Math.max()：返回作为输入参数的最大数字，如果没有参数，则返回 -Infinity</li>
+<li>Math.min()：返回作为输入参数的数字中最小的一个，如果没有参数，则返回 Infinity</li>
 </ul>
-<h3 id="显示模式转换">显示模式转换</h3>
-<p>增加<code>&lt;a&gt;&lt;/a&gt;</code>链接触发范围</p>
+<h4 id="随机数场景">随机数场景</h4>
 <ul>
-<li><code>display: bolck;</code></li>
-<li><code>display: inline;</code></li>
-<li><code>display: inline-block;</code></li>
+<li><code>0-10 的随机数</code>：<code>Math.floor(Math.random(10 + 1))</code></li>
+<li><code>N-M之间的随机整数</code>：<code>Math.floor(Math.random() * (M - N + 1) + N)</code></li>
 </ul>
-<h2 id="css-背景">CSS 背景</h2>
-<p><code>CSS背景</code>用于设置背景<code>颜色</code>、<code>图片</code>、<code>平铺</code>、<code>图片位置</code>、<code>图片固定</code></p>
-<h3 id="背景颜色">背景颜色</h3>
-<p>通过<code>background-color</code>设置</p>
-<ul>
-<li>transparent(默认值)</li>
-<li>和文本<code>color</code>一样</li>
-</ul>
-<h3 id="背景图片">背景图片</h3>
-<p>通过<code>background-image</code>设置，<code>小图片</code>一般通过背景图片设置</p>
-<p>既可以设置背景图片，也可以设置背景颜色，背景图片会<code>压住</code>背景颜色</p>
-<ul>
-<li><code>none</code></li>
-<li><code>url()</code></li>
-</ul>
-<h3 id="背景平铺">背景平铺</h3>
-<p><code>背景平铺</code>就是背景图片重复展示，通过<code>background-repeat</code>设置</p>
-<ul>
-<li><code>no-repeat</code></li>
-<li><code>repeat</code>(默认值)</li>
-<li><code>repeat-x</code></li>
-<li><code>repeat-y</code></li>
-</ul>
-<h3 id="背景位置">背景位置</h3>
-<p><code>background-position: x y;</code>属性可以改变背景图片的位置</p>
-<ul>
-<li>方位名词：<code>background-position: left top;</code>，可以<code>省略一个参数</code>，第二个参数<code>居中</code></li>
-<li>精准单位：<code>background-position: x y;</code></li>
-<li>混合单位：<code>严格顺序</code>，第一个为<code>x</code>，第二个为<code>y</code></li>
-</ul>
-<h3 id="背景固定">背景固定</h3>
-<p><code>background-attchment</code>用于设置背景图片是随着<code>页面滚动</code>，还是随着<code>页面固定</code></p>
-<ul>
-<li>scroll(默认值)</li>
-<li>fixed</li>
-</ul>
-<h3 id="背景复合写法">背景复合写法</h3>
-<p><code>background: 背景颜色 背景图片 背景平铺 背景图片滚动 背景图片位置;</code></p>
-<h3 id="背景颜色半透明">背景颜色半透明</h3>
-<p><code>rgba(0, 0, 0, 0.3)</code>，a 的取值范围为 0-1，<code>越小越淡</code>.</p>
-<h2 id="css-三大特性">CSS 三大特性</h2>
-<ul>
-<li>层叠性</li>
-<li>继承性</li>
-<li>优先级</li>
-</ul>
-<h3 id="层叠性">层叠性</h3>
-<p>为了解决<code>样式冲突</code>，<code>就近原则</code></p>
-<h3 id="继承性">继承性</h3>
-<p>子标签<code>继承</code>父标签的<code>某些</code>样式：<code>文本颜色</code>和<code>字号</code>/(<code>text-</code>、<code>font-</code>、<code>line-</code>、<code>color</code>)</p>
-<p><code>line-height</code>可以不设置单位，最终显示<code>当前元素``文字大小</code>的倍数：<code>font: 12px/1.5 'Microsoft YaHei'</code></p>
-<h3 id="优先级">优先级</h3>
-<p>当给<code>同一个元素</code>指定<code>多个选择器</code>名，就会有优先级产生</p>
-<ul>
-<li>选择器相同：执行层叠行</li>
-<li>选择器不同：执行优先级</li>
-</ul>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>选择器权重</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>继承或者*</td>
-<td>0,0,0,0</td>
-</tr>
-<tr>
-<td>标签选择器</td>
-<td>0,0,0,1</td>
-</tr>
-<tr>
-<td>类选择器、伪类选择器、属性选择器</td>
-<td>0,0,1,0</td>
-</tr>
-<tr>
-<td>id 选择器</td>
-<td>0,1,0,0</td>
-</tr>
-<tr>
-<td>行内样式</td>
-<td>1,0,0,0</td>
-</tr>
-<tr>
-<td>!important</td>
-<td>+∞</td>
-</tr>
-</tbody>
-</table></div>
-<p>注意事项：</p>
-<ul>
-<li>权重计算有四位，但是不会进位</li>
-<li>从左至右判断</li>
-</ul>
-<h3 id="权重叠加">权重叠加</h3>
-<p>如果是<code>复合选择器</code>，则会有<code>权重叠加问题</code></p>
 
 </section>
 
@@ -561,7 +421,7 @@
     
     <section class="article-tags">
         
-            <a href="/tags/css/">CSS</a>
+            <a href="/tags/javascript/">JavaScript</a>
         
     </section>
 
@@ -595,12 +455,12 @@
             
                 
 <article class="">
-    <a href="/p/%E5%89%8D%E7%AB%AFrem%E5%B8%83%E5%B1%80/">
+    <a href="/p/javascriptwebapis%E4%B8%80/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【前端】rem布局</h2>
+            <h2 class="article-title">【JavaScript】webAPIs一</h2>
         </div>
     </a>
 </article>
@@ -608,12 +468,12 @@
             
                 
 <article class="">
-    <a href="/p/%E5%89%8D%E7%AB%AF%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7/">
+    <a href="/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E4%B8%89/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【前端】移动端布局技巧</h2>
+            <h2 class="article-title">【JavaScript】JavaScript基础三</h2>
         </div>
     </a>
 </article>
@@ -621,12 +481,12 @@
             
                 
 <article class="">
-    <a href="/p/%E5%89%8D%E7%AB%AFcss3%E5%8A%A8%E7%94%BB/">
+    <a href="/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E4%BA%8C/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【前端】CSS3动画</h2>
+            <h2 class="article-title">【JavaScript】JavaScript基础二</h2>
         </div>
     </a>
 </article>
@@ -634,25 +494,12 @@
             
                 
 <article class="">
-    <a href="/p/%E5%89%8D%E7%AB%AFweb%E7%AB%AF%E7%BD%91%E9%A1%B5%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/">
+    <a href="/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E4%B8%80/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【前端】Web端网页项目实战技巧</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/%E5%89%8D%E7%AB%AFhtml5css3/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【前端】HTML5CSS3</h2>
+            <h2 class="article-title">【JavaScript】JavaScript基础一</h2>
         </div>
     </a>
 </article>

@@ -14,19 +14,19 @@
         
         <guid>https://www.cengdong.store/p/git%E6%B7%BB%E5%8A%A0gitignore%E6%96%87%E4%BB%B6%E4%B9%8B%E5%90%8E%E5%88%A0%E9%99%A4github%E4%B8%8A%E5%A4%9A%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/</guid>
         <description>&lt;h2 id=&#34;1-起因&#34;&gt;1. 起因&lt;/h2&gt;
-&lt;p&gt;最近在学习go-zero框架，把faker-douyin项目重构成微服务项目。在重构的过程中有一些变动：&lt;/p&gt;
+&lt;p&gt;最近在学习 go-zero 框架，把 faker-douyin 项目重构成微服务项目。在重构的过程中有一些变动：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;原来使用本地虚拟机构建服务中间件依赖，现在使用阿里云的服务&lt;/li&gt;
-&lt;li&gt;原来上传视频时直接通过ftp上传到虚拟机，现在直接上传到阿里云oss&lt;/li&gt;
+&lt;li&gt;原来上传视频时直接通过 ftp 上传到虚拟机，现在直接上传到阿里云 oss&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;在代码上传github上之后，阿里云发现我的accessKey在github上泄漏（主要是我安全意识不好）&lt;/p&gt;
+&lt;p&gt;在代码上传 github 上之后，阿里云发现我的 accessKey 在 github 上泄漏（主要是我安全意识不好）&lt;/p&gt;
 &lt;h2 id=&#34;2-解决办法&#34;&gt;2. 解决办法&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;使用.gitignore文件使git忽视配置文件上传&lt;/li&gt;
-&lt;li&gt;在.gitignore文件中添加.yaml忽视所有yaml类型文件&lt;/li&gt;
+&lt;li&gt;使用.gitignore 文件使 git 忽视配置文件上传&lt;/li&gt;
+&lt;li&gt;在.gitignore 文件中添加.yaml 忽视所有 yaml 类型文件&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;3-遇到问题&#34;&gt;3. 遇到问题&lt;/h2&gt;
-&lt;p&gt;更改.gitignore文件之后，本地仓库没有生效（没有删除gitignore文件匹配的文件）&lt;/p&gt;
+&lt;p&gt;更改.gitignore 文件之后，本地仓库没有生效（没有删除 gitignore 文件匹配的文件）&lt;/p&gt;
 &lt;h2 id=&#34;4-解决办法&#34;&gt;4. 解决办法&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;

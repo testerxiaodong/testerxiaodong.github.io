@@ -21,7 +21,7 @@
         (function() {
             const colorSchemeKey = 'StackColorScheme';
             if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "light");
+                localStorage.setItem(colorSchemeKey, "dark");
             }
         })();
     </script><script>
@@ -365,7 +365,7 @@
 </div>
 </div><p>业务上需要<code>username</code>上这个唯一索引，同时当业务需要删除数据时只能软删除，方便数据溯源与恢复。</p>
 <h2 id="2-遇到的问题">2. 遇到的问题</h2>
-<p>当时只考虑到业务语义上<code>username</code>需要唯一索引，写完代码后用postman进行测试，插入一条数据，再删除这条数据。再插入一条相同用户名的数据时，
+<p>当时只考虑到业务语义上<code>username</code>需要唯一索引，写完代码后用 postman 进行测试，插入一条数据，再删除这条数据。再插入一条相同用户名的数据时，
 接口报错唯一索引冲突。参考<code>go-zero</code>微信群的建议，给软删除字段<code>is_delete</code>也加上唯一索引。插入一条数据，再删除这条数据。再插入一条相同用户名的数据，
 再删除这条数据时，接口还是报错唯一索引冲突。</p>
 <h2 id="3-再加索引">3. 再加索引</h2>
@@ -374,11 +374,11 @@
 <ul>
 <li>有唯一索引需要的字段必须加上唯一索引，不能因为业务上有校验就删除该索引。</li>
 <li>同时删除数据时应该使用软删除。</li>
-<li>但是有一点可以优化，就是标记软删除的字段不必只是0和1，当删除数据时，更新该字段为该记录的<code>主键值</code>。</li>
+<li>但是有一点可以优化，就是标记软删除的字段不必只是 0 和 1，当删除数据时，更新该字段为该记录的<code>主键值</code>。</li>
 </ul>
 <h2 id="4-又遇到问题">4. 又遇到问题</h2>
 <p>因为<code>go-zero</code>的数据库操作代码是靠代码生成的，会根据索引字段自动生成方法名，当有唯一索引需求是，自动生成的方法名会带上索引的所有字段，包括
-软删除字段，方法名格外尴尬不说，内部生成的代码还多判断了一次<code>is_delete = 0</code>，请教了looklook项目作者，这种需要fork <code>go-zero</code>源代码再自己进行魔改。</p>
+软删除字段，方法名格外尴尬不说，内部生成的代码还多判断了一次<code>is_delete = 0</code>，请教了 looklook 项目作者，这种需要 fork <code>go-zero</code>源代码再自己进行魔改。</p>
 
 </section>
 

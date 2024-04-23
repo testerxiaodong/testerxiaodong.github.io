@@ -10,7 +10,7 @@
 <meta property='og:description' content='JavaScript 简介 Javascript 是什么 是一种运行在客户端(浏览器)的编程语言，实现人机交互效果 JavaScript 应用场景 网页特效(事件监听) 表单验证(针对表单数据的合法性进行判断)'>
 <meta property='og:url' content='https://www.cengdong.store/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E4%B8%80/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='JavaScript' /><meta property='article:published_time' content='2024-04-06T19:02:31&#43;08:00'/><meta property='article:modified_time' content='2024-04-06T19:02:31&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='JavaScript' /><meta property='article:published_time' content='2024-04-20T06:34:54&#43;08:00'/><meta property='article:modified_time' content='2024-04-20T06:34:54&#43;08:00'/>
 <meta name="twitter:title" content="【JavaScript】JavaScript基础一">
 <meta name="twitter:description" content="JavaScript 简介 Javascript 是什么 是一种运行在客户端(浏览器)的编程语言，实现人机交互效果 JavaScript 应用场景 网页特效(事件监听) 表单验证(针对表单数据的合法性进行判断)">
     </head>
@@ -21,7 +21,7 @@
         (function() {
             const colorSchemeKey = 'StackColorScheme';
             if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "light");
+                localStorage.setItem(colorSchemeKey, "dark");
             }
         })();
     </script><script>
@@ -361,7 +361,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Apr 06, 2024</time>
+                <time class="article-time--published">Apr 20, 2024</time>
             </div>
         
 
@@ -452,7 +452,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;我是div标签&#34;</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;我是div标签&#39;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="页面弹出警告">页面弹出警告</h3>
@@ -461,7 +461,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;hello world&#34;</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="控制台输出内容">控制台输出内容</h3>
@@ -470,7 +470,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;hello world&#34;</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="输入语句">输入语句</h3>
@@ -479,7 +479,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;请输入您的年龄&#34;</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">prompt</span><span class="p">(</span><span class="s1">&#39;请输入您的年龄&#39;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="字面量">字面量</h3>
@@ -512,16 +512,16 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 声明变量
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">age</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">age</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 变量赋值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">age</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">age</span> <span class="o">=</span> <span class="mi">18</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 声明多个变量，不提倡，可读性不好
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&#34;xixi&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">number</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;xixi&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">number</span> <span class="o">=</span> <span class="mi">20</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 打印变量的值
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">age</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">age</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 变量声明的同时赋值，叫做变量的初始化
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&#34;cengdong&#34;</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;cengdong&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>注意事项：</p>
@@ -541,12 +541,12 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">number1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">number2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">tmp</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">tmp</span> <span class="o">=</span> <span class="nx">number1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">number1</span> <span class="o">=</span> <span class="nx">number2</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">number2</span> <span class="o">=</span> <span class="nx">tmp</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">number1</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">number2</span> <span class="o">=</span> <span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">tmp</span>
+</span></span><span class="line"><span class="cl"><span class="nx">tmp</span> <span class="o">=</span> <span class="nx">number1</span>
+</span></span><span class="line"><span class="cl"><span class="nx">number1</span> <span class="o">=</span> <span class="nx">number2</span>
+</span></span><span class="line"><span class="cl"><span class="nx">number2</span> <span class="o">=</span> <span class="nx">tmp</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="变量的本质与命名规则">变量的本质与命名规则</h3>
@@ -570,6 +570,8 @@
 <li>可以重复声明(不合理)</li>
 <li>变量提升、全局变量、没有块级作用域</li>
 </ul>
+<p>变量声明<code>优先使用 const</code>，如果发现变量需要修改，再使用 <code>let 替换</code>
+数组和对象等<code>引用数据类型</code>使用 <code>const</code> 声明</p>
 <h2 id="数组">数组</h2>
 <h3 id="数组的声明与初始化">数组的声明与初始化</h3>
 <p>数组可以存储<code>任意数据类型</code></p>
@@ -578,7 +580,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>数组相关术语：</p>
@@ -595,8 +597,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">COUNT</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">COUNT</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">COUNT</span> <span class="o">=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">COUNT</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>注意事项：</p>
@@ -709,12 +711,12 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="s2">&#34;1.1&#34;</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="s2">&#34;abc&#34;</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="s2">&#34;1.2&#34;</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="s2">&#34;1.2px&#34;</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="s2">&#34;1.2px&#34;</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="s2">&#34;abc1.2px&#34;</span><span class="p">));</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="s1">&#39;1.1&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;1.2&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;1.2px&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="s1">&#39;1.2px&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="s1">&#39;abc1.2px&#39;</span><span class="p">))</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="转换为字符串型">转换为字符串型</h4>
@@ -776,6 +778,32 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/javascriptwebapis%E4%B8%80/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【JavaScript】webAPIs一</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E5%9B%9B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【JavaScript】JavaScript基础四</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="">

@@ -17,7 +17,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;RabbitMQ is the most widely deployed open source message broker.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;直接把RabbitMQ官网的介绍抄过来：它是部署最广泛的消息代理&lt;/p&gt;
+&lt;p&gt;直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理&lt;/p&gt;
 &lt;h2 id=&#34;2-作用&#34;&gt;2. 作用&lt;/h2&gt;
 &lt;p&gt;消息代理中间件的作用：&lt;/p&gt;
 &lt;ul&gt;
@@ -34,14 +34,14 @@
 &lt;h2 id=&#34;4-系统架构&#34;&gt;4. 系统架构&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;生产者：消息发送方&lt;/li&gt;
-&lt;li&gt;channel：通信信道，一个连接里有多个可用信道（感觉是资源池），生产者和消费者都会与broker建立连接&lt;/li&gt;
-&lt;li&gt;exchange：交换机，生产者将消息发送给对应交换机（生产者只与交换机打交道），交换机通过routingKey将消息发送给消息队列&lt;/li&gt;
+&lt;li&gt;channel：通信信道，一个连接里有多个可用信道（感觉是资源池），生产者和消费者都会与 broker 建立连接&lt;/li&gt;
+&lt;li&gt;exchange：交换机，生产者将消息发送给对应交换机（生产者只与交换机打交道），交换机通过 routingKey 将消息发送给消息队列&lt;/li&gt;
 &lt;li&gt;queue：消息队列，存放消息的实体&lt;/li&gt;
 &lt;li&gt;消费者：从消息队列中消费消息&lt;/li&gt;
 &lt;li&gt;虚拟主机：多租户的资源隔离（不想深入，也不做过多了解）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;5-工作模式&#34;&gt;5. 工作模式&lt;/h2&gt;
-&lt;p&gt;RabbitMQ官方给出了七种工作模式&lt;/p&gt;
+&lt;p&gt;RabbitMQ 官方给出了七种工作模式&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Hello World&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Work Queues&lt;/code&gt;&lt;/li&gt;
@@ -51,8 +51,8 @@
 &lt;li&gt;&lt;code&gt;RPC&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Publisher confirms&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;6-安装rabbitmq&#34;&gt;6. 安装RabbitMQ&lt;/h2&gt;
-&lt;p&gt;我的虚拟机已经安装好&lt;code&gt;Docker&lt;/code&gt;，通过Docker安装带web可视化插件的&lt;code&gt;RabbitMQ&lt;/code&gt;，其中5672是服务端的端口，15672是web可视化的端口&lt;/p&gt;
+&lt;h2 id=&#34;6-安装-rabbitmq&#34;&gt;6. 安装 RabbitMQ&lt;/h2&gt;
+&lt;p&gt;我的虚拟机已经安装好&lt;code&gt;Docker&lt;/code&gt;，通过 Docker 安装带 web 可视化插件的&lt;code&gt;RabbitMQ&lt;/code&gt;，其中 5672 是服务端的端口，15672 是 web 可视化的端口&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -71,7 +71,7 @@
 	
 	
 &gt;
-访问web管理界面，用户名密码都是&lt;code&gt;guest&lt;/code&gt;&lt;/p&gt;
+访问 web 管理界面，用户名密码都是&lt;code&gt;guest&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://www.cengdong.store/images/WechatIMG76.jpg&#34;
 	
 	
@@ -86,7 +86,7 @@
 &lt;ul&gt;
 &lt;li&gt;创建目录：&lt;code&gt;mkdir rabbitmq-demo&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;初始化项目：&lt;code&gt;go mod init rabbitmq-demo&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;go客户端选用：老规矩，最多star的项目，虽然已经停止维护很久了&lt;a class=&#34;link&#34; href=&#34;github.com/streadway/amqp&#34; &gt;github.com/streadway/amqp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;go 客户端选用：老规矩，最多 star 的项目，虽然已经停止维护很久了&lt;a class=&#34;link&#34; href=&#34;github.com/streadway/amqp&#34; &gt;github.com/streadway/amqp&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;8-发送消息以简单模式为例&#34;&gt;8. 发送消息：以简单模式为例&lt;/h2&gt;
 &lt;p&gt;简单模式就是点对点的消息传输模型，官网称之为&lt;code&gt;Hello World&lt;/code&gt;模式。生产者发送消息给指定队列，消费者从指定队列消费消息，其中生产者以及消费者都绑定的是默认交换机。&lt;/p&gt;
@@ -255,7 +255,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;10-如何保障消息不丢失&#34;&gt;10. 如何保障消息不丢失&lt;/h2&gt;
 &lt;h3 id=&#34;101-消息应答机制&#34;&gt;10.1 消息应答机制&lt;/h3&gt;
-&lt;p&gt;RabbitMQ有两种消息应答机制：&lt;code&gt;自动应答&lt;/code&gt;和&lt;code&gt;手动应答&lt;/code&gt;，&lt;code&gt;自动应答&lt;/code&gt;即NOACK，不需要接收方回应ACK消息，默认是这种应答方式。要开启手动应答，首先要把channel.Consume方法的第三个参数设置为false&lt;/p&gt;
+&lt;p&gt;RabbitMQ 有两种消息应答机制：&lt;code&gt;自动应答&lt;/code&gt;和&lt;code&gt;手动应答&lt;/code&gt;，&lt;code&gt;自动应答&lt;/code&gt;即 NOACK，不需要接收方回应 ACK 消息，默认是这种应答方式。要开启手动应答，首先要把 channel.Consume 方法的第三个参数设置为 false&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -264,7 +264,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ch&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Channel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Consume&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;queue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;consumer&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;autoAck&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;exclusive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;noLocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;noWait&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;args&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;chan&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Delivery&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;还需要在消费消息时调用&lt;code&gt;Ack&lt;/code&gt;或&lt;code&gt;Reject&lt;/code&gt;或N&lt;code&gt;ack&lt;/code&gt;方法&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;还需要在消费消息时调用&lt;code&gt;Ack&lt;/code&gt;或&lt;code&gt;Reject&lt;/code&gt;或 N&lt;code&gt;ack&lt;/code&gt;方法&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -275,7 +275,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;102-消息持久化&#34;&gt;10.2 消息持久化&lt;/h3&gt;
 &lt;p&gt;要保障消息不丢失，就要保障消息的持久化，避免服务器故障或重启时内存中的消息丢失。消息持久化分为两部分：队列持久化、消息持久化。&lt;/p&gt;
-&lt;p&gt;队列持久化需要在声明队列时把参数durable传为true&lt;/p&gt;
+&lt;p&gt;队列持久化需要在声明队列时把参数 durable 传为 true&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -304,8 +304,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;103-生产方发布确认&#34;&gt;10.3 生产方发布确认&lt;/h3&gt;
-&lt;p&gt;生产方发布确认又叫&lt;code&gt;发布确认模式&lt;/code&gt;，是一种保障生产方能确认发布消息到Broker的机制&lt;/p&gt;
-&lt;p&gt;要开启发布确认模式需要调用channel.Conform方法&lt;/p&gt;
+&lt;p&gt;生产方发布确认又叫&lt;code&gt;发布确认模式&lt;/code&gt;，是一种保障生产方能确认发布消息到 Broker 的机制&lt;/p&gt;
+&lt;p&gt;要开启发布确认模式需要调用 channel.Conform 方法&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -523,7 +523,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;11-工作队列模式&#34;&gt;11. 工作队列模式&lt;/h2&gt;
 &lt;h3 id=&#34;111-公平调度的工作队列模式&#34;&gt;11.1 公平调度的工作队列模式&lt;/h3&gt;
-&lt;p&gt;工作队列模式类似于Kafka的消费者组，为了提高消费者的消费能力。生产者代码与简单模式一致，为了能从命令行控制要发送的消息，做一些改造。&lt;/p&gt;
+&lt;p&gt;工作队列模式类似于 Kafka 的消费者组，为了提高消费者的消费能力。生产者代码与简单模式一致，为了能从命令行控制要发送的消息，做一些改造。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -744,7 +744,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;消费者1
+&lt;p&gt;消费者 1
 &lt;img src=&#34;https://www.cengdong.store/images/%e6%b6%88%e8%b4%b9%e8%80%851.png&#34;
 	
 	
@@ -755,7 +755,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;消费者2
+&lt;p&gt;消费者 2
 &lt;img src=&#34;https://www.cengdong.store/images/%e6%b6%88%e8%b4%b9%e8%80%852.png&#34;
 	
 	
@@ -766,12 +766,12 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;消费者1消费了消息135，消费者2消费了消息24，这样提高了消费者消费的能力，并且由于工作队列模式默认的消息分发机制是轮询，官网称之为&lt;code&gt;Fair dispatch&lt;/code&gt;(公平调度)&lt;/p&gt;
+&lt;p&gt;消费者 1 消费了消息 135，消费者 2 消费了消息 24，这样提高了消费者消费的能力，并且由于工作队列模式默认的消息分发机制是轮询，官网称之为&lt;code&gt;Fair dispatch&lt;/code&gt;(公平调度)&lt;/p&gt;
 &lt;p&gt;当有多个消费者时，每个消费者的消费能力不一样，轮询的方式会有问题。&lt;/p&gt;
 &lt;h3 id=&#34;112-设置预取值的工作队列方式&#34;&gt;11.2 设置预取值的工作队列方式&lt;/h3&gt;
 &lt;p&gt;为了解决公平调度带来的问题，我们可以将预取计数设置为值&lt;code&gt;1&lt;/code&gt;。这告诉&lt;code&gt;RabbitMQ&lt;/code&gt;不要一次向一个&lt;code&gt;worker&lt;/code&gt;提供多条消息。&lt;/p&gt;
 &lt;p&gt;或者，换句话说，在&lt;code&gt;worker&lt;/code&gt;处理并确认前一条消息之前，不要向&lt;code&gt;worker&lt;/code&gt;发送新消息。相反，它会将其调度给下一个尚未繁忙的工作人员。&lt;/p&gt;
-&lt;p&gt;设置预取值需要调用channel.Qos方法&lt;/p&gt;
+&lt;p&gt;设置预取值需要调用 channel.Qos 方法&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
