@@ -307,6 +307,7 @@
           <ol>
             <li><a href="#转换为数字型">转换为数字型</a></li>
             <li><a href="#转换为字符串型">转换为字符串型</a></li>
+            <li><a href="#转换为-boolean-类型">转换为 boolean 类型</a></li>
           </ol>
         </li>
       </ol>
@@ -689,7 +690,7 @@
 <li>除了<code>+</code>的其他运算符(比较运算符也会)，会把数字的<code>字符串</code>转换为 <code>number</code> 类型</li>
 <li><code>+</code>号作为<code>正号解析</code>可以<code>转换为数字型</code></li>
 <li>null 类型参与运算</li>
-<li>boolean 类型数据参与运算</li>
+<li>boolean 类型数据参与运算或者逻辑判断</li>
 </ul>
 <h3 id="显示转换">显示转换</h3>
 <h4 id="转换为数字型">转换为数字型</h4>
@@ -726,6 +727,16 @@
 <li>String()可以转换所有数据类型，toString()不能转换 null、undefined</li>
 <li>toString 可以传参，表示以多少进制的格式输出结果；String 方法传参无效</li>
 </ul>
+<h4 id="转换为-boolean-类型">转换为 boolean 类型</h4>
+<p>通过 Boolean()函数可以将其他类型数据转换为 boolean 类型</p>
+<ul>
+<li>数字型：除了 0 为 false，其他所有数字型都是 true</li>
+<li>字符串：除了空字符串为 false，其他所有字符串都是 true</li>
+<li>null：false</li>
+<li>undefined：false</li>
+<li>NaN：false</li>
+</ul>
+<p>注意事项：<code>NaN == undefined</code>为 true，<code>NaN === undefined</code>为 false</p>
 
 </section>
 
@@ -765,6 +776,19 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E4%B8%89/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【JavaScript】JavaScript基础三</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="">
