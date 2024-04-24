@@ -569,17 +569,24 @@
 <p>定时器可以<code>开启</code>和<code>关闭</code>：</p>
 <ul>
 <li><code>setInterval(函数, 间隔时间(单位是毫秒))</code>开启定时器</li>
+<li><code>clearInterval(定时器id号)</code>关闭定时器</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 定义函数
@@ -590,6 +597,12 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1">// 定时器有一个返回值id全剧唯一
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// setInterval可以传入匿名函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">m</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;定时器匿名函数&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 关闭定时器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -631,6 +644,19 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/javascriptwebapis%E4%BA%8C/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【JavaScript】webAPIs二</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="">

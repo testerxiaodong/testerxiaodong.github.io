@@ -7,7 +7,130 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Tue, 23 Apr 2024 19:11:09 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 24 Apr 2024 05:30:49 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【JavaScript】webAPIs二</title>
+        <link>https://www.cengdong.store/p/javascriptwebapis%E4%BA%8C/</link>
+        <pubDate>Wed, 24 Apr 2024 05:30:49 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/javascriptwebapis%E4%BA%8C/</guid>
+        <description>&lt;h2 id=&#34;事件监听&#34;&gt;事件监听&lt;/h2&gt;
+&lt;h3 id=&#34;事件监听三要素&#34;&gt;事件监听三要素&lt;/h3&gt;
+&lt;p&gt;目标：给 &lt;code&gt;DOM 元素&lt;/code&gt;添加事件监听&lt;/p&gt;
+&lt;p&gt;事件是编程世界发生的&lt;code&gt;动作&lt;/code&gt;或者&lt;code&gt;事情&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;事件监听是让程序&lt;code&gt;检测事件&lt;/code&gt;的发生，调用函数&lt;code&gt;响应事件&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;语法：&lt;code&gt;元素对象.addEventListener(&#39;事件类型&#39;, 要执行的函数)&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取元素
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;btn&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;querySelector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;.btn&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 绑定事件
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 事件监听三要素：事件源、事件类型、响应函数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;btn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;addEventListener&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;click&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;我被点击了&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;事件监听版本&#34;&gt;事件监听版本&lt;/h3&gt;
+&lt;p&gt;事件监听有两个不同的版本：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L0 版本&lt;code&gt;网页元素.on事件类型&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;L2 版本&lt;code&gt;网页元素.addEventListener&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;两个版本的区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L0 版本&lt;code&gt;相同类型事件&lt;/code&gt;会&lt;code&gt;发生覆盖&lt;/code&gt;，L2 版本不会&lt;/li&gt;
+&lt;li&gt;L0 版本只有&lt;code&gt;事件冒泡&lt;/code&gt;，没有&lt;code&gt;事件捕获&lt;/code&gt;特性，L2 版本都有&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;事件类型&#34;&gt;事件类型&lt;/h3&gt;
+&lt;p&gt;事件类型主要有四大类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;鼠标
+&lt;ul&gt;
+&lt;li&gt;鼠标点击(click)&lt;/li&gt;
+&lt;li&gt;鼠标经过(mouseenter)&lt;/li&gt;
+&lt;li&gt;鼠标离开(mouseleave)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;input 表单
+&lt;ul&gt;
+&lt;li&gt;focus(获得焦点)&lt;/li&gt;
+&lt;li&gt;blur(失去焦点)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;键盘
+&lt;ul&gt;
+&lt;li&gt;keydown(键盘按下)&lt;/li&gt;
+&lt;li&gt;keyup(键盘抬起)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;表单输入
+&lt;ul&gt;
+&lt;li&gt;input(输入文本)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;事件对象-event&#34;&gt;事件对象 event&lt;/h3&gt;
+&lt;h4 id=&#34;事件对象是什么&#34;&gt;事件对象是什么&lt;/h4&gt;
+&lt;p&gt;是一个&lt;code&gt;对象&lt;/code&gt;，里面有&lt;code&gt;事件触发时&lt;/code&gt;的&lt;code&gt;相关信息&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;是&lt;code&gt;addEventListener&lt;/code&gt;函数&lt;code&gt;回调函数&lt;/code&gt;的&lt;code&gt;第一个参数&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;事件对象常见属性&#34;&gt;事件对象常见属性&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;属性名&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;type&lt;/td&gt;
+&lt;td&gt;获取当前事件类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;clientX/clientY&lt;/td&gt;
+&lt;td&gt;获取光标相对于浏览器可见窗口左上角位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;offsetX/offsetY&lt;/td&gt;
+&lt;td&gt;获取光标相对于当前 DOM 元素左上角的位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;key/code&lt;/td&gt;
+&lt;td&gt;用户按下的键盘键的值(现在不推荐使用 keyCode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;环境对象-this&#34;&gt;环境对象 this&lt;/h2&gt;
+&lt;p&gt;目标：能够分析判断函数运行在&lt;code&gt;不同环境&lt;/code&gt;中 &lt;code&gt;this&lt;/code&gt; 所&lt;code&gt;指代的对象&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;环境对象是什么&#34;&gt;环境对象是什么&lt;/h3&gt;
+&lt;p&gt;指的是函数内部特殊的变量 &lt;code&gt;this&lt;/code&gt; ，它代表着当前函数运行时&lt;code&gt;所处的环境&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;this 指向：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;函数的调用方式不同，this 指代的对象也不同&lt;/li&gt;
+&lt;li&gt;【谁调用， this 就是谁】 是判断 this 指向的&lt;code&gt;粗略规则&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;直接调用函数，其实相当于是 window.函数，所以 this 指代 window&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;回调函数&#34;&gt;回调函数&lt;/h2&gt;
+&lt;p&gt;目标：能够说出&lt;code&gt;什么是回调函数&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;定义：当一个函数当做参数来传递给另外一个函数的时候，这个函数就是回调函数&lt;/p&gt;
+&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;把函数当做另外一个函数的参数传递，这个函数就叫回调函数&lt;/li&gt;
+&lt;li&gt;回调函数&lt;code&gt;本质还是函数&lt;/code&gt;，只不过把它&lt;code&gt;当成参数使用&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;匿名函数&lt;/code&gt;做为回调函数比较常见&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>【JavaScript】webAPIs一</title>
         <link>https://www.cengdong.store/p/javascriptwebapis%E4%B8%80/</link>
         <pubDate>Tue, 23 Apr 2024 19:11:09 +0800</pubDate>
@@ -220,17 +343,24 @@
 &lt;p&gt;定时器可以&lt;code&gt;开启&lt;/code&gt;和&lt;code&gt;关闭&lt;/code&gt;：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;setInterval(函数, 间隔时间(单位是毫秒))&lt;/code&gt;开启定时器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;clearInterval(定时器id号)&lt;/code&gt;关闭定时器&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 定义函数
@@ -241,6 +371,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 定时器有一个返回值id全剧唯一
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setInterval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;n&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// setInterval可以传入匿名函数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;m&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setInterval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;定时器匿名函数&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 关闭定时器
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;clearInterval&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
