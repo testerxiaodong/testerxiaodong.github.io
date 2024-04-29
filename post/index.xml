@@ -7,7 +7,210 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Thu, 25 Apr 2024 05:17:46 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 30 Apr 2024 05:08:37 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【JavaScript】webAPIs五</title>
+        <link>https://www.cengdong.store/p/javascriptwebapis%E4%BA%94/</link>
+        <pubDate>Tue, 30 Apr 2024 05:08:37 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/javascriptwebapis%E4%BA%94/</guid>
+        <description>&lt;h2 id=&#34;window-对象&#34;&gt;window 对象&lt;/h2&gt;
+&lt;h3 id=&#34;bom浏览器对象模型&#34;&gt;BOM(浏览器对象模型)&lt;/h3&gt;
+&lt;h3 id=&#34;定时器-延迟函数&#34;&gt;定时器-延迟函数&lt;/h3&gt;
+&lt;h3 id=&#34;js-执行机制&#34;&gt;Js 执行机制&lt;/h3&gt;
+&lt;h3 id=&#34;location-对象&#34;&gt;location 对象&lt;/h3&gt;
+&lt;h3 id=&#34;navigator-对象&#34;&gt;navigator 对象&lt;/h3&gt;
+&lt;h3 id=&#34;history-对象&#34;&gt;history 对象&lt;/h3&gt;
+&lt;h2 id=&#34;本地存储&#34;&gt;本地存储&lt;/h2&gt;
+&lt;h3 id=&#34;本地存储介绍&#34;&gt;本地存储介绍&lt;/h3&gt;
+&lt;h3 id=&#34;本地存储分类&#34;&gt;本地存储分类&lt;/h3&gt;
+&lt;h3 id=&#34;存储复杂数据类型&#34;&gt;存储复杂数据类型&lt;/h3&gt;
+</description>
+        </item>
+        <item>
+        <title>【JavaScript】webAPIs四</title>
+        <link>https://www.cengdong.store/p/javascriptwebapis%E5%9B%9B/</link>
+        <pubDate>Tue, 30 Apr 2024 04:12:05 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/javascriptwebapis%E5%9B%9B/</guid>
+        <description>&lt;h2 id=&#34;日期对象&#34;&gt;日期对象&lt;/h2&gt;
+&lt;h3 id=&#34;实例化&#34;&gt;实例化&lt;/h3&gt;
+&lt;p&gt;时间对象实例化的两种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;获得当前时间：&lt;code&gt;const date = new Date()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获得指定时间：&lt;code&gt;const date = new Date(&#39;2008-08-08&#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;时间对象方法&#34;&gt;时间对象方法&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;getFullYear()&lt;/td&gt;
+&lt;td&gt;获得年份&lt;/td&gt;
+&lt;td&gt;获取四位年份&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;getMonth()&lt;/td&gt;
+&lt;td&gt;获得月份&lt;/td&gt;
+&lt;td&gt;取值为 0 ~ 11&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;getDate()&lt;/td&gt;
+&lt;td&gt;获取月份中的每一天&lt;/td&gt;
+&lt;td&gt;不同月份取值也不相同&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;getDay()&lt;/td&gt;
+&lt;td&gt;获取星期&lt;/td&gt;
+&lt;td&gt;取值为 0 ~ 6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;getHours()&lt;/td&gt;
+&lt;td&gt;获取小时&lt;/td&gt;
+&lt;td&gt;取值为 0 ~ 23&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;getMinutes()&lt;/td&gt;
+&lt;td&gt;获取分钟&lt;/td&gt;
+&lt;td&gt;取值为 0 ~ 59&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;getSeconds()&lt;/td&gt;
+&lt;td&gt;获取秒&lt;/td&gt;
+&lt;td&gt;取值为 0 ~ 59&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;时间戳&#34;&gt;时间戳&lt;/h3&gt;
+&lt;p&gt;获得时间戳的三种方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对象方法：&lt;code&gt;date.getTime()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;隐式转换：&lt;code&gt;const timeStamp = +new Date()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;无需实例化：&lt;code&gt;Date.now()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;节点操作&#34;&gt;节点操作&lt;/h2&gt;
+&lt;h3 id=&#34;dom-节点&#34;&gt;DOM 节点&lt;/h3&gt;
+&lt;p&gt;有三种节点类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;元素节点&lt;/li&gt;
+&lt;li&gt;属性节点&lt;/li&gt;
+&lt;li&gt;文本节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;查找节点&#34;&gt;查找节点&lt;/h3&gt;
+&lt;h4 id=&#34;父节点&#34;&gt;父节点&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取子节点
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;son&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;querySelector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;.dad&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 根据子节点获取父节点
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;son&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;parentNode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;子节点&#34;&gt;子节点&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 获取父节点
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;dad&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;querySelector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;.dad&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 有两种方式获取子节点
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 元素.childNodes：获得所有子节点、包括文本节点（空格、换行）、注释节点等
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 元素.children：1.仅获得所有元素节点 2. 返回的还是一个伪数组
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;兄弟节点&#34;&gt;兄弟节点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;下一个兄弟节点：nextElementSibling 属性&lt;/li&gt;
+&lt;li&gt;上一个兄弟节点：previousElementSibling 属性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;增加节点&#34;&gt;增加节点&lt;/h3&gt;
+&lt;h4 id=&#34;craeteelement&#34;&gt;craeteElement&lt;/h4&gt;
+&lt;p&gt;新增 DOM 节点分为两个步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;创建节点：&lt;code&gt;createElement(&#39;标签名&#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;插入节点：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;父元素.appendChild(要插入的元素)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;父元素.insertBefore(要插入的元素, 在哪个元素前面)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;clonenode&#34;&gt;cloneNode&lt;/h4&gt;
+&lt;p&gt;语法：&lt;code&gt;元素.cloneNode(false)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;cloneNode 会克隆出一个&lt;code&gt;跟原标签一样的元素&lt;/code&gt;，括号内传入&lt;code&gt;布尔值&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若为 true，则代表克隆时会包含后代节点一起克隆&lt;/li&gt;
+&lt;li&gt;若为 false，则代表克隆时不包含后代节点&lt;/li&gt;
+&lt;li&gt;默认为 false&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;删除节点&#34;&gt;删除节点&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;若一个节点在页面中已不需要时，可以删除它&lt;/li&gt;
+&lt;li&gt;在 JavaScript 原生 DOM 操作中，要删除元素必须通过父元素删除&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;语法：&lt;code&gt;父元素.removeChild(要删除的元素)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;注意事项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如&lt;code&gt;不存在&lt;/code&gt;父子关系则&lt;code&gt;删除不成功&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除节点和隐藏节点（display:none） 有区别的： 隐藏节点还是存在的，但是删除，则从 html 中删除节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;m-端事件&#34;&gt;M 端事件&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;触屏 touch 事件&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;touchstart&lt;/td&gt;
+&lt;td&gt;手指触摸到一个 DOM 元素触发&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;touchmove&lt;/td&gt;
+&lt;td&gt;手指在一个 DOM 元素上滑动触发&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;touchend&lt;/td&gt;
+&lt;td&gt;手指从一个 DOM 元素移开触发&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;js-插件&#34;&gt;JS 插件&lt;/h2&gt;
+&lt;p&gt;插件: 就是&lt;code&gt;别人写好的一些代码&lt;/code&gt;,我们只需要&lt;code&gt;复制对应的代码&lt;/code&gt;,就可以直接&lt;code&gt;实现对应的效果&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;学习插件的基本过程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;熟悉官网,了解这个插件可以完成什么需求 &lt;a class=&#34;link&#34; href=&#34;https://www.swiper.com.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.swiper.com.cn/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;看在线演示,找到符合自己需求的 demo &lt;a class=&#34;link&#34; href=&#34;https://www.swiper.com.cn/demo/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.swiper.com.cn/demo/index.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;查看基本使用流程 &lt;a class=&#34;link&#34; href=&#34;https://www.swiper.com.cn/usage/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.swiper.com.cn/usage/index.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;查看 APi 文档,去配置自己的插件 &lt;a class=&#34;link&#34; href=&#34;https://www.swiper.com.cn/api/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.swiper.com.cn/api/index.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注意: 多个 swiper 同时使用的时候,类名需要注意区分&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>【JavaScript】webAPIs三</title>
         <link>https://www.cengdong.store/p/javascriptwebapis%E4%B8%89/</link>
         <pubDate>Thu, 25 Apr 2024 05:17:46 +0800</pubDate>

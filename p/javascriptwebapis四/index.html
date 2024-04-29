@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='数组 数组的声明和初始化 字面量声明数组 1 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9] 使用 new Array 构造函数声明数组 1 let arr = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9) 数组操作 查询 通过下标/索引'>
-<title>【JavaScript】JavaScript基础三</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='日期对象 实例化 时间对象实例化的两种方式： 获得当前时间：const date = new Date() 获得指定时间：const date = new Date(&#39;2008-08-08&#39;) 时间对象方法 方法 作用 说明 getFullYear() 获得年份 获'>
+<title>【JavaScript】webAPIs四</title>
 
-<link rel='canonical' href='https://www.cengdong.store/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E4%B8%89/'>
+<link rel='canonical' href='https://www.cengdong.store/p/javascriptwebapis%E5%9B%9B/'>
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【JavaScript】JavaScript基础三'>
-<meta property='og:description' content='数组 数组的声明和初始化 字面量声明数组 1 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9] 使用 new Array 构造函数声明数组 1 let arr = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9) 数组操作 查询 通过下标/索引'>
-<meta property='og:url' content='https://www.cengdong.store/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E4%B8%89/'>
+<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【JavaScript】webAPIs四'>
+<meta property='og:description' content='日期对象 实例化 时间对象实例化的两种方式： 获得当前时间：const date = new Date() 获得指定时间：const date = new Date(&#39;2008-08-08&#39;) 时间对象方法 方法 作用 说明 getFullYear() 获得年份 获'>
+<meta property='og:url' content='https://www.cengdong.store/p/javascriptwebapis%E5%9B%9B/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='JavaScript' /><meta property='article:published_time' content='2024-04-21T18:08:23&#43;08:00'/><meta property='article:modified_time' content='2024-04-21T18:08:23&#43;08:00'/>
-<meta name="twitter:title" content="【JavaScript】JavaScript基础三">
-<meta name="twitter:description" content="数组 数组的声明和初始化 字面量声明数组 1 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9] 使用 new Array 构造函数声明数组 1 let arr = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9) 数组操作 查询 通过下标/索引">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='JavaScript' /><meta property='article:published_time' content='2024-04-30T04:12:05&#43;08:00'/><meta property='article:modified_time' content='2024-04-30T04:12:05&#43;08:00'/>
+<meta name="twitter:title" content="【JavaScript】webAPIs四">
+<meta name="twitter:description" content="日期对象 实例化 时间对象实例化的两种方式： 获得当前时间：const date = new Date() 获得指定时间：const date = new Date(&#39;2008-08-08&#39;) 时间对象方法 方法 作用 说明 getFullYear() 获得年份 获">
     </head>
     <body class="
     article-page
@@ -245,40 +245,34 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#数组">数组</a>
+    <li><a href="#日期对象">日期对象</a>
       <ol>
-        <li><a href="#数组的声明和初始化">数组的声明和初始化</a>
-          <ol>
-            <li><a href="#字面量声明数组">字面量声明数组</a></li>
-            <li><a href="#使用-new-array-构造函数声明数组">使用 new Array 构造函数声明数组</a></li>
-          </ol>
-        </li>
-        <li><a href="#数组操作">数组操作</a>
-          <ol>
-            <li><a href="#查询">查询</a></li>
-            <li><a href="#修改">修改</a></li>
-            <li><a href="#新增">新增</a></li>
-            <li><a href="#删除">删除</a></li>
-          </ol>
-        </li>
+        <li><a href="#实例化">实例化</a></li>
+        <li><a href="#时间对象方法">时间对象方法</a></li>
+        <li><a href="#时间戳">时间戳</a></li>
       </ol>
     </li>
-    <li><a href="#函数">函数</a>
+    <li><a href="#节点操作">节点操作</a>
       <ol>
-        <li><a href="#函数的作用">函数的作用</a></li>
-        <li><a href="#函数定义">函数定义</a></li>
-        <li><a href="#函数的参数以及默认参数">函数的参数以及默认参数</a></li>
-        <li><a href="#函数返回值">函数返回值</a></li>
-        <li><a href="#变量的作用域">变量的作用域</a></li>
-        <li><a href="#匿名函数">匿名函数</a>
+        <li><a href="#dom-节点">DOM 节点</a></li>
+        <li><a href="#查找节点">查找节点</a>
           <ol>
-            <li><a href="#函数表达式">函数表达式</a></li>
-            <li><a href="#立即执行函数">立即执行函数</a></li>
+            <li><a href="#父节点">父节点</a></li>
+            <li><a href="#子节点">子节点</a></li>
+            <li><a href="#兄弟节点">兄弟节点</a></li>
           </ol>
         </li>
-        <li><a href="#逻辑中断">逻辑中断</a></li>
+        <li><a href="#增加节点">增加节点</a>
+          <ol>
+            <li><a href="#craeteelement">craeteElement</a></li>
+            <li><a href="#clonenode">cloneNode</a></li>
+          </ol>
+        </li>
+        <li><a href="#删除节点">删除节点</a></li>
       </ol>
     </li>
+    <li><a href="#m-端事件">M 端事件</a></li>
+    <li><a href="#js-插件">JS 插件</a></li>
   </ol>
 </nav>
         </div>
@@ -306,7 +300,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E4%B8%89/">【JavaScript】JavaScript基础三</a>
+            <a href="/p/javascriptwebapis%E5%9B%9B/">【JavaScript】webAPIs四</a>
         </h2>
     
         
@@ -328,7 +322,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Apr 21, 2024</time>
+                <time class="article-time--published">Apr 30, 2024</time>
             </div>
         
 
@@ -358,30 +352,77 @@
     <section class="article-content">
     
     
-    <h2 id="数组">数组</h2>
-<h3 id="数组的声明和初始化">数组的声明和初始化</h3>
-<h4 id="字面量声明数组">字面量声明数组</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="使用-new-array-构造函数声明数组">使用 new Array 构造函数声明数组</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="数组操作">数组操作</h3>
-<h4 id="查询">查询</h4>
-<p>通过<code>下标/索引</code>的方式访问数组元素</p>
-<p>JavasScript 数组<code>索引越界不会报错</code>，<code>只会返回undefined</code></p>
+    <h2 id="日期对象">日期对象</h2>
+<h3 id="实例化">实例化</h3>
+<p>时间对象实例化的两种方式：</p>
+<ul>
+<li>获得当前时间：<code>const date = new Date()</code></li>
+<li>获得指定时间：<code>const date = new Date('2008-08-08')</code></li>
+</ul>
+<h3 id="时间对象方法">时间对象方法</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getFullYear()</td>
+<td>获得年份</td>
+<td>获取四位年份</td>
+</tr>
+<tr>
+<td>getMonth()</td>
+<td>获得月份</td>
+<td>取值为 0 ~ 11</td>
+</tr>
+<tr>
+<td>getDate()</td>
+<td>获取月份中的每一天</td>
+<td>不同月份取值也不相同</td>
+</tr>
+<tr>
+<td>getDay()</td>
+<td>获取星期</td>
+<td>取值为 0 ~ 6</td>
+</tr>
+<tr>
+<td>getHours()</td>
+<td>获取小时</td>
+<td>取值为 0 ~ 23</td>
+</tr>
+<tr>
+<td>getMinutes()</td>
+<td>获取分钟</td>
+<td>取值为 0 ~ 59</td>
+</tr>
+<tr>
+<td>getSeconds()</td>
+<td>获取秒</td>
+<td>取值为 0 ~ 59</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="时间戳">时间戳</h3>
+<p>获得时间戳的三种方式：</p>
+<ul>
+<li>对象方法：<code>date.getTime()</code></li>
+<li>隐式转换：<code>const timeStamp = +new Date()</code></li>
+<li>无需实例化：<code>Date.now()</code></li>
+</ul>
+<h2 id="节点操作">节点操作</h2>
+<h3 id="dom-节点">DOM 节点</h3>
+<p>有三种节点类型：</p>
+<ul>
+<li>元素节点</li>
+<li>属性节点</li>
+<li>文本节点</li>
+</ul>
+<h3 id="查找节点">查找节点</h3>
+<h4 id="父节点">父节点</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -390,13 +431,13 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 获取子节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">son</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.dad&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 根据子节点获取父节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">son</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>数组求和</p>
+</div><h4 id="子节点">子节点</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -404,131 +445,88 @@
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 获取父节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">dad</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.dad&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 有两种方式获取子节点
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 元素.childNodes：获得所有子节点、包括文本节点（空格、换行）、注释节点等
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 元素.children：1.仅获得所有元素节点 2. 返回的还是一个伪数组
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="修改">修改</h4>
-<p>数组[索引] = 新值</p>
-<h4 id="新增">新增</h4>
-<p><code>arr.push()</code>将一个或者多个元素添加到元素<code>末尾</code>，并且返回<code>新数组的长度</code></p>
-<p><code>arr.unshift()</code>将一个或者多个元素添加到元素<code>开头</code>，并且返回<code>新数组的长度</code></p>
-<h4 id="删除">删除</h4>
-<p><code>arr.pop()</code>方法删除数组中<code>最后一个元素</code>，并且<code>返回删除的元素</code>(当数组为空时返回<code>undefined</code>)
-<code>arr.shift()</code>方法删除数组中<code>第一个元素</code>，并且<code>返回删除的元素</code>(当数组为空时返回<code>undefined</code>)</p>
-<p>就地删除：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">splice</span><span class="p">(</span><span class="nx">start</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nx">splice</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">deleteCount</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nx">splice</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">deleteCount</span><span class="p">,</span> <span class="nx">item1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nx">splice</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">deleteCount</span><span class="p">,</span> <span class="nx">item1</span><span class="p">,</span> <span class="nx">item2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nx">splice</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">deleteCount</span><span class="p">,</span> <span class="nx">item1</span><span class="p">,</span> <span class="nx">item2</span><span class="p">,</span> <span class="cm">/* …, */</span> <span class="nx">itemN</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="函数">函数</h2>
-<h3 id="函数的作用">函数的作用</h3>
-<p>通过封装，提高代码复用性</p>
-<h3 id="函数定义">函数定义</h3>
-<p><code>function 函数名(参数) { 函数体  return 返回值}</code></p>
-<p>函数命名规范：</p>
+</div><h4 id="兄弟节点">兄弟节点</h4>
 <ul>
-<li>和变量命名基本一致</li>
-<li>小驼峰命名法</li>
-<li>前缀应该为动词</li>
+<li>下一个兄弟节点：nextElementSibling 属性</li>
+<li>上一个兄弟节点：previousElementSibling 属性</li>
 </ul>
-<p>函数调用：<code>函数名(参数列表)</code></p>
-<h3 id="函数的参数以及默认参数">函数的参数以及默认参数</h3>
-<p>术语：</p>
+<h3 id="增加节点">增加节点</h3>
+<h4 id="craeteelement">craeteElement</h4>
+<p>新增 DOM 节点分为两个步骤：</p>
 <ul>
-<li>形参与实参</li>
-<li>缺省参数：定义时<code>等号赋值</code></li>
+<li>创建节点：<code>createElement('标签名')</code></li>
+<li>插入节点：
+<ul>
+<li><code>父元素.appendChild(要插入的元素)</code></li>
+<li><code>父元素.insertBefore(要插入的元素, 在哪个元素前面)</code></li>
 </ul>
+</li>
+</ul>
+<h4 id="clonenode">cloneNode</h4>
+<p>语法：<code>元素.cloneNode(false)</code></p>
+<p>cloneNode 会克隆出一个<code>跟原标签一样的元素</code>，括号内传入<code>布尔值</code></p>
 <p>注意事项：</p>
 <ul>
-<li>调用时<code>少传了参数</code>，则缺少的参数值为<code>undefined</code></li>
-<li>调用时<code>多传了参数，则多余的参数不做处理</code></li>
+<li>若为 true，则代表克隆时会包含后代节点一起克隆</li>
+<li>若为 false，则代表克隆时不包含后代节点</li>
+<li>默认为 false</li>
 </ul>
-<h3 id="函数返回值">函数返回值</h3>
+<h3 id="删除节点">删除节点</h3>
 <ul>
-<li>函数使用<code>return</code>关键字返回函数的返回值</li>
-<li><code>return</code>语句之后的代码不再执行，因此 return 下面不要写代码</li>
-<li><code>javascript</code>不支持<code>多返回值</code>，要返回多个值，应该使用容器(数组、字典等)对象返回</li>
-<li><code>没有书写return语句</code>的函数，其返回值是<code>undefined</code></li>
+<li>若一个节点在页面中已不需要时，可以删除它</li>
+<li>在 JavaScript 原生 DOM 操作中，要删除元素必须通过父元素删除</li>
 </ul>
-<h3 id="变量的作用域">变量的作用域</h3>
+<p>语法：<code>父元素.removeChild(要删除的元素)</code></p>
+<p>注意事项：</p>
 <ul>
-<li>局部作用域(函数内部<code>let</code>定义)</li>
-<li>全局作用域(函数外部<code>let</code>定义)</li>
-<li>变量向上查找机制，就近一致原则</li>
+<li>如<code>不存在</code>父子关系则<code>删除不成功</code></li>
+<li>删除节点和隐藏节点（display:none） 有区别的： 隐藏节点还是存在的，但是删除，则从 html 中删除节点</li>
 </ul>
-<h3 id="匿名函数">匿名函数</h3>
-<p>函数既可以作为<code>参数</code>也可以作为<code>返回值</code></p>
-<h4 id="函数表达式">函数表达式</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fn</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>函数表达式与具名函数的不同之处：</p>
+<h2 id="m-端事件">M 端事件</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>触屏 touch 事件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>touchstart</td>
+<td>手指触摸到一个 DOM 元素触发</td>
+</tr>
+<tr>
+<td>touchmove</td>
+<td>手指在一个 DOM 元素上滑动触发</td>
+</tr>
+<tr>
+<td>touchend</td>
+<td>手指从一个 DOM 元素移开触发</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="js-插件">JS 插件</h2>
+<p>插件: 就是<code>别人写好的一些代码</code>,我们只需要<code>复制对应的代码</code>,就可以直接<code>实现对应的效果</code></p>
+<p>学习插件的基本过程：</p>
 <ul>
-<li>具名函数的<code>调用位置随意</code></li>
-<li>函数表达式必须<code>先声明</code>，<code>再使用</code></li>
-</ul>
-<h4 id="立即执行函数">立即执行函数</h4>
-<p>立即执行函数是为了<code>避免全局变量的污染</code></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 第一种写法
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">;(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{})()</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 第二种写法
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">;(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{})()</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>带参数的立即执行函数：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="p">;(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">})(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="逻辑中断">逻辑中断</h3>
-<ul>
-<li>逻辑与<code>左边为 false</code> 就中断，两边都为真时取<code>后面的值</code></li>
-<li>逻辑或<code>左边为 true</code> 时就中断。两边都为真时取<code>前面的值</code></li>
+<li>熟悉官网,了解这个插件可以完成什么需求 <a class="link" href="https://www.swiper.com.cn/"  target="_blank" rel="noopener"
+    >https://www.swiper.com.cn/</a></li>
+<li>看在线演示,找到符合自己需求的 demo <a class="link" href="https://www.swiper.com.cn/demo/index.html"  target="_blank" rel="noopener"
+    >https://www.swiper.com.cn/demo/index.html</a></li>
+<li>查看基本使用流程 <a class="link" href="https://www.swiper.com.cn/usage/index.html"  target="_blank" rel="noopener"
+    >https://www.swiper.com.cn/usage/index.html</a></li>
+<li>查看 APi 文档,去配置自己的插件 <a class="link" href="https://www.swiper.com.cn/api/index.html"  target="_blank" rel="noopener"
+    >https://www.swiper.com.cn/api/index.html</a></li>
+<li>注意: 多个 swiper 同时使用的时候,类名需要注意区分</li>
 </ul>
 
 </section>
@@ -585,19 +583,6 @@
             
                 
 <article class="">
-    <a href="/p/javascriptwebapis%E5%9B%9B/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【JavaScript】webAPIs四</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
     <a href="/p/javascriptwebapis%E4%B8%89/">
         
         
@@ -630,6 +615,19 @@
 
         <div class="article-details">
             <h2 class="article-title">【JavaScript】webAPIs一</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/javascriptjavascript%E5%9F%BA%E7%A1%80%E5%9B%9B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【JavaScript】JavaScript基础四</h2>
         </div>
     </a>
 </article>
