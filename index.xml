@@ -15,16 +15,182 @@
         <guid>https://www.cengdong.store/p/javascriptwebapis%E4%BA%94/</guid>
         <description>&lt;h2 id=&#34;window-对象&#34;&gt;window 对象&lt;/h2&gt;
 &lt;h3 id=&#34;bom浏览器对象模型&#34;&gt;BOM(浏览器对象模型)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;BOM(Browser Object Model ) 是浏览器对象模型&lt;/li&gt;
+&lt;li&gt;window 对象是一个全局对象，也可以说是 JavaScript 中的顶级对象&lt;/li&gt;
+&lt;li&gt;像 document、alert()、console.log()这些都是 window 的属性，基本 BOM 的属性和方法都是 window 的。&lt;/li&gt;
+&lt;li&gt;所有通过 var 定义在全局作用域中的变量、函数都会变成 window 对象的属性和方法&lt;/li&gt;
+&lt;li&gt;window 对象下的属性和方法调用的时候可以省略 window&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;window 对象组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;document&lt;/li&gt;
+&lt;li&gt;location&lt;/li&gt;
+&lt;li&gt;navigation&lt;/li&gt;
+&lt;li&gt;history&lt;/li&gt;
+&lt;li&gt;screen&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;定时器-延迟函数&#34;&gt;定时器-延迟函数&lt;/h3&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 设置延迟函数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;timerId&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;setTimeout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{},&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 清除延迟函数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;clearTimeout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;timerId&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;延迟函数与间歇函数对比：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;延时函数: 执行一次&lt;/li&gt;
+&lt;li&gt;间歇函数:每隔一段时间就执行一次,除非手动清除&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;js-执行机制&#34;&gt;Js 执行机制&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;JavaScript 语言的一大特点就是&lt;code&gt;单线程&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;HTML5 提出&lt;code&gt;Web Worker&lt;/code&gt;标准，允许 JavaScript 脚本创建&lt;code&gt;多个线程&lt;/code&gt;。于是，JS 中出现了同步和异步&lt;/li&gt;
+&lt;li&gt;同步任务都在主线程上执行，形成一个&lt;code&gt;执行栈&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;异步任务相关添加到&lt;code&gt;任务队列&lt;/code&gt;中&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;先执行执行栈&lt;/code&gt;中的同步任务，一旦执行栈中的所有同步任务执行完毕，系统就会&lt;code&gt;按次序读取任务队列&lt;/code&gt;中的异步任务，于是被读取的异步任务&lt;code&gt;结束等待状态&lt;/code&gt;，进入执行栈，开始执行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;异步任务分类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;普通事件，如 click、resize 等&lt;/li&gt;
+&lt;li&gt;资源加载，如 load、error 等&lt;/li&gt;
+&lt;li&gt;定时器，包括 setInterval、setTimeout 等&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;location-对象&#34;&gt;location 对象&lt;/h3&gt;
+&lt;p&gt;location 的数据类型是对象，它拆分并保存了 &lt;code&gt;URL 地址&lt;/code&gt;的各个组成部分&lt;/p&gt;
+&lt;p&gt;常用属性和方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;href 属性获取完整的 URL 地址，对其赋值时用于地址的跳转&lt;/li&gt;
+&lt;li&gt;search 属性获取地址中携带的参数，符号 ？后面部分&lt;/li&gt;
+&lt;li&gt;hash 属性获取地址中的啥希值，符号 # 后面部分&lt;/li&gt;
+&lt;li&gt;reload 方法用来刷新当前页面，传入参数 true 时表示强制刷新&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;navigator-对象&#34;&gt;navigator 对象&lt;/h3&gt;
-&lt;h3 id=&#34;history-对象&#34;&gt;history 对象&lt;/h3&gt;
+&lt;p&gt;navigator 的数据类型是对象，该对象下记录了&lt;code&gt;浏览器自身的相关信息&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;常用属性和方法：通过 &lt;code&gt;userAgent&lt;/code&gt; 检测浏览器的版本及平台&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 检测 userAgent（浏览器信息）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;userAgent&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;navigator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;userAgent&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// 验证是否为Android或iPhone
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;android&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;userAgent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;match&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sr&#34;&gt;/(Android);?[\s\/]+([\d.]+)?/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;iphone&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;userAgent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;match&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sr&#34;&gt;/(iPhone\sOS)\s([\d_]+)/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// 如果是Android或iPhone，则跳转至移动站点
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;android&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;iphone&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;location&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;href&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;http://m.itcast.cn&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;})()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;history-对象&#34;&gt;history 对象&lt;/h3&gt;
+&lt;p&gt;history 的数据类型是对象，主要管理历史记录， 该对象与浏览器地址栏的操作相对应，如&lt;code&gt;前进&lt;/code&gt;、&lt;code&gt;后退&lt;/code&gt;、&lt;code&gt;历史记录&lt;/code&gt;等&lt;/p&gt;
+&lt;p&gt;常用属性和方法：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;history 对象方法&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;back()&lt;/td&gt;
+&lt;td&gt;后退 1 步&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;forward()&lt;/td&gt;
+&lt;td&gt;前进 1 步&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;go(步数)&lt;/td&gt;
+&lt;td&gt;正数前进，负数后退&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;h2 id=&#34;本地存储&#34;&gt;本地存储&lt;/h2&gt;
 &lt;h3 id=&#34;本地存储介绍&#34;&gt;本地存储介绍&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;数据存储在用户浏览器中&lt;/li&gt;
+&lt;li&gt;设置、读取方便、甚至页面刷新不丢失数据&lt;/li&gt;
+&lt;li&gt;容量较大，&lt;code&gt;sessionStorage&lt;/code&gt; 和 &lt;code&gt;localStorage&lt;/code&gt; 约 5M 左右&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;本地存储分类&#34;&gt;本地存储分类&lt;/h3&gt;
+&lt;h4 id=&#34;localstorage&#34;&gt;localStorage&lt;/h4&gt;
+&lt;p&gt;可以将数据&lt;code&gt;永久存储在本地&lt;/code&gt;(用户的电脑), 除非&lt;code&gt;手动删除&lt;/code&gt;，否则&lt;code&gt;关闭页面也会存在&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;特性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以多窗口（页面）&lt;/li&gt;
+&lt;li&gt;共享（同一浏览器可以共享）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储/修改数据：&lt;code&gt;localSotrage.setItem(&#39;key&#39;, &#39;value&#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;获取数据：&lt;code&gt;localStorage.getItem(&#39;key&#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;删除数据：&lt;code&gt;localStorage.removeItem(&#39;key&#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;清空数据：&lt;code&gt;localStorage.clear()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;sessonstorage&#34;&gt;sessonStorage&lt;/h4&gt;
+&lt;p&gt;特性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;生命周期为关闭浏览器窗口&lt;/li&gt;
+&lt;li&gt;在同一个窗口(页面)下数据可以共享&lt;/li&gt;
+&lt;li&gt;以键值对的形式存储使用&lt;/li&gt;
+&lt;li&gt;用法跟 localStorage 基本相同&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;存储复杂数据类型&#34;&gt;存储复杂数据类型&lt;/h3&gt;
-</description>
+&lt;p&gt;本地只能存储字符串,无法存储&lt;code&gt;复杂数据类型&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;需要将复杂数据类型转换成&lt;code&gt;JSON字符串&lt;/code&gt;,在存储到本地&lt;/p&gt;
+&lt;p&gt;语法：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;obj&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;cengdong&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;age&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;18&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;gender&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;男&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 通过JSON.stringify序列化对象
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;localStorage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;setItem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;obj&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;JSON&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stringify&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;obj&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;localStorage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;getItem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;obj&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 通过JSON.parse反序列化字符串为对象
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;JSON&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;parse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
         </item>
         <item>
         <title>【JavaScript】webAPIs四</title>
