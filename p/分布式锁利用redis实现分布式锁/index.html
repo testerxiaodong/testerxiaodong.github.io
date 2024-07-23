@@ -13,6 +13,9 @@
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-09-28T09:30:39&#43;08:00'/><meta property='article:modified_time' content='2023-09-28T09:30:39&#43;08:00'/>
 <meta name="twitter:title" content="【分布式锁】利用Redis实现分布式锁">
 <meta name="twitter:description" content="1. go-zero 分布式锁实现 看下 go-zero 中 redis 分布式锁的实现 1 2 3 4 5 6 7 8 9 10 11 12 13 var ( lockScript = NewScript(`if redis.call(&amp;#34;GET&amp;#34;, KEYS[1]) == ARGV[1] then redis.call(&amp;#34;SET&amp;#34;, KEYS[1], ARGV[1], &amp;#34;PX&amp;#34;, ARGV[2]) return &amp;#34;OK&amp;#34; else return redis.call(&amp;#34;SET&amp;#34;, KEYS[1], ARGV[1], &amp;#34;NX&amp;#34;, &amp;#34;PX&amp;#34;, ARGV[2]) end`) delScript = NewScript(`if redis.call(&amp;#34;GET&amp;#34;, KEYS[1]) == ARGV[1] then return redis.call(&amp;#34;DEL&amp;#34;, KEYS[1])">
+  
+
+
     </head>
     <body class="
     article-page
@@ -21,7 +24,7 @@
         (function() {
             const colorSchemeKey = 'StackColorScheme';
             if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "dark");
+                localStorage.setItem(colorSchemeKey, "light");
             }
         })();
     </script><script>

@@ -7,7 +7,16 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Tue, 30 Apr 2024 05:08:37 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/tags/javascript/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 01 May 2024 22:49:12 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/tags/javascript/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【JavaScript】webAPIs六</title>
+        <link>https://www.cengdong.store/p/javascriptwebapis%E5%85%AD/</link>
+        <pubDate>Wed, 01 May 2024 22:49:12 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/javascriptwebapis%E5%85%AD/</guid>
+        <description>&lt;h2 id=&#34;正则表达式&#34;&gt;正则表达式&lt;/h2&gt;
+</description>
+        </item>
+        <item>
         <title>【JavaScript】webAPIs五</title>
         <link>https://www.cengdong.store/p/javascriptwebapis%E4%BA%94/</link>
         <pubDate>Tue, 30 Apr 2024 05:08:37 +0800</pubDate>
