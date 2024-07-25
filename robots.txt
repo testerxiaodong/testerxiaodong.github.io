@@ -1,4 +1,2 @@
 User-agent: *
 Sitemap: http://cengdong.store/sitemap.xml
-User-agent: Mediapartners-Google
-Disallow: /
