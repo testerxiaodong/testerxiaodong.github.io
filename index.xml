@@ -7,7 +7,39 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Tue, 23 Jul 2024 21:18:47 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 28 Nov 2024 21:56:37 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【CSS】css层叠规则</title>
+        <link>https://www.cengdong.store/p/csscss%E5%B1%82%E5%8F%A0%E8%A7%84%E5%88%99/</link>
+        <pubDate>Thu, 28 Nov 2024 21:56:37 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/csscss%E5%B1%82%E5%8F%A0%E8%A7%84%E5%88%99/</guid>
+        <description>&lt;h3 id=&#34;层叠规则&#34;&gt;层叠规则&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;比较重要性&lt;/li&gt;
+&lt;li&gt;比较特殊性&lt;/li&gt;
+&lt;li&gt;比较源次序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;重要性&#34;&gt;重要性&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;带有 important 的作者样式&lt;/li&gt;
+&lt;li&gt;带有 important 的默认样式&lt;/li&gt;
+&lt;li&gt;作者样式&lt;/li&gt;
+&lt;li&gt;浏览器默认样式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;特殊性&#34;&gt;特殊性&lt;/h4&gt;
+&lt;p&gt;特殊性是指样式的具体性质，具体来说，就是样式的来源和权重。&lt;/p&gt;
+&lt;p&gt;对每个样式分别计数：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;style 是否内联&lt;/li&gt;
+&lt;li&gt;id&lt;/li&gt;
+&lt;li&gt;属性/类/伪类&lt;/li&gt;
+&lt;li&gt;元素/伪元素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;源次序&#34;&gt;源次序&lt;/h4&gt;
+&lt;p&gt;后面覆盖前面，后面的样式会覆盖前面的样式。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【English】英语语法学习笔记</title>
         <link>https://www.cengdong.store/p/english%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <pubDate>Tue, 23 Jul 2024 21:18:47 +0800</pubDate>
