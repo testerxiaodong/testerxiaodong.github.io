@@ -13,8 +13,8 @@
         <pubDate>Thu, 28 Nov 2024 22:09:23 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/csscss%E5%B1%9E%E6%80%A7%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B/</guid>
-        <description>&lt;h3 id=&#34;css-属性计算过程&#34;&gt;CSS 属性计算过程&lt;/h3&gt;
-&lt;p&gt;CSS 属性计算过程是指元素从所有 CSS 属性都没有值到所有 CSS 属性都有值，中间经历的过程。&lt;/p&gt;
+        <description>&lt;h3 id=&#34;css-属性计算过程&#34;&gt;CSS 属性计算过程
+&lt;/h3&gt;&lt;p&gt;CSS 属性计算过程是指元素从所有 CSS 属性都没有值到所有 CSS 属性都有值，中间经历的过程。&lt;/p&gt;
 &lt;p&gt;CSS 属性计算过程可以分为以下几个步骤：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;确定声明值&lt;/li&gt;
@@ -22,19 +22,19 @@
 &lt;li&gt;继承&lt;/li&gt;
 &lt;li&gt;使用默认值&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;确定声明值&#34;&gt;确定声明值&lt;/h3&gt;
-&lt;p&gt;关注两个样式表：&lt;/p&gt;
+&lt;h3 id=&#34;确定声明值&#34;&gt;确定声明值
+&lt;/h3&gt;&lt;p&gt;关注两个样式表：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;作者样式表&lt;/li&gt;
 &lt;li&gt;浏览器默认样式表&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;找到这两个样式表中&lt;code&gt;没有冲突&lt;/code&gt;的样式，直接作为计算后的样式&lt;/p&gt;
-&lt;h3 id=&#34;层叠&#34;&gt;层叠&lt;/h3&gt;
-&lt;p&gt;层叠的样式经过层叠规则确定样式&lt;/p&gt;
-&lt;h3 id=&#34;继承&#34;&gt;继承&lt;/h3&gt;
-&lt;p&gt;有些样式通过继承获得，如字体、颜色、边框、背景等&lt;/p&gt;
-&lt;h3 id=&#34;使用默认值&#34;&gt;使用默认值&lt;/h3&gt;
-&lt;p&gt;如果没有其他样式可以继承，则使用浏览器默认样式&lt;/p&gt;
+&lt;h3 id=&#34;层叠&#34;&gt;层叠
+&lt;/h3&gt;&lt;p&gt;层叠的样式经过层叠规则确定样式&lt;/p&gt;
+&lt;h3 id=&#34;继承&#34;&gt;继承
+&lt;/h3&gt;&lt;p&gt;有些样式通过继承获得，如字体、颜色、边框、背景等&lt;/p&gt;
+&lt;h3 id=&#34;使用默认值&#34;&gt;使用默认值
+&lt;/h3&gt;&lt;p&gt;如果没有其他样式可以继承，则使用浏览器默认样式&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -43,21 +43,21 @@
         <pubDate>Thu, 28 Nov 2024 21:56:37 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/csscss%E5%B1%82%E5%8F%A0%E8%A7%84%E5%88%99/</guid>
-        <description>&lt;h3 id=&#34;层叠规则&#34;&gt;层叠规则&lt;/h3&gt;
-&lt;ul&gt;
+        <description>&lt;h3 id=&#34;层叠规则&#34;&gt;层叠规则
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;比较重要性&lt;/li&gt;
 &lt;li&gt;比较特殊性&lt;/li&gt;
 &lt;li&gt;比较源次序&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;重要性&#34;&gt;重要性&lt;/h4&gt;
-&lt;ul&gt;
+&lt;h4 id=&#34;重要性&#34;&gt;重要性
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;带有 important 的作者样式&lt;/li&gt;
 &lt;li&gt;带有 important 的默认样式&lt;/li&gt;
 &lt;li&gt;作者样式&lt;/li&gt;
 &lt;li&gt;浏览器默认样式&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;特殊性&#34;&gt;特殊性&lt;/h4&gt;
-&lt;p&gt;特殊性是指样式的具体性质，具体来说，就是样式的来源和权重。&lt;/p&gt;
+&lt;h4 id=&#34;特殊性&#34;&gt;特殊性
+&lt;/h4&gt;&lt;p&gt;特殊性是指样式的具体性质，具体来说，就是样式的来源和权重。&lt;/p&gt;
 &lt;p&gt;对每个样式分别计数：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;style 是否内联&lt;/li&gt;
@@ -65,8 +65,8 @@
 &lt;li&gt;属性/类/伪类&lt;/li&gt;
 &lt;li&gt;元素/伪元素&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;源次序&#34;&gt;源次序&lt;/h4&gt;
-&lt;p&gt;后面覆盖前面，后面的样式会覆盖前面的样式。&lt;/p&gt;
+&lt;h4 id=&#34;源次序&#34;&gt;源次序
+&lt;/h4&gt;&lt;p&gt;后面覆盖前面，后面的样式会覆盖前面的样式。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -75,26 +75,26 @@
         <pubDate>Sat, 20 Apr 2024 05:34:54 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFrem%E5%B8%83%E5%B1%80/</guid>
-        <description>&lt;h2 id=&#34;rem-基础&#34;&gt;rem 基础&lt;/h2&gt;
-&lt;h3 id=&#34;rem-的优点&#34;&gt;rem 的优点&lt;/h3&gt;
-&lt;ul&gt;
+        <description>&lt;h2 id=&#34;rem-基础&#34;&gt;rem 基础
+&lt;/h2&gt;&lt;h3 id=&#34;rem-的优点&#34;&gt;rem 的优点
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;文字&lt;/code&gt;能随着屏幕大小发生变化&lt;/li&gt;
 &lt;li&gt;元素&lt;code&gt;高度和宽度&lt;/code&gt;都能随着屏幕大小发生变化&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;rem-单位&#34;&gt;rem 单位&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;rem-单位&#34;&gt;rem 单位
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;rem&lt;/code&gt;(root em)是一个相对单位，类似于&lt;code&gt;em&lt;/code&gt;，em 是&lt;code&gt;父元素字体大小&lt;/code&gt;。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;rem&lt;/code&gt;的基准是相对于 &lt;code&gt;html 元素的字体大小&lt;/code&gt;。&lt;/li&gt;
 &lt;li&gt;父元素文字大小可能不一致， 但是整个页面只有一个 html，可以很好来控制&lt;code&gt;整个页面的元素大小&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;媒体查询&#34;&gt;媒体查询&lt;/h2&gt;
-&lt;h3 id=&#34;什么是媒体查询&#34;&gt;什么是媒体查询&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;媒体查询&#34;&gt;媒体查询
+&lt;/h2&gt;&lt;h3 id=&#34;什么是媒体查询&#34;&gt;什么是媒体查询
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;媒体查询（Media Query）是 CSS3 新语法&lt;/li&gt;
 &lt;li&gt;使用 &lt;code&gt;@media&lt;/code&gt; 查询，可以针对不同的媒体类型定义不同的样式&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;媒体查询语法&#34;&gt;媒体查询语法&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h3 id=&#34;媒体查询语法&#34;&gt;媒体查询语法
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -112,61 +112,61 @@
 &lt;li&gt;关键字 and not only&lt;/li&gt;
 &lt;li&gt;media feature 媒体特性 必须有小括号包含&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;mediatype-查询类型&#34;&gt;mediatype 查询类型&lt;/h4&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;值&lt;/th&gt;
-&lt;th&gt;解释说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;all&lt;/td&gt;
-&lt;td&gt;用于所有设备&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;print&lt;/td&gt;
-&lt;td&gt;用于打印机和打印预览&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;scree&lt;/td&gt;
-&lt;td&gt;用于电脑屏幕，平板电脑，智能手机等&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+&lt;h4 id=&#34;mediatype-查询类型&#34;&gt;mediatype 查询类型
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;值&lt;/th&gt;
+          &lt;th&gt;解释说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;all&lt;/td&gt;
+          &lt;td&gt;用于所有设备&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;print&lt;/td&gt;
+          &lt;td&gt;用于打印机和打印预览&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;scree&lt;/td&gt;
+          &lt;td&gt;用于电脑屏幕，平板电脑，智能手机等&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&#34;关键字&#34;&gt;关键字&lt;/h4&gt;
-&lt;ul&gt;
+&lt;h4 id=&#34;关键字&#34;&gt;关键字
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;and：可以将多个媒体特性连接到一起，相当于“且”的意思。&lt;/li&gt;
 &lt;li&gt;not：排除某个媒体类型，相当于“非”的意思，可以省略。&lt;/li&gt;
 &lt;li&gt;only：指定某个特定的媒体类型，可以省略。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;媒体特性&#34;&gt;媒体特性&lt;/h4&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;值&lt;/th&gt;
-&lt;th&gt;解释说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;width&lt;/td&gt;
-&lt;td&gt;定义输出设备中页面可见区域的宽度&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;min-width&lt;/td&gt;
-&lt;td&gt;定义输出设备中页面最小可见区域宽度&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;max-width&lt;/td&gt;
-&lt;td&gt;定义输出设备中页面最大可见区域宽度&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+&lt;h4 id=&#34;媒体特性&#34;&gt;媒体特性
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;值&lt;/th&gt;
+          &lt;th&gt;解释说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;width&lt;/td&gt;
+          &lt;td&gt;定义输出设备中页面可见区域的宽度&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;min-width&lt;/td&gt;
+          &lt;td&gt;定义输出设备中页面最小可见区域宽度&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;max-width&lt;/td&gt;
+          &lt;td&gt;定义输出设备中页面最大可见区域宽度&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;从小到大来写，这样代码更简洁&lt;/p&gt;
-&lt;h3 id=&#34;引入资源&#34;&gt;引入资源&lt;/h3&gt;
-&lt;p&gt;语法规范：&lt;/p&gt;
+&lt;h3 id=&#34;引入资源&#34;&gt;引入资源
+&lt;/h3&gt;&lt;p&gt;语法规范：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -175,39 +175,39 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;rel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;media&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;mediatype and|not|only (media feature)&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;mystylesheet.css&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;less-基础&#34;&gt;less 基础&lt;/h2&gt;
-&lt;h3 id=&#34;css-弊端&#34;&gt;css 弊端&lt;/h3&gt;
-&lt;ul&gt;
+&lt;/div&gt;&lt;h2 id=&#34;less-基础&#34;&gt;less 基础
+&lt;/h2&gt;&lt;h3 id=&#34;css-弊端&#34;&gt;css 弊端
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;CSS 需要书写大量看似没有逻辑的代码，CSS 冗余度是比较高的。&lt;/li&gt;
 &lt;li&gt;不方便维护及扩展，不利于复用。&lt;/li&gt;
 &lt;li&gt;CSS 没有很好的计算能力&lt;/li&gt;
 &lt;li&gt;非前端开发工程师来讲，往往会因为缺少 CSS 编写经验而很难写出组织良好且易于维护的 CSS 代码项目。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;less-介绍&#34;&gt;less 介绍&lt;/h3&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://lesscss.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h3 id=&#34;less-介绍&#34;&gt;less 介绍
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://lesscss.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;中文官网&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Less （Leaner Style Sheets 的缩写） 是一门 &lt;code&gt;CSS 扩展语言&lt;/code&gt;，也成为 &lt;code&gt;CSS 预处理器&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;它在 CSS 的语法基础之上，引入了&lt;code&gt;变量&lt;/code&gt;，&lt;code&gt;Mixin（混入）&lt;/code&gt;，&lt;code&gt;运算&lt;/code&gt;以及&lt;code&gt;函数&lt;/code&gt;等功能，大大简化了 CSS 的编写&lt;/li&gt;
 &lt;li&gt;常见的 CSS 预处理器：&lt;code&gt;Sass&lt;/code&gt;、&lt;code&gt;Less&lt;/code&gt;、&lt;code&gt;Stylus&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;less-安装&#34;&gt;less 安装&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;less-安装&#34;&gt;less 安装
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;安装 nodejs，可选择版本(8.0)，网址：http://nodejs.cn/download/&lt;/li&gt;
 &lt;li&gt;检查是否安装成功，使用 cmd 命令（win10 是 window +r 打开 运行输入 cmd） &amp;mdash; 输入“ node –v ”查看版本即可&lt;/li&gt;
 &lt;li&gt;基于 nodejs 在线安装 Less，使用 cmd 命令“ npm install -g less ”即可&lt;/li&gt;
 &lt;li&gt;检查是否安装成功，使用 cmd 命令“ lessc -v ”查看版本即可&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;less-语法&#34;&gt;less 语法&lt;/h3&gt;
-&lt;p&gt;less 语法包括以下几个方面：&lt;/p&gt;
+&lt;h3 id=&#34;less-语法&#34;&gt;less 语法
+&lt;/h3&gt;&lt;p&gt;less 语法包括以下几个方面：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Less 变量&lt;/li&gt;
 &lt;li&gt;Less 编译&lt;/li&gt;
 &lt;li&gt;Less 嵌套&lt;/li&gt;
 &lt;li&gt;Less 运算&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;less-变量&#34;&gt;less 变量&lt;/h4&gt;
-&lt;p&gt;变量是指没有固定的值，可以改变的。因为我们 CSS 中的一些&lt;code&gt;颜色&lt;/code&gt;和&lt;code&gt;数值&lt;/code&gt;等经常使用。&lt;/p&gt;
+&lt;h4 id=&#34;less-变量&#34;&gt;less 变量
+&lt;/h4&gt;&lt;p&gt;变量是指没有固定的值，可以改变的。因为我们 CSS 中的一些&lt;code&gt;颜色&lt;/code&gt;和&lt;code&gt;数值&lt;/code&gt;等经常使用。&lt;/p&gt;
 &lt;p&gt;语法规范：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -245,11 +245,11 @@
 &lt;li&gt;不能以数字开头&lt;/li&gt;
 &lt;li&gt;大小写敏感&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;less-编译&#34;&gt;less 编译&lt;/h4&gt;
-&lt;p&gt;vocode Less 插件: easy less&lt;/p&gt;
+&lt;h4 id=&#34;less-编译&#34;&gt;less 编译
+&lt;/h4&gt;&lt;p&gt;vocode Less 插件: easy less&lt;/p&gt;
 &lt;p&gt;保存 less 文件，自动生成 css 文件&lt;/p&gt;
-&lt;h4 id=&#34;less-嵌套&#34;&gt;less 嵌套&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h4 id=&#34;less-嵌套&#34;&gt;less 嵌套
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -270,8 +270,8 @@
 &lt;li&gt;内层选择器的前面&lt;code&gt;没有 &amp;amp; 符号&lt;/code&gt;，则它被解析为&lt;code&gt;父选择器的后代&lt;/code&gt;；&lt;/li&gt;
 &lt;li&gt;如果有 &amp;amp; 符号，它就被解析为&lt;code&gt;父元素自身&lt;/code&gt;或&lt;code&gt;父元素的伪类&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;less-运算&#34;&gt;less 运算&lt;/h4&gt;
-&lt;p&gt;任何&lt;code&gt;数字&lt;/code&gt;、&lt;code&gt;颜色&lt;/code&gt;或者&lt;code&gt;变量&lt;/code&gt;都可以参与运算。就是 Less 提供了加&lt;code&gt;（+）&lt;/code&gt;、减&lt;code&gt;（-）&lt;/code&gt;、乘&lt;code&gt;（*）&lt;/code&gt;、除&lt;code&gt;（/）&lt;/code&gt;算术运算。&lt;/p&gt;
+&lt;h4 id=&#34;less-运算&#34;&gt;less 运算
+&lt;/h4&gt;&lt;p&gt;任何&lt;code&gt;数字&lt;/code&gt;、&lt;code&gt;颜色&lt;/code&gt;或者&lt;code&gt;变量&lt;/code&gt;都可以参与运算。就是 Less 提供了加&lt;code&gt;（+）&lt;/code&gt;、减&lt;code&gt;（-）&lt;/code&gt;、乘&lt;code&gt;（*）&lt;/code&gt;、除&lt;code&gt;（/）&lt;/code&gt;算术运算。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -307,18 +307,18 @@
 &lt;li&gt;对于两个不同的单位的值之间的运算，运算结果的值取&lt;code&gt;第一个值&lt;/code&gt;的单位&lt;/li&gt;
 &lt;li&gt;如果两个值之间只有&lt;code&gt;一个值有单位&lt;/code&gt;，则运算结果就取&lt;code&gt;该单位&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;rem-适配方案&#34;&gt;rem 适配方案&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;rem-适配方案&#34;&gt;rem 适配方案
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;让一些不能等比自适应的元素，达到当设备尺寸发生改变的时候，&lt;code&gt;等比例适配当前设备&lt;/code&gt;。&lt;/li&gt;
 &lt;li&gt;使用媒体查询根据不同设备按比例设置 html 的字体大小，然后页面元素使用 rem 做尺寸单位，当 html 字体大小变化元素尺寸也会发生变化，从而达到&lt;code&gt;等比缩放的适配&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;rem-实际开发适配方案&#34;&gt;rem 实际开发适配方案&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;rem-实际开发适配方案&#34;&gt;rem 实际开发适配方案
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;按照设计稿与设备宽度的比例，动态计算并设置 html 根标签的 &lt;code&gt;font-size&lt;/code&gt; 大小；（媒体查询）&lt;/li&gt;
 &lt;li&gt;CSS 中，设计稿元素的宽、高、相对位置等取值，按照同等比例&lt;code&gt;换算为 rem 为单位&lt;/code&gt;的值；&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;rem-适配方案技术使用市场主流&#34;&gt;rem 适配方案技术使用（市场主流）&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;rem-适配方案技术使用市场主流&#34;&gt;rem 适配方案技术使用（市场主流）
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;技术方案 1
 &lt;ul&gt;
 &lt;li&gt;less&lt;/li&gt;
@@ -341,28 +341,28 @@
         <pubDate>Thu, 18 Apr 2024 05:04:57 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7/</guid>
-        <description>&lt;h2 id=&#34;移动端基础&#34;&gt;移动端基础&lt;/h2&gt;
-&lt;h3 id=&#34;浏览器现状&#34;&gt;浏览器现状&lt;/h3&gt;
-&lt;p&gt;兼容&lt;code&gt;移动端主流浏览器&lt;/code&gt;，处理&lt;code&gt;Webkit内核浏览器&lt;/code&gt;即可&lt;/p&gt;
-&lt;h3 id=&#34;手机屏幕现状&#34;&gt;手机屏幕现状&lt;/h3&gt;
-&lt;p&gt;移动端设备屏幕尺寸非常多，&lt;code&gt;碎片化严重&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;移动端调试技巧&#34;&gt;移动端调试技巧&lt;/h3&gt;
-&lt;ul&gt;
+        <description>&lt;h2 id=&#34;移动端基础&#34;&gt;移动端基础
+&lt;/h2&gt;&lt;h3 id=&#34;浏览器现状&#34;&gt;浏览器现状
+&lt;/h3&gt;&lt;p&gt;兼容&lt;code&gt;移动端主流浏览器&lt;/code&gt;，处理&lt;code&gt;Webkit内核浏览器&lt;/code&gt;即可&lt;/p&gt;
+&lt;h3 id=&#34;手机屏幕现状&#34;&gt;手机屏幕现状
+&lt;/h3&gt;&lt;p&gt;移动端设备屏幕尺寸非常多，&lt;code&gt;碎片化严重&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;移动端调试技巧&#34;&gt;移动端调试技巧
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;Chrome DevTools（谷歌浏览器）的模拟手机调试&lt;/li&gt;
 &lt;li&gt;搭建本地 web 服务器，手机和服务器一个局域网内，通过手机访问服务器&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;视口&#34;&gt;视口&lt;/h2&gt;
-&lt;p&gt;视口&lt;code&gt;（viewport）&lt;/code&gt;就是浏览器显示页面内容的屏幕区域。 视口可以分为&lt;code&gt;布局视口&lt;/code&gt;、&lt;code&gt;视觉视口&lt;/code&gt;和&lt;code&gt;理想视口&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;视口&#34;&gt;视口
+&lt;/h2&gt;&lt;p&gt;视口&lt;code&gt;（viewport）&lt;/code&gt;就是浏览器显示页面内容的屏幕区域。 视口可以分为&lt;code&gt;布局视口&lt;/code&gt;、&lt;code&gt;视觉视口&lt;/code&gt;和&lt;code&gt;理想视口&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;布局视口 layout viewport&lt;/li&gt;
 &lt;li&gt;视觉视口 visual viewport&lt;/li&gt;
 &lt;li&gt;理想视口 ideal viewport&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;用理想视口布局&#34;&gt;用理想视口布局&lt;/h3&gt;
-&lt;p&gt;理想视口，对设备来讲，是&lt;code&gt;最理想&lt;/code&gt;的视口尺寸&lt;/p&gt;
+&lt;h3 id=&#34;用理想视口布局&#34;&gt;用理想视口布局
+&lt;/h3&gt;&lt;p&gt;理想视口，对设备来讲，是&lt;code&gt;最理想&lt;/code&gt;的视口尺寸&lt;/p&gt;
 &lt;p&gt;meta 视口标签的主要目的：布局视口的宽度应该与&lt;code&gt;理想视口&lt;/code&gt;的&lt;code&gt;宽度一致&lt;/code&gt;，简单理解就是设备有多宽，我们布局的视口就多宽&lt;/p&gt;
-&lt;h3 id=&#34;meta-视口标签&#34;&gt;meta 视口标签&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h3 id=&#34;meta-视口标签&#34;&gt;meta 视口标签
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -373,34 +373,34 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;属性&lt;/th&gt;
-&lt;th&gt;解释说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;width&lt;/td&gt;
-&lt;td&gt;宽度设置的是&lt;code&gt;viewport&lt;/code&gt;宽度，可以设置&lt;code&gt;device-width&lt;/code&gt;特殊值&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;initial-scale&lt;/td&gt;
-&lt;td&gt;初始缩放比，大于 0 的数字&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;maximum-scale&lt;/td&gt;
-&lt;td&gt;最大缩放比，大于 0 的数字&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;minimum-scale&lt;/td&gt;
-&lt;td&gt;最小缩放比，大于 0 的数字&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;user-scalable&lt;/td&gt;
-&lt;td&gt;用户是否可以缩放，yes 或 no（1 或 0）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;属性&lt;/th&gt;
+          &lt;th&gt;解释说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;width&lt;/td&gt;
+          &lt;td&gt;宽度设置的是&lt;code&gt;viewport&lt;/code&gt;宽度，可以设置&lt;code&gt;device-width&lt;/code&gt;特殊值&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;initial-scale&lt;/td&gt;
+          &lt;td&gt;初始缩放比，大于 0 的数字&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;maximum-scale&lt;/td&gt;
+          &lt;td&gt;最大缩放比，大于 0 的数字&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;minimum-scale&lt;/td&gt;
+          &lt;td&gt;最小缩放比，大于 0 的数字&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;user-scalable&lt;/td&gt;
+          &lt;td&gt;用户是否可以缩放，yes 或 no（1 或 0）&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;标准的 viewport 设置：&lt;/p&gt;
 &lt;ul&gt;
@@ -410,14 +410,14 @@
 &lt;li&gt;最大允许的缩放比例 1.0&lt;/li&gt;
 &lt;li&gt;最小允许的缩放比例 1.0&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;二倍图&#34;&gt;二倍图&lt;/h2&gt;
-&lt;h3 id=&#34;物理像素物理像素比&#34;&gt;物理像素&amp;amp;物理像素比&lt;/h3&gt;
-&lt;p&gt;物理像素点指的是&lt;code&gt;屏幕显示&lt;/code&gt;的最小颗粒，是物理真实存在的。&lt;/p&gt;
+&lt;h2 id=&#34;二倍图&#34;&gt;二倍图
+&lt;/h2&gt;&lt;h3 id=&#34;物理像素物理像素比&#34;&gt;物理像素&amp;amp;物理像素比
+&lt;/h3&gt;&lt;p&gt;物理像素点指的是&lt;code&gt;屏幕显示&lt;/code&gt;的最小颗粒，是物理真实存在的。&lt;/p&gt;
 &lt;p&gt;我们开发时候的 1px&lt;code&gt;不是一定等于&lt;/code&gt;1 个物理像素的&lt;/p&gt;
 &lt;p&gt;PC 端页面，1 个 px 等于 1 个物理像素的，但是&lt;code&gt;移动端就不尽相同&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;一个&lt;code&gt;px&lt;/code&gt;的能显示的&lt;code&gt;物理像素点&lt;/code&gt;的&lt;code&gt;个数&lt;/code&gt;，称为&lt;code&gt;物理像素比&lt;/code&gt;或&lt;code&gt;屏幕像素比&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;多倍图&#34;&gt;多倍图&lt;/h3&gt;
-&lt;p&gt;对于一张图片,在手机屏中打开，物理像素比会&lt;code&gt;放大倍数&lt;/code&gt;，这样会造成&lt;code&gt;图片模糊&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;多倍图&#34;&gt;多倍图
+&lt;/h3&gt;&lt;p&gt;对于一张图片,在手机屏中打开，物理像素比会&lt;code&gt;放大倍数&lt;/code&gt;，这样会造成&lt;code&gt;图片模糊&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;在标准的 viewport 设置中，使用&lt;code&gt;倍图&lt;/code&gt;来&lt;code&gt;提高图片质量&lt;/code&gt;，解决在高清设备中的&lt;code&gt;模糊问题&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;通常使用&lt;code&gt;二倍图&lt;/code&gt;，还存在&lt;code&gt;3倍图4倍图&lt;/code&gt;的情况&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -446,8 +446,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;背景缩放-background-size&#34;&gt;背景缩放 background-size&lt;/h3&gt;
-&lt;p&gt;background-size 属性规定背景图像的尺寸&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;背景缩放-background-size&#34;&gt;背景缩放 background-size
+&lt;/h3&gt;&lt;p&gt;background-size 属性规定背景图像的尺寸&lt;/p&gt;
 &lt;p&gt;语法格式：&lt;code&gt;background-size: 背景图片宽度 背景图片高度;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;注意事项：&lt;/p&gt;
 &lt;ul&gt;
@@ -455,29 +455,29 @@
 &lt;li&gt;cover 把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。&lt;/li&gt;
 &lt;li&gt;contain 把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;二倍精灵图做法&#34;&gt;二倍精灵图做法&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;二倍精灵图做法&#34;&gt;二倍精灵图做法
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;在&lt;code&gt;firework&lt;/code&gt;里面把精灵图等比例缩放为&lt;code&gt;原来的一半&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;之后根据大小&lt;code&gt;测量坐标&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;注意代码里面&lt;code&gt;background-size&lt;/code&gt;也要写： 精灵图&lt;code&gt;原来宽度的一半&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;移动端开发选择&#34;&gt;移动端开发选择&lt;/h2&gt;
-&lt;p&gt;移动端主流方案：&lt;/p&gt;
+&lt;h2 id=&#34;移动端开发选择&#34;&gt;移动端开发选择
+&lt;/h2&gt;&lt;p&gt;移动端主流方案：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;单独制作&lt;/code&gt;移动端页面（主流）&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;响应式页面&lt;/code&gt;兼容移动端（其次）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;单独移动端页面&#34;&gt;单独移动端页面&lt;/h3&gt;
-&lt;p&gt;通常情况下，网址域名前面加 &lt;code&gt;m(mobile)&lt;/code&gt; 可以打开移动端。&lt;/p&gt;
+&lt;h3 id=&#34;单独移动端页面&#34;&gt;单独移动端页面
+&lt;/h3&gt;&lt;p&gt;通常情况下，网址域名前面加 &lt;code&gt;m(mobile)&lt;/code&gt; 可以打开移动端。&lt;/p&gt;
 &lt;p&gt;通过&lt;code&gt;判断设备/user-agent&lt;/code&gt;，如果是移动设备打开，则跳到移动端页面。&lt;/p&gt;
-&lt;h3 id=&#34;响应式兼容-pc-移动端&#34;&gt;响应式兼容 PC 移动端&lt;/h3&gt;
-&lt;p&gt;通过&lt;code&gt;判断屏幕宽度&lt;/code&gt;来&lt;code&gt;改变样式&lt;/code&gt;，以适应不同终端。&lt;/p&gt;
+&lt;h3 id=&#34;响应式兼容-pc-移动端&#34;&gt;响应式兼容 PC 移动端
+&lt;/h3&gt;&lt;p&gt;通过&lt;code&gt;判断屏幕宽度&lt;/code&gt;来&lt;code&gt;改变样式&lt;/code&gt;，以适应不同终端。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;制作麻烦&lt;/code&gt;，需要花很大精力去&lt;code&gt;调兼容性问题&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;移动端技术解决方案&#34;&gt;移动端技术解决方案&lt;/h2&gt;
-&lt;h3 id=&#34;移动端浏览器&#34;&gt;移动端浏览器&lt;/h3&gt;
-&lt;p&gt;移动端浏览器基本以&lt;code&gt;webkit&lt;/code&gt;内核为主，因此我们就考虑&lt;code&gt;webkit兼容性问题&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;css-初始化-normalizecss&#34;&gt;CSS 初始化 normalize.css&lt;/h3&gt;
-&lt;p&gt;移动端 CSS 初始化推荐使用 normalize.css/&lt;/p&gt;
+&lt;h2 id=&#34;移动端技术解决方案&#34;&gt;移动端技术解决方案
+&lt;/h2&gt;&lt;h3 id=&#34;移动端浏览器&#34;&gt;移动端浏览器
+&lt;/h3&gt;&lt;p&gt;移动端浏览器基本以&lt;code&gt;webkit&lt;/code&gt;内核为主，因此我们就考虑&lt;code&gt;webkit兼容性问题&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;css-初始化-normalizecss&#34;&gt;CSS 初始化 normalize.css
+&lt;/h3&gt;&lt;p&gt;移动端 CSS 初始化推荐使用 normalize.css/&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Normalize.css：保护了有价值的默认值&lt;/li&gt;
 &lt;li&gt;Normalize.css：修复了浏览器的 bug&lt;/li&gt;
@@ -486,13 +486,13 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://necolas.github.io/normalize.css/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官网地址&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;css3-盒子模型-box-sizing&#34;&gt;CSS3 盒子模型 box-sizing&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;css3-盒子模型-box-sizing&#34;&gt;CSS3 盒子模型 box-sizing
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;传统模式宽度计算：盒子的宽度 = CSS 中设置的 width + border + padding&lt;/li&gt;
 &lt;li&gt;CSS3 盒子模型： 盒子的宽度 = CSS 中设置的宽度 width 里面包含了 border 和 padding&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;特殊样式&#34;&gt;特殊样式&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h3 id=&#34;特殊样式&#34;&gt;特殊样式
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
@@ -522,23 +522,23 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;移动端常见布局&#34;&gt;移动端常见布局&lt;/h2&gt;
-&lt;ul&gt;
+&lt;/div&gt;&lt;h2 id=&#34;移动端常见布局&#34;&gt;移动端常见布局
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;流式布局&lt;/li&gt;
 &lt;li&gt;flex 布局&lt;/li&gt;
 &lt;li&gt;rem 布局&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;流式布局百分比布局&#34;&gt;流式布局（百分比布局）&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;流式布局百分比布局&#34;&gt;流式布局（百分比布局）
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;流式布局，就是百分比布局，也称非固定像素布局。&lt;/li&gt;
 &lt;li&gt;通过盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充。&lt;/li&gt;
 &lt;li&gt;流式布局方式是移动 web 开发使用的比较常见的布局方式。&lt;/li&gt;
 &lt;li&gt;max-width 最大宽度 （max-height 最大高度）&lt;/li&gt;
 &lt;li&gt;min-width 最小宽度 （min-height 最小高度）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;flex-布局&#34;&gt;flex 布局&lt;/h2&gt;
-&lt;h3 id=&#34;传统布局flex-布局&#34;&gt;传统布局&amp;amp;flex 布局&lt;/h3&gt;
-&lt;p&gt;传统布局：&lt;/p&gt;
+&lt;h2 id=&#34;flex-布局&#34;&gt;flex 布局
+&lt;/h2&gt;&lt;h3 id=&#34;传统布局flex-布局&#34;&gt;传统布局&amp;amp;flex 布局
+&lt;/h3&gt;&lt;p&gt;传统布局：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;兼容性好&lt;/li&gt;
 &lt;li&gt;布局繁琐&lt;/li&gt;
@@ -550,8 +550,8 @@
 &lt;li&gt;PC 端浏览器支持情况较差&lt;/li&gt;
 &lt;li&gt;IE 11 或更低版本，不支持或仅部分支持&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;flex-布局原理&#34;&gt;flex 布局原理&lt;/h3&gt;
-&lt;p&gt;flex 是&lt;code&gt;flexible Box&lt;/code&gt;的缩写，意为&lt;code&gt;弹性布局&lt;/code&gt;，用来为盒状模型提供最大的灵活性，&lt;code&gt;任何一个容器&lt;/code&gt;都可以指定为 flex 布局。&lt;/p&gt;
+&lt;h3 id=&#34;flex-布局原理&#34;&gt;flex 布局原理
+&lt;/h3&gt;&lt;p&gt;flex 是&lt;code&gt;flexible Box&lt;/code&gt;的缩写，意为&lt;code&gt;弹性布局&lt;/code&gt;，用来为盒状模型提供最大的灵活性，&lt;code&gt;任何一个容器&lt;/code&gt;都可以指定为 flex 布局。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;当我们为父盒子设为 flex 布局以后，子元素的 &lt;code&gt;float&lt;/code&gt;、&lt;code&gt;clear&lt;/code&gt; 和 &lt;code&gt;vertical-align&lt;/code&gt; 属性将失效。&lt;/li&gt;
 &lt;li&gt;伸缩布局 = 弹性布局 = 伸缩盒布局 = 弹性盒布局 =flex 布局&lt;/li&gt;
@@ -559,190 +559,190 @@
 &lt;li&gt;体验中 span 就是 子容器 &lt;code&gt;flex 项目&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;子容器可以&lt;code&gt;横向排列&lt;/code&gt;也可以&lt;code&gt;纵向排列&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;flex-布局父元素常见属性&#34;&gt;flex 布局父元素常见属性&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;属性值&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;flex-direction&lt;/td&gt;
-&lt;td&gt;设置主轴的方向&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;justify-content&lt;/td&gt;
-&lt;td&gt;设置主轴上的子元素排列方式&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;flex-wrap&lt;/td&gt;
-&lt;td&gt;设置子元素是否换行  align-content：设置侧轴上的子元素的排列方式（多行）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;align-items&lt;/td&gt;
-&lt;td&gt;设置侧轴上的子元素排列方式（单行）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;flex-flow&lt;/td&gt;
-&lt;td&gt;复合属性，相当于同时设置了 flex-direction 和 flex-wrap&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+&lt;h3 id=&#34;flex-布局父元素常见属性&#34;&gt;flex 布局父元素常见属性
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;属性值&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;flex-direction&lt;/td&gt;
+          &lt;td&gt;设置主轴的方向&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;justify-content&lt;/td&gt;
+          &lt;td&gt;设置主轴上的子元素排列方式&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;flex-wrap&lt;/td&gt;
+          &lt;td&gt;设置子元素是否换行  align-content：设置侧轴上的子元素的排列方式（多行）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;align-items&lt;/td&gt;
+          &lt;td&gt;设置侧轴上的子元素排列方式（单行）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;flex-flow&lt;/td&gt;
+          &lt;td&gt;复合属性，相当于同时设置了 flex-direction 和 flex-wrap&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&#34;flex-direction&#34;&gt;flex-direction&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;flex-direction&lt;/code&gt;属性决定&lt;code&gt;主轴的方向&lt;/code&gt;（即&lt;code&gt;项目的排列方向&lt;/code&gt;）&lt;/p&gt;
+&lt;h4 id=&#34;flex-direction&#34;&gt;flex-direction
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;flex-direction&lt;/code&gt;属性决定&lt;code&gt;主轴的方向&lt;/code&gt;（即&lt;code&gt;项目的排列方向&lt;/code&gt;）&lt;/p&gt;
 &lt;p&gt;主轴和侧轴是&lt;code&gt;会变化的&lt;/code&gt;，就看 flex-direction 设置谁为主轴，&lt;code&gt;剩下的就是侧轴&lt;/code&gt;。&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;属性值&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;row&lt;/td&gt;
-&lt;td&gt;默认值从左到右&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;row-reverse&lt;/td&gt;
-&lt;td&gt;从右到左&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;column&lt;/td&gt;
-&lt;td&gt;从上到下&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;column-reverse&lt;/td&gt;
-&lt;td&gt;从下到上&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;属性值&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;row&lt;/td&gt;
+          &lt;td&gt;默认值从左到右&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;row-reverse&lt;/td&gt;
+          &lt;td&gt;从右到左&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;column&lt;/td&gt;
+          &lt;td&gt;从上到下&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;column-reverse&lt;/td&gt;
+          &lt;td&gt;从下到上&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&#34;justify-content&#34;&gt;justify-content&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;justify-content&lt;/code&gt;属性定义了项目&lt;code&gt;在主轴上的对齐方式&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;justify-content&#34;&gt;justify-content
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;justify-content&lt;/code&gt;属性定义了项目&lt;code&gt;在主轴上的对齐方式&lt;/code&gt;&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;属性值&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;flex-start&lt;/td&gt;
-&lt;td&gt;默认值 从头部开始 如果主轴是 x 轴，则从左到右&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;flex-end&lt;/td&gt;
-&lt;td&gt;从尾部开始排列&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;center&lt;/td&gt;
-&lt;td&gt;在主轴居中对齐（如果主轴是 x 轴则 水平居中）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;space-around&lt;/td&gt;
-&lt;td&gt;平分剩余空间&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;space-between&lt;/td&gt;
-&lt;td&gt;先两边贴边 再平分剩余空间（重要）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;属性值&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;flex-start&lt;/td&gt;
+          &lt;td&gt;默认值 从头部开始 如果主轴是 x 轴，则从左到右&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;flex-end&lt;/td&gt;
+          &lt;td&gt;从尾部开始排列&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;center&lt;/td&gt;
+          &lt;td&gt;在主轴居中对齐（如果主轴是 x 轴则 水平居中）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;space-around&lt;/td&gt;
+          &lt;td&gt;平分剩余空间&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;space-between&lt;/td&gt;
+          &lt;td&gt;先两边贴边 再平分剩余空间（重要）&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&#34;flex-wrap&#34;&gt;flex-wrap&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;flex-wrap&lt;/code&gt;设置&lt;code&gt;子元素是否换行&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;flex-wrap&#34;&gt;flex-wrap
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;flex-wrap&lt;/code&gt;设置&lt;code&gt;子元素是否换行&lt;/code&gt;&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;属性值&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;nowrap&lt;/td&gt;
-&lt;td&gt;默认值，不换行&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;wrap&lt;/td&gt;
-&lt;td&gt;换行&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;属性值&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;nowrap&lt;/td&gt;
+          &lt;td&gt;默认值，不换行&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;wrap&lt;/td&gt;
+          &lt;td&gt;换行&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&#34;align-items&#34;&gt;align-items&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;align-items&lt;/code&gt;设置&lt;code&gt;侧轴上&lt;/code&gt;的&lt;code&gt;子元素排列方式&lt;/code&gt;（&lt;code&gt;单行&lt;/code&gt;）&lt;/p&gt;
+&lt;h4 id=&#34;align-items&#34;&gt;align-items
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;align-items&lt;/code&gt;设置&lt;code&gt;侧轴上&lt;/code&gt;的&lt;code&gt;子元素排列方式&lt;/code&gt;（&lt;code&gt;单行&lt;/code&gt;）&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;属性值&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;flex-start&lt;/td&gt;
-&lt;td&gt;从上到下&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;flex-end&lt;/td&gt;
-&lt;td&gt;从下到上&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;center&lt;/td&gt;
-&lt;td&gt;挤在一起居中（垂直居中）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;stretch&lt;/td&gt;
-&lt;td&gt;拉伸 （默认值 ）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;属性值&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;flex-start&lt;/td&gt;
+          &lt;td&gt;从上到下&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;flex-end&lt;/td&gt;
+          &lt;td&gt;从下到上&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;center&lt;/td&gt;
+          &lt;td&gt;挤在一起居中（垂直居中）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;stretch&lt;/td&gt;
+          &lt;td&gt;拉伸 （默认值 ）&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&#34;align-content&#34;&gt;align-content&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;align-content&lt;/code&gt;设置&lt;code&gt;侧轴上&lt;/code&gt;的&lt;code&gt;子元素的排列方式&lt;/code&gt;（&lt;code&gt;多行&lt;/code&gt;）&lt;/p&gt;
+&lt;h4 id=&#34;align-content&#34;&gt;align-content
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;align-content&lt;/code&gt;设置&lt;code&gt;侧轴上&lt;/code&gt;的&lt;code&gt;子元素的排列方式&lt;/code&gt;（&lt;code&gt;多行&lt;/code&gt;）&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;属性值&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;flex-start&lt;/td&gt;
-&lt;td&gt;默认值在侧轴的头部开始排列&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;flex-end&lt;/td&gt;
-&lt;td&gt;在侧轴的尾部开始排列&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;center&lt;/td&gt;
-&lt;td&gt;在侧轴中间显示&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;space-around&lt;/td&gt;
-&lt;td&gt;子项在侧轴平分剩余空间&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;space-between&lt;/td&gt;
-&lt;td&gt;子项在侧轴先分布在两头，再平分剩余空间&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;stretch&lt;/td&gt;
-&lt;td&gt;设置子项元素高度平分父元素高度&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;属性值&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;flex-start&lt;/td&gt;
+          &lt;td&gt;默认值在侧轴的头部开始排列&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;flex-end&lt;/td&gt;
+          &lt;td&gt;在侧轴的尾部开始排列&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;center&lt;/td&gt;
+          &lt;td&gt;在侧轴中间显示&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;space-around&lt;/td&gt;
+          &lt;td&gt;子项在侧轴平分剩余空间&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;space-between&lt;/td&gt;
+          &lt;td&gt;子项在侧轴先分布在两头，再平分剩余空间&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;stretch&lt;/td&gt;
+          &lt;td&gt;设置子项元素高度平分父元素高度&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&#34;align-content-和-align-items-区别&#34;&gt;align-content 和 align-items 区别&lt;/h4&gt;
-&lt;ul&gt;
+&lt;h4 id=&#34;align-content-和-align-items-区别&#34;&gt;align-content 和 align-items 区别
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;align-items 适用于单行情况下， 只有上对齐、下对齐、居中和 拉伸&lt;/li&gt;
 &lt;li&gt;align-content 适应于换行（多行）的情况下（单行情况下无效）， 可以设置 上对齐、 下对齐、居中、拉伸以及平均分配剩余空间等属性值。&lt;/li&gt;
 &lt;li&gt;总结就是&lt;code&gt;单行找 align-items&lt;/code&gt;/&lt;code&gt;多行找 align-content&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;flex-flow&#34;&gt;flex-flow&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;flex-flow&lt;/code&gt; 属性是 &lt;code&gt;flex-direction&lt;/code&gt; 和 &lt;code&gt;flex-wrap&lt;/code&gt; 属性的&lt;code&gt;复合属性&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;flex-flow&#34;&gt;flex-flow
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;flex-flow&lt;/code&gt; 属性是 &lt;code&gt;flex-direction&lt;/code&gt; 和 &lt;code&gt;flex-wrap&lt;/code&gt; 属性的&lt;code&gt;复合属性&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -751,37 +751,37 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;flex-flow&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;row&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;wrap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;flex-布局子项常见属性&#34;&gt;flex 布局子项常见属性&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;属性值&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;flex&lt;/td&gt;
-&lt;td&gt;子项目占的份数&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;align-self&lt;/td&gt;
-&lt;td&gt;控制子项自己在侧轴的排列方式&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;order&lt;/td&gt;
-&lt;td&gt;属性定义子项的排列顺序（前后顺序）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+&lt;/div&gt;&lt;h3 id=&#34;flex-布局子项常见属性&#34;&gt;flex 布局子项常见属性
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;属性值&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;flex&lt;/td&gt;
+          &lt;td&gt;子项目占的份数&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;align-self&lt;/td&gt;
+          &lt;td&gt;控制子项自己在侧轴的排列方式&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;order&lt;/td&gt;
+          &lt;td&gt;属性定义子项的排列顺序（前后顺序）&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&#34;flex&#34;&gt;flex&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;flex&lt;/code&gt;属性定义&lt;code&gt;子项目&lt;/code&gt;分配&lt;code&gt;剩余空间&lt;/code&gt;，用 flex 来表示&lt;code&gt;占多少份数&lt;/code&gt;。&lt;/p&gt;
-&lt;h4 id=&#34;align-self&#34;&gt;align-self&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;align-self&lt;/code&gt; 控制子项自己在侧轴上的排列方式&lt;/p&gt;
+&lt;h4 id=&#34;flex&#34;&gt;flex
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;flex&lt;/code&gt;属性定义&lt;code&gt;子项目&lt;/code&gt;分配&lt;code&gt;剩余空间&lt;/code&gt;，用 flex 来表示&lt;code&gt;占多少份数&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;align-self&#34;&gt;align-self
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;align-self&lt;/code&gt; 控制子项自己在侧轴上的排列方式&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;align-self&lt;/code&gt;属性允许单个项目有与其他项目&lt;code&gt;不一样的对齐方式&lt;/code&gt;，可&lt;code&gt;覆盖align-items&lt;/code&gt;属性。&lt;/p&gt;
 &lt;p&gt;默认值为 auto，表示&lt;code&gt;继承父元素的 align-items 属性&lt;/code&gt;，如果没有父元素，则等同于&lt;code&gt;stretch&lt;/code&gt;。&lt;/p&gt;
-&lt;h4 id=&#34;order&#34;&gt;order&lt;/h4&gt;
-&lt;p&gt;order 属性定义项目的排列顺序&lt;/p&gt;
+&lt;h4 id=&#34;order&#34;&gt;order
+&lt;/h4&gt;&lt;p&gt;order 属性定义项目的排列顺序&lt;/p&gt;
 &lt;p&gt;数值越小，排列越靠前，默认为 0&lt;/p&gt;
 </description>
         </item>
@@ -791,16 +791,16 @@
         <pubDate>Thu, 18 Apr 2024 03:15:42 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss3%E5%8A%A8%E7%94%BB/</guid>
-        <description>&lt;h2 id=&#34;2d-变换&#34;&gt;2D 变换&lt;/h2&gt;
-&lt;p&gt;2D 变换有三种形式：&lt;/p&gt;
+        <description>&lt;h2 id=&#34;2d-变换&#34;&gt;2D 变换
+&lt;/h2&gt;&lt;p&gt;2D 变换有三种形式：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;translate：平移&lt;/li&gt;
 &lt;li&gt;rotate：旋转&lt;/li&gt;
 &lt;li&gt;scale：伸缩&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;可以&lt;code&gt;同时使用多个形式&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;2d-变换-平移&#34;&gt;2D 变换-平移&lt;/h3&gt;
-&lt;p&gt;语法格式：&lt;code&gt;transform: translate(x, y)&lt;/code&gt;，&lt;/p&gt;
+&lt;h3 id=&#34;2d-变换-平移&#34;&gt;2D 变换-平移
+&lt;/h3&gt;&lt;p&gt;语法格式：&lt;code&gt;transform: translate(x, y)&lt;/code&gt;，&lt;/p&gt;
 &lt;p&gt;x、y 的单位可以是&lt;code&gt;px&lt;/code&gt;，也可以是&lt;code&gt;百分比&lt;/code&gt;，当值是百分比时，表示&lt;code&gt;自身宽度/高度&lt;/code&gt;的比例&lt;/p&gt;
 &lt;p&gt;也可以分开写：&lt;code&gt;translateX()&lt;/code&gt;/&lt;code&gt;translateY()&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;注意事项：&lt;/p&gt;
@@ -809,34 +809,34 @@
 &lt;li&gt;translate(x, y)表示相对于&lt;code&gt;父元素&lt;/code&gt;移动的距离，且是一种&lt;code&gt;声明式写法&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;translate 最大的特点：不会影响其他元素的位置(不脱标)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;2d-变换-旋转&#34;&gt;2D 变换-旋转&lt;/h3&gt;
-&lt;p&gt;语法格式：&lt;code&gt;transform: rotate(60deg)&lt;/code&gt;，单位是&lt;code&gt;deg&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2d-变换-旋转&#34;&gt;2D 变换-旋转
+&lt;/h3&gt;&lt;p&gt;语法格式：&lt;code&gt;transform: rotate(60deg)&lt;/code&gt;，单位是&lt;code&gt;deg&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;角度为&lt;code&gt;正&lt;/code&gt;时，&lt;code&gt;顺时针&lt;/code&gt;，&lt;code&gt;负&lt;/code&gt;时，为&lt;code&gt;逆时针&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;默认旋转的中心点是元素的&lt;code&gt;中心点&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;2d-旋转-中心点&#34;&gt;2D 旋转-中心点&lt;/h3&gt;
-&lt;p&gt;语法格式：&lt;code&gt;transform-origin: x y;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2d-旋转-中心点&#34;&gt;2D 旋转-中心点
+&lt;/h3&gt;&lt;p&gt;语法格式：&lt;code&gt;transform-origin: x y;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;注意事项：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;的参数 x 和 y 用空格隔开，单位可以是&lt;code&gt;px/百分比/方位名词&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;x y 默认转换的中心点是元素的中心点 (50% 50%)&lt;/li&gt;
 &lt;li&gt;可以给 x y 设置 像素 或者 方位名词 &lt;code&gt;（top bottom left right center）&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;2d-变换-伸缩&#34;&gt;2D 变换-伸缩&lt;/h3&gt;
-&lt;p&gt;语法格式：&lt;code&gt;transform:scale(x,y);&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2d-变换-伸缩&#34;&gt;2D 变换-伸缩
+&lt;/h3&gt;&lt;p&gt;语法格式：&lt;code&gt;transform:scale(x,y);&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;注意事项：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;宽和高都放大一倍，相对于没有放大&lt;/li&gt;
 &lt;li&gt;只写一个参数，第二个参数则和第一个参数一样&lt;/li&gt;
 &lt;li&gt;sacle 缩放最大的优势：默认以中心点缩放的，而且不影响其他盒子(不脱标)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;css-动画&#34;&gt;CSS 动画&lt;/h2&gt;
-&lt;p&gt;制作动画可以分为两部：&lt;/p&gt;
+&lt;h2 id=&#34;css-动画&#34;&gt;CSS 动画
+&lt;/h2&gt;&lt;p&gt;制作动画可以分为两部：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;定义&lt;/li&gt;
 &lt;li&gt;调用&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;动画的定义&#34;&gt;动画的定义&lt;/h3&gt;
-&lt;p&gt;语法格式：&lt;/p&gt;
+&lt;h3 id=&#34;动画的定义&#34;&gt;动画的定义
+&lt;/h3&gt;&lt;p&gt;语法格式：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -865,75 +865,75 @@
 &lt;li&gt;用关键词&lt;code&gt;from&lt;/code&gt;和&lt;code&gt;to&lt;/code&gt;，等同于&lt;code&gt;0%&lt;/code&gt;和&lt;code&gt;100%&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;在&lt;code&gt;0%&lt;/code&gt;和&lt;code&gt;100%&lt;/code&gt;中间可以随意定义&lt;code&gt;多个&lt;/code&gt;百分比关键帧&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;动画的调用&#34;&gt;动画的调用&lt;/h3&gt;
-&lt;p&gt;在需要使用该动画的元素上加上&lt;code&gt;animation-name&lt;/code&gt;、&lt;code&gt;animation-duration&lt;/code&gt;等属性&lt;/p&gt;
+&lt;h3 id=&#34;动画的调用&#34;&gt;动画的调用
+&lt;/h3&gt;&lt;p&gt;在需要使用该动画的元素上加上&lt;code&gt;animation-name&lt;/code&gt;、&lt;code&gt;animation-duration&lt;/code&gt;等属性&lt;/p&gt;
 &lt;p&gt;动画常用属性：&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;属性&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;@keyframes&lt;/td&gt;
-&lt;td&gt;定义动画&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;animation&lt;/td&gt;
-&lt;td&gt;所有动画属性的简写&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;animation-name&lt;/td&gt;
-&lt;td&gt;动画名称&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;animation-duration&lt;/td&gt;
-&lt;td&gt;动画持续时间&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;animation-time-function&lt;/td&gt;
-&lt;td&gt;动画速度曲线，默认是&lt;code&gt;ease&lt;/code&gt;，还有&lt;code&gt;liner/steps/ease-in&lt;/code&gt;等属性&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;animation-delay&lt;/td&gt;
-&lt;td&gt;动画何时开始&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;animation-iteration-count&lt;/td&gt;
-&lt;td&gt;动画播放次数，默认是&lt;code&gt;1&lt;/code&gt;，还有&lt;code&gt;infinite&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;animation-direction&lt;/td&gt;
-&lt;td&gt;是否在下一个周期逆向播放，默认值是&lt;code&gt;normal&lt;/code&gt;，还有&lt;code&gt;alternate&lt;/code&gt;(逆向播放)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;animation-fill-mode&lt;/td&gt;
-&lt;td&gt;规定动画结束之后保持&lt;code&gt;forwards&lt;/code&gt;，回到起点&lt;code&gt;backwards&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;animation-play-state&lt;/td&gt;
-&lt;td&gt;动画播放状态，&lt;code&gt;running/paused&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;属性&lt;/th&gt;
+          &lt;th&gt;描述&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;@keyframes&lt;/td&gt;
+          &lt;td&gt;定义动画&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;animation&lt;/td&gt;
+          &lt;td&gt;所有动画属性的简写&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;animation-name&lt;/td&gt;
+          &lt;td&gt;动画名称&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;animation-duration&lt;/td&gt;
+          &lt;td&gt;动画持续时间&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;animation-time-function&lt;/td&gt;
+          &lt;td&gt;动画速度曲线，默认是&lt;code&gt;ease&lt;/code&gt;，还有&lt;code&gt;liner/steps/ease-in&lt;/code&gt;等属性&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;animation-delay&lt;/td&gt;
+          &lt;td&gt;动画何时开始&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;animation-iteration-count&lt;/td&gt;
+          &lt;td&gt;动画播放次数，默认是&lt;code&gt;1&lt;/code&gt;，还有&lt;code&gt;infinite&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;animation-direction&lt;/td&gt;
+          &lt;td&gt;是否在下一个周期逆向播放，默认值是&lt;code&gt;normal&lt;/code&gt;，还有&lt;code&gt;alternate&lt;/code&gt;(逆向播放)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;animation-fill-mode&lt;/td&gt;
+          &lt;td&gt;规定动画结束之后保持&lt;code&gt;forwards&lt;/code&gt;，回到起点&lt;code&gt;backwards&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;animation-play-state&lt;/td&gt;
+          &lt;td&gt;动画播放状态，&lt;code&gt;running/paused&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;3d-变换&#34;&gt;3D 变换&lt;/h2&gt;
-&lt;p&gt;3D 变换有三种形式：&lt;/p&gt;
+&lt;h2 id=&#34;3d-变换&#34;&gt;3D 变换
+&lt;/h2&gt;&lt;p&gt;3D 变换有三种形式：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;translate3d：3D 平移&lt;/li&gt;
 &lt;li&gt;rotate3d：3D 旋转&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;3-维坐标系&#34;&gt;3 维坐标系&lt;/h3&gt;
-&lt;p&gt;三维坐标系其实就是指立体空间，立体空间是由 3 个轴共同组成的。&lt;/p&gt;
+&lt;h3 id=&#34;3-维坐标系&#34;&gt;3 维坐标系
+&lt;/h3&gt;&lt;p&gt;三维坐标系其实就是指立体空间，立体空间是由 3 个轴共同组成的。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;x 轴：水平向右 注意： x 右边是正值，左边是负值&lt;/li&gt;
 &lt;li&gt;y 轴：垂直向下 注意： y 下面是正值，上面是负值&lt;/li&gt;
 &lt;li&gt;z 轴：垂直屏幕 注意： 往外面是正值，往里面是负值&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;因为 z 轴是垂直屏幕，由里指向外面，所以&lt;code&gt;默认是看不到元素在z轴的方向上移动&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;透视-perspective&#34;&gt;透视 perspective&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;perspective&lt;/code&gt;在 2D 平面产生近大远小视觉立体，但是&lt;code&gt;只是效果二维的&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;透视-perspective&#34;&gt;透视 perspective
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;perspective&lt;/code&gt;在 2D 平面产生近大远小视觉立体，但是&lt;code&gt;只是效果二维的&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;注意事项：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;视距应该给&lt;code&gt;父元素/祖元素&lt;/code&gt;添加&lt;/li&gt;
@@ -941,21 +941,21 @@
 &lt;li&gt;距离视觉点&lt;code&gt;越近&lt;/code&gt;的在电脑平面成像&lt;code&gt;越大&lt;/code&gt;，&lt;code&gt;越远&lt;/code&gt;成像&lt;code&gt;越小&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;透视的单位是&lt;code&gt;px&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;3d-变换-平移&#34;&gt;3D 变换-平移&lt;/h3&gt;
-&lt;p&gt;语法格式：&lt;code&gt;transform:translate3d(x,y,z)&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3d-变换-平移&#34;&gt;3D 变换-平移
+&lt;/h3&gt;&lt;p&gt;语法格式：&lt;code&gt;transform:translate3d(x,y,z)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;也可以分开写：&lt;code&gt;translateX&lt;/code&gt;/&lt;code&gt;translateY&lt;/code&gt;/&lt;code&gt;translateZ&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;3d-变换-旋转&#34;&gt;3D 变换-旋转&lt;/h3&gt;
-&lt;p&gt;语法格式：&lt;code&gt;transform:rotate3d(x,y,z,deg)&lt;/code&gt;，了解即可&lt;/p&gt;
+&lt;h3 id=&#34;3d-变换-旋转&#34;&gt;3D 变换-旋转
+&lt;/h3&gt;&lt;p&gt;语法格式：&lt;code&gt;transform:rotate3d(x,y,z,deg)&lt;/code&gt;，了解即可&lt;/p&gt;
 &lt;p&gt;也可以按照坐标轴旋转：&lt;code&gt;rotateX(45deg)&lt;/code&gt;/&lt;code&gt;rotateY(45deg)&lt;/code&gt;/&lt;code&gt;rotateZ(45deg)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;注意事项：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;旋转方向遵循&lt;code&gt;左手准则&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;3d-呈现-transfrom-style&#34;&gt;3D 呈现 transfrom-style&lt;/h3&gt;
-&lt;p&gt;给父元素添加变换属性时，&lt;code&gt;子元素&lt;/code&gt;的变换属性可能&lt;code&gt;失效&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3d-呈现-transfrom-style&#34;&gt;3D 呈现 transfrom-style
+&lt;/h3&gt;&lt;p&gt;给父元素添加变换属性时，&lt;code&gt;子元素&lt;/code&gt;的变换属性可能&lt;code&gt;失效&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;为了&lt;code&gt;保持子元素&lt;/code&gt; 3D 变换效果，应该给&lt;code&gt;父元素&lt;/code&gt;添加&lt;code&gt;transfrom-style: preserve-3d;&lt;/code&gt;属性(默认值是&lt;code&gt;flat&lt;/code&gt;)&lt;/p&gt;
-&lt;h2 id=&#34;私有浏览器前缀&#34;&gt;私有浏览器前缀&lt;/h2&gt;
-&lt;p&gt;浏览器私有前缀是为了&lt;code&gt;兼容老版本&lt;/code&gt;的写法，比较新版本的浏览器无须添加。&lt;/p&gt;
+&lt;h2 id=&#34;私有浏览器前缀&#34;&gt;私有浏览器前缀
+&lt;/h2&gt;&lt;p&gt;浏览器私有前缀是为了&lt;code&gt;兼容老版本&lt;/code&gt;的写法，比较新版本的浏览器无须添加。&lt;/p&gt;
 &lt;p&gt;私有前缀：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;-moz-：代表 firefox 浏览器私有属性&lt;/li&gt;
@@ -971,9 +971,9 @@
         <pubDate>Tue, 09 Apr 2024 09:04:08 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFweb%E7%AB%AF%E7%BD%91%E9%A1%B5%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/</guid>
-        <description>&lt;h2 id=&#34;模块化开发&#34;&gt;模块化开发&lt;/h2&gt;
-&lt;h3 id=&#34;项目目录结构&#34;&gt;项目目录结构&lt;/h3&gt;
-&lt;p&gt;一个好的项目目录结构清晰：&lt;/p&gt;
+        <description>&lt;h2 id=&#34;模块化开发&#34;&gt;模块化开发
+&lt;/h2&gt;&lt;h3 id=&#34;项目目录结构&#34;&gt;项目目录结构
+&lt;/h3&gt;&lt;p&gt;一个好的项目目录结构清晰：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;css(样式：通过外部样式引入)&lt;/li&gt;
 &lt;li&gt;fonts(字体图标)&lt;/li&gt;
@@ -983,14 +983,14 @@
 &lt;li&gt;favicon.ico(网站图标)&lt;/li&gt;
 &lt;li&gt;index.html(网站入口)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;样式的模块化开发&#34;&gt;样式的模块化开发&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;样式的模块化开发&#34;&gt;样式的模块化开发
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;样式的初始化放在 base.css 文件中&lt;/li&gt;
 &lt;li&gt;可共用的样式放在 common.css 文件中&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;网站-seo-优化&#34;&gt;网站 SEO 优化&lt;/h2&gt;
-&lt;h3 id=&#34;tdk-三大标签&#34;&gt;TDK 三大标签&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;网站-seo-优化&#34;&gt;网站 SEO 优化
+&lt;/h2&gt;&lt;h3 id=&#34;tdk-三大标签&#34;&gt;TDK 三大标签
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;title&lt;/code&gt;(网站标题-解释说明)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;description&lt;/code&gt;(网站说明)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Keywords&lt;/code&gt;(关键字)&lt;/li&gt;
@@ -1025,14 +1025,14 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    /&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;faviconico-图标制作与使用&#34;&gt;favicon.ico 图标制作与使用&lt;/h3&gt;
-&lt;ul&gt;
+&lt;/div&gt;&lt;h3 id=&#34;faviconico-图标制作与使用&#34;&gt;favicon.ico 图标制作与使用
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;figma&lt;/code&gt;切图切出 &lt;code&gt;png&lt;/code&gt; 格式的图片&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;https://favicon.io/&lt;/code&gt;进行格式转化，转化为 &lt;code&gt;ico&lt;/code&gt; 格式&lt;/li&gt;
 &lt;li&gt;放在项目根目录下，通过&lt;code&gt;&amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; href=&amp;quot;./favicon.ico&amp;quot; /&amp;gt;&lt;/code&gt;引入&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;网站-logo-制作&#34;&gt;网站 logo 制作&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;网站-logo-制作&#34;&gt;网站 logo 制作
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;先放置一个&lt;code&gt;&amp;lt;h1&amp;gt;&amp;lt;/h1&amp;gt;&lt;/code&gt;标签&lt;/li&gt;
 &lt;li&gt;标签里放置一个链接，链接里的文字是&lt;code&gt;网站名称&lt;/code&gt;，会跳转&lt;code&gt;网站首页&lt;/code&gt;，&lt;code&gt;文字不展示&lt;/code&gt;。链接的&lt;code&gt;背景图片&lt;/code&gt;是 logo&lt;/li&gt;
 &lt;li&gt;文字不展示的方法：
@@ -1051,14 +1051,14 @@
         <pubDate>Sun, 07 Apr 2024 19:32:51 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFhtml5css3/</guid>
-        <description>&lt;h2 id=&#34;html5-新特性&#34;&gt;HTML5 新特性&lt;/h2&gt;
-&lt;ul&gt;
+        <description>&lt;h2 id=&#34;html5-新特性&#34;&gt;HTML5 新特性
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;新的标签&lt;/li&gt;
 &lt;li&gt;新的表单&lt;/li&gt;
 &lt;li&gt;新的表单属性&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;新的标签&#34;&gt;新的标签&lt;/h3&gt;
-&lt;p&gt;针对&lt;code&gt;搜索引擎的&lt;/code&gt;，可以&lt;code&gt;多次使用&lt;/code&gt;，&lt;code&gt;移动端&lt;/code&gt;更常见&lt;/p&gt;
+&lt;h3 id=&#34;新的标签&#34;&gt;新的标签
+&lt;/h3&gt;&lt;p&gt;针对&lt;code&gt;搜索引擎的&lt;/code&gt;，可以&lt;code&gt;多次使用&lt;/code&gt;，&lt;code&gt;移动端&lt;/code&gt;更常见&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;语义化标签
 &lt;ul&gt;
@@ -1115,8 +1115,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;新的表单&#34;&gt;新的表单&lt;/h3&gt;
-&lt;p&gt;HTML5 中&lt;code&gt;input&lt;/code&gt;表单新增了很多种类型：&lt;/p&gt;
+&lt;h3 id=&#34;新的表单&#34;&gt;新的表单
+&lt;/h3&gt;&lt;p&gt;HTML5 中&lt;code&gt;input&lt;/code&gt;表单新增了很多种类型：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;number&lt;/code&gt;(数字)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;email&lt;/code&gt;(邮箱)&lt;/li&gt;
@@ -1128,90 +1128,90 @@
 &lt;li&gt;&lt;code&gt;month&lt;/code&gt;(月)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;week&lt;/code&gt;(周)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;新的表单属性&#34;&gt;新的表单属性&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;新的表单属性&#34;&gt;新的表单属性
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;required&lt;/code&gt;(必填)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;placeholder&lt;/code&gt;(提示文本)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;autocomplete&lt;/code&gt;(自动补全之前搜索记录)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;autofocus&lt;/code&gt;(自动聚焦：百度首页)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;multiple&lt;/code&gt;(可以提交多个文件)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;css3-新特性&#34;&gt;CSS3 新特性&lt;/h2&gt;
-&lt;p&gt;CSS3 新增特性：&lt;/p&gt;
+&lt;h2 id=&#34;css3-新特性&#34;&gt;CSS3 新特性
+&lt;/h2&gt;&lt;p&gt;CSS3 新增特性：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;新的选择器&lt;/li&gt;
 &lt;li&gt;新的盒子模型&lt;/li&gt;
 &lt;li&gt;图片模糊处理&lt;/li&gt;
 &lt;li&gt;属性过度&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;属性选择器&#34;&gt;属性选择器&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;属性选择器&lt;/code&gt;通过元素&lt;code&gt;具有的属性&lt;/code&gt;来选择元素&lt;/p&gt;
+&lt;h3 id=&#34;属性选择器&#34;&gt;属性选择器
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;属性选择器&lt;/code&gt;通过元素&lt;code&gt;具有的属性&lt;/code&gt;来选择元素&lt;/p&gt;
 &lt;p&gt;语法：&lt;code&gt;input[属性]&lt;/code&gt;&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;选择符&lt;/th&gt;
-&lt;th&gt;简介&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;E[att]&lt;/td&gt;
-&lt;td&gt;选择具有属性的 E 元素&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;E[att=&amp;ldquo;val&amp;rdquo;]&lt;/td&gt;
-&lt;td&gt;选择具有属性 att 且其值等于 val 的 E 元素&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;E[att^=&amp;ldquo;vale]&lt;/td&gt;
-&lt;td&gt;选择具有属性 att 且其值以 val 开头 的 E 元素&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;E[att$=&amp;ldquo;val&amp;rdquo;]&lt;/td&gt;
-&lt;td&gt;选择具有属性 att 且其值以 val 结尾的 E 元素&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;E[att*=&amp;ldquo;val&amp;rdquo;]&lt;/td&gt;
-&lt;td&gt;选择具有属性 att 且其值包含 val 的 E 元素&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;选择符&lt;/th&gt;
+          &lt;th&gt;简介&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;E[att]&lt;/td&gt;
+          &lt;td&gt;选择具有属性的 E 元素&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;E[att=&amp;ldquo;val&amp;rdquo;]&lt;/td&gt;
+          &lt;td&gt;选择具有属性 att 且其值等于 val 的 E 元素&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;E[att^=&amp;ldquo;vale]&lt;/td&gt;
+          &lt;td&gt;选择具有属性 att 且其值以 val 开头 的 E 元素&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;E[att$=&amp;ldquo;val&amp;rdquo;]&lt;/td&gt;
+          &lt;td&gt;选择具有属性 att 且其值以 val 结尾的 E 元素&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;E[att*=&amp;ldquo;val&amp;rdquo;]&lt;/td&gt;
+          &lt;td&gt;选择具有属性 att 且其值包含 val 的 E 元素&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;结构伪类选择器&#34;&gt;结构伪类选择器&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;结构伪类选择器&lt;/code&gt;通过&lt;code&gt;文档的结构&lt;/code&gt;来选择元素，常用于选择&lt;code&gt;父级&lt;/code&gt;里的&lt;code&gt;子元素&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;结构伪类选择器&#34;&gt;结构伪类选择器
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;结构伪类选择器&lt;/code&gt;通过&lt;code&gt;文档的结构&lt;/code&gt;来选择元素，常用于选择&lt;code&gt;父级&lt;/code&gt;里的&lt;code&gt;子元素&lt;/code&gt;&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;选择符&lt;/th&gt;
-&lt;th&gt;简介&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;E:first-child&lt;/td&gt;
-&lt;td&gt;匹配父元素里的第一个子元素&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;E:last-child&lt;/td&gt;
-&lt;td&gt;匹配父元素里的最后一个子元素&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;E:nth-child(n)&lt;/td&gt;
-&lt;td&gt;匹配父元素里的第 n 个子元素&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;E:first-of-type&lt;/td&gt;
-&lt;td&gt;匹配父元素里指定类型的第一个子元素&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;E:last-of-type&lt;/td&gt;
-&lt;td&gt;匹配父元素里指定类型的最后一个子元素&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;E:nth-of-type(n)&lt;/td&gt;
-&lt;td&gt;匹配父元素里指定类型的第 n 个元素&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;选择符&lt;/th&gt;
+          &lt;th&gt;简介&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;E:first-child&lt;/td&gt;
+          &lt;td&gt;匹配父元素里的第一个子元素&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;E:last-child&lt;/td&gt;
+          &lt;td&gt;匹配父元素里的最后一个子元素&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;E:nth-child(n)&lt;/td&gt;
+          &lt;td&gt;匹配父元素里的第 n 个子元素&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;E:first-of-type&lt;/td&gt;
+          &lt;td&gt;匹配父元素里指定类型的第一个子元素&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;E:last-of-type&lt;/td&gt;
+          &lt;td&gt;匹配父元素里指定类型的最后一个子元素&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;E:nth-of-type(n)&lt;/td&gt;
+          &lt;td&gt;匹配父元素里指定类型的第 n 个元素&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;&lt;code&gt;nth结构伪类选择器&lt;/code&gt;中的&lt;code&gt;n&lt;/code&gt;既可以&lt;code&gt;是数字&lt;/code&gt;也可以是&lt;code&gt;公式/关键字&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1224,25 +1224,25 @@
 &lt;li&gt;&lt;code&gt;nth-child(n)&lt;/code&gt;会把&lt;code&gt;所有子元素&lt;/code&gt;进行排序，&lt;code&gt;再看前面选择的类型&lt;/code&gt;，如果匹配不上，则选不上&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;nth-of-type(n)&lt;/code&gt;只会把&lt;code&gt;指定类型&lt;/code&gt;的元素进行排序，再选择&lt;code&gt;第 n 个&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;伪元素选择器&#34;&gt;伪元素选择器&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;伪元素选择器&lt;/code&gt;的由来：伪元素选择器可以&lt;code&gt;利用CSS创建新标签&lt;/code&gt;，&lt;code&gt;简化HTML代码&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;伪元素选择器&#34;&gt;伪元素选择器
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;伪元素选择器&lt;/code&gt;的由来：伪元素选择器可以&lt;code&gt;利用CSS创建新标签&lt;/code&gt;，&lt;code&gt;简化HTML代码&lt;/code&gt;&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;选择符&lt;/th&gt;
-&lt;th&gt;简介&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;::before&lt;/td&gt;
-&lt;td&gt;在元素内部的前面插入内容&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;::after&lt;/td&gt;
-&lt;td&gt;在元素内部的后面插入内容&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;选择符&lt;/th&gt;
+          &lt;th&gt;简介&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;::before&lt;/td&gt;
+          &lt;td&gt;在元素内部的前面插入内容&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;::after&lt;/td&gt;
+          &lt;td&gt;在元素内部的后面插入内容&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;注意事项：&lt;/p&gt;
 &lt;ul&gt;
@@ -1257,22 +1257,22 @@
 &lt;li&gt;遮罩层&lt;/li&gt;
 &lt;li&gt;清除浮动&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;css3-盒子模型&#34;&gt;CSS3 盒子模型&lt;/h3&gt;
-&lt;p&gt;CSS2 的盒子模型，&lt;code&gt;边框&lt;/code&gt;、&lt;code&gt;内边距&lt;/code&gt;都会撑开盒子&lt;/p&gt;
+&lt;h3 id=&#34;css3-盒子模型&#34;&gt;CSS3 盒子模型
+&lt;/h3&gt;&lt;p&gt;CSS2 的盒子模型，&lt;code&gt;边框&lt;/code&gt;、&lt;code&gt;内边距&lt;/code&gt;都会撑开盒子&lt;/p&gt;
 &lt;p&gt;CSS3 可以通过&lt;code&gt;box-sizing&lt;/code&gt;无需考虑&lt;/p&gt;
 &lt;p&gt;可选择的值：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;content-box&lt;/code&gt;(和 CSS2 盒子模型一样)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;border-box&lt;/code&gt;(新的盒子模型)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;css3-其他特性&#34;&gt;CSS3 其他特性&lt;/h2&gt;
-&lt;h3 id=&#34;图片变模糊&#34;&gt;图片变模糊&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;img {filter: blur(n px);}&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;css3-其他特性&#34;&gt;CSS3 其他特性
+&lt;/h2&gt;&lt;h3 id=&#34;图片变模糊&#34;&gt;图片变模糊
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;img {filter: blur(n px);}&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;n 越大，图片越模糊。当 n=0 时，没有模糊效果&lt;/p&gt;
-&lt;h3 id=&#34;盒子宽度计算函数-calc&#34;&gt;盒子宽度计算函数 calc()&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;width: calc(100% - 30px)&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;css3-属性过渡&#34;&gt;CSS3 属性过渡&lt;/h3&gt;
-&lt;p&gt;是一种简单的&lt;code&gt;动画效果&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;盒子宽度计算函数-calc&#34;&gt;盒子宽度计算函数 calc()
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;width: calc(100% - 30px)&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;css3-属性过渡&#34;&gt;CSS3 属性过渡
+&lt;/h3&gt;&lt;p&gt;是一种简单的&lt;code&gt;动画效果&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;语法：&lt;code&gt;transtion: 要过渡的属性 花费时间 运动曲线 何时开始;&lt;/code&gt;，在&lt;code&gt;原选择器&lt;/code&gt;上写(谁做过渡给谁加)。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;属性：&lt;code&gt;宽度/高度/背景颜色/内外边距/all&lt;/code&gt;，如果想要写多个属性，应该使用&lt;code&gt;逗号&lt;/code&gt;分隔&lt;/li&gt;
@@ -1296,32 +1296,32 @@
         <pubDate>Sat, 06 Apr 2024 18:33:34 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
-        <description>&lt;h2 id=&#34;精灵图&#34;&gt;精灵图&lt;/h2&gt;
-&lt;h3 id=&#34;为什么需要精灵图技术&#34;&gt;为什么需要精灵图技术&lt;/h3&gt;
-&lt;p&gt;很多小图片，每一个小图片请求一次，浪费网络 IO&lt;/p&gt;
+        <description>&lt;h2 id=&#34;精灵图&#34;&gt;精灵图
+&lt;/h2&gt;&lt;h3 id=&#34;为什么需要精灵图技术&#34;&gt;为什么需要精灵图技术
+&lt;/h3&gt;&lt;p&gt;很多小图片，每一个小图片请求一次，浪费网络 IO&lt;/p&gt;
 &lt;p&gt;为了减少服务器&lt;code&gt;发送/接受请求次数&lt;/code&gt;，提高&lt;code&gt;页面加载速度&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;精灵图技术原理&#34;&gt;精灵图技术原理&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;精灵图技术原理&#34;&gt;精灵图技术原理
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;精灵图技术主要针对&lt;code&gt;背景图片&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;将多个背景图片&lt;code&gt;整合到一张图片中&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;使用&lt;code&gt;background-position/width/height&lt;/code&gt;属性将图片&lt;code&gt;进行切割&lt;/code&gt;得到想要的图片&lt;/li&gt;
 &lt;li&gt;一般&lt;code&gt;background-position&lt;/code&gt;都是负值&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;字体图标&#34;&gt;字体图标&lt;/h2&gt;
-&lt;h3 id=&#34;字体图标产生的原因&#34;&gt;字体图标产生的原因&lt;/h3&gt;
-&lt;p&gt;网页上有许多&lt;code&gt;小图标&lt;/code&gt;，使用&lt;code&gt;精灵图&lt;/code&gt;技术实现有&lt;code&gt;很多缺点&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;字体图标&#34;&gt;字体图标
+&lt;/h2&gt;&lt;h3 id=&#34;字体图标产生的原因&#34;&gt;字体图标产生的原因
+&lt;/h3&gt;&lt;p&gt;网页上有许多&lt;code&gt;小图标&lt;/code&gt;，使用&lt;code&gt;精灵图&lt;/code&gt;技术实现有&lt;code&gt;很多缺点&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;精灵图是背景图片，图片&lt;code&gt;占用存储&lt;/code&gt;比较大&lt;/li&gt;
 &lt;li&gt;图片进行&lt;code&gt;放大缩小&lt;/code&gt;时会&lt;code&gt;失真&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;精灵图一旦确定，修改很麻烦&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;字体图标的优点&#34;&gt;字体图标的优点&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;字体图标的优点&#34;&gt;字体图标的优点
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;展示的是&lt;code&gt;图标&lt;/code&gt;，其实是&lt;code&gt;字体&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;放大缩小&lt;code&gt;不失真&lt;/code&gt;，可以随便&lt;code&gt;改变颜色&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;字体图标使用&#34;&gt;字体图标使用&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;字体图标使用&#34;&gt;字体图标使用
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;下载字体图标&lt;/li&gt;
 &lt;li&gt;引入字体图标
 &lt;ul&gt;
@@ -1337,18 +1337,18 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;css-三角&#34;&gt;CSS 三角&lt;/h2&gt;
-&lt;h3 id=&#34;css-三角的原理&#34;&gt;CSS 三角的原理&lt;/h3&gt;
-&lt;p&gt;通过&lt;code&gt;边框&lt;/code&gt;实现&lt;/p&gt;
+&lt;h2 id=&#34;css-三角&#34;&gt;CSS 三角
+&lt;/h2&gt;&lt;h3 id=&#34;css-三角的原理&#34;&gt;CSS 三角的原理
+&lt;/h3&gt;&lt;p&gt;通过&lt;code&gt;边框&lt;/code&gt;实现&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;一个没有大小的盒子：&lt;code&gt;box { width: 0; height: 0;}&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;为盒子设置边框：大小为三角底边长度，颜色为透明，风格为实线：&lt;code&gt;border: 10px solid transparent;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;想要的三角形底边在哪，哪个方向的边框设置颜色&lt;code&gt;border-left: red;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;用户界面控制&#34;&gt;用户界面控制&lt;/h2&gt;
-&lt;p&gt;用户&lt;code&gt;界面样式&lt;/code&gt;，提高用户体验&lt;/p&gt;
-&lt;h3 id=&#34;鼠标样式&#34;&gt;鼠标样式&lt;/h3&gt;
-&lt;p&gt;通过&lt;code&gt;li {cursor: value;}&lt;/code&gt;控制&lt;/p&gt;
+&lt;h2 id=&#34;用户界面控制&#34;&gt;用户界面控制
+&lt;/h2&gt;&lt;p&gt;用户&lt;code&gt;界面样式&lt;/code&gt;，提高用户体验&lt;/p&gt;
+&lt;h3 id=&#34;鼠标样式&#34;&gt;鼠标样式
+&lt;/h3&gt;&lt;p&gt;通过&lt;code&gt;li {cursor: value;}&lt;/code&gt;控制&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;default(小白，默认)&lt;/li&gt;
 &lt;li&gt;pointer(小手)&lt;/li&gt;
@@ -1356,59 +1356,59 @@
 &lt;li&gt;text(文本)&lt;/li&gt;
 &lt;li&gt;not-allow(禁止)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;表单轮廓&#34;&gt;表单轮廓&lt;/h3&gt;
-&lt;p&gt;文本框默认有边框轮廓，通过&lt;code&gt;outline: none;&lt;/code&gt;取消&lt;/p&gt;
-&lt;h3 id=&#34;防止表单拖拽&#34;&gt;防止表单拖拽&lt;/h3&gt;
-&lt;p&gt;文本域防拖拽，默认可以拖拽：&lt;code&gt;resize: none;&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;行内块元素与文本垂直居中&#34;&gt;行内块元素与文本垂直居中&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;行内块元素&lt;/code&gt;(图片/表单)与&lt;code&gt;文本&lt;/code&gt;垂直对齐&lt;/p&gt;
+&lt;h3 id=&#34;表单轮廓&#34;&gt;表单轮廓
+&lt;/h3&gt;&lt;p&gt;文本框默认有边框轮廓，通过&lt;code&gt;outline: none;&lt;/code&gt;取消&lt;/p&gt;
+&lt;h3 id=&#34;防止表单拖拽&#34;&gt;防止表单拖拽
+&lt;/h3&gt;&lt;p&gt;文本域防拖拽，默认可以拖拽：&lt;code&gt;resize: none;&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;行内块元素与文本垂直居中&#34;&gt;行内块元素与文本垂直居中
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;行内块元素&lt;/code&gt;(图片/表单)与&lt;code&gt;文本&lt;/code&gt;垂直对齐&lt;/p&gt;
 &lt;p&gt;为&lt;code&gt;行内块元素&lt;/code&gt;设置&lt;code&gt;vertical-align&lt;/code&gt;属性&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;vertical-align: baseline | top | middle | bottom;&lt;/code&gt;&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;值&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;baseline&lt;/td&gt;
-&lt;td&gt;基线&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;top&lt;/td&gt;
-&lt;td&gt;顶线&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;middle&lt;/td&gt;
-&lt;td&gt;中线&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;bottom&lt;/td&gt;
-&lt;td&gt;底线&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;值&lt;/th&gt;
+          &lt;th&gt;描述&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;baseline&lt;/td&gt;
+          &lt;td&gt;基线&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;top&lt;/td&gt;
+          &lt;td&gt;顶线&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;middle&lt;/td&gt;
+          &lt;td&gt;中线&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;bottom&lt;/td&gt;
+          &lt;td&gt;底线&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;图片和文字默认是&lt;code&gt;基线对齐&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;图片底部空白缝隙&#34;&gt;图片底部空白缝隙&lt;/h2&gt;
-&lt;h3 id=&#34;产生原因&#34;&gt;产生原因&lt;/h3&gt;
-&lt;p&gt;因为图片默认和文字&lt;code&gt;基线对齐&lt;/code&gt;，所以底部有缝隙&lt;/p&gt;
-&lt;h3 id=&#34;解决方案&#34;&gt;解决方案&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;图片底部空白缝隙&#34;&gt;图片底部空白缝隙
+&lt;/h2&gt;&lt;h3 id=&#34;产生原因&#34;&gt;产生原因
+&lt;/h3&gt;&lt;p&gt;因为图片默认和文字&lt;code&gt;基线对齐&lt;/code&gt;，所以底部有缝隙&lt;/p&gt;
+&lt;h3 id=&#34;解决方案&#34;&gt;解决方案
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;设置&lt;code&gt;vertical-align: bottom | middle | top;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;把图片&lt;code&gt;转换为块元素&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;溢出文字省略号显示&#34;&gt;溢出文字省略号显示&lt;/h2&gt;
-&lt;h3 id=&#34;单行文字溢出&#34;&gt;单行文字溢出&lt;/h3&gt;
-&lt;p&gt;单行文本溢出省略显示的三个条件：&lt;/p&gt;
+&lt;h2 id=&#34;溢出文字省略号显示&#34;&gt;溢出文字省略号显示
+&lt;/h2&gt;&lt;h3 id=&#34;单行文字溢出&#34;&gt;单行文字溢出
+&lt;/h3&gt;&lt;p&gt;单行文本溢出省略显示的三个条件：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;强制文本一行显示：&lt;code&gt;white-space: nowrap; 默认normal自动换行&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;超出部分隐藏：&lt;code&gt;overflow: hidden;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;文字用省略号替代超出的部分：&lt;code&gt;text-overflow: ellipsis;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;多行文字溢出&#34;&gt;多行文字溢出&lt;/h3&gt;
-&lt;p&gt;多行文本溢出显示省略号，适用于 web-kit 内核，有较大的兼容性问题&lt;/p&gt;
+&lt;h3 id=&#34;多行文字溢出&#34;&gt;多行文字溢出
+&lt;/h3&gt;&lt;p&gt;多行文本溢出显示省略号，适用于 web-kit 内核，有较大的兼容性问题&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;overflow: hidden;&lt;/li&gt;
 &lt;li&gt;text-overflow: ellipsis;&lt;/li&gt;
@@ -1416,9 +1416,9 @@
 &lt;li&gt;-wbekit-line-clamp: 2;&lt;/li&gt;
 &lt;li&gt;-webkit-box-orient: vertical;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;常见布局技巧&#34;&gt;常见布局技巧&lt;/h2&gt;
-&lt;h3 id=&#34;margin-负值的应用&#34;&gt;margin 负值的应用&lt;/h3&gt;
-&lt;p&gt;盒子细线边框(合并边框)：&lt;/p&gt;
+&lt;h2 id=&#34;常见布局技巧&#34;&gt;常见布局技巧
+&lt;/h2&gt;&lt;h3 id=&#34;margin-负值的应用&#34;&gt;margin 负值的应用
+&lt;/h3&gt;&lt;p&gt;盒子细线边框(合并边框)：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;margin-left: -边框宽度;&lt;/code&gt;，右边盒子压住左边盒子&lt;code&gt;右边框&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;鼠标经过，边框变换颜色：
@@ -1428,18 +1428,18 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;文字围绕浮动元素&#34;&gt;文字围绕浮动元素&lt;/h3&gt;
-&lt;p&gt;利用&lt;code&gt;浮动不会压住文字&lt;/code&gt;的特点，添加浮动之后，文字就会围绕浮动元素&lt;/p&gt;
-&lt;h3 id=&#34;行内块元素巧妙应用&#34;&gt;行内块元素巧妙应用&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;页码布局&lt;/code&gt;的实现&lt;/p&gt;
+&lt;h3 id=&#34;文字围绕浮动元素&#34;&gt;文字围绕浮动元素
+&lt;/h3&gt;&lt;p&gt;利用&lt;code&gt;浮动不会压住文字&lt;/code&gt;的特点，添加浮动之后，文字就会围绕浮动元素&lt;/p&gt;
+&lt;h3 id=&#34;行内块元素巧妙应用&#34;&gt;行内块元素巧妙应用
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;页码布局&lt;/code&gt;的实现&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;利用行内块元素间&lt;code&gt;自带的间隙&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;文字水平居中：&lt;code&gt;text-align: center;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;文字垂直居中：&lt;code&gt;line-height: 行内块元素高度&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;所有的行内块元素与行内元素水平居中：给父元素&lt;code&gt;text-align: center;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;css-三角强化&#34;&gt;CSS 三角强化&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;非等腰三角&lt;/code&gt;的实现&lt;/p&gt;
+&lt;h3 id=&#34;css-三角强化&#34;&gt;CSS 三角强化
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;非等腰三角&lt;/code&gt;的实现&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;等腰三角的实现：&lt;code&gt;宽度高度为0&lt;/code&gt;的盒子&lt;/li&gt;
 &lt;li&gt;四条边框颜色不一样，除了&lt;code&gt;直角边&lt;/code&gt;设置颜色，其他边设置为&lt;code&gt;transparent&lt;/code&gt;&lt;/li&gt;
@@ -1468,8 +1468,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;``
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;css-初始化&#34;&gt;CSS 初始化&lt;/h2&gt;
-&lt;p&gt;不同浏览器对于有些标签的默认值不一样，为了消除这个，需要对 CSS 进行初始化&lt;/p&gt;
+&lt;/div&gt;&lt;h2 id=&#34;css-初始化&#34;&gt;CSS 初始化
+&lt;/h2&gt;&lt;p&gt;不同浏览器对于有些标签的默认值不一样，为了消除这个，需要对 CSS 进行初始化&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1618,60 +1618,60 @@
         <pubDate>Thu, 04 Apr 2024 19:32:48 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/</guid>
-        <description>&lt;h2 id=&#34;网页布局入门&#34;&gt;网页布局入门&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;网页布局&lt;/code&gt;的本质就是通过&lt;code&gt;CSS&lt;/code&gt;把&lt;code&gt;盒子&lt;/code&gt;摆到相应位置。&lt;/p&gt;
-&lt;h3 id=&#34;网页布局方式&#34;&gt;网页布局方式&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;网页布局&lt;/code&gt;有以下三种方式：&lt;/p&gt;
+        <description>&lt;h2 id=&#34;网页布局入门&#34;&gt;网页布局入门
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;网页布局&lt;/code&gt;的本质就是通过&lt;code&gt;CSS&lt;/code&gt;把&lt;code&gt;盒子&lt;/code&gt;摆到相应位置。&lt;/p&gt;
+&lt;h3 id=&#34;网页布局方式&#34;&gt;网页布局方式
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;网页布局&lt;/code&gt;有以下三种方式：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;普通流&lt;/code&gt;布局&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;浮动&lt;/code&gt;布局&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;定位&lt;/code&gt;布局&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;网页布局准则&#34;&gt;网页布局准则&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;网页布局&lt;/code&gt;第一准则：多个块级元素&lt;code&gt;纵向排列&lt;/code&gt;找&lt;code&gt;标准流&lt;/code&gt;，多个块级元素&lt;code&gt;横向排列&lt;/code&gt;找&lt;code&gt;浮动&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;网页布局准则&#34;&gt;网页布局准则
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;网页布局&lt;/code&gt;第一准则：多个块级元素&lt;code&gt;纵向排列&lt;/code&gt;找&lt;code&gt;标准流&lt;/code&gt;，多个块级元素&lt;code&gt;横向排列&lt;/code&gt;找&lt;code&gt;浮动&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;网页布局&lt;/code&gt;第二准则：先设置&lt;code&gt;盒子大小&lt;/code&gt;，再设置&lt;code&gt;盒子位置&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;网页布局流程&#34;&gt;网页布局流程&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;网页布局流程&#34;&gt;网页布局流程
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;确认页面&lt;code&gt;版心(可视区)&lt;/code&gt;，可视区&lt;code&gt;水平居中&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;分析页面中&lt;code&gt;行模块&lt;/code&gt;，以及&lt;code&gt;每个行&lt;/code&gt;中的&lt;code&gt;列模块&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;一行中列模块经常&lt;code&gt;浮动布局&lt;/code&gt;，先确定&lt;code&gt;列大小&lt;/code&gt;，再确定&lt;code&gt;列位置&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;先制作 html 结构。&lt;code&gt;先结构，后样式&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;标准流普通流&#34;&gt;标准流/普通流&lt;/h2&gt;
-&lt;p&gt;标准流就是元素按照规定的&lt;code&gt;默认方式&lt;/code&gt;排序&lt;/p&gt;
+&lt;h2 id=&#34;标准流普通流&#34;&gt;标准流/普通流
+&lt;/h2&gt;&lt;p&gt;标准流就是元素按照规定的&lt;code&gt;默认方式&lt;/code&gt;排序&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;行内元素&lt;/li&gt;
 &lt;li&gt;块元素&lt;/li&gt;
 &lt;li&gt;行内块元素&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;浮动布局&#34;&gt;浮动布局&lt;/h2&gt;
-&lt;h3 id=&#34;为什么需要浮动&#34;&gt;为什么需要浮动&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;浮动布局&#34;&gt;浮动布局
+&lt;/h2&gt;&lt;h3 id=&#34;为什么需要浮动&#34;&gt;为什么需要浮动
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;使多个&lt;code&gt;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;&lt;/code&gt;在同一行展示：在标准流中使用&lt;code&gt;display: inline-block&lt;/code&gt;，但是盒子之间会有缝隙&lt;/li&gt;
 &lt;li&gt;实现两个盒子&lt;code&gt;左右对齐&lt;/code&gt;：标准流很难实现&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;什么是浮动&#34;&gt;什么是浮动&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;float&lt;/code&gt;属性用于创建浮动框，将其移动到一边，直至左边缘/右边缘遇到其他块，或者是另一个浮动框的边缘&lt;/p&gt;
+&lt;h3 id=&#34;什么是浮动&#34;&gt;什么是浮动
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;float&lt;/code&gt;属性用于创建浮动框，将其移动到一边，直至左边缘/右边缘遇到其他块，或者是另一个浮动框的边缘&lt;/p&gt;
 &lt;p&gt;浮动语法：&lt;code&gt;float: 属性值&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;none(默认值)&lt;/li&gt;
 &lt;li&gt;left&lt;/li&gt;
 &lt;li&gt;right&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;浮动的特性&#34;&gt;浮动的特性&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;浮动的特性&#34;&gt;浮动的特性
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;加了浮动的元素会&lt;code&gt;脱离标准流&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;浮动的元素会&lt;code&gt;一行显示&lt;/code&gt;并且元素&lt;code&gt;顶部对齐&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;浮动的元素具有&lt;code&gt;行内块元素&lt;/code&gt;特性&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;浮动的注意点&#34;&gt;浮动的注意点&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;浮动的注意点&#34;&gt;浮动的注意点
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;浮动和&lt;code&gt;标准流父盒子&lt;/code&gt;搭配使用&lt;/li&gt;
 &lt;li&gt;一个元素浮动，其他元素&lt;code&gt;也要浮动&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;浮动的盒子只会影响&lt;code&gt;后面的标准流&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;清除浮动&#34;&gt;清除浮动&lt;/h3&gt;
-&lt;p&gt;不一定需要&lt;code&gt;给父盒子设置高度&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;清除浮动&#34;&gt;清除浮动
+&lt;/h3&gt;&lt;p&gt;不一定需要&lt;code&gt;给父盒子设置高度&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;理想的状态：&lt;code&gt;子盒子撑开父盒子&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;浮动的元素不占位置&lt;/code&gt;(浮动布局中没有子盒子撑开父盒子)&lt;/p&gt;
 &lt;p&gt;因此需要清除浮动，清除浮动有以下几种方式：&lt;/p&gt;
@@ -1715,29 +1715,29 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;切图&#34;&gt;切图&lt;/h2&gt;
-&lt;h3 id=&#34;常见的图片格式&#34;&gt;常见的图片格式&lt;/h3&gt;
-&lt;ul&gt;
+&lt;/div&gt;&lt;h2 id=&#34;切图&#34;&gt;切图
+&lt;/h2&gt;&lt;h3 id=&#34;常见的图片格式&#34;&gt;常见的图片格式
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;jpg：对色彩保留信息好，产品类图片&lt;/li&gt;
 &lt;li&gt;gif：显示简单的图形及字体，图片动画。特点：保存透明背景和动画效果&lt;/li&gt;
 &lt;li&gt;png：结合 jpg 与 gif&lt;/li&gt;
 &lt;li&gt;psd：photoshop 的专用格式&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;切图方式&#34;&gt;切图方式&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;切图方式&#34;&gt;切图方式
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;图层切图：移动工具、合并图层(&lt;code&gt;ctrl + e&lt;/code&gt;)&lt;/li&gt;
 &lt;li&gt;切片切图：切片工具&lt;/li&gt;
 &lt;li&gt;插件切图：Cutterman&lt;/li&gt;
 &lt;li&gt;其他软件：蓝湖、幕客&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;定位&#34;&gt;定位&lt;/h2&gt;
-&lt;h3 id=&#34;为什么需要定位&#34;&gt;为什么需要定位&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;定位&#34;&gt;定位
+&lt;/h2&gt;&lt;h3 id=&#34;为什么需要定位&#34;&gt;为什么需要定位
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;盒子&lt;code&gt;自由移动&lt;/code&gt;，并且&lt;code&gt;压住&lt;/code&gt;其他盒子&lt;/li&gt;
 &lt;li&gt;盒子&lt;code&gt;位置固定&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;定位组成&#34;&gt;定位组成&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;定位组成&#34;&gt;定位组成
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;定位方式
 &lt;ul&gt;
 &lt;li&gt;static(默认值)&lt;/li&gt;
@@ -1756,66 +1756,66 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;相对定位relative&#34;&gt;相对定位：relative&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;相对定位relative&#34;&gt;相对定位：relative
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;相对定位&lt;/code&gt;是相对于&lt;code&gt;盒子自己原来位置&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;相对定位&lt;/code&gt;原来位置&lt;code&gt;继续占有&lt;/code&gt;(不脱标，保留原来位置)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;绝对定位absolute&#34;&gt;绝对定位：absolute&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;绝对定位absolute&#34;&gt;绝对定位：absolute
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;没有父元素/父元素没有定位&lt;/code&gt;则&lt;code&gt;相对浏览器&lt;/code&gt;进行移动&lt;/li&gt;
 &lt;li&gt;父元素&lt;code&gt;有定位(相对/决定/固定)&lt;/code&gt;则&lt;code&gt;相对最近一级有定位的父元素&lt;/code&gt;进行移动&lt;/li&gt;
 &lt;li&gt;绝对定位&lt;code&gt;脱标&lt;/code&gt;，不占有原来位置&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;子绝父相&#34;&gt;子绝父相&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;子级&lt;/code&gt;使用&lt;code&gt;绝对定位&lt;/code&gt;，&lt;code&gt;父亲&lt;/code&gt;需要&lt;code&gt;相对定位&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;子绝父相&#34;&gt;子绝父相
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;子级&lt;/code&gt;使用&lt;code&gt;绝对定位&lt;/code&gt;，&lt;code&gt;父亲&lt;/code&gt;需要&lt;code&gt;相对定位&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;子级绝对定位，&lt;code&gt;不会占有位置&lt;/code&gt;，可以放在任何地方&lt;/li&gt;
 &lt;li&gt;父级相对定位，&lt;code&gt;约束子级&lt;/code&gt;相对自己移动，并且相对定位占有原来位置&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;固定定位&#34;&gt;固定定位&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;固定定位&#34;&gt;固定定位
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;固定定位&lt;/code&gt;是固定于浏览器&lt;code&gt;可视区&lt;/code&gt;的位置&lt;/li&gt;
 &lt;li&gt;固定定位会&lt;code&gt;脱标&lt;/code&gt;，可以看做是&lt;code&gt;特殊的绝对定位&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;固定&lt;code&gt;版心右侧&lt;/code&gt;：&lt;code&gt;left: 50%; margin-left: 1/2版心宽度&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;粘性定位&#34;&gt;粘性定位&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;粘性定位&#34;&gt;粘性定位
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;position: sticky&lt;/li&gt;
 &lt;li&gt;必须设置&lt;code&gt;top/right/bottom/left&lt;/code&gt;中的一个&lt;/li&gt;
 &lt;li&gt;不脱标&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;定位的叠放顺序&#34;&gt;定位的叠放顺序&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;z-index&lt;/code&gt;，值越大，越在上面&lt;/p&gt;
-&lt;h3 id=&#34;绝对定位的盒子水平垂直居中&#34;&gt;绝对定位的盒子水平/垂直居中&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;定位的叠放顺序&#34;&gt;定位的叠放顺序
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;z-index&lt;/code&gt;，值越大，越在上面&lt;/p&gt;
+&lt;h3 id=&#34;绝对定位的盒子水平垂直居中&#34;&gt;绝对定位的盒子水平/垂直居中
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;left: 50%; margin-left: -1/2自己宽度&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;top: 50%; margin-top: -1/2自己宽度&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;定位特性&#34;&gt;定位特性&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;定位特性&#34;&gt;定位特性
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;加了&lt;code&gt;绝对/固定定位&lt;/code&gt;/&lt;code&gt;浮动&lt;/code&gt;的盒子会变成&lt;code&gt;行内块元素&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;加了&lt;code&gt;绝对/固定定位&lt;/code&gt;/&lt;code&gt;浮动&lt;/code&gt;的元素默认宽度是&lt;code&gt;内容宽度&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;绝对/固定定位&lt;/code&gt;/&lt;code&gt;浮动&lt;/code&gt;的盒子不会发生&lt;code&gt;外边距合并&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;绝对/固定定位&lt;/code&gt;会压住&lt;code&gt;标准流所有(盒子+文字)&lt;/code&gt;，浮动&lt;code&gt;不会压住文字&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;元素的显示与隐藏&#34;&gt;元素的显示与隐藏&lt;/h2&gt;
-&lt;h3 id=&#34;display&#34;&gt;display&lt;/h3&gt;
-&lt;p&gt;通过&lt;code&gt;display&lt;/code&gt;控制隐藏的元素&lt;code&gt;不会占有原来位置&lt;/code&gt;，有以下几个主要可选的值：&lt;/p&gt;
+&lt;h2 id=&#34;元素的显示与隐藏&#34;&gt;元素的显示与隐藏
+&lt;/h2&gt;&lt;h3 id=&#34;display&#34;&gt;display
+&lt;/h3&gt;&lt;p&gt;通过&lt;code&gt;display&lt;/code&gt;控制隐藏的元素&lt;code&gt;不会占有原来位置&lt;/code&gt;，有以下几个主要可选的值：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;none(隐藏元素)&lt;/li&gt;
 &lt;li&gt;block(显示元素/更改为块元素)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;visibility&#34;&gt;visibility&lt;/h3&gt;
-&lt;p&gt;通过&lt;code&gt;visibility&lt;/code&gt;控制隐藏的元素还会&lt;code&gt;占有原来位置&lt;/code&gt;，有以下几个可选的值：&lt;/p&gt;
+&lt;h3 id=&#34;visibility&#34;&gt;visibility
+&lt;/h3&gt;&lt;p&gt;通过&lt;code&gt;visibility&lt;/code&gt;控制隐藏的元素还会&lt;code&gt;占有原来位置&lt;/code&gt;，有以下几个可选的值：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;inherit(继承，默认值)&lt;/li&gt;
 &lt;li&gt;visible(可见的)&lt;/li&gt;
 &lt;li&gt;hidden(隐藏)&lt;/li&gt;
 &lt;li&gt;collapse(隐藏表格)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;overflow&#34;&gt;overflow&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;overflow&lt;/code&gt;主要控制&lt;code&gt;溢出部分的&lt;/code&gt;显示策略，有以下几个可选的值：&lt;/p&gt;
+&lt;h3 id=&#34;overflow&#34;&gt;overflow
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;overflow&lt;/code&gt;主要控制&lt;code&gt;溢出部分的&lt;/code&gt;显示策略，有以下几个可选的值：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;hidden(隐藏)&lt;/li&gt;
 &lt;li&gt;visible(可见的，默认值)&lt;/li&gt;
@@ -1830,18 +1830,18 @@
         <pubDate>Wed, 03 Apr 2024 21:32:09 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/</guid>
-        <description>&lt;h2 id=&#34;盒子模型组成&#34;&gt;盒子模型组成&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;盒子模型&lt;/code&gt;有以下四个成员：&lt;/p&gt;
+        <description>&lt;h2 id=&#34;盒子模型组成&#34;&gt;盒子模型组成
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;盒子模型&lt;/code&gt;有以下四个成员：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;content&lt;/code&gt;(内容)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;padding&lt;/code&gt;(内边距)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;border&lt;/code&gt;(边框)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;margin&lt;/code&gt;(外边距)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;盒子模型-border&#34;&gt;盒子模型 border&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;边框&lt;/code&gt;会影响盒子实际大小&lt;/p&gt;
-&lt;h3 id=&#34;边框属性&#34;&gt;边框属性&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;盒子模型-border&#34;&gt;盒子模型 border
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;边框&lt;/code&gt;会影响盒子实际大小&lt;/p&gt;
+&lt;h3 id=&#34;边框属性&#34;&gt;边框属性
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;border-width&lt;/code&gt;：宽度&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;border-style&lt;/code&gt;：样式
 &lt;ul&gt;
@@ -1852,103 +1852,103 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;code&gt;border-color&lt;/code&gt;：颜色&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;边框简写&#34;&gt;边框简写：&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;border: border-widtgh border-style border-color&lt;/code&gt;，没有顺序要求&lt;/p&gt;
-&lt;h3 id=&#34;边框分开写法&#34;&gt;边框分开写法&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;边框简写&#34;&gt;边框简写：
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;border: border-widtgh border-style border-color&lt;/code&gt;，没有顺序要求&lt;/p&gt;
+&lt;h3 id=&#34;边框分开写法&#34;&gt;边框分开写法
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;border-top&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;border-bottom&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;border-left&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;border-right&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;合并相邻边框：&lt;code&gt;border-collapse: collapse&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;盒子模型-padding&#34;&gt;盒子模型 padding&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;padding&lt;/code&gt;会影响盒子实际大小&lt;/p&gt;
-&lt;h3 id=&#34;内边距属性&#34;&gt;内边距属性&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;盒子模型-padding&#34;&gt;盒子模型 padding
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;padding&lt;/code&gt;会影响盒子实际大小&lt;/p&gt;
+&lt;h3 id=&#34;内边距属性&#34;&gt;内边距属性
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;padding-left&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;padding-top&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;padding-right&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;padding-bottom&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;内边距简写&#34;&gt;内边距简写&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;值的个数&lt;/th&gt;
-&lt;th&gt;效果&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;padding: 5px;&lt;/td&gt;
-&lt;td&gt;1 个值，代表上下左右&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;padding: 5px 10px;&lt;/td&gt;
-&lt;td&gt;2 个值，上下 5px，左右 10px&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;padding: 5px 10px 20px;&lt;/td&gt;
-&lt;td&gt;3 个值，上边距 5px，左右边距 10px，下边距 20px&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;padding: 5px 10px 15px 20px;&lt;/td&gt;
-&lt;td&gt;4 个值，上边距 5px，右边距 10px，下边距 15px，左边距 20px&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+&lt;h3 id=&#34;内边距简写&#34;&gt;内边距简写
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;值的个数&lt;/th&gt;
+          &lt;th&gt;效果&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;padding: 5px;&lt;/td&gt;
+          &lt;td&gt;1 个值，代表上下左右&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;padding: 5px 10px;&lt;/td&gt;
+          &lt;td&gt;2 个值，上下 5px，左右 10px&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;padding: 5px 10px 20px;&lt;/td&gt;
+          &lt;td&gt;3 个值，上边距 5px，左右边距 10px，下边距 20px&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;padding: 5px 10px 15px 20px;&lt;/td&gt;
+          &lt;td&gt;4 个值，上边距 5px，右边距 10px，下边距 15px，左边距 20px&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;padding-不会影响盒子的情况&#34;&gt;padding 不会影响盒子的情况&lt;/h3&gt;
-&lt;p&gt;不设置&lt;code&gt;width/height&lt;/code&gt;的情况下，不会影响盒子没有设置的属性。&lt;/p&gt;
-&lt;h2 id=&#34;盒子模型-margin&#34;&gt;盒子模型 margin&lt;/h2&gt;
-&lt;h3 id=&#34;外边距属性&#34;&gt;外边距属性&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;padding-不会影响盒子的情况&#34;&gt;padding 不会影响盒子的情况
+&lt;/h3&gt;&lt;p&gt;不设置&lt;code&gt;width/height&lt;/code&gt;的情况下，不会影响盒子没有设置的属性。&lt;/p&gt;
+&lt;h2 id=&#34;盒子模型-margin&#34;&gt;盒子模型 margin
+&lt;/h2&gt;&lt;h3 id=&#34;外边距属性&#34;&gt;外边距属性
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;margin-top&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;margin-right&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;margin-bottom&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;margin-left&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;外边距简写&#34;&gt;外边距简写&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;值的个数&lt;/th&gt;
-&lt;th&gt;效果&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;margin: 5px;&lt;/td&gt;
-&lt;td&gt;1 个值，代表上下左右&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;margin: 5px 10px;&lt;/td&gt;
-&lt;td&gt;2 个值，上下 5px，左右 10px&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;margin: 5px 10px 20px;&lt;/td&gt;
-&lt;td&gt;3 个值，上边距 5px，左右边距 10px，下边距 20px&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;margin: 5px 10px 15px 20px;&lt;/td&gt;
-&lt;td&gt;4 个值，上边距 5px，右边距 10px，下边距 15px，左边距 20px&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+&lt;h3 id=&#34;外边距简写&#34;&gt;外边距简写
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;值的个数&lt;/th&gt;
+          &lt;th&gt;效果&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;margin: 5px;&lt;/td&gt;
+          &lt;td&gt;1 个值，代表上下左右&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;margin: 5px 10px;&lt;/td&gt;
+          &lt;td&gt;2 个值，上下 5px，左右 10px&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;margin: 5px 10px 20px;&lt;/td&gt;
+          &lt;td&gt;3 个值，上边距 5px，左右边距 10px，下边距 20px&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;margin: 5px 10px 15px 20px;&lt;/td&gt;
+          &lt;td&gt;4 个值，上边距 5px，右边距 10px，下边距 15px，左边距 20px&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;外边距应用场景&#34;&gt;外边距应用场景&lt;/h3&gt;
-&lt;p&gt;块元素水平居中：&lt;code&gt;margin: 0 auto;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;外边距应用场景&#34;&gt;外边距应用场景
+&lt;/h3&gt;&lt;p&gt;块元素水平居中：&lt;code&gt;margin: 0 auto;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;行内元素/行内块元素水平居中，给其父亲添加：&lt;code&gt;text-align: center;&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;外边距注意点&#34;&gt;外边距注意点&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;外边距注意点&#34;&gt;外边距注意点
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;相邻垂直外边距合并：只给一个元素添加外边距&lt;/li&gt;
 &lt;li&gt;嵌套垂直外边距塌陷：&lt;/li&gt;
 &lt;li&gt;给&lt;code&gt;父元素&lt;/code&gt;添加&lt;code&gt;上边框&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;给&lt;code&gt;父元素&lt;/code&gt;添加&lt;code&gt;上内边距&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;给&lt;code&gt;父元素&lt;/code&gt;添加&lt;code&gt;overflow: hidden;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;内外边距注意事项&#34;&gt;内外边距注意事项&lt;/h2&gt;
-&lt;h3 id=&#34;清除内外边距&#34;&gt;清除内外边距&lt;/h3&gt;
-&lt;p&gt;清除网页元素自带的内外边距&lt;/p&gt;
+&lt;h2 id=&#34;内外边距注意事项&#34;&gt;内外边距注意事项
+&lt;/h2&gt;&lt;h3 id=&#34;清除内外边距&#34;&gt;清除内外边距
+&lt;/h3&gt;&lt;p&gt;清除网页元素自带的内外边距&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1963,68 +1963,68 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;开发建议&#34;&gt;开发建议&lt;/h3&gt;
-&lt;ul&gt;
+&lt;/div&gt;&lt;h3 id=&#34;开发建议&#34;&gt;开发建议
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;行内元素&lt;/code&gt;一般只设置&lt;code&gt;左右内外边距&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;块元素&lt;/code&gt;之间使用&lt;code&gt;外边距&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;块元素&lt;/code&gt;内部使用&lt;code&gt;内边距&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;取消列表原点：&lt;code&gt;lisr-style: none;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;圆角边框&#34;&gt;圆角边框&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt; 圆角边框&lt;/code&gt;的作用是可以把&lt;code&gt;盒子变成圆形&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;语法格式&#34;&gt;语法格式&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;圆角边框&#34;&gt;圆角边框
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt; 圆角边框&lt;/code&gt;的作用是可以把&lt;code&gt;盒子变成圆形&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;语法格式&#34;&gt;语法格式
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;border-radius: length;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;length&lt;/code&gt;既可以是&lt;code&gt;单位/px&lt;/code&gt;，也可以是&lt;code&gt;百分比&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;可以设置&lt;code&gt;4个值&lt;/code&gt;，从&lt;code&gt;左上角&lt;/code&gt;开始&lt;code&gt;顺时针&lt;/code&gt;变化&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;length&lt;/code&gt;越大，&lt;code&gt;弧度&lt;/code&gt;越大&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;盒子阴影&#34;&gt;盒子阴影&lt;/h2&gt;
-&lt;p&gt;使用&lt;code&gt;box-shadow&lt;/code&gt;属性为盒子添加阴影&lt;/p&gt;
-&lt;h3 id=&#34;语法格式-1&#34;&gt;语法格式&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;box-shadow: h-shadow v-shadow blur spread color inset;&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;属性值&#34;&gt;属性值&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;值&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;h-shadow&lt;/td&gt;
-&lt;td&gt;必需。水平阴影。允许负值&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;v-shadow&lt;/td&gt;
-&lt;td&gt;必需。垂直阴影。允许负值&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;blur&lt;/td&gt;
-&lt;td&gt;可选。模糊距离&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;spread&lt;/td&gt;
-&lt;td&gt;可选。阴影尺寸&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;color&lt;/td&gt;
-&lt;td&gt;可选。阴影颜色&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;inset&lt;/td&gt;
-&lt;td&gt;可选。将外部阴影(outset)改为内部阴影&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+&lt;h2 id=&#34;盒子阴影&#34;&gt;盒子阴影
+&lt;/h2&gt;&lt;p&gt;使用&lt;code&gt;box-shadow&lt;/code&gt;属性为盒子添加阴影&lt;/p&gt;
+&lt;h3 id=&#34;语法格式-1&#34;&gt;语法格式
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;box-shadow: h-shadow v-shadow blur spread color inset;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;属性值&#34;&gt;属性值
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;值&lt;/th&gt;
+          &lt;th&gt;描述&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;h-shadow&lt;/td&gt;
+          &lt;td&gt;必需。水平阴影。允许负值&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;v-shadow&lt;/td&gt;
+          &lt;td&gt;必需。垂直阴影。允许负值&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;blur&lt;/td&gt;
+          &lt;td&gt;可选。模糊距离&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;spread&lt;/td&gt;
+          &lt;td&gt;可选。阴影尺寸&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;color&lt;/td&gt;
+          &lt;td&gt;可选。阴影颜色&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;inset&lt;/td&gt;
+          &lt;td&gt;可选。将外部阴影(outset)改为内部阴影&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;注意事项&#34;&gt;注意事项&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;注意事项&#34;&gt;注意事项
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;阴影默认 outset，但是不可以书写，&lt;code&gt;否则失效&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;阴影不占位置，不影响其他元素布局&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;文字阴影&#34;&gt;文字阴影&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;text-shadow: h-shadow v-shadow blur color;&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;文字阴影&#34;&gt;文字阴影
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;text-shadow: h-shadow v-shadow blur color;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;相关属性的意义与盒子阴影一样&lt;/p&gt;
 </description>
         </item>
@@ -2034,10 +2034,10 @@
         <pubDate>Tue, 02 Apr 2024 18:04:46 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss%E4%B8%8B/</guid>
-        <description>&lt;h2 id=&#34;emmet-语法&#34;&gt;Emmet 语法&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;Emmet&lt;/code&gt;语法用于快速编写&lt;code&gt;html&lt;/code&gt;标签与&lt;code&gt;css&lt;/code&gt;样式&lt;/p&gt;
-&lt;h3 id=&#34;快速生成-html-结构&#34;&gt;快速生成 html 结构&lt;/h3&gt;
-&lt;ul&gt;
+        <description>&lt;h2 id=&#34;emmet-语法&#34;&gt;Emmet 语法
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Emmet&lt;/code&gt;语法用于快速编写&lt;code&gt;html&lt;/code&gt;标签与&lt;code&gt;css&lt;/code&gt;样式&lt;/p&gt;
+&lt;h3 id=&#34;快速生成-html-结构&#34;&gt;快速生成 html 结构
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;生成网页骨架：&lt;code&gt;html: 5&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;生成标签：输入&lt;code&gt;标签名&lt;/code&gt;，按下&lt;code&gt;tab&lt;/code&gt;键&lt;/li&gt;
 &lt;li&gt;生成多个相同标签：输入&lt;code&gt;标签名*number&lt;/code&gt;，按下&lt;code&gt;tab&lt;/code&gt;键&lt;/li&gt;
@@ -2046,10 +2046,10 @@
 &lt;li&gt;生成带类名的：输入&lt;code&gt;标签名#classname&lt;/code&gt;或者&lt;code&gt;标签名.classname&lt;/code&gt;，按下&lt;code&gt;tab&lt;/code&gt;键&lt;/li&gt;
 &lt;li&gt;类名自增&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;快速生成-css-样式&#34;&gt;快速生成 css 样式&lt;/h3&gt;
-&lt;p&gt;通过&lt;code&gt;单词缩写&lt;/code&gt;快速生成 css 样式属性值&lt;/p&gt;
-&lt;h2 id=&#34;css-复合选择器&#34;&gt;CSS 复合选择器&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;复合选择器&lt;/code&gt;可以更准确、高效定位元素&lt;/p&gt;
+&lt;h3 id=&#34;快速生成-css-样式&#34;&gt;快速生成 css 样式
+&lt;/h3&gt;&lt;p&gt;通过&lt;code&gt;单词缩写&lt;/code&gt;快速生成 css 样式属性值&lt;/p&gt;
+&lt;h2 id=&#34;css-复合选择器&#34;&gt;CSS 复合选择器
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;复合选择器&lt;/code&gt;可以更准确、高效定位元素&lt;/p&gt;
 &lt;p&gt;通过&lt;code&gt;两个&lt;/code&gt;或者&lt;code&gt;多个``基础选择器&lt;/code&gt;组成&lt;/p&gt;
 &lt;p&gt;复合选择器主要有以下几种：&lt;/p&gt;
 &lt;ul&gt;
@@ -2058,22 +2058,22 @@
 &lt;li&gt;并集选择器&lt;/li&gt;
 &lt;li&gt;伪类选择器&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;后代选择器&#34;&gt;后代选择器&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;后代选择器&lt;/code&gt;选择的是&lt;code&gt;父元素&lt;/code&gt;里的&lt;code&gt;后代元素&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;后代选择器&#34;&gt;后代选择器
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;后代选择器&lt;/code&gt;选择的是&lt;code&gt;父元素&lt;/code&gt;里的&lt;code&gt;后代元素&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;格式：&lt;code&gt;标签1 标签2 ... 标签n { 样式声明 }&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;既可以选择孩子，也可以选择孙子。&lt;/p&gt;
 &lt;p&gt;选择器可以是任意基础选择器的组合&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;.nav ol li&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;子选择器&#34;&gt;子选择器&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;子选择器&lt;/code&gt;选择的是&lt;code&gt;父元素&lt;/code&gt;里的&lt;code&gt;子元素&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;子选择器&#34;&gt;子选择器
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;子选择器&lt;/code&gt;选择的是&lt;code&gt;父元素&lt;/code&gt;里的&lt;code&gt;子元素&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;格式：&lt;code&gt;父元素&amp;gt;子元素 { 样式声明 }&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;并集选择器&#34;&gt;并集选择器&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;并集选择器&lt;/code&gt;可以选择多组标签，为他们设定相同的样式&lt;/p&gt;
+&lt;h3 id=&#34;并集选择器&#34;&gt;并集选择器
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;并集选择器&lt;/code&gt;可以选择多组标签，为他们设定相同的样式&lt;/p&gt;
 &lt;p&gt;格式：&lt;code&gt;元素1, 元素2, ... 元素n { 样式声明 }&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;伪类选择器&#34;&gt;伪类选择器&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;伪类选择器&lt;/code&gt;可以给某些选择器&lt;code&gt;添加特殊效果&lt;/code&gt;(链接)，或者用于选择&lt;code&gt;第1个&lt;/code&gt;或者&lt;code&gt;第n个&lt;/code&gt;元素&lt;/p&gt;
-&lt;h4 id=&#34;链接伪类选择器&#34;&gt;链接伪类选择器&lt;/h4&gt;
-&lt;p&gt;hover 伪类选择器种类：&lt;/p&gt;
+&lt;h3 id=&#34;伪类选择器&#34;&gt;伪类选择器
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;伪类选择器&lt;/code&gt;可以给某些选择器&lt;code&gt;添加特殊效果&lt;/code&gt;(链接)，或者用于选择&lt;code&gt;第1个&lt;/code&gt;或者&lt;code&gt;第n个&lt;/code&gt;元素&lt;/p&gt;
+&lt;h4 id=&#34;链接伪类选择器&#34;&gt;链接伪类选择器
+&lt;/h4&gt;&lt;p&gt;hover 伪类选择器种类：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;a:link(未访问)&lt;/li&gt;
 &lt;li&gt;a:visited(已访问)&lt;/li&gt;
@@ -2082,12 +2082,12 @@
 &lt;/ul&gt;
 &lt;p&gt;注意事项：&lt;/p&gt;
 &lt;p&gt;必须按照&lt;code&gt;lvha&lt;/code&gt;顺序编写&lt;code&gt;链接伪类选择器&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&#34;focus-伪类选择器&#34;&gt;focus 伪类选择器&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;focus伪类选择器&lt;/code&gt;用于选择获得焦点的表单元素&lt;/p&gt;
+&lt;h4 id=&#34;focus-伪类选择器&#34;&gt;focus 伪类选择器
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;focus伪类选择器&lt;/code&gt;用于选择获得焦点的表单元素&lt;/p&gt;
 &lt;p&gt;格式：&lt;code&gt;input:focus { 样式声明 }&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;css-元素显示模式&#34;&gt;CSS 元素显示模式&lt;/h2&gt;
-&lt;h3 id=&#34;块元素&#34;&gt;块元素&lt;/h3&gt;
-&lt;p&gt;常见的块元素有：&lt;code&gt;h1-h6&lt;/code&gt;、&lt;code&gt;p&lt;/code&gt;、&lt;code&gt;div&lt;/code&gt;、&lt;code&gt;ul&lt;/code&gt;、&lt;code&gt;ol&lt;/code&gt;、&lt;code&gt;li&lt;/code&gt; 等&lt;/p&gt;
+&lt;h2 id=&#34;css-元素显示模式&#34;&gt;CSS 元素显示模式
+&lt;/h2&gt;&lt;h3 id=&#34;块元素&#34;&gt;块元素
+&lt;/h3&gt;&lt;p&gt;常见的块元素有：&lt;code&gt;h1-h6&lt;/code&gt;、&lt;code&gt;p&lt;/code&gt;、&lt;code&gt;div&lt;/code&gt;、&lt;code&gt;ul&lt;/code&gt;、&lt;code&gt;ol&lt;/code&gt;、&lt;code&gt;li&lt;/code&gt; 等&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;块元素`独占一行``&lt;/li&gt;
 &lt;li&gt;可以对块元素的&lt;code&gt;宽&lt;/code&gt;、&lt;code&gt;高&lt;/code&gt;、&lt;code&gt;内外间距&lt;/code&gt;进行设置&lt;/li&gt;
@@ -2095,8 +2095,8 @@
 &lt;li&gt;块元素内部可以放其他&lt;code&gt;行内元素/块元素&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;文本块元素(&lt;code&gt;p&lt;/code&gt;、&lt;code&gt;h1-h6&lt;/code&gt;)内部不能放置&lt;code&gt;块元素&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;行内元素&#34;&gt;行内元素&lt;/h3&gt;
-&lt;p&gt;常见的行内元素有：&lt;code&gt;a&lt;/code&gt;、&lt;code&gt;文本格式化标签&lt;/code&gt;、&lt;code&gt;span&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;行内元素&#34;&gt;行内元素
+&lt;/h3&gt;&lt;p&gt;常见的行内元素有：&lt;code&gt;a&lt;/code&gt;、&lt;code&gt;文本格式化标签&lt;/code&gt;、&lt;code&gt;span&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;多个行内元素&lt;code&gt;一行展示&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;不可以直接对行内元素进行&lt;code&gt;宽&lt;/code&gt;、&lt;code&gt;高&lt;/code&gt;设置&lt;/li&gt;
@@ -2105,118 +2105,118 @@
 &lt;li&gt;&lt;code&gt;&amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&lt;/code&gt;标签内部不能放置&lt;code&gt;&amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;特殊情况&lt;code&gt;&amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&lt;/code&gt;内部可以放块元素&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;行内块元素&#34;&gt;行内块元素&lt;/h3&gt;
-&lt;p&gt;常见的行内块元素有：&lt;code&gt;img&lt;/code&gt;、&lt;code&gt;input&lt;/code&gt;、&lt;code&gt;td&lt;/code&gt;，同时具有&lt;code&gt;行内元素&lt;/code&gt;和&lt;code&gt;块元素&lt;/code&gt;的特点：&lt;/p&gt;
+&lt;h3 id=&#34;行内块元素&#34;&gt;行内块元素
+&lt;/h3&gt;&lt;p&gt;常见的行内块元素有：&lt;code&gt;img&lt;/code&gt;、&lt;code&gt;input&lt;/code&gt;、&lt;code&gt;td&lt;/code&gt;，同时具有&lt;code&gt;行内元素&lt;/code&gt;和&lt;code&gt;块元素&lt;/code&gt;的特点：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;多个&lt;code&gt;一行展示&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;可以设置&lt;code&gt;宽&lt;/code&gt;和&lt;code&gt;高&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;默认宽度为&lt;code&gt;内容宽度&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;显示模式转换&#34;&gt;显示模式转换&lt;/h3&gt;
-&lt;p&gt;增加&lt;code&gt;&amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&lt;/code&gt;链接触发范围&lt;/p&gt;
+&lt;h3 id=&#34;显示模式转换&#34;&gt;显示模式转换
+&lt;/h3&gt;&lt;p&gt;增加&lt;code&gt;&amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;&lt;/code&gt;链接触发范围&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;display: bolck;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;display: inline;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;display: inline-block;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;css-背景&#34;&gt;CSS 背景&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;CSS背景&lt;/code&gt;用于设置背景&lt;code&gt;颜色&lt;/code&gt;、&lt;code&gt;图片&lt;/code&gt;、&lt;code&gt;平铺&lt;/code&gt;、&lt;code&gt;图片位置&lt;/code&gt;、&lt;code&gt;图片固定&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;背景颜色&#34;&gt;背景颜色&lt;/h3&gt;
-&lt;p&gt;通过&lt;code&gt;background-color&lt;/code&gt;设置&lt;/p&gt;
+&lt;h2 id=&#34;css-背景&#34;&gt;CSS 背景
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;CSS背景&lt;/code&gt;用于设置背景&lt;code&gt;颜色&lt;/code&gt;、&lt;code&gt;图片&lt;/code&gt;、&lt;code&gt;平铺&lt;/code&gt;、&lt;code&gt;图片位置&lt;/code&gt;、&lt;code&gt;图片固定&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;背景颜色&#34;&gt;背景颜色
+&lt;/h3&gt;&lt;p&gt;通过&lt;code&gt;background-color&lt;/code&gt;设置&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;transparent(默认值)&lt;/li&gt;
 &lt;li&gt;和文本&lt;code&gt;color&lt;/code&gt;一样&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;背景图片&#34;&gt;背景图片&lt;/h3&gt;
-&lt;p&gt;通过&lt;code&gt;background-image&lt;/code&gt;设置，&lt;code&gt;小图片&lt;/code&gt;一般通过背景图片设置&lt;/p&gt;
+&lt;h3 id=&#34;背景图片&#34;&gt;背景图片
+&lt;/h3&gt;&lt;p&gt;通过&lt;code&gt;background-image&lt;/code&gt;设置，&lt;code&gt;小图片&lt;/code&gt;一般通过背景图片设置&lt;/p&gt;
 &lt;p&gt;既可以设置背景图片，也可以设置背景颜色，背景图片会&lt;code&gt;压住&lt;/code&gt;背景颜色&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;none&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;url()&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;背景平铺&#34;&gt;背景平铺&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;背景平铺&lt;/code&gt;就是背景图片重复展示，通过&lt;code&gt;background-repeat&lt;/code&gt;设置&lt;/p&gt;
+&lt;h3 id=&#34;背景平铺&#34;&gt;背景平铺
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;背景平铺&lt;/code&gt;就是背景图片重复展示，通过&lt;code&gt;background-repeat&lt;/code&gt;设置&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;no-repeat&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;repeat&lt;/code&gt;(默认值)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;repeat-x&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;repeat-y&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;背景位置&#34;&gt;背景位置&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;background-position: x y;&lt;/code&gt;属性可以改变背景图片的位置&lt;/p&gt;
+&lt;h3 id=&#34;背景位置&#34;&gt;背景位置
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;background-position: x y;&lt;/code&gt;属性可以改变背景图片的位置&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;方位名词：&lt;code&gt;background-position: left top;&lt;/code&gt;，可以&lt;code&gt;省略一个参数&lt;/code&gt;，第二个参数&lt;code&gt;居中&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;精准单位：&lt;code&gt;background-position: x y;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;混合单位：&lt;code&gt;严格顺序&lt;/code&gt;，第一个为&lt;code&gt;x&lt;/code&gt;，第二个为&lt;code&gt;y&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;背景固定&#34;&gt;背景固定&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;background-attchment&lt;/code&gt;用于设置背景图片是随着&lt;code&gt;页面滚动&lt;/code&gt;，还是随着&lt;code&gt;页面固定&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;背景固定&#34;&gt;背景固定
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;background-attchment&lt;/code&gt;用于设置背景图片是随着&lt;code&gt;页面滚动&lt;/code&gt;，还是随着&lt;code&gt;页面固定&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;scroll(默认值)&lt;/li&gt;
 &lt;li&gt;fixed&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;背景复合写法&#34;&gt;背景复合写法&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;background: 背景颜色 背景图片 背景平铺 背景图片滚动 背景图片位置;&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;背景颜色半透明&#34;&gt;背景颜色半透明&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;rgba(0, 0, 0, 0.3)&lt;/code&gt;，a 的取值范围为 0-1，&lt;code&gt;越小越淡&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;css-三大特性&#34;&gt;CSS 三大特性&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h3 id=&#34;背景复合写法&#34;&gt;背景复合写法
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;background: 背景颜色 背景图片 背景平铺 背景图片滚动 背景图片位置;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;背景颜色半透明&#34;&gt;背景颜色半透明
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;rgba(0, 0, 0, 0.3)&lt;/code&gt;，a 的取值范围为 0-1，&lt;code&gt;越小越淡&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;css-三大特性&#34;&gt;CSS 三大特性
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;层叠性&lt;/li&gt;
 &lt;li&gt;继承性&lt;/li&gt;
 &lt;li&gt;优先级&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;层叠性&#34;&gt;层叠性&lt;/h3&gt;
-&lt;p&gt;为了解决&lt;code&gt;样式冲突&lt;/code&gt;，&lt;code&gt;就近原则&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;继承性&#34;&gt;继承性&lt;/h3&gt;
-&lt;p&gt;子标签&lt;code&gt;继承&lt;/code&gt;父标签的&lt;code&gt;某些&lt;/code&gt;样式：&lt;code&gt;文本颜色&lt;/code&gt;和&lt;code&gt;字号&lt;/code&gt;/(&lt;code&gt;text-&lt;/code&gt;、&lt;code&gt;font-&lt;/code&gt;、&lt;code&gt;line-&lt;/code&gt;、&lt;code&gt;color&lt;/code&gt;)&lt;/p&gt;
+&lt;h3 id=&#34;层叠性&#34;&gt;层叠性
+&lt;/h3&gt;&lt;p&gt;为了解决&lt;code&gt;样式冲突&lt;/code&gt;，&lt;code&gt;就近原则&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;继承性&#34;&gt;继承性
+&lt;/h3&gt;&lt;p&gt;子标签&lt;code&gt;继承&lt;/code&gt;父标签的&lt;code&gt;某些&lt;/code&gt;样式：&lt;code&gt;文本颜色&lt;/code&gt;和&lt;code&gt;字号&lt;/code&gt;/(&lt;code&gt;text-&lt;/code&gt;、&lt;code&gt;font-&lt;/code&gt;、&lt;code&gt;line-&lt;/code&gt;、&lt;code&gt;color&lt;/code&gt;)&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;line-height&lt;/code&gt;可以不设置单位，最终显示&lt;code&gt;当前元素``文字大小&lt;/code&gt;的倍数：&lt;code&gt;font: 12px/1.5 &#39;Microsoft YaHei&#39;&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;优先级&#34;&gt;优先级&lt;/h3&gt;
-&lt;p&gt;当给&lt;code&gt;同一个元素&lt;/code&gt;指定&lt;code&gt;多个选择器&lt;/code&gt;名，就会有优先级产生&lt;/p&gt;
+&lt;h3 id=&#34;优先级&#34;&gt;优先级
+&lt;/h3&gt;&lt;p&gt;当给&lt;code&gt;同一个元素&lt;/code&gt;指定&lt;code&gt;多个选择器&lt;/code&gt;名，就会有优先级产生&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;选择器相同：执行层叠行&lt;/li&gt;
 &lt;li&gt;选择器不同：执行优先级&lt;/li&gt;
 &lt;/ul&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;选择器&lt;/th&gt;
-&lt;th&gt;选择器权重&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;继承或者*&lt;/td&gt;
-&lt;td&gt;0,0,0,0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;标签选择器&lt;/td&gt;
-&lt;td&gt;0,0,0,1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;类选择器、伪类选择器、属性选择器&lt;/td&gt;
-&lt;td&gt;0,0,1,0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;id 选择器&lt;/td&gt;
-&lt;td&gt;0,1,0,0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;行内样式&lt;/td&gt;
-&lt;td&gt;1,0,0,0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;!important&lt;/td&gt;
-&lt;td&gt;+∞&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;选择器&lt;/th&gt;
+          &lt;th&gt;选择器权重&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;继承或者*&lt;/td&gt;
+          &lt;td&gt;0,0,0,0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;标签选择器&lt;/td&gt;
+          &lt;td&gt;0,0,0,1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;类选择器、伪类选择器、属性选择器&lt;/td&gt;
+          &lt;td&gt;0,0,1,0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;id 选择器&lt;/td&gt;
+          &lt;td&gt;0,1,0,0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;行内样式&lt;/td&gt;
+          &lt;td&gt;1,0,0,0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;!important&lt;/td&gt;
+          &lt;td&gt;+∞&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;注意事项：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;权重计算有四位，但是不会进位&lt;/li&gt;
 &lt;li&gt;从左至右判断&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;权重叠加&#34;&gt;权重叠加&lt;/h3&gt;
-&lt;p&gt;如果是&lt;code&gt;复合选择器&lt;/code&gt;，则会有&lt;code&gt;权重叠加问题&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;权重叠加&#34;&gt;权重叠加
+&lt;/h3&gt;&lt;p&gt;如果是&lt;code&gt;复合选择器&lt;/code&gt;，则会有&lt;code&gt;权重叠加问题&lt;/code&gt;&lt;/p&gt;
 </description>
         </item>
         

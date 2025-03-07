@@ -1,28 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="google-adsense-account" content="ca-pub-4905502839656862" /><meta name="description" content="1. 需求 需要把 mysql 的数据聚合同步到 es 以提供海量数据检索能力 2. 解决方案 变更 mysql 数据时同步调用 es 的 api 变更 mysql 数据时异步调用 es 的 api(先发送消息到消息队" />
-<title>【Flink】利用flink Cdc同步mysql数据到es</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" /><meta
+name='description' content="1. 需求 需要把 mysql 的数据聚合同步到 es 以提供海量数据检索能力\n2. 解决方案 变更 mysql 数据时同步调用 es 的 api 变更 mysql 数据时异步调用 es 的 api(先发送消息到消息队列，搜索微服务调用 es 的 api 消费数据) canal 监听 mysql 的 binlog 日志，再同步到 es flink-cdc 监听 mysql 的 binlog 日志同步到 es 3. 选用方案 最终选择 flink-cdc 的方案，一是 go-canal 的仓库不活跃，就三个 issue，提了 bug 也没人修，而且后续可能有实时分析的大数据需求，本身就有 flink 集群的需求。 二是 canal 的 release 版本要最近才会更新，最后一次更新是 21 年 4 月，害怕烂尾。三是俺尝试部署 canal，最后失败了 💦。\n"> <title>【Flink】利用flink Cdc同步mysql数据到es</title>
 
 <link rel="canonical" href="https://www.cengdong.store/p/flink%E5%88%A9%E7%94%A8flink-cdc%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%B0es/" />
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【Flink】利用flink Cdc同步mysql数据到es'>
-<meta property='og:description' content='1. 需求 需要把 mysql 的数据聚合同步到 es 以提供海量数据检索能力 2. 解决方案 变更 mysql 数据时同步调用 es 的 api 变更 mysql 数据时异步调用 es 的 api(先发送消息到消息队'>
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【Flink】利用flink Cdc同步mysql数据到es">
+<meta property='og:description' content="1. 需求 需要把 mysql 的数据聚合同步到 es 以提供海量数据检索能力\n2. 解决方案 变更 mysql 数据时同步调用 es 的 api 变更 mysql 数据时异步调用 es 的 api(先发送消息到消息队列，搜索微服务调用 es 的 api 消费数据) canal 监听 mysql 的 binlog 日志，再同步到 es flink-cdc 监听 mysql 的 binlog 日志同步到 es 3. 选用方案 最终选择 flink-cdc 的方案，一是 go-canal 的仓库不活跃，就三个 issue，提了 bug 也没人修，而且后续可能有实时分析的大数据需求，本身就有 flink 集群的需求。 二是 canal 的 release 版本要最近才会更新，最后一次更新是 21 年 4 月，害怕烂尾。三是俺尝试部署 canal，最后失败了 💦。\n">
 <meta property='og:url' content='https://www.cengdong.store/p/flink%E5%88%A9%E7%94%A8flink-cdc%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%B0es/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Flink' /><meta property='article:published_time' content='2023-09-20T22:34:29&#43;08:00'/><meta property='article:modified_time' content='2023-09-20T22:34:29&#43;08:00'/>
 <meta name="twitter:title" content="【Flink】利用flink Cdc同步mysql数据到es">
-<meta name="twitter:description" content="1. 需求 需要把 mysql 的数据聚合同步到 es 以提供海量数据检索能力 2. 解决方案 变更 mysql 数据时同步调用 es 的 api 变更 mysql 数据时异步调用 es 的 api(先发送消息到消息队">
-
-<script
-  async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4905502839656862"
-  crossorigin="anonymous"
-></script>
-  
-
-
+<meta name="twitter:description" content="1. 需求 需要把 mysql 的数据聚合同步到 es 以提供海量数据检索能力\n2. 解决方案 变更 mysql 数据时同步调用 es 的 api 变更 mysql 数据时异步调用 es 的 api(先发送消息到消息队列，搜索微服务调用 es 的 api 消费数据) canal 监听 mysql 的 binlog 日志，再同步到 es flink-cdc 监听 mysql 的 binlog 日志同步到 es 3. 选用方案 最终选择 flink-cdc 的方案，一是 go-canal 的仓库不活跃，就三个 issue，提了 bug 也没人修，而且后续可能有实时分析的大数据需求，本身就有 flink 集群的需求。 二是 canal 的 release 版本要最近才会更新，最后一次更新是 21 年 4 月，害怕烂尾。三是俺尝试部署 canal，最后失败了 💦。\n">
     </head>
     <body class="
     article-page
@@ -66,7 +56,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu20d8055db57cd6bbdd9609ebb3f81f3e_11357_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu_ba88ecd03c9124fe.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -82,7 +72,7 @@
             <h1 class="site-name"><a href="/">cengdong的技术博客</a></h1>
             <h2 class="site-description">学习随笔</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -340,20 +330,20 @@
     <section class="article-content">
     
     
-    <h2 id="1-需求">1. 需求</h2>
-<p>需要把 mysql 的数据聚合同步到 es 以提供海量数据检索能力</p>
-<h2 id="2-解决方案">2. 解决方案</h2>
-<ul>
+    <h2 id="1-需求">1. 需求
+</h2><p>需要把 mysql 的数据聚合同步到 es 以提供海量数据检索能力</p>
+<h2 id="2-解决方案">2. 解决方案
+</h2><ul>
 <li>变更 mysql 数据时同步调用 es 的 api</li>
 <li>变更 mysql 数据时异步调用 es 的 api(先发送消息到消息队列，搜索微服务调用 es 的 api 消费数据)</li>
 <li>canal 监听 mysql 的 binlog 日志，再同步到 es</li>
 <li>flink-cdc 监听 mysql 的 binlog 日志同步到 es</li>
 </ul>
-<h2 id="3-选用方案">3. 选用方案</h2>
-<p>最终选择 flink-cdc 的方案，一是 go-canal 的仓库不活跃，就三个 issue，提了 bug 也没人修，而且后续可能有实时分析的大数据需求，本身就有 flink 集群的需求。
+<h2 id="3-选用方案">3. 选用方案
+</h2><p>最终选择 flink-cdc 的方案，一是 go-canal 的仓库不活跃，就三个 issue，提了 bug 也没人修，而且后续可能有实时分析的大数据需求，本身就有 flink 集群的需求。
 二是 canal 的 release 版本要最近才会更新，最后一次更新是 21 年 4 月，害怕烂尾。三是俺尝试部署 canal，最后失败了 💦。</p>
-<h2 id="4-部署环境">4. 部署环境</h2>
-<p>选用 docker-compose 部署 mysql、link 与 elasticsearch</p>
+<h2 id="4-部署环境">4. 部署环境
+</h2><p>选用 docker-compose 部署 mysql、link 与 elasticsearch</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -574,8 +564,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>主要是为了开启 binlog</p>
-<h2 id="5-配置">5. 配置</h2>
-<p>先启动集群</p>
+<h2 id="5-配置">5. 配置
+</h2><p>先启动集群</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -616,8 +606,8 @@
 </span></span><span class="line"><span class="cl">docker restart jobmanager
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="6-测试">6. 测试</h2>
-<p>进入 mysql 容器/连接 mysql 创建 mysql 数据库表</p>
+</div><h2 id="6-测试">6. 测试
+</h2><p>进入 mysql 容器/连接 mysql 创建 mysql 数据库表</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -840,12 +830,12 @@
         
             2023 - 
         
-        2024 Cengdong
+        2025 Cengdong
     </section>
     
     <section class="powerby">
         使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 
@@ -934,7 +924,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

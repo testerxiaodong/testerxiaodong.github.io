@@ -1,28 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="google-adsense-account" content="ca-pub-4905502839656862" /><meta name="description" content="1. 遇到的问题：上传文件到阿里云 Oss 失败，通过日志定位到是 Linux 系统时间不正确 2. 解决方案 1 2 3 4 5 timedatectl set-timezone Asia/Shanghai sudo yum -y install ntp ntpdate pool.ntp.org systemctl start ntpd systemctl enable ntpd" />
-<meta name="keywords" content="Linux"><title>【Linux】Centos7解决时间不正确问题</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" /><meta
+name='description' content="1. 遇到的问题：上传文件到阿里云 Oss 失败，通过日志定位到是 Linux 系统时间不正确 2. 解决方案 1 2 3 4 5 timedatectl set-timezone Asia/Shanghai sudo yum -y install ntp ntpdate pool.ntp.org systemctl start ntpd systemctl enable ntpd "> <meta name="keywords" content="Linux"><title>【Linux】Centos7解决时间不正确问题</title>
 
 <link rel="canonical" href="https://www.cengdong.store/p/linuxcentos7%E8%A7%A3%E5%86%B3%E6%97%B6%E9%97%B4%E4%B8%8D%E6%AD%A3%E7%A1%AE%E9%97%AE%E9%A2%98/" />
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【Linux】Centos7解决时间不正确问题'>
-<meta property='og:description' content='1. 遇到的问题：上传文件到阿里云 Oss 失败，通过日志定位到是 Linux 系统时间不正确 2. 解决方案 1 2 3 4 5 timedatectl set-timezone Asia/Shanghai sudo yum -y install ntp ntpdate pool.ntp.org systemctl start ntpd systemctl enable ntpd'>
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【Linux】Centos7解决时间不正确问题">
+<meta property='og:description' content="1. 遇到的问题：上传文件到阿里云 Oss 失败，通过日志定位到是 Linux 系统时间不正确 2. 解决方案 1 2 3 4 5 timedatectl set-timezone Asia/Shanghai sudo yum -y install ntp ntpdate pool.ntp.org systemctl start ntpd systemctl enable ntpd ">
 <meta property='og:url' content='https://www.cengdong.store/p/linuxcentos7%E8%A7%A3%E5%86%B3%E6%97%B6%E9%97%B4%E4%B8%8D%E6%AD%A3%E7%A1%AE%E9%97%AE%E9%A2%98/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2023-09-15T02:58:36&#43;08:00'/><meta property='article:modified_time' content='2023-09-15T02:58:36&#43;08:00'/>
 <meta name="twitter:title" content="【Linux】Centos7解决时间不正确问题">
-<meta name="twitter:description" content="1. 遇到的问题：上传文件到阿里云 Oss 失败，通过日志定位到是 Linux 系统时间不正确 2. 解决方案 1 2 3 4 5 timedatectl set-timezone Asia/Shanghai sudo yum -y install ntp ntpdate pool.ntp.org systemctl start ntpd systemctl enable ntpd">
-
-<script
-  async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4905502839656862"
-  crossorigin="anonymous"
-></script>
-  
-
-
+<meta name="twitter:description" content="1. 遇到的问题：上传文件到阿里云 Oss 失败，通过日志定位到是 Linux 系统时间不正确 2. 解决方案 1 2 3 4 5 timedatectl set-timezone Asia/Shanghai sudo yum -y install ntp ntpdate pool.ntp.org systemctl start ntpd systemctl enable ntpd ">
     </head>
     <body class="
     article-page
@@ -66,7 +56,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu20d8055db57cd6bbdd9609ebb3f81f3e_11357_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu_ba88ecd03c9124fe.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -82,7 +72,7 @@
             <h1 class="site-name"><a href="/">cengdong的技术博客</a></h1>
             <h2 class="site-description">学习随笔</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -336,9 +326,9 @@
     <section class="article-content">
     
     
-    <h2 id="1-遇到的问题上传文件到阿里云-oss-失败通过日志定位到是-linux-系统时间不正确">1. 遇到的问题：上传文件到阿里云 Oss 失败，通过日志定位到是 Linux 系统时间不正确</h2>
-<h2 id="2-解决方案">2. 解决方案</h2>
-<div class="highlight"><div class="chroma">
+    <h2 id="1-遇到的问题上传文件到阿里云-oss-失败通过日志定位到是-linux-系统时间不正确">1. 遇到的问题：上传文件到阿里云 Oss 失败，通过日志定位到是 Linux 系统时间不正确
+</h2><h2 id="2-解决方案">2. 解决方案
+</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -442,12 +432,12 @@
         
             2023 - 
         
-        2024 Cengdong
+        2025 Cengdong
     </section>
     
     <section class="powerby">
         使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 
@@ -536,7 +526,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

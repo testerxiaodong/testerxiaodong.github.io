@@ -13,8 +13,8 @@
         <pubDate>Thu, 28 Sep 2023 09:30:39 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%88%A9%E7%94%A8redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</guid>
-        <description>&lt;h2 id=&#34;1-go-zero-分布式锁实现&#34;&gt;1. go-zero 分布式锁实现&lt;/h2&gt;
-&lt;p&gt;看下 go-zero 中 redis 分布式锁的实现&lt;/p&gt;
+        <description>&lt;h2 id=&#34;1-go-zero-分布式锁实现&#34;&gt;1. go-zero 分布式锁实现
+&lt;/h2&gt;&lt;p&gt;看下 go-zero 中 redis 分布式锁的实现&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -48,15 +48,15 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;加锁和解锁的过程都是通过 lua 脚本实现的，因为 lua 脚本能够保证 redis 的原子性。&lt;/p&gt;
-&lt;h2 id=&#34;2-分布式锁必须拥有的属性&#34;&gt;2. 分布式锁必须拥有的属性&lt;/h2&gt;
-&lt;ul&gt;
+&lt;h2 id=&#34;2-分布式锁必须拥有的属性&#34;&gt;2. 分布式锁必须拥有的属性
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;排他性(只能有一个协程持有)&lt;/li&gt;
 &lt;li&gt;可重入(已经获取锁的协程能再次访问)&lt;/li&gt;
 &lt;li&gt;防死锁(必须有超时时间，达到后持有者自动释放)&lt;/li&gt;
 &lt;li&gt;高性能高可用&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;3-go-zero-分布式锁加锁流程&#34;&gt;3. go-zero 分布式锁加锁流程&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h2 id=&#34;3-go-zero-分布式锁加锁流程&#34;&gt;3. go-zero 分布式锁加锁流程
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
@@ -78,8 +78,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; redis.call&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;SET&amp;#34;&lt;/span&gt;, KEYS&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;1&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;, ARGV&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;1&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;NX&amp;#34;&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;PX&amp;#34;&lt;/span&gt;, ARGV&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;2&lt;span class=&#34;o&#34;&gt;])&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;4-go-zero-分布式锁解锁流程&#34;&gt;4. go-zero 分布式锁解锁流程&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;&lt;h2 id=&#34;4-go-zero-分布式锁解锁流程&#34;&gt;4. go-zero 分布式锁解锁流程
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2

@@ -1,28 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="google-adsense-account" content="ca-pub-4905502839656862" /><meta name="description" content="1. 介绍 RabbitMQ is the most widely deployed open source message broker. 直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理 2. 作用 消息代理中间件的作用： 削峰：大量请求写入消息中间件，服务器" />
-<title>【Go】RabbitMQ学习笔记</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" /><meta
+name='description' content="1. 介绍 RabbitMQ is the most widely deployed open source message broker.\n直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理\n2. 作用 消息代理中间件的作用：\n削峰：大量请求写入消息中间件，服务器按照自己能力去消费 解耦：服务上游与下游解耦，上游只需把请求写入消息代理，下游只需要去消息中间件消费 异步：实时性不高的功能放入代理，快速响应客户端请求 3. 竞品 ActiveMQ(已经寄了) RocketMQ（阿里开源，广泛应用在电商场景） Kafka（大数据利器，日志系统重要组件） 4. 系统架构 生产者：消息发送方 channel：通信信道，一个连接里有多个可用信道（感觉是资源池），生产者和消费者都会与 broker 建立连接 exchange：交换机，生产者将消息发送给对应交换机（生产者只与交换机打交道），交换机通过 routingKey 将消息发送给消息队列 queue：消息队列，存放消息的实体 消费者：从消息队列中消费消息 虚拟主机：多租户的资源隔离（不想深入，也不做过多了解） 5. 工作模式 RabbitMQ 官方给出了七种工作模式\n"> <title>【Go】RabbitMQ学习笔记</title>
 
 <link rel="canonical" href="https://www.cengdong.store/p/gorabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" />
 
-<link rel="stylesheet" href="/scss/style.min.d8118f156935b64eca93aca758476adca858d2c47354971654d9bd2933a0e45f.css"><meta property='og:title' content='【Go】RabbitMQ学习笔记'>
-<meta property='og:description' content='1. 介绍 RabbitMQ is the most widely deployed open source message broker. 直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理 2. 作用 消息代理中间件的作用： 削峰：大量请求写入消息中间件，服务器'>
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【Go】RabbitMQ学习笔记">
+<meta property='og:description' content="1. 介绍 RabbitMQ is the most widely deployed open source message broker.\n直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理\n2. 作用 消息代理中间件的作用：\n削峰：大量请求写入消息中间件，服务器按照自己能力去消费 解耦：服务上游与下游解耦，上游只需把请求写入消息代理，下游只需要去消息中间件消费 异步：实时性不高的功能放入代理，快速响应客户端请求 3. 竞品 ActiveMQ(已经寄了) RocketMQ（阿里开源，广泛应用在电商场景） Kafka（大数据利器，日志系统重要组件） 4. 系统架构 生产者：消息发送方 channel：通信信道，一个连接里有多个可用信道（感觉是资源池），生产者和消费者都会与 broker 建立连接 exchange：交换机，生产者将消息发送给对应交换机（生产者只与交换机打交道），交换机通过 routingKey 将消息发送给消息队列 queue：消息队列，存放消息的实体 消费者：从消息队列中消费消息 虚拟主机：多租户的资源隔离（不想深入，也不做过多了解） 5. 工作模式 RabbitMQ 官方给出了七种工作模式\n">
 <meta property='og:url' content='https://www.cengdong.store/p/gorabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='消息中间件' /><meta property='article:published_time' content='2023-07-31T00:02:07&#43;08:00'/><meta property='article:modified_time' content='2023-07-31T00:02:07&#43;08:00'/>
 <meta name="twitter:title" content="【Go】RabbitMQ学习笔记">
-<meta name="twitter:description" content="1. 介绍 RabbitMQ is the most widely deployed open source message broker. 直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理 2. 作用 消息代理中间件的作用： 削峰：大量请求写入消息中间件，服务器">
-
-<script
-  async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4905502839656862"
-  crossorigin="anonymous"
-></script>
-  
-
-
+<meta name="twitter:description" content="1. 介绍 RabbitMQ is the most widely deployed open source message broker.\n直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理\n2. 作用 消息代理中间件的作用：\n削峰：大量请求写入消息中间件，服务器按照自己能力去消费 解耦：服务上游与下游解耦，上游只需把请求写入消息代理，下游只需要去消息中间件消费 异步：实时性不高的功能放入代理，快速响应客户端请求 3. 竞品 ActiveMQ(已经寄了) RocketMQ（阿里开源，广泛应用在电商场景） Kafka（大数据利器，日志系统重要组件） 4. 系统架构 生产者：消息发送方 channel：通信信道，一个连接里有多个可用信道（感觉是资源池），生产者和消费者都会与 broker 建立连接 exchange：交换机，生产者将消息发送给对应交换机（生产者只与交换机打交道），交换机通过 routingKey 将消息发送给消息队列 queue：消息队列，存放消息的实体 消费者：从消息队列中消费消息 虚拟主机：多租户的资源隔离（不想深入，也不做过多了解） 5. 工作模式 RabbitMQ 官方给出了七种工作模式\n">
     </head>
     <body class="
     article-page
@@ -66,7 +56,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu20d8055db57cd6bbdd9609ebb3f81f3e_11357_300x0_resize_box_3.png" width="300"
+                        <img src="/img/avatar_hu_ba88ecd03c9124fe.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -82,7 +72,7 @@
             <h1 class="site-name"><a href="/">cengdong的技术博客</a></h1>
             <h2 class="site-description">学习随笔</h2>
         </div>
-    </header><ol class="social-menu">
+    </header><ol class="menu-social">
             
                 <li>
                     <a 
@@ -356,26 +346,25 @@
     <section class="article-content">
     
     
-    <h2 id="1-介绍">1. 介绍</h2>
-<blockquote>
-<p>RabbitMQ is the most widely deployed open source message broker.</p>
-</blockquote>
+    <h2 id="1-介绍">1. 介绍
+</h2><blockquote>
+<p>RabbitMQ is the most widely deployed open source message broker.</p></blockquote>
 <p>直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理</p>
-<h2 id="2-作用">2. 作用</h2>
-<p>消息代理中间件的作用：</p>
+<h2 id="2-作用">2. 作用
+</h2><p>消息代理中间件的作用：</p>
 <ul>
 <li>削峰：大量请求写入消息中间件，服务器按照自己能力去消费</li>
 <li>解耦：服务上游与下游解耦，上游只需把请求写入消息代理，下游只需要去消息中间件消费</li>
 <li>异步：实时性不高的功能放入代理，快速响应客户端请求</li>
 </ul>
-<h2 id="3-竞品">3. 竞品</h2>
-<ul>
+<h2 id="3-竞品">3. 竞品
+</h2><ul>
 <li>ActiveMQ(已经寄了)</li>
 <li>RocketMQ（阿里开源，广泛应用在电商场景）</li>
 <li>Kafka（大数据利器，日志系统重要组件）</li>
 </ul>
-<h2 id="4-系统架构">4. 系统架构</h2>
-<ul>
+<h2 id="4-系统架构">4. 系统架构
+</h2><ul>
 <li>生产者：消息发送方</li>
 <li>channel：通信信道，一个连接里有多个可用信道（感觉是资源池），生产者和消费者都会与 broker 建立连接</li>
 <li>exchange：交换机，生产者将消息发送给对应交换机（生产者只与交换机打交道），交换机通过 routingKey 将消息发送给消息队列</li>
@@ -383,8 +372,8 @@
 <li>消费者：从消息队列中消费消息</li>
 <li>虚拟主机：多租户的资源隔离（不想深入，也不做过多了解）</li>
 </ul>
-<h2 id="5-工作模式">5. 工作模式</h2>
-<p>RabbitMQ 官方给出了七种工作模式</p>
+<h2 id="5-工作模式">5. 工作模式
+</h2><p>RabbitMQ 官方给出了七种工作模式</p>
 <ul>
 <li><code>Hello World</code></li>
 <li><code>Work Queues</code></li>
@@ -394,8 +383,8 @@
 <li><code>RPC</code></li>
 <li><code>Publisher confirms</code></li>
 </ul>
-<h2 id="6-安装-rabbitmq">6. 安装 RabbitMQ</h2>
-<p>我的虚拟机已经安装好<code>Docker</code>，通过 Docker 安装带 web 可视化插件的<code>RabbitMQ</code>，其中 5672 是服务端的端口，15672 是 web 可视化的端口</p>
+<h2 id="6-安装-rabbitmq">6. 安装 RabbitMQ
+</h2><p>我的虚拟机已经安装好<code>Docker</code>，通过 Docker 安装带 web 可视化插件的<code>RabbitMQ</code>，其中 5672 是服务端的端口，15672 是 web 可视化的端口</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -425,14 +414,14 @@
 	
 	
 ></p>
-<h2 id="7-创建项目">7. 创建项目</h2>
-<ul>
+<h2 id="7-创建项目">7. 创建项目
+</h2><ul>
 <li>创建目录：<code>mkdir rabbitmq-demo</code></li>
 <li>初始化项目：<code>go mod init rabbitmq-demo</code></li>
 <li>go 客户端选用：老规矩，最多 star 的项目，虽然已经停止维护很久了<a class="link" href="github.com/streadway/amqp" >github.com/streadway/amqp</a></li>
 </ul>
-<h2 id="8-发送消息以简单模式为例">8. 发送消息：以简单模式为例</h2>
-<p>简单模式就是点对点的消息传输模型，官网称之为<code>Hello World</code>模式。生产者发送消息给指定队列，消费者从指定队列消费消息，其中生产者以及消费者都绑定的是默认交换机。</p>
+<h2 id="8-发送消息以简单模式为例">8. 发送消息：以简单模式为例
+</h2><p>简单模式就是点对点的消息传输模型，官网称之为<code>Hello World</code>模式。生产者发送消息给指定队列，消费者从指定队列消费消息，其中生产者以及消费者都绑定的是默认交换机。</p>
 <p><img src="/images/hugo/rabbitmq-hello-world.png"
 	
 	
@@ -490,33 +479,33 @@
 </span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">url</span> <span class="p">=</span> <span class="s">&#34;amqp://guest:guest@192.168.18.3:5672/&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 连接服务器
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">conn</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">amqp</span><span class="p">.</span><span class="nf">Dial</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 连接服务器</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">conn</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">amqp</span><span class="p">.</span><span class="nf">Dial</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="nx">conn</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 获取channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">channel</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">conn</span><span class="p">.</span><span class="nf">Channel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 获取channel</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">channel</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">conn</span><span class="p">.</span><span class="nf">Channel</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="nx">channel</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 声明队列
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">queue</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">channel</span><span class="p">.</span><span class="nf">QueueDeclare</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 声明队列</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">queue</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">channel</span><span class="p">.</span><span class="nf">QueueDeclare</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 发布消息
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">err</span> <span class="p">=</span> <span class="nx">channel</span><span class="p">.</span><span class="nf">Publish</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">amqp</span><span class="p">.</span><span class="nx">Publishing</span><span class="p">{</span><span class="nx">ContentType</span><span class="p">:</span> <span class="s">&#34;text/plain&#34;</span><span class="p">,</span> <span class="nx">Body</span><span class="p">:</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">)})</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 发布消息</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">err</span> <span class="p">=</span> <span class="nx">channel</span><span class="p">.</span><span class="nf">Publish</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">amqp</span><span class="p">.</span><span class="nx">Publishing</span><span class="p">{</span><span class="nx">ContentType</span><span class="p">:</span> <span class="s">&#34;text/plain&#34;</span><span class="p">,</span> <span class="nx">Body</span><span class="p">:</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">)})</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="9-接受消息以简单模式为例">9. 接受消息：以简单模式为例</h2>
-<div class="highlight"><div class="chroma">
+</div><h2 id="9-接受消息以简单模式为例">9. 接受消息：以简单模式为例
+</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -567,38 +556,38 @@
 </span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">rabbit_url</span> <span class="p">=</span> <span class="s">&#34;amqp://guest:guest@192.168.18.3:5672/&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 链接服务器
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">conn</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">amqp</span><span class="p">.</span><span class="nf">Dial</span><span class="p">(</span><span class="nx">rabbit_url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 链接服务器</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">conn</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">amqp</span><span class="p">.</span><span class="nf">Dial</span><span class="p">(</span><span class="nx">rabbit_url</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="nx">conn</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 	建立链接
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">channel</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">conn</span><span class="p">.</span><span class="nf">Channel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	建立链接</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">channel</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">conn</span><span class="p">.</span><span class="nf">Channel</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="nx">channel</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 声明队列
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">queue</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">channel</span><span class="p">.</span><span class="nf">QueueDeclare</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 声明队列</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">queue</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">channel</span><span class="p">.</span><span class="nf">QueueDeclare</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 消费消息
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">msg</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">channel</span><span class="p">.</span><span class="nf">Consume</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 消费消息</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">msg</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">channel</span><span class="p">.</span><span class="nf">Consume</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// 遍历管道，读取消息
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">d</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">msg</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 遍历管道，读取消息</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">d</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">msg</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">Body</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="10-如何保障消息不丢失">10. 如何保障消息不丢失</h2>
-<h3 id="101-消息应答机制">10.1 消息应答机制</h3>
-<p>RabbitMQ 有两种消息应答机制：<code>自动应答</code>和<code>手动应答</code>，<code>自动应答</code>即 NOACK，不需要接收方回应 ACK 消息，默认是这种应答方式。要开启手动应答，首先要把 channel.Consume 方法的第三个参数设置为 false</p>
+</div><h2 id="10-如何保障消息不丢失">10. 如何保障消息不丢失
+</h2><h3 id="101-消息应答机制">10.1 消息应答机制
+</h3><p>RabbitMQ 有两种消息应答机制：<code>自动应答</code>和<code>手动应答</code>，<code>自动应答</code>即 NOACK，不需要接收方回应 ACK 消息，默认是这种应答方式。要开启手动应答，首先要把 channel.Consume 方法的第三个参数设置为 false</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -616,8 +605,8 @@
 <pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">d</span> <span class="nx">Delivery</span><span class="p">)</span> <span class="nf">Ack</span><span class="p">(</span><span class="nx">multiple</span> <span class="kt">bool</span><span class="p">)</span> <span class="kt">error</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="102-消息持久化">10.2 消息持久化</h3>
-<p>要保障消息不丢失，就要保障消息的持久化，避免服务器故障或重启时内存中的消息丢失。消息持久化分为两部分：队列持久化、消息持久化。</p>
+</div><h3 id="102-消息持久化">10.2 消息持久化
+</h3><p>要保障消息不丢失，就要保障消息的持久化，避免服务器故障或重启时内存中的消息丢失。消息持久化分为两部分：队列持久化、消息持久化。</p>
 <p>队列持久化需要在声明队列时把参数 durable 传为 true</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -646,8 +635,8 @@
 </span></span><span class="line"><span class="cl"><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="103-生产方发布确认">10.3 生产方发布确认</h3>
-<p>生产方发布确认又叫<code>发布确认模式</code>，是一种保障生产方能确认发布消息到 Broker 的机制</p>
+</div><h3 id="103-生产方发布确认">10.3 生产方发布确认
+</h3><p>生产方发布确认又叫<code>发布确认模式</code>，是一种保障生产方能确认发布消息到 Broker 的机制</p>
 <p>要开启发布确认模式需要调用 channel.Conform 方法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -864,9 +853,9 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="11-工作队列模式">11. 工作队列模式</h2>
-<h3 id="111-公平调度的工作队列模式">11.1 公平调度的工作队列模式</h3>
-<p>工作队列模式类似于 Kafka 的消费者组，为了提高消费者的消费能力。生产者代码与简单模式一致，为了能从命令行控制要发送的消息，做一些改造。</p>
+</div><h2 id="11-工作队列模式">11. 工作队列模式
+</h2><h3 id="111-公平调度的工作队列模式">11.1 公平调度的工作队列模式
+</h3><p>工作队列模式类似于 Kafka 的消费者组，为了提高消费者的消费能力。生产者代码与简单模式一致，为了能从命令行控制要发送的消息，做一些改造。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1111,8 +1100,8 @@
 ></p>
 <p>消费者 1 消费了消息 135，消费者 2 消费了消息 24，这样提高了消费者消费的能力，并且由于工作队列模式默认的消息分发机制是轮询，官网称之为<code>Fair dispatch</code>(公平调度)</p>
 <p>当有多个消费者时，每个消费者的消费能力不一样，轮询的方式会有问题。</p>
-<h3 id="112-设置预取值的工作队列方式">11.2 设置预取值的工作队列方式</h3>
-<p>为了解决公平调度带来的问题，我们可以将预取计数设置为值<code>1</code>。这告诉<code>RabbitMQ</code>不要一次向一个<code>worker</code>提供多条消息。</p>
+<h3 id="112-设置预取值的工作队列方式">11.2 设置预取值的工作队列方式
+</h3><p>为了解决公平调度带来的问题，我们可以将预取计数设置为值<code>1</code>。这告诉<code>RabbitMQ</code>不要一次向一个<code>worker</code>提供多条消息。</p>
 <p>或者，换句话说，在<code>worker</code>处理并确认前一条消息之前，不要向<code>worker</code>发送新消息。相反，它会将其调度给下一个尚未繁忙的工作人员。</p>
 <p>设置预取值需要调用 channel.Qos 方法</p>
 <div class="highlight"><div class="chroma">
@@ -1231,12 +1220,12 @@
         
             2023 - 
         
-        2024 Cengdong
+        2025 Cengdong
     </section>
     
     <section class="powerby">
         使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.24.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 
@@ -1325,7 +1314,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

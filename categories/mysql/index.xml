@@ -13,8 +13,8 @@
         <pubDate>Thu, 28 Sep 2023 08:37:51 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/mysql%E8%A7%A3%E5%86%B3%E8%BD%AF%E5%88%A0%E9%99%A4%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E9%97%AE%E9%A2%98/</guid>
-        <description>&lt;h2 id=&#34;1-起因&#34;&gt;1. 起因&lt;/h2&gt;
-&lt;p&gt;最近在学习&lt;code&gt;go-zero&lt;/code&gt;，用&lt;code&gt;go-zero&lt;/code&gt;自带的&lt;code&gt;sqlx+sqlc&lt;/code&gt;操作数据库。因为&lt;code&gt;sqlx+sqlc&lt;/code&gt;不会像&lt;code&gt;gorm&lt;/code&gt;一样自动管理软删除字段，所以对表结构进行重新的设计。
+        <description>&lt;h2 id=&#34;1-起因&#34;&gt;1. 起因
+&lt;/h2&gt;&lt;p&gt;最近在学习&lt;code&gt;go-zero&lt;/code&gt;，用&lt;code&gt;go-zero&lt;/code&gt;自带的&lt;code&gt;sqlx+sqlc&lt;/code&gt;操作数据库。因为&lt;code&gt;sqlx+sqlc&lt;/code&gt;不会像&lt;code&gt;gorm&lt;/code&gt;一样自动管理软删除字段，所以对表结构进行重新的设计。
 下面是新的表结构：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -49,20 +49,20 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;业务上需要&lt;code&gt;username&lt;/code&gt;上这个唯一索引，同时当业务需要删除数据时只能软删除，方便数据溯源与恢复。&lt;/p&gt;
-&lt;h2 id=&#34;2-遇到的问题&#34;&gt;2. 遇到的问题&lt;/h2&gt;
-&lt;p&gt;当时只考虑到业务语义上&lt;code&gt;username&lt;/code&gt;需要唯一索引，写完代码后用 postman 进行测试，插入一条数据，再删除这条数据。再插入一条相同用户名的数据时，
+&lt;h2 id=&#34;2-遇到的问题&#34;&gt;2. 遇到的问题
+&lt;/h2&gt;&lt;p&gt;当时只考虑到业务语义上&lt;code&gt;username&lt;/code&gt;需要唯一索引，写完代码后用 postman 进行测试，插入一条数据，再删除这条数据。再插入一条相同用户名的数据时，
 接口报错唯一索引冲突。参考&lt;code&gt;go-zero&lt;/code&gt;微信群的建议，给软删除字段&lt;code&gt;is_delete&lt;/code&gt;也加上唯一索引。插入一条数据，再删除这条数据。再插入一条相同用户名的数据，
 再删除这条数据时，接口还是报错唯一索引冲突。&lt;/p&gt;
-&lt;h2 id=&#34;3-再加索引&#34;&gt;3. 再加索引&lt;/h2&gt;
-&lt;p&gt;群里立马又有大佬说还需要给删除时间加上唯一索引，因为删除时业务上会把删除时间更新为当前时间，不会有冲突。一顿操作下来，就给三个字段加上了唯一索引。
+&lt;h2 id=&#34;3-再加索引&#34;&gt;3. 再加索引
+&lt;/h2&gt;&lt;p&gt;群里立马又有大佬说还需要给删除时间加上唯一索引，因为删除时业务上会把删除时间更新为当前时间，不会有冲突。一顿操作下来，就给三个字段加上了唯一索引。
 个人感觉这个索引还是有点大，又去网上找了不少相关博客。首先确定的是：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;有唯一索引需要的字段必须加上唯一索引，不能因为业务上有校验就删除该索引。&lt;/li&gt;
 &lt;li&gt;同时删除数据时应该使用软删除。&lt;/li&gt;
 &lt;li&gt;但是有一点可以优化，就是标记软删除的字段不必只是 0 和 1，当删除数据时，更新该字段为该记录的&lt;code&gt;主键值&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;4-又遇到问题&#34;&gt;4. 又遇到问题&lt;/h2&gt;
-&lt;p&gt;因为&lt;code&gt;go-zero&lt;/code&gt;的数据库操作代码是靠代码生成的，会根据索引字段自动生成方法名，当有唯一索引需求是，自动生成的方法名会带上索引的所有字段，包括
+&lt;h2 id=&#34;4-又遇到问题&#34;&gt;4. 又遇到问题
+&lt;/h2&gt;&lt;p&gt;因为&lt;code&gt;go-zero&lt;/code&gt;的数据库操作代码是靠代码生成的，会根据索引字段自动生成方法名，当有唯一索引需求是，自动生成的方法名会带上索引的所有字段，包括
 软删除字段，方法名格外尴尬不说，内部生成的代码还多判断了一次&lt;code&gt;is_delete = 0&lt;/code&gt;，请教了 looklook 项目作者，这种需要 fork &lt;code&gt;go-zero&lt;/code&gt;源代码再自己进行魔改。&lt;/p&gt;
 </description>
         </item>

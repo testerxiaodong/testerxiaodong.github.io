@@ -13,20 +13,20 @@
         <pubDate>Wed, 20 Sep 2023 22:34:29 +0800</pubDate>
         
         <guid>https://www.cengdong.store/p/flink%E5%88%A9%E7%94%A8flink-cdc%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%B0es/</guid>
-        <description>&lt;h2 id=&#34;1-需求&#34;&gt;1. 需求&lt;/h2&gt;
-&lt;p&gt;需要把 mysql 的数据聚合同步到 es 以提供海量数据检索能力&lt;/p&gt;
-&lt;h2 id=&#34;2-解决方案&#34;&gt;2. 解决方案&lt;/h2&gt;
-&lt;ul&gt;
+        <description>&lt;h2 id=&#34;1-需求&#34;&gt;1. 需求
+&lt;/h2&gt;&lt;p&gt;需要把 mysql 的数据聚合同步到 es 以提供海量数据检索能力&lt;/p&gt;
+&lt;h2 id=&#34;2-解决方案&#34;&gt;2. 解决方案
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;变更 mysql 数据时同步调用 es 的 api&lt;/li&gt;
 &lt;li&gt;变更 mysql 数据时异步调用 es 的 api(先发送消息到消息队列，搜索微服务调用 es 的 api 消费数据)&lt;/li&gt;
 &lt;li&gt;canal 监听 mysql 的 binlog 日志，再同步到 es&lt;/li&gt;
 &lt;li&gt;flink-cdc 监听 mysql 的 binlog 日志同步到 es&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;3-选用方案&#34;&gt;3. 选用方案&lt;/h2&gt;
-&lt;p&gt;最终选择 flink-cdc 的方案，一是 go-canal 的仓库不活跃，就三个 issue，提了 bug 也没人修，而且后续可能有实时分析的大数据需求，本身就有 flink 集群的需求。
+&lt;h2 id=&#34;3-选用方案&#34;&gt;3. 选用方案
+&lt;/h2&gt;&lt;p&gt;最终选择 flink-cdc 的方案，一是 go-canal 的仓库不活跃，就三个 issue，提了 bug 也没人修，而且后续可能有实时分析的大数据需求，本身就有 flink 集群的需求。
 二是 canal 的 release 版本要最近才会更新，最后一次更新是 21 年 4 月，害怕烂尾。三是俺尝试部署 canal，最后失败了 💦。&lt;/p&gt;
-&lt;h2 id=&#34;4-部署环境&#34;&gt;4. 部署环境&lt;/h2&gt;
-&lt;p&gt;选用 docker-compose 部署 mysql、link 与 elasticsearch&lt;/p&gt;
+&lt;h2 id=&#34;4-部署环境&#34;&gt;4. 部署环境
+&lt;/h2&gt;&lt;p&gt;选用 docker-compose 部署 mysql、link 与 elasticsearch&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -247,8 +247,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;主要是为了开启 binlog&lt;/p&gt;
-&lt;h2 id=&#34;5-配置&#34;&gt;5. 配置&lt;/h2&gt;
-&lt;p&gt;先启动集群&lt;/p&gt;
+&lt;h2 id=&#34;5-配置&#34;&gt;5. 配置
+&lt;/h2&gt;&lt;p&gt;先启动集群&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -289,8 +289,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker restart jobmanager
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;6-测试&#34;&gt;6. 测试&lt;/h2&gt;
-&lt;p&gt;进入 mysql 容器/连接 mysql 创建 mysql 数据库表&lt;/p&gt;
+&lt;/div&gt;&lt;h2 id=&#34;6-测试&#34;&gt;6. 测试
+&lt;/h2&gt;&lt;p&gt;进入 mysql 容器/连接 mysql 创建 mysql 数据库表&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
