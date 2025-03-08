@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><meta charset="utf-8" />
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" /><meta
-name='description' content="关于我 大学通信工程混了四年 毕业之后测试点点点 测试写点 python 调接口 目前在学 Go 后端开发 无时无刻想躺和润 裸辞高手 "> <title>About</title>
+name='description' content="logging 介绍 日志是对软件执行时所发生事件的一种追踪方式。软件开发人员对他们的代码添加日志调用，借此来指示某事件的发生。\n什么时候使用日志 你可以通过执行 logger = getLogger(__name__) 创建一个日志记录器然后调用日志记录器的 debug(), info(), warning(), error() 和 critical() 方法来使用日志记录功能。 要确定何时使用日志记录，以及确定要使用哪个日志记录器方法，请参阅下表。 它针对一组常见任务中的每一个都列出了最适合该任务的工具。\n"> <title>【Python】logging模块</title>
 
-<link rel="canonical" href="https://www.cengdong.store/about/" />
+<link rel="canonical" href="http://localhost:1313/posts/pythonlogging%E6%A8%A1%E5%9D%97/" />
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="About">
-<meta property='og:description' content="关于我 大学通信工程混了四年 毕业之后测试点点点 测试写点 python 调接口 目前在学 Go 后端开发 无时无刻想躺和润 裸辞高手 ">
-<meta property='og:url' content='https://www.cengdong.store/about/'>
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【Python】logging模块">
+<meta property='og:description' content="logging 介绍 日志是对软件执行时所发生事件的一种追踪方式。软件开发人员对他们的代码添加日志调用，借此来指示某事件的发生。\n什么时候使用日志 你可以通过执行 logger = getLogger(__name__) 创建一个日志记录器然后调用日志记录器的 debug(), info(), warning(), error() 和 critical() 方法来使用日志记录功能。 要确定何时使用日志记录，以及确定要使用哪个日志记录器方法，请参阅下表。 它针对一组常见任务中的每一个都列出了最适合该任务的工具。\n">
+<meta property='og:url' content='http://localhost:1313/posts/pythonlogging%E6%A8%A1%E5%9D%97/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='' /><meta property='article:published_time' content='2023-07-31T23:34:32&#43;08:00'/><meta property='article:modified_time' content='2023-07-31T23:34:32&#43;08:00'/>
-<meta name="twitter:title" content="About">
-<meta name="twitter:description" content="关于我 大学通信工程混了四年 毕业之后测试点点点 测试写点 python 调接口 目前在学 Go 后端开发 无时无刻想躺和润 裸辞高手 ">
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2025-03-08T19:13:43&#43;08:00'/><meta property='article:modified_time' content='2025-03-08T19:13:43&#43;08:00'/>
+<meta name="twitter:title" content="【Python】logging模块">
+<meta name="twitter:description" content="logging 介绍 日志是对软件执行时所发生事件的一种追踪方式。软件开发人员对他们的代码添加日志调用，借此来指示某事件的发生。\n什么时候使用日志 你可以通过执行 logger = getLogger(__name__) 创建一个日志记录器然后调用日志记录器的 debug(), info(), warning(), error() 和 critical() 方法来使用日志记录功能。 要确定何时使用日志记录，以及确定要使用哪个日志记录器方法，请参阅下表。 它针对一组常见任务中的每一个都列出了最适合该任务的工具。\n">
     </head>
     <body class="
     article-page
@@ -245,11 +245,8 @@ name='description' content="关于我 大学通信工程混了四年 毕业之�
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
-      <ol>
-        <li><a href="#关于我">关于我</a></li>
-      </ol>
-    </li>
+    <li><a href="#logging-介绍">logging 介绍</a></li>
+    <li><a href="#什么时候使用日志">什么时候使用日志</a></li>
   </ol>
 </nav>
         </div>
@@ -269,7 +266,7 @@ name='description' content="关于我 大学通信工程混了四年 毕业之�
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/about/">About</a>
+            <a href="/posts/pythonlogging%E6%A8%A1%E5%9D%97/">【Python】logging模块</a>
         </h2>
     
         
@@ -291,7 +288,7 @@ name='description' content="关于我 大学通信工程混了四年 毕业之�
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jul 31, 2023</time>
+                <time class="article-time--published">Mar 08, 2025</time>
             </div>
         
 
@@ -321,15 +318,34 @@ name='description' content="关于我 大学通信工程混了四年 毕业之�
     <section class="article-content">
     
     
-    <h3 id="关于我">关于我
-</h3><ul>
-<li>大学通信工程混了四年</li>
-<li>毕业之后测试点点点</li>
-<li>测试写点 python 调接口</li>
-<li>目前在学 Go 后端开发</li>
-<li>无时无刻想躺和润</li>
-<li>裸辞高手</li>
-</ul>
+    <h2 id="logging-介绍">logging 介绍
+</h2><p>日志是对软件执行时所发生事件的一种追踪方式。软件开发人员对他们的代码添加日志调用，借此来指示某事件的发生。</p>
+<h2 id="什么时候使用日志">什么时候使用日志
+</h2><p>你可以通过执行 <code>logger = getLogger(__name__)</code> 创建一个日志记录器然后调用日志记录器的 <code>debug()</code>, <code>info()</code>, <code>warning()</code>, <code>error()</code> 和 <code>critical()</code> 方法来使用日志记录功能。 要确定何时使用日志记录，以及确定要使用哪个日志记录器方法，请参阅下表。 它针对一组常见任务中的每一个都列出了最适合该任务的工具。</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>你想要执行的任务</th>
+          <th>此任务最好的工具</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>对于命令行或程序的应用，结果显示在控制台。</td>
+          <td>print()</td>
+      </tr>
+      <tr>
+          <td>在对程序的普通操作发生时提交事件报告(比如：状态监控和错误调查)</td>
+          <td>日志记录器的 info() (或者对于诊断目的需要非常详细的输出时则使用 debug() 方法)</td>
+      </tr>
+      <tr>
+          <td>提出一个警告信息基于一个特殊的运行时事件</td>
+          <td>warnings.warn() 位于代码库中，该事件是可以避免的，需要修改客户端应用以消除告警 对于客户端应用无法干预，但事件仍然需要被关注的场合则使用日志记录器的 warning() 方法</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>|对一个特殊的运行时事件报告错误 | 引发异常 |
+|报告错误而不引发异常(如在长时间运行中的服务端进程的错误处理)| 日志记录器的 error(), exception() 或 critical() 方法分别适用于特定的错误及应用领域 |</p>
 
 </section>
 
@@ -506,7 +522,7 @@ name='description' content="关于我 大学通信工程混了四年 毕业之�
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.8b28c81db47d49596ccc9b8c3794e6290e5abea98efd149dbdb1c7a9df80de60.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
