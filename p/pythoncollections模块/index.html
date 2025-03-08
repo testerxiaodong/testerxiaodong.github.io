@@ -271,6 +271,26 @@ name='description' content="介绍 这个模块实现了一些专门化的容器
       <ol>
         <li><a href="#defaultdict-基本用法">defaultdict 基本用法</a></li>
         <li><a href="#defaultdict-的参数">defaultdict 的参数</a></li>
+        <li><a href="#常见默认工厂">常见默认工厂</a>
+          <ol>
+            <li><a href="#默认值为-int适用于计数器">默认值为 int（适用于计数器）</a></li>
+            <li><a href="#默认值为-list适用于分组">默认值为 list（适用于分组）</a></li>
+            <li><a href="#默认值为-set去重分组">默认值为 set（去重分组）</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#ordereddict">OrderedDict</a>
+      <ol>
+        <li><a href="#创建-ordereddict">创建 OrderedDict</a></li>
+        <li><a href="#ordereddict-关键特性">OrderedDict 关键特性</a>
+          <ol>
+            <li><a href="#按照插入顺序迭代">按照插入顺序迭代</a></li>
+            <li><a href="#支持-move_to_end-调整顺序">支持 move_to_end 调整顺序</a></li>
+            <li><a href="#支持-popitem取出fifolifo">支持 popitem()取出(FIFO/LIFO)</a></li>
+          </ol>
+        </li>
+        <li><a href="#ordereddict-应用场景">OrderedDict 应用场景</a></li>
       </ol>
     </li>
   </ol>
@@ -329,7 +349,7 @@ name='description' content="介绍 这个模块实现了一些专门化的容器
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 4 分钟
                 </time>
             </div>
         
@@ -630,7 +650,243 @@ name='description' content="介绍 这个模块实现了一些专门化的容器
 <li>default_factory：用于生成默认值的可调用对象（如 list、int、set、lambda 等）。</li>
 <li>其他参数和 dict 一样。</li>
 </ul>
-
+<h3 id="常见默认工厂">常见默认工厂
+</h3><h4 id="默认值为-int适用于计数器">默认值为 int（适用于计数器）
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;apple&#34;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;banana&#34;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>  <span class="c1"># {&#39;apple&#39;: 1, &#39;banana&#39;: 1}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="默认值为-list适用于分组">默认值为 list（适用于分组）
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;fruits&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34;apple&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;fruits&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34;banana&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;vegetables&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34;carrot&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># {&#39;fruits&#39;: [&#39;apple&#39;, &#39;banana&#39;], &#39;vegetables&#39;: [&#39;carrot&#39;]}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="默认值为-set去重分组">默认值为 set（去重分组）
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;fruits&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;apple&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;fruits&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;banana&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;fruits&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;apple&#34;</span><span class="p">)</span>  <span class="c1"># 重复添加，不会重复存储</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># {&#39;fruits&#39;: {&#39;apple&#39;, &#39;banana&#39;}}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ordereddict">OrderedDict
+</h2><p>OrderedDict 是 collections 模块中的有序字典，它继承自 dict，但能够保持键值对的插入顺序（在 Python 3.7+ 的 dict 也默认保持顺序，但 OrderedDict 仍有一些额外功能）</p>
+<h3 id="创建-ordereddict">创建 OrderedDict
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 普通 dict（Python 3.7+ 默认保持顺序）</span>
+</span></span><span class="line"><span class="cl"><span class="n">d1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;a&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;b&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;c&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>  <span class="c1"># {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># OrderedDict（显式使用）</span>
+</span></span><span class="line"><span class="cl"><span class="n">d2</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">([(</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;b&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>  <span class="c1"># OrderedDict([(&#39;a&#39;, 1), (&#39;b&#39;, 2), (&#39;c&#39;, 3)])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>特点：</p>
+<ul>
+<li>Python 3.6 及以下：普通 dict 不会 维持插入顺序，OrderedDict 可以。</li>
+<li>Python 3.7+：普通 dict 默认 维持顺序，但 OrderedDict 仍然提供额外方法。</li>
+</ul>
+<h3 id="ordereddict-关键特性">OrderedDict 关键特性
+</h3><h4 id="按照插入顺序迭代">按照插入顺序迭代
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;x&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;y&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;z&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 输出：</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># x 10</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># y 20</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># z 30  ✅ 顺序保持不变</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="支持-move_to_end-调整顺序">支持 move_to_end 调整顺序
+</h4><p>move_to_end(key, last=True) 可以移动指定键到末尾或开头：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">([(</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;b&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">)</span>  <span class="c1"># 把 &#39;a&#39; 移到末尾</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>  <span class="c1"># OrderedDict([(&#39;b&#39;, 2), (&#39;c&#39;, 3), (&#39;a&#39;, 1)])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 把 &#39;c&#39; 移到开头</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>  <span class="c1"># OrderedDict([(&#39;c&#39;, 3), (&#39;b&#39;, 2), (&#39;a&#39;, 1)])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="支持-popitem取出fifolifo">支持 popitem()取出(FIFO/LIFO)
+</h4><p>popitem(last=True):</p>
+<ul>
+<li>last=True（默认）➡ 后进先出（LIFO）</li>
+<li>last=False ➡ 先进先出（FIFO）</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">([(</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;b&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">())</span>       <span class="c1"># (&#39;c&#39;, 3)  ✅ 默认 LIFO</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>  <span class="c1"># (&#39;a&#39;, 1)  ✅ FIFO</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>  <span class="c1"># OrderedDict([(&#39;b&#39;, 2)])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="ordereddict-应用场景">OrderedDict 应用场景
+</h3><p>由于 OrderedDict 维护顺序，它可以实现 LRU（最近最少使用）缓存：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">LRUCache</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span> <span class="o">=</span> <span class="n">capacity</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>  <span class="c1"># 最近访问的移动到末尾</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">popitem</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 移除最早插入的元素（FIFO）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 示例</span>
+</span></span><span class="line"><span class="cl"><span class="n">cache</span> <span class="o">=</span> <span class="n">LRUCache</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cache</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;A&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cache</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;B&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cache</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span>  <span class="c1"># OrderedDict([(1, &#39;A&#39;), (2, &#39;B&#39;)])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 访问 1，使其变成最近使用</span>
+</span></span><span class="line"><span class="cl"><span class="n">cache</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&#34;C&#34;</span><span class="p">)</span>  <span class="c1"># 淘汰最久未使用的 2</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cache</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span>  <span class="c1"># OrderedDict([(1, &#39;A&#39;), (3, &#39;C&#39;)])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
