@@ -298,7 +298,6 @@ name='description' content="React 开发环境搭建 安装 nodejs：官网下�
       <ol>
         <li><a href="#参考">参考</a></li>
         <li><a href="#不同依赖项的区别">不同依赖项的区别</a></li>
-        <li><a href="#注意事项-1">注意事项</a></li>
         <li><a href="#使用场景">使用场景</a>
           <ol>
             <li><a href="#连接到外部系统">连接到外部系统</a></li>
@@ -779,8 +778,8 @@ name='description' content="React 开发环境搭建 安装 nodejs：官网下�
       </tr>
   </tbody>
 </table></div>
-<h3 id="注意事项-1">注意事项
-</h3><ul>
+<p>注意事项：</p>
+<ul>
 <li>useEffect 是一个 Hook，因此只能在 组件的顶层 或自己的 Hook 中调用它，而不能在循环或者条件内部调用。如果需要，抽离出一个新组件并将 state 移入其中。</li>
 <li>如果你 没有打算与某个外部系统同步，那么你可能不需要 Effect。</li>
 <li>当严格模式启动时，React 将在真正的 setup 函数首次运行前，运行一个开发模式下专有的额外 setup + cleanup 周期。这是一个压力测试，用于确保 cleanup 逻辑“映射”到了 setup 逻辑，并停止或撤消 setup 函数正在做的任何事情。如果这会导致一些问题，请实现 cleanup 函数。</li>
