@@ -2,17 +2,17 @@
 <html lang="zh-cn" dir="ltr">
     <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" /><meta
-name='description' content="介绍 Flex（Flexible Box）是一种用于布局的 CSS 方式，能够方便地实现元素在容器中的 自动调整大小、对齐、换行 等功能，特别适用于响应式设计。\n"> <title>【CSS】Flex布局</title>
+name='description' content="介绍 CSS Grid Layout（网格布局）是最强大的 CSS 布局系统，它提供二维布局能力，能够精确控制行（row）和列（column），适用于网页整体结构或复杂组件\n"> <title>【CSS】Grid布局</title>
 
-<link rel="canonical" href="https://www.cengdong.store/p/cssflex%E5%B8%83%E5%B1%80/" />
+<link rel="canonical" href="https://www.cengdong.store/p/cssgrid%E5%B8%83%E5%B1%80/" />
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【CSS】Flex布局">
-<meta property='og:description' content="介绍 Flex（Flexible Box）是一种用于布局的 CSS 方式，能够方便地实现元素在容器中的 自动调整大小、对齐、换行 等功能，特别适用于响应式设计。\n">
-<meta property='og:url' content='https://www.cengdong.store/p/cssflex%E5%B8%83%E5%B1%80/'>
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【CSS】Grid布局">
+<meta property='og:description' content="介绍 CSS Grid Layout（网格布局）是最强大的 CSS 布局系统，它提供二维布局能力，能够精确控制行（row）和列（column），适用于网页整体结构或复杂组件\n">
+<meta property='og:url' content='https://www.cengdong.store/p/cssgrid%E5%B8%83%E5%B1%80/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-12T12:22:21&#43;08:00'/><meta property='article:modified_time' content='2025-03-12T12:22:21&#43;08:00'/>
-<meta name="twitter:title" content="【CSS】Flex布局">
-<meta name="twitter:description" content="介绍 Flex（Flexible Box）是一种用于布局的 CSS 方式，能够方便地实现元素在容器中的 自动调整大小、对齐、换行 等功能，特别适用于响应式设计。\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-12T13:23:27&#43;08:00'/><meta property='article:modified_time' content='2025-03-12T13:23:27&#43;08:00'/>
+<meta name="twitter:title" content="【CSS】Grid布局">
+<meta name="twitter:description" content="介绍 CSS Grid Layout（网格布局）是最强大的 CSS 布局系统，它提供二维布局能力，能够精确控制行（row）和列（column），适用于网页整体结构或复杂组件\n">
     </head>
     <body class="
     article-page
@@ -246,25 +246,23 @@ name='description' content="介绍 Flex（Flexible Box）是一种用于布局�
             <nav id="TableOfContents">
   <ol>
     <li><a href="#介绍">介绍</a></li>
-    <li><a href="#启用-flex-布局">启用 flex 布局</a></li>
-    <li><a href="#flex-容器父级属性">flex 容器(父级)属性</a>
+    <li><a href="#grid-容器grid-container">Grid 容器（Grid Container）</a></li>
+    <li><a href="#定义网格行和列">定义网格（行和列）</a></li>
+    <li><a href="#fr网格比例单位">fr（网格比例单位）</a></li>
+    <li><a href="#repeat简化网格">repeat()（简化网格）</a></li>
+    <li><a href="#gap网格间距">gap（网格间距）</a></li>
+    <li><a href="#自动填充-auto-fill--auto-fit">自动填充 auto-fill &amp; auto-fit</a></li>
+    <li><a href="#子元素布局">子元素布局</a>
       <ol>
-        <li><a href="#flex-direction主轴方向">flex-direction（主轴方向）</a></li>
-        <li><a href="#flex-wrap是否换行">flex-wrap（是否换行）</a></li>
-        <li><a href="#justify-content主轴对齐方式">justify-content（主轴对齐方式）</a></li>
-        <li><a href="#align-items交叉轴对齐方式">align-items（交叉轴对齐方式）</a></li>
-        <li><a href="#align-content多行对齐方式">align-content（多行对齐方式）</a></li>
+        <li><a href="#grid-column--grid-row控制网格项位置">grid-column &amp; grid-row（控制网格项位置）</a></li>
+        <li><a href="#span-语法">span 语法</a></li>
       </ol>
     </li>
-    <li><a href="#flex-子项子元素属性">Flex 子项（子元素）属性</a>
-      <ol>
-        <li><a href="#flex-grow放大比例">flex-grow（放大比例）</a></li>
-        <li><a href="#flex-shrink缩小比例">flex-shrink（缩小比例）</a></li>
-        <li><a href="#flex-basis初始大小">flex-basis（初始大小）</a></li>
-        <li><a href="#flex简写属性">flex（简写属性）</a></li>
-        <li><a href="#align-self单个子项的对齐方式">align-self（单个子项的对齐方式）</a></li>
-      </ol>
-    </li>
+    <li><a href="#grid-auto-rows--grid-auto-columns">grid-auto-rows &amp; grid-auto-columns</a></li>
+    <li><a href="#justify-content--align-content网格整体对齐">justify-content &amp; align-content（网格整体对齐）</a></li>
+    <li><a href="#justify-items--align-items网格项对齐">justify-items &amp; align-items（网格项对齐）</a></li>
+    <li><a href="#justify-self--align-self单个网格项对齐">justify-self &amp; align-self（单个网格项对齐）</a></li>
+    <li><a href="#grid-template-areas网格布局命名">grid-template-areas（网格布局命名）</a></li>
   </ol>
 </nav>
         </div>
@@ -292,7 +290,7 @@ name='description' content="介绍 Flex（Flexible Box）是一种用于布局�
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/cssflex%E5%B8%83%E5%B1%80/">【CSS】Flex布局</a>
+            <a href="/p/cssgrid%E5%B8%83%E5%B1%80/">【CSS】Grid布局</a>
         </h2>
     
         
@@ -345,9 +343,9 @@ name='description' content="介绍 Flex（Flexible Box）是一种用于布局�
     
     
     <h2 id="介绍">介绍
-</h2><p>Flex（Flexible Box）是一种用于布局的 CSS 方式，能够方便地实现元素在容器中的 自动调整大小、对齐、换行 等功能，特别适用于响应式设计。</p>
-<h2 id="启用-flex-布局">启用 flex 布局
-</h2><p>要使用 Flex 布局，必须先在父容器上设置：</p>
+</h2><p>CSS Grid Layout（网格布局）是最强大的 CSS 布局系统，它提供二维布局能力，能够精确控制行（row）和列（column），适用于网页整体结构或复杂组件</p>
+<h2 id="grid-容器grid-container">Grid 容器（Grid Container）
+</h2><p>使用 display: grid 或 display: inline-grid 声明一个 Grid 容器：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -356,266 +354,302 @@ name='description' content="介绍 Flex（Flexible Box）是一种用于布局�
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">display</span><span class="p">:</span> <span class="k">grid</span><span class="p">;</span> <span class="c">/* 定义一个网格布局容器 */</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="flex-容器父级属性">flex 容器(父级)属性
-</h2><div class="table-wrapper"><table>
+</div><p>📌 grid VS inline-grid：</p>
+<ul>
+<li>grid：块级网格容器，占据整行</li>
+<li>inline-grid：内联级网格容器，大小由内容决定</li>
+</ul>
+<h2 id="定义网格行和列">定义网格（行和列）
+</h2><p>使用 grid-template-columns 和 grid-template-rows 定义列数和行数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">display</span><span class="p">:</span> <span class="k">grid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-template-columns</span><span class="p">:</span> <span class="mi">200</span><span class="kt">px</span> <span class="mi">100</span><span class="kt">px</span> <span class="kc">auto</span><span class="p">;</span> <span class="c">/* 3 列 */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-template-rows</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span> <span class="mi">200</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* 2 行 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>📌 解释：</p>
+<ul>
+<li>200px 100px auto → 3 列，分别为 200px、100px 和剩余宽度</li>
+<li>100px 200px → 2 行，分别 100px、200px</li>
+</ul>
+<h2 id="fr网格比例单位">fr（网格比例单位）
+</h2><p>用 fr 让网格自动分配可用空间：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">display</span><span class="p">:</span> <span class="k">grid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-template-columns</span><span class="p">:</span> <span class="mi">1</span><span class="n">fr</span> <span class="mi">2</span><span class="n">fr</span> <span class="mi">1</span><span class="n">fr</span><span class="p">;</span> <span class="c">/* 按比例划分列 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>📌 1fr 2fr 1fr → 这三列的宽度比例为 1:2:1（类似 flex-grow）</p>
+<h2 id="repeat简化网格">repeat()（简化网格）
+</h2><p>使用 repeat() 让代码更简洁：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">grid-template-columns</span><span class="o">:</span> <span class="nt">repeat</span><span class="o">(</span><span class="nt">3</span><span class="o">,</span> <span class="nt">1fr</span><span class="o">);</span> <span class="c">/* 3 列，每列等宽 */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">grid-template-rows</span><span class="o">:</span> <span class="nt">repeat</span><span class="o">(</span><span class="nt">2</span><span class="o">,</span> <span class="nt">100px</span><span class="o">);</span> <span class="c">/* 2 行，每行 100px */</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>📌 repeat(3, 1fr) → 相当于 1fr 1fr 1fr</p>
+<h2 id="gap网格间距">gap（网格间距）
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">display</span><span class="p">:</span> <span class="k">grid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-template-columns</span><span class="p">:</span> <span class="nf">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="n">fr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">gap</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* 设置行列间距 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>📌 等价于：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">row-gap</span><span class="o">:</span> <span class="nt">20px</span><span class="o">;</span> <span class="c">/* 仅设置行间距 */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">column-gap</span><span class="o">:</span> <span class="nt">20px</span><span class="o">;</span> <span class="c">/* 仅设置列间距 */</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="自动填充-auto-fill--auto-fit">自动填充 auto-fill &amp; auto-fit
+</h2><p>用于响应式布局：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">grid-template-columns</span><span class="o">:</span> <span class="nt">repeat</span><span class="o">(</span><span class="nt">auto-fill</span><span class="o">,</span> <span class="nt">minmax</span><span class="o">(</span><span class="nt">150px</span><span class="o">,</span> <span class="nt">1fr</span><span class="o">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>📌 解释：</p>
+<ul>
+<li>minmax(150px, 1fr) → 设定最小 150px，最大填充剩余空间</li>
+<li>auto-fill → 尽可能多填充列，即使有空白</li>
+<li>auto-fit → 适配列数，会压缩空列</li>
+</ul>
+<h2 id="子元素布局">子元素布局
+</h2><h3 id="grid-column--grid-row控制网格项位置">grid-column &amp; grid-row（控制网格项位置）
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-column</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">;</span> <span class="c">/* 让元素跨越第 1 ~ 2 列 */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-row</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">;</span> <span class="c">/* 让元素跨越第 1 ~ 2 行 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>📌 等价于：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">grid-column-start</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">grid-column-end</span><span class="o">:</span> <span class="nt">3</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">grid-row-start</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">grid-row-end</span><span class="o">:</span> <span class="nt">3</span><span class="o">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="span-语法">span 语法
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-column</span><span class="p">:</span> <span class="n">span</span> <span class="mi">2</span><span class="p">;</span> <span class="c">/* 让元素跨 2 列 */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-row</span><span class="p">:</span> <span class="n">span</span> <span class="mi">2</span><span class="p">;</span> <span class="c">/* 让元素跨 2 行 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="grid-auto-rows--grid-auto-columns">grid-auto-rows &amp; grid-auto-columns
+</h2><p>用于自动生成额外的行/列：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-template-columns</span><span class="p">:</span> <span class="mi">200</span><span class="kt">px</span> <span class="mi">200</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* 2 列 */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-auto-rows</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* 额外行高 100px */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="justify-content--align-content网格整体对齐">justify-content &amp; align-content（网格整体对齐）
+</h2><p>用于控制整个网格的对齐方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">display</span><span class="p">:</span> <span class="k">grid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">justify-content</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span> <span class="c">/* 水平对齐 */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">align-content</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span> <span class="c">/* 垂直对齐 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="table-wrapper"><table>
   <thead>
       <tr>
           <th>属性</th>
           <th>作用</th>
+          <th>可选值</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>display: flex</td>
-          <td>启用 flex 布局，使子元素变成弹性</td>
-      </tr>
-      <tr>
-          <td>flex-direction</td>
-          <td>设定主轴方向(row、column)</td>
-      </tr>
-      <tr>
-          <td>flex-wrap</td>
-          <td>设定子元素是否换行(wrap、nowrap)</td>
-      </tr>
-      <tr>
           <td>justify-content</td>
-          <td>控制主轴上的对齐方式(居中、均分)</td>
-      </tr>
-      <tr>
-          <td>align-items</td>
-          <td>控制交叉轴上的对齐方式</td>
+          <td>控制水平方向</td>
+          <td>start / center / end / space-between / space-around / space-evenly</td>
       </tr>
       <tr>
           <td>align-content</td>
-          <td>控制多行弹性项的对齐方式</td>
+          <td>控制垂直方向</td>
+          <td>同上</td>
       </tr>
   </tbody>
 </table></div>
-<h3 id="flex-direction主轴方向">flex-direction（主轴方向）
-</h3><p>决定主轴的方向，默认值是 row（从左到右）。</p>
+<h2 id="justify-items--align-items网格项对齐">justify-items &amp; align-items（网格项对齐）
+</h2><p>用于控制单个网格项的对齐：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-direction</span><span class="p">:</span> <span class="kc">row</span><span class="p">;</span> <span class="c">/* 从左到右 (默认) */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-direction</span><span class="p">:</span> <span class="kc">row-reverse</span><span class="p">;</span> <span class="c">/* 从右到左 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-direction</span><span class="p">:</span> <span class="kc">column</span><span class="p">;</span> <span class="c">/* 从上到下 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-direction</span><span class="p">:</span> <span class="kc">column-reverse</span><span class="p">;</span> <span class="c">/* 从下到上 */</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="flex-wrap是否换行">flex-wrap（是否换行）
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-wrap</span><span class="p">:</span> <span class="kc">nowrap</span><span class="p">;</span> <span class="c">/* 默认值，不换行 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-wrap</span><span class="p">:</span> <span class="kc">wrap</span><span class="p">;</span> <span class="c">/* 换行 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-wrap</span><span class="p">:</span> <span class="kc">wrap-reverse</span><span class="p">;</span> <span class="c">/* 反向换行 */</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="justify-content主轴对齐方式">justify-content（主轴对齐方式）
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">justify-content</span><span class="p">:</span> <span class="kc">flex-start</span><span class="p">;</span> <span class="c">/* 默认，左对齐 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">justify-content</span><span class="p">:</span> <span class="kc">flex-end</span><span class="p">;</span> <span class="c">/* 右对齐 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">justify-content</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span> <span class="c">/* 居中 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">justify-content</span><span class="p">:</span> <span class="kc">space-between</span><span class="p">;</span> <span class="c">/* 两端对齐，中间平均分布 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">justify-content</span><span class="p">:</span> <span class="kc">space-around</span><span class="p">;</span> <span class="c">/* 每个元素两侧间距相等 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">justify-content</span><span class="p">:</span> <span class="kc">space</span><span class="o">-</span><span class="n">evenly</span><span class="p">;</span> <span class="c">/* 每个元素之间间距相等 */</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="align-items交叉轴对齐方式">align-items（交叉轴对齐方式）
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-items</span><span class="p">:</span> <span class="kc">flex-start</span><span class="p">;</span> <span class="c">/* 顶部对齐 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-items</span><span class="p">:</span> <span class="kc">flex-end</span><span class="p">;</span> <span class="c">/* 底部对齐 */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">justify-items</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span> <span class="c">/* 水平居中 */</span>
 </span></span><span class="line"><span class="cl">  <span class="k">align-items</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span> <span class="c">/* 垂直居中 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-items</span><span class="p">:</span> <span class="kc">baseline</span><span class="p">;</span> <span class="c">/* 文字基线对齐 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-items</span><span class="p">:</span> <span class="kc">stretch</span><span class="p">;</span> <span class="c">/* 高度自动拉伸（默认） */</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="align-content多行对齐方式">align-content（多行对齐方式）
-</h3><p>适用于 flex-wrap: wrap 的多行情况</p>
-<div class="highlight"><div class="chroma">
+</div><p>📌 作用对象：</p>
+<ul>
+<li>justify-items 影响所有网格项的水平对齐</li>
+<li>align-items 影响所有网格项的垂直对齐</li>
+</ul>
+<h2 id="justify-self--align-self单个网格项对齐">justify-self &amp; align-self（单个网格项对齐）
+</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">justify-self</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span> <span class="c">/* 仅影响当前元素的水平对齐 */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">align-self</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span> <span class="c">/* 仅影响当前元素的垂直对齐 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>📌 区别：</p>
+<ul>
+<li>justify-self 控制单个网格项的水平位置</li>
+<li>align-self 控制单个网格项的垂直位置</li>
+</ul>
+<h2 id="grid-template-areas网格布局命名">grid-template-areas（网格布局命名）
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-content</span><span class="p">:</span> <span class="kc">flex-start</span><span class="p">;</span> <span class="c">/* 多行从顶部开始 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-content</span><span class="p">:</span> <span class="kc">flex-end</span><span class="p">;</span> <span class="c">/* 多行从底部开始 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-content</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span> <span class="c">/* 多行居中 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-content</span><span class="p">:</span> <span class="kc">space-between</span><span class="p">;</span> <span class="c">/* 两端对齐 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-content</span><span class="p">:</span> <span class="kc">space-around</span><span class="p">;</span> <span class="c">/* 每行两侧间距相等 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-content</span><span class="p">:</span> <span class="kc">stretch</span><span class="p">;</span> <span class="c">/* 让所有行填充整个容器（默认） */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">display</span><span class="p">:</span> <span class="k">grid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-template-areas</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;header header header&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;sidebar content content&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;footer footer footer&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-template-columns</span><span class="p">:</span> <span class="mi">200</span><span class="kt">px</span> <span class="mi">1</span><span class="n">fr</span> <span class="mi">1</span><span class="n">fr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-template-rows</span><span class="p">:</span> <span class="mi">80</span><span class="kt">px</span> <span class="kc">auto</span> <span class="mi">60</span><span class="kt">px</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="flex-子项子元素属性">Flex 子项（子元素）属性
-</h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>属性</th>
-          <th>作用</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>flex-grow</td>
-          <td>控制元素放大比例(默认 0，不放大)</td>
-      </tr>
-      <tr>
-          <td>flex-shrink</td>
-          <td>控制元素缩小比例(默认 1，允许缩小)</td>
-      </tr>
-      <tr>
-          <td>flex-basis</td>
-          <td>设定元素初始大小</td>
-      </tr>
-      <tr>
-          <td>flex</td>
-          <td>flex-grow, flex-shrink, flex-basis 的缩写</td>
-      </tr>
-      <tr>
-          <td>align-self</td>
-          <td>控制单个元素在交叉轴上的对齐方式</td>
-      </tr>
-  </tbody>
-</table></div>
-<h3 id="flex-grow放大比例">flex-grow（放大比例）
-</h3><p>决定了元素在 有剩余空间 时如何分配：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-grow</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="c">/* 不放大（默认值） */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-grow</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span> <span class="c">/* 均分剩余空间 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-grow</span><span class="p">:</span> <span class="mi">2</span><span class="p">;</span> <span class="c">/* 该元素会占据 2 份空间 */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">header</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-area</span><span class="p">:</span> <span class="n">header</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="flex-shrink缩小比例">flex-shrink（缩小比例）
-</h3><p>决定了元素在 空间不足 时如何缩小：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-shrink</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span> <span class="c">/* 默认值，允许缩小 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-shrink</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="c">/* 不允许缩小 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">sidebar</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-area</span><span class="p">:</span> <span class="n">sidebar</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="flex-basis初始大小">flex-basis（初始大小）
-</h3><p>用于设定元素的初始大小（类似 width，但受 flex-grow 影响）：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-basis</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span> <span class="c">/* 默认，取决于内容大小 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex-basis</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* 初始宽度 100px */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">content</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-area</span><span class="p">:</span> <span class="k">content</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="flex简写属性">flex（简写属性）
-</h3><p>等价于 flex-grow flex-shrink flex-basis：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span> <span class="c">/* 等价于 flex: 1 1 0%; */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex</span><span class="p">:</span> <span class="mi">2</span><span class="p">;</span> <span class="c">/* 等价于 flex: 2 1 0%; */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">flex</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span> <span class="c">/* 允许放大，不缩小，大小取决于内容 */</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="align-self单个子项的对齐方式">align-self（单个子项的对齐方式）
-</h3><p>单独调整某个子项的 align-items：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-self</span><span class="p">:</span> <span class="kc">flex-start</span><span class="p">;</span> <span class="c">/* 顶部对齐 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-self</span><span class="p">:</span> <span class="kc">flex-end</span><span class="p">;</span> <span class="c">/* 底部对齐 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-self</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span> <span class="c">/* 居中对齐 */</span>
-</span></span><span class="line"><span class="cl">  <span class="k">align-self</span><span class="p">:</span> <span class="kc">stretch</span><span class="p">;</span> <span class="c">/* 拉伸填充 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">footer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">grid-area</span><span class="p">:</span> <span class="n">footer</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -655,12 +689,12 @@ name='description' content="介绍 Flex（Flexible Box）是一种用于布局�
             
                 
 <article class="">
-    <a href="/p/cssgrid%E5%B8%83%E5%B1%80/">
+    <a href="/p/cssflex%E5%B8%83%E5%B1%80/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【CSS】Grid布局</h2>
+            <h2 class="article-title">【CSS】Flex布局</h2>
         </div>
     </a>
 </article>
