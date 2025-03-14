@@ -2,17 +2,17 @@
 <html lang="zh-cn" dir="ltr">
     <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" /><meta
-name='description' content="介绍 在 Python 中，作用域（Scope） 和 命名空间（Namespace） 是管理变量访问和存储的核心概念。理解它们对于编写高效、可维护的代码非常重要。\n作用域 作用域 指的是 变量的可见范围，决定了变量在程序中的哪些部分可以被访问。\n"> <title>【Python】作用域与命名空间</title>
+name='description' content="介绍 在 Python 中，Enum（枚举）是一种用于定义一组命名常量的类。它可以提高代码的可读性，防止使用魔法数字（magic numbers），并确保变量的值只能是预定义的选项之一。\n"> <title>【Python】Python枚举Enum</title>
 
-<link rel="canonical" href="https://www.cengdong.store/p/python%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/" />
+<link rel="canonical" href="https://www.cengdong.store/p/pythonpython%E6%9E%9A%E4%B8%BEenum/" />
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【Python】作用域与命名空间">
-<meta property='og:description' content="介绍 在 Python 中，作用域（Scope） 和 命名空间（Namespace） 是管理变量访问和存储的核心概念。理解它们对于编写高效、可维护的代码非常重要。\n作用域 作用域 指的是 变量的可见范围，决定了变量在程序中的哪些部分可以被访问。\n">
-<meta property='og:url' content='https://www.cengdong.store/p/python%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/'>
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【Python】Python枚举Enum">
+<meta property='og:description' content="介绍 在 Python 中，Enum（枚举）是一种用于定义一组命名常量的类。它可以提高代码的可读性，防止使用魔法数字（magic numbers），并确保变量的值只能是预定义的选项之一。\n">
+<meta property='og:url' content='https://www.cengdong.store/p/pythonpython%E6%9E%9A%E4%B8%BEenum/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-10T19:33:02&#43;08:00'/><meta property='article:modified_time' content='2025-03-10T19:33:02&#43;08:00'/>
-<meta name="twitter:title" content="【Python】作用域与命名空间">
-<meta name="twitter:description" content="介绍 在 Python 中，作用域（Scope） 和 命名空间（Namespace） 是管理变量访问和存储的核心概念。理解它们对于编写高效、可维护的代码非常重要。\n作用域 作用域 指的是 变量的可见范围，决定了变量在程序中的哪些部分可以被访问。\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-14T22:51:42&#43;08:00'/><meta property='article:modified_time' content='2025-03-14T22:51:42&#43;08:00'/>
+<meta name="twitter:title" content="【Python】Python枚举Enum">
+<meta name="twitter:description" content="介绍 在 Python 中，Enum（枚举）是一种用于定义一组命名常量的类。它可以提高代码的可读性，防止使用魔法数字（magic numbers），并确保变量的值只能是预定义的选项之一。\n">
     </head>
     <body class="
     article-page
@@ -246,19 +246,14 @@ name='description' content="介绍 在 Python 中，作用域（Scope） 和 命
             <nav id="TableOfContents">
   <ol>
     <li><a href="#介绍">介绍</a></li>
-    <li><a href="#作用域">作用域</a></li>
-    <li><a href="#作用域示例">作用域示例</a></li>
-    <li><a href="#命名空间">命名空间</a>
-      <ol>
-        <li><a href="#局部命名空间">局部命名空间</a></li>
-        <li><a href="#全局命名空间">全局命名空间</a></li>
-        <li><a href="#内置命名空间">内置命名空间</a></li>
-      </ol>
-    </li>
-    <li><a href="#命名空间生命周期">命名空间生命周期</a></li>
-    <li><a href="#global-与-nonlocal-关键字">global 与 nonlocal 关键字</a></li>
-    <li><a href="#作用域与命名空间的关系">作用域与命名空间的关系</a></li>
-    <li><a href="#locals-与-globals">locals() 与 globals()</a></li>
+    <li><a href="#定义-enum">定义 Enum</a></li>
+    <li><a href="#遍历枚举">遍历枚举</a></li>
+    <li><a href="#成员比较">成员比较</a></li>
+    <li><a href="#枚举的唯一性">枚举的唯一性</a></li>
+    <li><a href="#自动赋值枚举">自动赋值枚举</a></li>
+    <li><a href="#intenum整数枚举">IntEnum（整数枚举）</a></li>
+    <li><a href="#成员别名">成员别名</a></li>
+    <li><a href="#自定义方法">自定义方法</a></li>
   </ol>
 </nav>
         </div>
@@ -286,7 +281,7 @@ name='description' content="介绍 在 Python 中，作用域（Scope） 和 命
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/python%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/">【Python】作用域与命名空间</a>
+            <a href="/p/pythonpython%E6%9E%9A%E4%B8%BEenum/">【Python】Python枚举Enum</a>
         </h2>
     
         
@@ -308,7 +303,7 @@ name='description' content="介绍 在 Python 中，作用域（Scope） 和 命
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Mar 10, 2025</time>
+                <time class="article-time--published">Mar 14, 2025</time>
             </div>
         
 
@@ -323,7 +318,7 @@ name='description' content="介绍 在 Python 中，作用域（Scope） 和 命
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -339,150 +334,80 @@ name='description' content="介绍 在 Python 中，作用域（Scope） 和 命
     
     
     <h2 id="介绍">介绍
-</h2><p>在 Python 中，作用域（Scope） 和 命名空间（Namespace） 是管理变量访问和存储的核心概念。理解它们对于编写高效、可维护的代码非常重要。</p>
-<h2 id="作用域">作用域
-</h2><p>作用域 指的是 变量的可见范围，决定了变量在程序中的哪些部分可以被访问。</p>
-<p>Python 采用 LEGB 规则 确定变量的作用域：</p>
-<ul>
-<li>L（Local，局部作用域）：函数内部定义的变量，仅在函数内部有效。</li>
-<li>E（Enclosing，嵌套作用域）：嵌套函数的外层函数作用域（非全局）。</li>
-<li>G（Global，全局作用域）：当前 Python 文件（模块）内的全局变量。</li>
-<li>B（Built-in，内置作用域）：Python 内置的变量，比如 len()、print()。</li>
-</ul>
-<p>LEGB 规则的搜索顺序：</p>
-<ol>
-<li>Local（局部） → Enclosing（嵌套） → Global（全局） → Built-in（内置）</li>
-<li>一旦找到匹配的变量，就不会继续向上搜索。</li>
-</ol>
-<h2 id="作用域示例">作用域示例
-</h2><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">scope_test</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">do_local</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">        <span class="n">spam</span> <span class="o">=</span> <span class="s2">&#34;local spam&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">do_nonlocal</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">        <span class="k">nonlocal</span> <span class="n">spam</span>
-</span></span><span class="line"><span class="cl">        <span class="n">spam</span> <span class="o">=</span> <span class="s2">&#34;nonlocal spam&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">do_global</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">        <span class="k">global</span> <span class="n">spam</span>
-</span></span><span class="line"><span class="cl">        <span class="n">spam</span> <span class="o">=</span> <span class="s2">&#34;global spam&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">spam</span> <span class="o">=</span> <span class="s2">&#34;test spam&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">do_local</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;After local assignment:&#34;</span><span class="p">,</span> <span class="n">spam</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">do_nonlocal</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;After nonlocal assignment:&#34;</span><span class="p">,</span> <span class="n">spam</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">do_global</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;After global assignment:&#34;</span><span class="p">,</span> <span class="n">spam</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">scope_test</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;In global scope:&#34;</span><span class="p">,</span> <span class="n">spam</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>代码的输出是</p>
+</h2><p>在 Python 中，Enum（枚举）是一种用于定义一组命名常量的类。它可以提高代码的可读性，防止使用魔法数字（magic numbers），并确保变量的值只能是预定义的选项之一。</p>
+<h2 id="定义-enum">定义 Enum
+</h2><p>Python 提供了 enum 模块，可以用 Enum 类来定义枚举：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">After <span class="nb">local</span> assignment: <span class="nb">test</span> spam
-</span></span><span class="line"><span class="cl">After nonlocal assignment: nonlocal spam
-</span></span><span class="line"><span class="cl">After global assignment: nonlocal spam
-</span></span><span class="line"><span class="cl">In global scope: global spam
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Color</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">RED</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">    <span class="n">BLUE</span> <span class="o">=</span> <span class="mi">3</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="命名空间">命名空间
-</h2><p>命名空间 是存储变量（名字 → 值 映射）的地方，每个变量名在 Python 里都会被存储在某个命名空间中。</p>
-<h3 id="局部命名空间">局部命名空间
-</h3><ul>
-<li>每个函数都会创建自己的局部命名空间，存储局部变量。</li>
-<li>变量在函数执行完后会被销毁。</li>
-</ul>
+</div><p>访问枚举成员</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>         <span class="c1"># Color.RED</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>    <span class="c1"># RED</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>   <span class="c1"># 1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="遍历枚举">遍历枚举
+</h2><p>可以使用 for 循环遍历枚举：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># x 在局部命名空间</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">foo</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">Color</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># RED 1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># GREEN 2</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># BLUE 3</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="全局命名空间">全局命名空间
-</h3><ul>
-<li>存储模块级变量，即定义在函数之外的变量。</li>
-<li>只要 Python 解释器运行，变量就存在。</li>
-</ul>
+</div><h2 id="成员比较">成员比较
+</h2><p>可以使用 is 或 == 进行比较：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># y 在全局命名空间</span>
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">bar</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># 访问全局变量</span>
-</span></span><span class="line"><span class="cl"><span class="n">bar</span><span class="p">()</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">if</span> <span class="n">Color</span><span class="o">.</span><span class="n">RED</span> <span class="ow">is</span> <span class="n">Color</span><span class="o">.</span><span class="n">RED</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Same member&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">Color</span><span class="o">.</span><span class="n">RED</span> <span class="o">==</span> <span class="n">Color</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Same value&#34;</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="内置命名空间">内置命名空间
-</h3><p>由 Python 解释器预定义的内置函数和对象，例如 print(), len(), list()。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>  <span class="c1"># 访问内置命名空间的 `len`</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="命名空间生命周期">命名空间生命周期
-</h2><ul>
-<li>函数内部赋值的变量 会被认为是局部变量，不会影响外部变量。</li>
-<li>要修改全局变量，需要使用 global 关键字。</li>
-<li>要修改嵌套作用域变量，需要使用 nonlocal 关键字。</li>
-</ul>
-<h2 id="global-与-nonlocal-关键字">global 与 nonlocal 关键字
-</h2><p>在 Python 中，默认情况下：</p>
-<ul>
-<li>函数内部赋值的变量 会被认为是局部变量，不会影响外部变量。</li>
-<li>要修改全局变量，需要使用 global 关键字。</li>
-<li>要修改嵌套作用域变量，需要使用 nonlocal 关键字。</li>
-</ul>
+</div><h2 id="枚举的唯一性">枚举的唯一性
+</h2><p>默认情况下，枚举成员的值可以重复，但可以使用 @unique 装饰器强制唯一：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -495,18 +420,18 @@ name='description' content="介绍 在 Python 中，作用域（Scope） 和 命
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># 全局变量</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">unique</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">change_global</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="k">global</span> <span class="n">x</span>  <span class="c1"># 声明使用全局变量</span>
-</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="mi">200</span>   <span class="c1"># 修改全局变量</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">change_global</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># 输出 200</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@unique</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">UniqueColor</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">RED</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">    <span class="n">BLUE</span> <span class="o">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># YELLOW = 1  # 这行会报错 / This line will cause an error</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>💡 不加 global，x 在 change_global() 内部是局部变量，不会影响外部变量。</p>
-<div class="highlight"><div class="chroma">
+</div><h2 id="自动赋值枚举">自动赋值枚举
+</h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -518,33 +443,95 @@ name='description' content="介绍 在 Python 中，作用域（Scope） 和 命
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
-</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># 外部（Enclosing 作用域）</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">auto</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">        <span class="k">nonlocal</span> <span class="n">x</span>  <span class="c1"># 声明 `x` 来自外部作用域</span>
-</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># 修改 `outer()` 里的 `x`</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AutoColor</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">RED</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">GREEN</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">BLUE</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">inner</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># 输出 20</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">outer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">AutoColor</span><span class="o">.</span><span class="n">RED</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>   <span class="c1"># 1</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">AutoColor</span><span class="o">.</span><span class="n">GREEN</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="c1"># 2</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">AutoColor</span><span class="o">.</span><span class="n">BLUE</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># 3</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>💡 不加 nonlocal，inner() 里的 x 只是局部变量，不会影响 outer() 里的 x。</p>
-<h2 id="作用域与命名空间的关系">作用域与命名空间的关系
-</h2><ul>
-<li>作用域是变量的可见范围，而命名空间是变量的存储位置。</li>
-<li>作用域决定了 Python 解释器在多个命名空间中如何查找变量。</li>
-<li>Python 按照 LEGB 规则 在不同的命名空间中搜索变量。</li>
-</ul>
-<h2 id="locals-与-globals">locals() 与 globals()
-</h2><p>locals() 和 globals() 是 Python 内置的两个函数，它们分别用于访问 局部命名空间（Local Namespace） 和 全局命名空间（Global Namespace）。</p>
-<p>注意：locals()函数在全局作用域调用，返回的就是全局命名空间的字典</p>
-
+</div><h2 id="intenum整数枚举">IntEnum（整数枚举）
+</h2><p>如果想让枚举成员表现得像整数，可以使用 IntEnum：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">IntEnum</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Status</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SUCCESS</span> <span class="o">=</span> <span class="mi">200</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NOT_FOUND</span> <span class="o">=</span> <span class="mi">404</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ERROR</span> <span class="o">=</span> <span class="mi">500</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Status</span><span class="o">.</span><span class="n">SUCCESS</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span>  <span class="c1"># True</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Status</span><span class="o">.</span><span class="n">SUCCESS</span> <span class="o">+</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1"># 300</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意：普通 Enum 不能直接与整数进行数学运算，而 IntEnum 可以。</p>
+<h2 id="成员别名">成员别名
+</h2><p>如果多个成员的值相同，只有第一个定义的成员会作为正式成员，其他的是别名：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Shape</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CIRCLE</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">OVAL</span> <span class="o">=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ELLIPSE</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># 这是 OVAL 的别名 / This is an alias for OVAL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Shape</span><span class="o">.</span><span class="n">OVAL</span><span class="p">)</span>        <span class="c1"># Shape.OVAL</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Shape</span><span class="o">.</span><span class="n">ELLIPSE</span><span class="p">)</span>     <span class="c1"># Shape.OVAL</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Shape</span><span class="o">.</span><span class="n">OVAL</span> <span class="ow">is</span> <span class="n">Shape</span><span class="o">.</span><span class="n">ELLIPSE</span><span class="p">)</span>  <span class="c1"># True</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="自定义方法">自定义方法
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Message</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">HELLO</span> <span class="o">=</span> <span class="s2">&#34;Hello&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">GOODBYE</span> <span class="o">=</span> <span class="s2">&#34;Goodbye&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">describe</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="sa">f</span><span class="s2">&#34;Message: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">Message</span><span class="o">.</span><span class="n">HELLO</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>  <span class="c1"># Message: Hello</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
@@ -580,12 +567,12 @@ name='description' content="介绍 在 Python 中，作用域（Scope） 和 命
             
                 
 <article class="">
-    <a href="/p/pythonpython%E6%9E%9A%E4%B8%BEenum/">
+    <a href="/p/pythonpython%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【Python】Python枚举Enum</h2>
+            <h2 class="article-title">【Python】Python魔术方法</h2>
         </div>
     </a>
 </article>
@@ -593,12 +580,12 @@ name='description' content="介绍 在 Python 中，作用域（Scope） 和 命
             
                 
 <article class="">
-    <a href="/p/pythonpython%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/">
+    <a href="/p/python%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【Python】Python魔术方法</h2>
+            <h2 class="article-title">【Python】作用域与命名空间</h2>
         </div>
     </a>
 </article>
