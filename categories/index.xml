@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Sat, 15 Mar 2025 22:43:13 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 16 Mar 2025 22:40:28 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>UIAutomation</title>
+        <link>https://www.cengdong.store/categories/uiautomation/</link>
+        <pubDate>Sun, 16 Mar 2025 22:40:28 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/categories/uiautomation/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Python</title>
         <link>https://www.cengdong.store/categories/python/</link>
         <pubDate>Sat, 15 Mar 2025 22:43:13 +0800</pubDate>
