@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Sun, 13 Apr 2025 23:38:39 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 17 Apr 2025 23:45:57 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Playwright</title>
+        <link>https://www.cengdong.store/categories/playwright/</link>
+        <pubDate>Thu, 17 Apr 2025 23:45:57 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/categories/playwright/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Playright</title>
         <link>https://www.cengdong.store/categories/playright/</link>
         <pubDate>Sun, 13 Apr 2025 23:38:39 +0800</pubDate>
