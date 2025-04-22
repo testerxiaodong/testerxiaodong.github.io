@@ -27,6 +27,19 @@
 &lt;h2 id=&#34;sql-进阶&#34;&gt;sql 进阶
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;常用 sql 在 navicat 中保存成查询&lt;/li&gt;
+&lt;li&gt;业务需要的特殊数据用 sql 定期查询&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;线上回归&#34;&gt;线上回归
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;接口自动化回归？得通过 json schema 校验&lt;/li&gt;
+&lt;li&gt;ui 自动化回归？得找特殊数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;如何快速搞懂业务&#34;&gt;如何快速搞懂业务
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;平常多用功能&lt;/li&gt;
+&lt;li&gt;查看接口/接口文档(如果有的话)&lt;/li&gt;
+&lt;li&gt;查看数据库表/字段的注释&lt;/li&gt;
+&lt;li&gt;问同事的问题使用 typora 记录&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
