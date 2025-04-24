@@ -18,6 +18,7 @@
 &lt;li&gt;测试用例的编写，用 excel/xmind 以及 google sheet 如何熟练编写&lt;/li&gt;
 &lt;li&gt;用例不是一成不变的，在测试过程中及时更新&lt;/li&gt;
 &lt;li&gt;工作量不要停留在沟通上，及时在 jira/tower 上更新&lt;/li&gt;
+&lt;li&gt;在需求评审/测试的阶段首先要确定 UI 交互的问题(因为这是在复杂场景中改动之后需要回归最多的地方)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;自动化进阶&#34;&gt;自动化进阶
 &lt;/h2&gt;&lt;ul&gt;
