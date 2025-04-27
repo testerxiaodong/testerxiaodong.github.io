@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Sat, 26 Apr 2025 22:58:44 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 27 Apr 2025 21:31:43 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Charles</title>
+        <link>https://www.cengdong.store/categories/charles/</link>
+        <pubDate>Sun, 27 Apr 2025 21:31:43 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/categories/charles/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>SDET</title>
         <link>https://www.cengdong.store/categories/sdet/</link>
         <pubDate>Sat, 26 Apr 2025 22:58:44 +0800</pubDate>

@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head>
-	<meta name="generator" content="Hugo 0.143.1"><meta charset="utf-8" />
+    <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" /><meta
-name='description' content="个人博客"> <title>Pager 9 - cengdong的技术博客</title>
+name='description' content="为什么要写 Charles 最近又重返测试岗位，作为一名测试工作人员，掌握好代理工具，分析 bug 产生的原因，是一项必不可少的技能\n需要掌握的代理工具有哪些 或者说那些代理工具值得掌握\nCharles Fildder 二选一(因为习惯用 mac， 更倾向于 Charles) Mitmproxy(这个我觉得是更好的选项，code first, 灵活性更强) Charles 常用功能 流量过滤 过滤自己能看到的包有两种选项\n"> <title>【Charles】Charles功能大全</title>
 
-<link rel="canonical" href="https://www.cengdong.store/" />
+<link rel="canonical" href="https://www.cengdong.store/p/charlescharles%E5%8A%9F%E8%83%BD%E5%A4%A7%E5%85%A8/" />
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="cengdong的技术博客">
-<meta property='og:description' content="个人博客">
-<meta property='og:url' content='https://www.cengdong.store/'>
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【Charles】Charles功能大全">
+<meta property='og:description' content="为什么要写 Charles 最近又重返测试岗位，作为一名测试工作人员，掌握好代理工具，分析 bug 产生的原因，是一项必不可少的技能\n需要掌握的代理工具有哪些 或者说那些代理工具值得掌握\nCharles Fildder 二选一(因为习惯用 mac， 更倾向于 Charles) Mitmproxy(这个我觉得是更好的选项，code first, 灵活性更强) Charles 常用功能 流量过滤 过滤自己能看到的包有两种选项\n">
+<meta property='og:url' content='https://www.cengdong.store/p/charlescharles%E5%8A%9F%E8%83%BD%E5%A4%A7%E5%85%A8/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-04-27T21:31:43&#43;08:00 '/>
-<meta name="twitter:title" content="cengdong的技术博客">
-<meta name="twitter:description" content="个人博客"><link
-  rel="alternate"
-  type="application/rss&#43;xml"
-  href="https://www.cengdong.store/index.xml"
-/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-27T21:31:43&#43;08:00'/><meta property='article:modified_time' content='2025-04-27T21:31:43&#43;08:00'/>
+<meta name="twitter:title" content="【Charles】Charles功能大全">
+<meta name="twitter:description" content="为什么要写 Charles 最近又重返测试岗位，作为一名测试工作人员，掌握好代理工具，分析 bug 产生的原因，是一项必不可少的技能\n需要掌握的代理工具有哪些 或者说那些代理工具值得掌握\nCharles Fildder 二选一(因为习惯用 mac， 更倾向于 Charles) Mitmproxy(这个我觉得是更好的选项，code first, 灵活性更强) Charles 常用功能 流量过滤 过滤自己能看到的包有两种选项\n">
     </head>
-    <body class="">
+    <body class="
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -229,77 +226,10 @@ name='description' content="个人博客"> <title>Pager 9 - cengdong的技术博
     <aside class="sidebar right-sidebar sticky">
         
             
-                <form action="/search/" class="search-form widget" >
-        <p>
-            <label>搜索</label>
-            <input name="keyword" required placeholder="输入关键词..." />
-        
-            <button title="搜索">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-            </button>
-        </p>
-    </form>
-            
-        
-            
-                <section class="widget archives">
+                
+    <section class="widget archives">
         <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">归档</h2>
-
-        
-        
-        
-        
-        
-        <div class="widget-archive--list">
-            <div class="archives-year">
-                    <a href="/archives/#2025">
-                        
-                            <span class="year">2025</span>
-                            <span class="count">15</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2024">
-                        
-                            <span class="year">2024</span>
-                            <span class="count">27</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2023">
-                        
-                            <span class="year">2023</span>
-                            <span class="count">8</span>
-                        
-                    </a> 
-                </div>
-            
-        </div>
-    </section>
-            
-        
-            
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <line x1="5" y1="9" x2="19" y2="9" />
   <line x1="5" y1="15" x2="19" y2="15" />
@@ -309,173 +239,45 @@ name='description' content="个人博客"> <title>Pager 9 - cengdong的技术博
 
 
 
-    </div>
-    <h2 class="widget-title section-title">分类</h2>
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#为什么要写-charles">为什么要写 Charles</a></li>
+    <li><a href="#需要掌握的代理工具有哪些">需要掌握的代理工具有哪些</a></li>
+    <li><a href="#charles-常用功能">Charles 常用功能</a>
+      <ol>
+        <li><a href="#流量过滤">流量过滤</a></li>
+        <li><a href="#并发测试">并发测试</a></li>
+        <li><a href="#断点">断点</a></li>
+        <li><a href="#compose">compose</a></li>
+        <li><a href="#重定向">重定向</a></li>
+        <li><a href="#节流器">节流器</a></li>
+        <li><a href="#端口转发">端口转发</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
 
-    <div class="tagCloud-tags">
-        
-            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="font_size_12">
-                前端
-            </a>
-        
-            <a href="/categories/javascript/" class="font_size_10">
-                JavaScript
-            </a>
-        
-            <a href="/categories/python/" class="font_size_6">
-                Python
-            </a>
-        
-            <a href="/categories/css/" class="font_size_4">
-                CSS
-            </a>
-        
-            <a href="/categories/english/" class="font_size_3">
-                English
-            </a>
-        
-            <a href="/categories/charles/" class="font_size_1">
-                Charles
-            </a>
-        
-            <a href="/categories/devops/" class="font_size_1">
-                Devops
-            </a>
-        
-            <a href="/categories/flink/" class="font_size_1">
-                Flink
-            </a>
-        
-            <a href="/categories/git/" class="font_size_1">
-                Git
-            </a>
-        
-            <a href="/categories/k8s/" class="font_size_1">
-                K8s
-            </a>
-        
-            <a href="/categories/linux/" class="font_size_1">
-                Linux
-            </a>
-        
-            <a href="/categories/mysql/" class="font_size_1">
-                MySQL
-            </a>
-        
-            <a href="/categories/playright/" class="font_size_1">
-                Playright
-            </a>
-        
-            <a href="/categories/playwright/" class="font_size_1">
-                Playwright
-            </a>
-        
-            <a href="/categories/rabbitmq/" class="font_size_1">
-                RabbitMQ
-            </a>
-        
-            <a href="/categories/react/" class="font_size_1">
-                React
-            </a>
-        
-            <a href="/categories/redis/" class="font_size_1">
-                Redis
-            </a>
-        
-            <a href="/categories/sdet/" class="font_size_1">
-                SDET
-            </a>
-        
-            <a href="/categories/uiautomation/" class="font_size_1">
-                UIAutomation
-            </a>
-        
-            <a href="/categories/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/" class="font_size_1">
-                工作心得
-            </a>
-        
-    </div>
-</section>
-
-            
-        
-            
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
-  <circle cx="9" cy="9" r="2" />
-</svg>
-
-
-
-    </div>
-    <h2 class="widget-title section-title">标签云</h2>
-
-    <div class="tagCloud-tags">
-        
-            <a href="/tags/css/" class="font_size_11">
-                CSS
-            </a>
-        
-            <a href="/tags/javascript/" class="font_size_10">
-                JavaScript
-            </a>
-        
-            <a href="/tags/english/" class="font_size_2">
-                English
-            </a>
-        
-            <a href="/tags/flink/" class="font_size_1">
-                Flink
-            </a>
-        
-            <a href="/tags/git/" class="font_size_1">
-                Git
-            </a>
-        
-            <a href="/tags/k8s/" class="font_size_1">
-                K8s
-            </a>
-        
-            <a href="/tags/linux/" class="font_size_1">
-                Linux
-            </a>
-        
-            <a href="/tags/react/" class="font_size_1">
-                React
-            </a>
-        
-            <a href="/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="font_size_1">
-                消息中间件
-            </a>
-        
-    </div>
-</section>
             
         
     </aside>
 
 
             <main class="main full-width">
-    
-    
-    
-    
-
-    <section class="article-list">
-        
-            
-<article class="">
+    <article class="main-article">
     <header class="article-header">
 
     <div class="article-details">
     
     <header class="article-category">
         
-            <a href="/categories/git/" >
-                Git
+            <a href="/categories/charles/" >
+                Charles
             </a>
         
     </header>
@@ -483,7 +285,7 @@ name='description' content="个人博客"> <title>Pager 9 - cengdong的技术博
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/git%E6%B7%BB%E5%8A%A0gitignore%E6%96%87%E4%BB%B6%E4%B9%8B%E5%90%8E%E5%88%A0%E9%99%A4github%E4%B8%8A%E5%A4%9A%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%96%87%E4%BB%B6/">【Git】添加gitignore文件之后删除github上多上传的文件</a>
+            <a href="/p/charlescharles%E5%8A%9F%E8%83%BD%E5%A4%A7%E5%85%A8/">【Charles】Charles功能大全</a>
         </h2>
     
         
@@ -505,7 +307,7 @@ name='description' content="个人博客"> <title>Pager 9 - cengdong的技术博
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Aug 12, 2023</time>
+                <time class="article-time--published">Apr 27, 2025</time>
             </div>
         
 
@@ -531,123 +333,117 @@ name='description' content="个人博客"> <title>Pager 9 - cengdong的技术博
 </div>
 
 </header>
-</article>
-        
-            
-<article class="">
-    <header class="article-header">
 
-    <div class="article-details">
+    <section class="article-content">
     
-    <header class="article-category">
-        
-            <a href="/categories/rabbitmq/" >
-                RabbitMQ
-            </a>
-        
-    </header>
+    
+    <h2 id="为什么要写-charles">为什么要写 Charles
+</h2><p>最近又重返测试岗位，作为一名测试工作人员，掌握好代理工具，分析 bug 产生的原因，是一项必不可少的技能</p>
+<h2 id="需要掌握的代理工具有哪些">需要掌握的代理工具有哪些
+</h2><p>或者说那些代理工具值得掌握</p>
+<ul>
+<li>Charles Fildder 二选一(因为习惯用 mac， 更倾向于 Charles)</li>
+<li>Mitmproxy(这个我觉得是更好的选项，code first, 灵活性更强)</li>
+</ul>
+<h2 id="charles-常用功能">Charles 常用功能
+</h2><h3 id="流量过滤">流量过滤
+</h3><p>过滤自己能看到的包有两种选项</p>
+<ul>
+<li>Proxy -&gt; recording settings -&gt; include/exclude</li>
+<li>左下角填写过滤表达式(我一般都按照域名过滤)</li>
+</ul>
+<h3 id="并发测试">并发测试
+</h3><p>其实不算是什么并发，就是 repeat 请求，advanced repeat 可以指定并发数</p>
+<h3 id="断点">断点
+</h3><p>breaking points 可以对请求和响应进行截断并修改，最近在支付测试的时候用的多</p>
+<h3 id="compose">compose
+</h3><p>compose 可以生成一个新的请求，代替 postman 接口测试？</p>
+<h3 id="重定向">重定向
+</h3><ul>
+<li>map local (本地重定向， 可以先 save response 到本地，再把接口请求重定向到保存的响应去)</li>
+<li>map remote (重定向到远程服务器, nginx 转发？)</li>
+</ul>
+<h3 id="节流器">节流器
+</h3><p>可以进行网弱测试，没怎么用过</p>
+<h3 id="端口转发">端口转发
+</h3><p>没用过，不做评价</p>
+
+</section>
+
+
+    <footer class="article-footer">
     
 
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/gorabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">【Go】RabbitMQ学习笔记</a>
-        </h2>
     
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Jul 31, 2023</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
 </svg>
 
 
 
-                <time class="article-time--reading">
-                    阅读时长: 6 分钟
-                </time>
-            </div>
-        
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
     </footer>
+
+
+    
+</article>
+
     
 
     
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 
-</header>
-</article>
-        
-    </section>
-    <nav class='pagination'>
-        
-        
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
 
-        
-            
-                    <a class='page-link' href='/'>1</a>
-                
-            
-            
-                    
-                        
-                        <span class='page-link dots'>&hellip;</span>
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    
-                
-            
-            
-                    <a class='page-link' href='/page/8/'>8</a>
-                
-            
-            
-                <span class='page-link current'>9</span>
-                
-            
-    </nav>
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
 
-<footer class="site-footer">
+    
+
+    <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
@@ -661,6 +457,85 @@ name='description' content="个人博客"> <title>Pager 9 - cengdong的技术博
         主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
 
             </main>
         </div>
