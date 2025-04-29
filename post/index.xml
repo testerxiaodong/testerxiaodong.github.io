@@ -100,6 +100,8 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;线上回归&#34;&gt;线上回归
 &lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;基本功能需要过一遍&lt;/li&gt;
+&lt;li&gt;所有可能影响的功能都需要点一点&lt;/li&gt;
 &lt;li&gt;接口自动化回归？得通过 json schema 校验&lt;/li&gt;
 &lt;li&gt;ui 自动化回归？得找特殊数据&lt;/li&gt;
 &lt;/ul&gt;
