@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Sun, 27 Apr 2025 21:31:43 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 30 Apr 2025 10:47:52 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Postman</title>
+        <link>https://www.cengdong.store/categories/postman/</link>
+        <pubDate>Wed, 30 Apr 2025 10:47:52 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/categories/postman/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Charles</title>
         <link>https://www.cengdong.store/categories/charles/</link>
         <pubDate>Sun, 27 Apr 2025 21:31:43 +0800</pubDate>

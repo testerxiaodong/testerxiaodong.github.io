@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Postman on cengdong的技术博客</title>
+        <link>https://www.cengdong.store/categories/postman/</link>
+        <description>Recent content in Postman on cengdong的技术博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Cengdong</copyright>
+        <lastBuildDate>Wed, 30 Apr 2025 10:47:52 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/postman/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【Postman】Postman学习笔记</title>
+        <link>https://www.cengdong.store/p/postmanpostman%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <pubDate>Wed, 30 Apr 2025 10:47:52 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/postmanpostman%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+        <description>&lt;h2 id=&#34;什么是-postman&#34;&gt;什么是 Postman
+&lt;/h2&gt;&lt;p&gt;Postman 是一个用于使用、构建和测试 API 的平台。您可以使用 Postman 桌面应用来支持 API 生命周期的每个部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 Postman API 客户端发送请求，包括 HTTP、GraphQL 和 gRPC 请求。&lt;/li&gt;
+&lt;li&gt;设计、构建和记录 API。&lt;/li&gt;
+&lt;li&gt;构建与 LLM 和 API 交互的 AI 代理。&lt;/li&gt;
+&lt;li&gt;测试并监控您的 API 的功能和性能。&lt;/li&gt;
+&lt;li&gt;组织您的工作并与您的团队合作进行 API 开发。&lt;/li&gt;
+&lt;li&gt;发现新的 API 并构建可视化 API 驱动的应用程序。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;发送-api-请求&#34;&gt;发送 Api 请求
+&lt;/h2&gt;&lt;p&gt;Postman 的 API 客户端允许您创建和发送 API 请求 ，包括 HTTP、GraphQL 和 gRPC 请求。使用 Postman，您可以向端点发送请求、从数据源检索数据或测试 API 的功能。您无需在终端中输入命令或编写任何代码。当您创建新请求并选择 “发送” 时，API 响应会直接显示在 Postman 中。&lt;/p&gt;
+&lt;p&gt;发送一个 Api 请求可以分为以下三步：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在工作台点击【+】按钮用于打开一个新的选项卡&lt;/li&gt;
+&lt;li&gt;输入&lt;code&gt;postman-echo.com/get&lt;/code&gt;作为请求 url&lt;/li&gt;
+&lt;li&gt;点击发送&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;成功发送请求之后你将看到&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.cengdong.store/images/%e5%8f%91%e9%80%81%e7%ac%ac%e4%b8%80%e4%b8%aa%e8%af%b7%e6%b1%82.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;第一个请求&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在这之中发生了什么？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Postman 向位于 postman-echo.com 的 Postman Echo API 服务器发送了 GET 请求。&lt;/li&gt;
+&lt;li&gt;API 服务器接收请求、处理请求并向 Postman 返回响应。&lt;/li&gt;
+&lt;li&gt;Postman 收到了响应并将其显示在 “响应” 窗格中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;编写测试&#34;&gt;编写测试
+&lt;/h2&gt;&lt;p&gt;API 测试是一种确保 API 按照预期运行的方法。例如，您可以编写测试来验证 API 的错误处理方式，方法是发送包含不完整数据或错误参数的请求。您可以使用 JavaScript 为 Postman API 请求编写测试，并将其添加到单个请求 、 集合以及集合中的文件夹中。Postman 包含一些代码片段，您可以添加并修改这些代码片段以适应您的测试逻辑。&lt;/p&gt;
+&lt;p&gt;要编写测试，请执行以下操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;转到您在发送您的第一个 API 请求中提出的请求。&lt;/li&gt;
+&lt;li&gt;在请求中，选择脚本选项卡，然后选择后响应 。&lt;/li&gt;
+&lt;li&gt;选择代码编辑器右下角的 Code icon Snippets ，然后选择 Status code: Code is 200 。这样就会输入以下测试代码：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.cengdong.store/images/%e7%bc%96%e5%86%99%e7%ac%ac%e4%b8%80%e4%b8%aa%e6%b5%8b%e8%af%95.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;操作步骤&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;pm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Status code is 200&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;pm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;response&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;have&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;200&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;选择 “发送” 。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
