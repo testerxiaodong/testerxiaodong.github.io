@@ -28,7 +28,7 @@
 &lt;p&gt;发送一个 Api 请求可以分为以下三步：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;在工作台点击【+】按钮用于打开一个新的选项卡&lt;/li&gt;
-&lt;li&gt;输入&lt;code&gt;postman-echo.com/get&lt;/code&gt;作为请求 url&lt;/li&gt;
+&lt;li&gt;选择协议类型，输入&lt;code&gt;postman-echo.com/get&lt;/code&gt;作为请求 url，传入路径参数和查询参数，传入请求正文&lt;/li&gt;
 &lt;li&gt;点击发送&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;成功发送请求之后你将看到&lt;/p&gt;
