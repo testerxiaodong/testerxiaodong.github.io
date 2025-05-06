@@ -29,7 +29,7 @@
 &lt;ul&gt;
 &lt;li&gt;在工作台点击【+】按钮用于打开一个新的选项卡&lt;/li&gt;
 &lt;li&gt;选择协议类型，输入&lt;code&gt;postman-echo.com/get&lt;/code&gt;作为请求 url，传入路径参数和查询参数，传入请求正文&lt;/li&gt;
-&lt;li&gt;点击发送&lt;/li&gt;
+&lt;li&gt;点击发送即可&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;成功发送请求之后你将看到&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://www.cengdong.store/images/%e5%8f%91%e9%80%81%e7%ac%ac%e4%b8%80%e4%b8%aa%e8%af%b7%e6%b1%82.png&#34;
