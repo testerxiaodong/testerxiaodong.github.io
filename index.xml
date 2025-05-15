@@ -164,8 +164,9 @@
         <guid>https://www.cengdong.store/p/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/</guid>
         <description>&lt;h2 id=&#34;好的习惯&#34;&gt;好的习惯
 &lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;提高专注力，先把在家的每日运动落实下来&lt;/li&gt;
 &lt;li&gt;测试用例的编写，用 excel/xmind 以及 google sheet 如何熟练编写&lt;/li&gt;
-&lt;li&gt;用例不是一成不变的，在测试过程中及时更新&lt;/li&gt;
+&lt;li&gt;用例不是一成不变的，在测试过程中及时更新，在写测试用例的时候就要和产品同步对需求的疑问以及该改进的点&lt;/li&gt;
 &lt;li&gt;工作量不要停留在沟通上，及时在 jira/tower 上更新&lt;/li&gt;
 &lt;li&gt;在验证一个功能/回归一个 bug 时，要一次性验证所有的功能(相关所有平台)，防止重复返工&lt;/li&gt;
 &lt;li&gt;在测试环境进行的验证可能在生产环境不一样，因为测试环境架构与生产不一致（生产可能是集群），所以测试用例也要考虑到这种情况&lt;/li&gt;
