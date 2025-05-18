@@ -49,7 +49,23 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker pull grafana/k6
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;/div&gt;&lt;h2 id=&#34;编写第一个-k6-测试脚本&#34;&gt;编写第一个 k6 测试脚本
+&lt;/h2&gt;&lt;h3 id=&#34;前提条件&#34;&gt;前提条件
+&lt;/h3&gt;&lt;p&gt;要编写 k6 测试脚本，需要以下前提：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;javascript 或者 typescript 知识&lt;/li&gt;
+&lt;li&gt;在电脑上安装 k6&lt;/li&gt;
+&lt;li&gt;用于编写测试脚本的代码编辑器(我目前使用的是 vscode)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;k6-测试脚本的结构&#34;&gt;k6 测试脚本的结构
+&lt;/h3&gt;&lt;p&gt;每个 k6 脚本都遵循一个通用结构，围绕几个核心组件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;默认函数：这是测试逻辑所在的位置。它定义了测试将执行的操作以及在执行过程中的行为方式。它应作为脚本中的默认函数导出。&lt;/li&gt;
+&lt;li&gt;imports ：您可以进口额外的 k6 模块或 JavaScript 库 (jslibs) 用于扩展脚本功能，例如发出 HTTP 请求或模拟浏览器交互。请注意，k6 并非基于 Node.js 构建，而是使用其自身的 JavaScript 运行时。与某些 npm 模块的兼容性可能有所不同。&lt;/li&gt;
+&lt;li&gt;options（可选） ：允许您配置测试的执行，例如定义虚拟用户数量、测试时长或设置性能阈值。请参阅 选项以了解更多详细信息。&lt;/li&gt;
+&lt;li&gt;生命周期操作（可选） ：由于您的测试可能需要在执行测试逻辑之前和/或之后运行代码，例如从文件解析数据或从 Amazon S3 下载对象， 生命周期操作允许您编写代码，作为预定义函数或在特定代码范围内，这些代码将在测试执行的不同阶段执行。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
         </item>
         
     </channel>
