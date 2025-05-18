@@ -62,7 +62,7 @@
 &lt;li&gt;功能点的 UI 校验（文字以及样式）(要学会使用 figma)&lt;/li&gt;
 &lt;li&gt;功能点输入的设计&lt;/li&gt;
 &lt;li&gt;功能点输出的设计&lt;/li&gt;
-&lt;li&gt;功能点状态的设计&lt;/li&gt;
+&lt;li&gt;功能点状态的设计(状态机转移，状态是否可重入)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;沟通能力&#34;&gt;沟通能力
 &lt;/h3&gt;&lt;ul&gt;

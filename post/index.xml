@@ -7,7 +7,51 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Wed, 30 Apr 2025 10:47:52 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 18 May 2025 20:55:24 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【K6性能测试】K6学习笔记</title>
+        <link>https://www.cengdong.store/p/k6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95k6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <pubDate>Sun, 18 May 2025 20:55:24 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/k6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95k6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+        <description>&lt;h2 id=&#34;什么是-k6&#34;&gt;什么是 k6
+&lt;/h2&gt;&lt;p&gt;使用 k6，你可以测试应用程序和基础设施的可靠性和性能。&lt;/p&gt;
+&lt;p&gt;工程团队（包括开发人员、QA 工程师、SDET 和 SRE）通常使用 k6 来：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;负载和性能测试&lt;/li&gt;
+&lt;li&gt;浏览器性能测试&lt;/li&gt;
+&lt;li&gt;性能和综合监控&lt;/li&gt;
+&lt;li&gt;性能测试自动化&lt;/li&gt;
+&lt;li&gt;混沌与弹性测试&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;安装-k6&#34;&gt;安装 K6
+&lt;/h2&gt;&lt;p&gt;K6 有能在多种平台安装：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;windows&lt;/li&gt;
+&lt;li&gt;mac&lt;/li&gt;
+&lt;li&gt;linux&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;除此之外，还可以通过 Docker 容器方式运行 k6&lt;/p&gt;
+&lt;p&gt;目前我用的开发主力机是 mac，在 mac 上安装 k6 的途径主要是通过&lt;code&gt;homebrew&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install  k6
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;此外就是通过 Docker 安装 k6&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker pull grafana/k6
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>【Postman】Postman学习笔记</title>
         <link>https://www.cengdong.store/p/postmanpostman%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <pubDate>Wed, 30 Apr 2025 10:47:52 +0800</pubDate>
@@ -211,7 +255,7 @@
 &lt;li&gt;功能点的 UI 校验（文字以及样式）(要学会使用 figma)&lt;/li&gt;
 &lt;li&gt;功能点输入的设计&lt;/li&gt;
 &lt;li&gt;功能点输出的设计&lt;/li&gt;
-&lt;li&gt;功能点状态的设计&lt;/li&gt;
+&lt;li&gt;功能点状态的设计(状态机转移，状态是否可重入)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;沟通能力&#34;&gt;沟通能力
 &lt;/h3&gt;&lt;ul&gt;
