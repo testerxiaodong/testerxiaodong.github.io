@@ -251,6 +251,7 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
       <ol>
         <li><a href="#前提条件">前提条件</a></li>
         <li><a href="#k6-测试脚本的结构">k6 测试脚本的结构</a></li>
+        <li><a href="#编写-k6-测试脚本">编写 k6 测试脚本</a></li>
       </ol>
     </li>
   </ol>
@@ -383,6 +384,13 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 <li>imports ：您可以进口额外的 k6 模块或 JavaScript 库 (jslibs) 用于扩展脚本功能，例如发出 HTTP 请求或模拟浏览器交互。请注意，k6 并非基于 Node.js 构建，而是使用其自身的 JavaScript 运行时。与某些 npm 模块的兼容性可能有所不同。</li>
 <li>options（可选） ：允许您配置测试的执行，例如定义虚拟用户数量、测试时长或设置性能阈值。请参阅 选项以了解更多详细信息。</li>
 <li>生命周期操作（可选） ：由于您的测试可能需要在执行测试逻辑之前和/或之后运行代码，例如从文件解析数据或从 Amazon S3 下载对象， 生命周期操作允许您编写代码，作为预定义函数或在特定代码范围内，这些代码将在测试执行的不同阶段执行。</li>
+</ul>
+<h3 id="编写-k6-测试脚本">编写 k6 测试脚本
+</h3><ul>
+<li>创建测试脚本(手动创建一个 js 文件或者使用<code>k6 new test.js</code>)</li>
+<li>导入模块(<code>import http from 'k6/http'</code>)</li>
+<li>定义函数(<code>export default function() {}</code>)</li>
+<li>声明测试选项(<code>export const options = {}</code>)</li>
 </ul>
 
 </section>
