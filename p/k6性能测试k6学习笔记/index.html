@@ -325,7 +325,7 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
@@ -518,7 +518,47 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="http-请求标签">http 请求标签
-</h2>
+</h2><p>k6 会自动应用内置标签到 http 请求中，我们可以使用标签来过滤结果并组织分析</p>
+<p>以下是一些常用的 http 相关的标签</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>expected_response</td>
+          <td>是否是期望的响应，默认情况下 200-399 之间的都是 true，也可以通过<code>setResponse</code>更改默认行为</td>
+      </tr>
+      <tr>
+          <td>group</td>
+          <td>当请求在某个 group 中时是组名，默认值是空</td>
+      </tr>
+      <tr>
+          <td>name</td>
+          <td>默认为请求的 url</td>
+      </tr>
+      <tr>
+          <td>method</td>
+          <td>http 请求方法</td>
+      </tr>
+      <tr>
+          <td>scenario</td>
+          <td>当请求在某个 scenario 中时，标签值是 scenario 名，默认为 default</td>
+      </tr>
+      <tr>
+          <td>status</td>
+          <td>响应状态码</td>
+      </tr>
+      <tr>
+          <td>url</td>
+          <td>默认为 url 请求地址</td>
+      </tr>
+  </tbody>
+</table></div>
+
 </section>
 
 

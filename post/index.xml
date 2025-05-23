@@ -191,7 +191,47 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;http-请求标签&#34;&gt;http 请求标签
-&lt;/h2&gt;</description>
+&lt;/h2&gt;&lt;p&gt;k6 会自动应用内置标签到 http 请求中，我们可以使用标签来过滤结果并组织分析&lt;/p&gt;
+&lt;p&gt;以下是一些常用的 http 相关的标签&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;标签名&lt;/th&gt;
+          &lt;th&gt;描述&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;expected_response&lt;/td&gt;
+          &lt;td&gt;是否是期望的响应，默认情况下 200-399 之间的都是 true，也可以通过&lt;code&gt;setResponse&lt;/code&gt;更改默认行为&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;group&lt;/td&gt;
+          &lt;td&gt;当请求在某个 group 中时是组名，默认值是空&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;name&lt;/td&gt;
+          &lt;td&gt;默认为请求的 url&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;method&lt;/td&gt;
+          &lt;td&gt;http 请求方法&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;scenario&lt;/td&gt;
+          &lt;td&gt;当请求在某个 scenario 中时，标签值是 scenario 名，默认为 default&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;status&lt;/td&gt;
+          &lt;td&gt;响应状态码&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;url&lt;/td&gt;
+          &lt;td&gt;默认为 url 请求地址&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
         </item>
         <item>
         <title>【Postman】Postman学习笔记</title>
