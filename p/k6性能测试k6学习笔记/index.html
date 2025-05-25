@@ -266,6 +266,7 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
         <li><a href="#使用标签将-url-分组">使用标签将 URL 分组</a></li>
       </ol>
     </li>
+    <li><a href="#指标">指标</a></li>
   </ol>
 </nav>
         </div>
@@ -733,7 +734,42 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><p>尽管两个对象的<code>url</code>不同，但是它们的<code>name</code>却是相同的</p>
+<p>或者，你也可以使用<code>http.url</code>包装器来设置具有模版字符串值的<code>name</code>标签</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s1">&#39;k6/http&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">id</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">id</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">url</span><span class="sb">`http://example.com/posts/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// tags.name=&#34;http://example.com/posts/${}&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1">// tags.name=&#34;http://example.com/posts/${}&#34;,
+</span></span></span></code></pre></td></tr></table>
 </div>
+</div><h2 id="指标">指标
+</h2><p>指标衡量系统在测试条件下的性能。默认情况下，k6 会自动收集内置指标。除了内置指标外，还可以自定义指标。</p>
+<p>指标大致分为四类：</p>
+<ul>
+<li>Counters sum values.</li>
+<li>Gauges track the smallest, largest, and latest values.</li>
+<li>Rates track how frequently a non-zero value occurs.</li>
+<li>Trends calculates statistics for multiple values (like mean, mode or percentile).</li>
+</ul>
+
 </section>
 
 
