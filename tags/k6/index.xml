@@ -557,7 +557,61 @@
 &lt;li&gt;包含最多 128 个符号（ASCII 字母、数字或下划线）。&lt;/li&gt;
 &lt;li&gt;以字母或下划线开头。&lt;/li&gt;
 &lt;/ul&gt;
-</description>
+&lt;h3 id=&#34;内置指标&#34;&gt;内置指标
+&lt;/h3&gt;&lt;p&gt;无论测试什么协议(http/websocket/grpc)，k6 始终收集以下指标&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;指标名&lt;/th&gt;
+          &lt;th&gt;类型&lt;/th&gt;
+          &lt;th&gt;描述&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;checks&lt;/td&gt;
+          &lt;td&gt;Rate&lt;/td&gt;
+          &lt;td&gt;检查成功率&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;data_received&lt;/td&gt;
+          &lt;td&gt;Counter&lt;/td&gt;
+          &lt;td&gt;已接收到的数据&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;data_send&lt;/td&gt;
+          &lt;td&gt;Counter&lt;/td&gt;
+          &lt;td&gt;已发送的数据&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;dropped_iterations&lt;/td&gt;
+          &lt;td&gt;Counter&lt;/td&gt;
+          &lt;td&gt;由于 vu 不足或时间不足而未启动的迭代次数&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;iteration_duration&lt;/td&gt;
+          &lt;td&gt;Trend&lt;/td&gt;
+          &lt;td&gt;完成一次完整的迭代所需的时间，包括&lt;code&gt;setup&lt;/code&gt;和&lt;code&gt;teardown&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;iterations&lt;/td&gt;
+          &lt;td&gt;Counter&lt;/td&gt;
+          &lt;td&gt;vu 执行 js 脚本(default 函数)的总次数&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;vus&lt;/td&gt;
+          &lt;td&gt;Gauge&lt;/td&gt;
+          &lt;td&gt;当前活跃虚拟用户数&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;vus_max&lt;/td&gt;
+          &lt;td&gt;Gauge&lt;/td&gt;
+          &lt;td&gt;最大可能的虚拟用户数&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;http-内置指标&#34;&gt;http 内置指标
+&lt;/h3&gt;</description>
         </item>
         
     </channel>
