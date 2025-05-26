@@ -266,7 +266,14 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
         <li><a href="#使用标签将-url-分组">使用标签将 URL 分组</a></li>
       </ol>
     </li>
-    <li><a href="#指标">指标</a></li>
+    <li><a href="#指标">指标</a>
+      <ol>
+        <li><a href="#指标分类">指标分类</a></li>
+        <li><a href="#要观测的指标">要观测的指标</a></li>
+        <li><a href="#示例输出">示例输出</a></li>
+        <li><a href="#指标名称限制">指标名称限制</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -331,7 +338,7 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 
 
                 <time class="article-time--reading">
-                    阅读时长: 4 分钟
+                    阅读时长: 5 分钟
                 </time>
             </div>
         
@@ -762,12 +769,133 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 </div>
 </div><h2 id="指标">指标
 </h2><p>指标衡量系统在测试条件下的性能。默认情况下，k6 会自动收集内置指标。除了内置指标外，还可以自定义指标。</p>
-<p>指标大致分为四类：</p>
+<h3 id="指标分类">指标分类
+</h3><p>指标大致分为四类：</p>
 <ul>
-<li>Counters sum values.</li>
-<li>Gauges track the smallest, largest, and latest values.</li>
-<li>Rates track how frequently a non-zero value occurs.</li>
-<li>Trends calculates statistics for multiple values (like mean, mode or percentile).</li>
+<li>Counters 计算总和值。</li>
+<li>Gauges 跟踪最小值、最大值和最新值。</li>
+<li>Rates 跟踪非零值出现的频率。</li>
+<li>Trends 计算多个值（如平均值、众数或百分位数）的统计数据。</li>
+</ul>
+<p>为了使测试不满足某些标准，你可以编写一个基于指标标准的阈值。</p>
+<p>要过滤指标，你可以使用<code>tag</code>和<code>group</code></p>
+<p>还可以导出各种摘要和粒度格式的指标，如<code>Result output</code></p>
+<h3 id="要观测的指标">要观测的指标
+</h3><p>每个指标都提供了不同的绩效视角，因此，最合适分析的指标取决于自身的<code>目标</code></p>
+<p>如果你不确定要关注哪些指标，则可以从衡量请求、错误和持续时间的指标开始(<a class="link" href="https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/"  target="_blank" rel="noopener"
+    >RED 方法</a>)</p>
+<ul>
+<li>http_reqs ，用于测量请求</li>
+<li>http_req_failed ，测量错误率</li>
+<li>http_req_duration ，用于测量持续时间</li>
+</ul>
+<blockquote>
+<p>换句话说，这些指标衡量流量、可用性和延迟，SRE 可能会将这些指标视为<a class="link" href="https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals"  target="_blank" rel="noopener"
+    >four Golden Signals</a></p></blockquote>
+<h3 id="示例输出">示例输出
+</h3><p>当你运行测试时，所有内置的和自定义指标的汇总摘要将输出到<code>stdout</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s1">&#39;k6/http&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://quickpizza.grafana.com&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述脚本将输出如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ k6 run script.js
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">         /<span class="se">\ </span>     Grafana   /‾‾/
+</span></span><span class="line"><span class="cl">    /<span class="se">\ </span> /  <span class="se">\ </span>    <span class="p">|</span><span class="se">\ </span> __   /  /
+</span></span><span class="line"><span class="cl">   /  <span class="se">\/</span>    <span class="se">\ </span>   <span class="p">|</span> <span class="p">|</span>/ /  /   ‾‾<span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  /          <span class="se">\ </span>  <span class="p">|</span>   <span class="o">(</span>  <span class="p">|</span>  <span class="o">(</span>‾<span class="o">)</span>  <span class="p">|</span>
+</span></span><span class="line"><span class="cl"> / __________ <span class="se">\ </span> <span class="p">|</span>_<span class="p">|</span><span class="se">\_\ </span> <span class="se">\_</span>____/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  execution: <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">     script: http_get.js
+</span></span><span class="line"><span class="cl">     output: -
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  scenarios: <span class="o">(</span>100.00%<span class="o">)</span> <span class="m">1</span> scenario, <span class="m">1</span> max VUs, 10m30s max duration <span class="o">(</span>incl. graceful stop<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">           * default: <span class="m">1</span> iterations <span class="k">for</span> each of <span class="m">1</span> VUs <span class="o">(</span>maxDuration: 10m0s, gracefulStop: 30s<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  █ TOTAL RESULTS
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    HTTP
+</span></span><span class="line"><span class="cl">    http_req_duration.......................................................: <span class="nv">avg</span><span class="o">=</span>117.55ms <span class="nv">min</span><span class="o">=</span>117.55ms <span class="nv">med</span><span class="o">=</span>117.55ms <span class="nv">max</span><span class="o">=</span>117.55ms p<span class="o">(</span>90<span class="o">)=</span>117.55ms p<span class="o">(</span>95<span class="o">)=</span>117.55ms
+</span></span><span class="line"><span class="cl">      <span class="o">{</span> expected_response:true <span class="o">}</span>............................................: <span class="nv">avg</span><span class="o">=</span>117.55ms <span class="nv">min</span><span class="o">=</span>117.55ms <span class="nv">med</span><span class="o">=</span>117.55ms <span class="nv">max</span><span class="o">=</span>117.55ms p<span class="o">(</span>90<span class="o">)=</span>117.55ms p<span class="o">(</span>95<span class="o">)=</span>117.55ms
+</span></span><span class="line"><span class="cl">    http_req_failed.........................................................: 0.00%  <span class="m">0</span> out of <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    http_reqs...............................................................: <span class="m">1</span>      2.768749/s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    EXECUTION
+</span></span><span class="line"><span class="cl">    iteration_duration......................................................: <span class="nv">avg</span><span class="o">=</span>361.09ms <span class="nv">min</span><span class="o">=</span>361.09ms <span class="nv">med</span><span class="o">=</span>361.09ms <span class="nv">max</span><span class="o">=</span>361.09ms p<span class="o">(</span>90<span class="o">)=</span>361.09ms p<span class="o">(</span>95<span class="o">)=</span>361.09ms
+</span></span><span class="line"><span class="cl">    iterations..............................................................: <span class="m">1</span>      2.768749/s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    NETWORK
+</span></span><span class="line"><span class="cl">    data_received...........................................................: 6.8 kB <span class="m">19</span> kB/s
+</span></span><span class="line"><span class="cl">    data_sent...............................................................: <span class="m">541</span> B  1.5 kB/s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">running <span class="o">(</span>00m03.8s<span class="o">)</span>, 0/1 VUs, <span class="m">1</span> <span class="nb">complete</span> and <span class="m">0</span> interrupted iterations
+</span></span><span class="line"><span class="cl">default ✓ <span class="o">[======================================]</span> <span class="m">1</span> VUs  00m03.8s/10m0s  1/1 iters, <span class="m">1</span> per VU
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在该输出中，所有以<code>http</code>、<code>interation</code>、<code>vu</code>开头的指标都是内置指标</p>
+<h3 id="指标名称限制">指标名称限制
+</h3><p>指标名称必须符合 <code>OpenTelemetry</code> 和 <code>Prometheus</code> 的限制 。字符限制与 k6 在限制字符集之前的限制相同</p>
+<p>意味着：</p>
+<ul>
+<li>包含最多 128 个符号（ASCII 字母、数字或下划线）。</li>
+<li>以字母或下划线开头。</li>
 </ul>
 
 </section>
