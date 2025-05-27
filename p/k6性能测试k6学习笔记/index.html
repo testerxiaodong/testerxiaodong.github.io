@@ -274,6 +274,8 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
         <li><a href="#指标名称限制">指标名称限制</a></li>
         <li><a href="#内置指标">内置指标</a></li>
         <li><a href="#http-内置指标">http 内置指标</a></li>
+        <li><a href="#浏览器指标">浏览器指标</a></li>
+        <li><a href="#内置-websocket-指标">内置 Websocket 指标</a></li>
       </ol>
     </li>
   </ol>
@@ -340,7 +342,7 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 
 
                 <time class="article-time--reading">
-                    阅读时长: 6 分钟
+                    阅读时长: 7 分钟
                 </time>
             </div>
         
@@ -953,6 +955,118 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
   </tbody>
 </table></div>
 <h3 id="http-内置指标">http 内置指标
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>指标名称</th>
+          <th>类型</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>http_req_blocked</td>
+          <td>Trend</td>
+          <td>发起请求之前阻塞的时间<code>float</code></td>
+      </tr>
+      <tr>
+          <td>http_req_connecting</td>
+          <td>Trend</td>
+          <td>与远程主机建立 TCP 连接所花费的时间<code>float</code></td>
+      </tr>
+      <tr>
+          <td>http_req_duration</td>
+          <td>Trend</td>
+          <td>请求的总时间。它等于 http_req_sending + http_req_waiting + http_req_receiving （即远程服务器处理请求和响应所需的时间，不包括初始 DNS 查找/连接时间） <code>float</code></td>
+      </tr>
+      <tr>
+          <td>http_req_failed</td>
+          <td>Rate</td>
+          <td>根据 setResponseCallback 回调函数定义为失败的请求</td>
+      </tr>
+      <tr>
+          <td>http_req_receiving</td>
+          <td>Trend</td>
+          <td>从远程主机接收响应数据所花费的时间 <code>float</code></td>
+      </tr>
+      <tr>
+          <td>http_req_sending</td>
+          <td>Trend</td>
+          <td>向远程主机发送数据所花费的时间<code>float</code></td>
+      </tr>
+      <tr>
+          <td>http_req_tls_handshaking</td>
+          <td>Trend</td>
+          <td>与远程主机握手 TLS 会话所用的时间</td>
+      </tr>
+      <tr>
+          <td>http_req_waiting</td>
+          <td>Trend</td>
+          <td>等待远程主机响应的时间（又称“第一个字节的时间”或“TTFB”） <code>float</code></td>
+      </tr>
+      <tr>
+          <td>http_reqs</td>
+          <td>Counter</td>
+          <td>k6 总共生成了多少个 HTTP 请求</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="浏览器指标">浏览器指标
+</h3><p>K6 浏览器指标基于<code>Core Web Vitals</code></p>
+<p>随着技术的变化，这些核心指标也会随之变化，目前，K6 跟踪以下核心网络生命力：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Metric name</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>browser_web_vital_cls</td>
+          <td>通过量化可见页面内容的意外布局偏移量来衡量网页的视觉稳定性。请参阅<a class="link" href="https://web.dev/articles/cls?hl=zh-cn"  target="_blank" rel="noopener"
+    >Cumulative Layout Shift</a>以获取更多信息。</td>
+      </tr>
+      <tr>
+          <td>browser_web_vital_fid</td>
+          <td>通过量化用户首次交互（例如点击按钮）与浏览器响应之间的延迟来衡量网页的响应能力。请参阅<a class="link" href="https://web.dev/articles/fid?hl=zh-cn"  target="_blank" rel="noopener"
+    >First Input Delay</a>了解更多信息。</td>
+      </tr>
+      <tr>
+          <td>browser_web_vital_lcp</td>
+          <td>测量页面上最大内容元素可见所需的时间。请参阅 请参阅<a class="link" href="https://web.dev/articles/lcp?hl=zh-cn"  target="_blank" rel="noopener"
+    >Larger Contentful Paint</a> 以了解更多信息。</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>除了核心 Web 指标外，浏览器模块还报告<a class="link" href="https://web.dev/articles/vitals?hl=zh-cn#other-web-vitals"  target="_blank" rel="noopener"
+    >Other Web Vitals</a></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>指标名称</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>browser_web_vital_fcp</td>
+          <td>测量浏览器渲染页面上第一个 DOM 元素（无论是文本、图片还是标题）所需的时间。请参阅<a class="link" href="https://web.dev/articles/fcp?hl=zh-cn"  target="_blank" rel="noopener"
+    >First Contentful Paint</a> 了解更多信息</td>
+      </tr>
+      <tr>
+          <td>browser_web_vital_inp</td>
+          <td>衡量页面响应能力的实验性指标请参阅<a class="link" href="https://web.dev/articles/inp?hl=zh-cn"  target="_blank" rel="noopener"
+    >Interaction to Next Paint</a>以获取更多信息.</td>
+      </tr>
+      <tr>
+          <td>browser_web_vital_ttfb</td>
+          <td>测量浏览器请求和服务器响应之间的时间。请参阅<a class="link" href="https://web.dev/articles/ttfb?hl=zh-cn"  target="_blank" rel="noopener"
+    >Time to First Byte</a>以获取更多信息</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="内置-websocket-指标">内置 Websocket 指标
 </h3>
 </section>
 
