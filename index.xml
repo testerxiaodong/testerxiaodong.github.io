@@ -861,7 +861,7 @@
 &lt;/h2&gt;&lt;p&gt;优先级从高到低&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;雅思 6.5，预期在两年内完成&lt;/li&gt;
-&lt;li&gt;appium 实战(从 python 开始吧，之前自己提过 pr，看看之后能不嫩多做点贡献)&lt;/li&gt;
+&lt;li&gt;appium 实战(从 python 开始吧，之前自己提过 pr，看看之后能不能多做点贡献)&lt;/li&gt;
 &lt;li&gt;java 测试技术栈，有点抵触，目前倾向于 js/python(国外远程 java 的优先级还是够的，之后会从 rest-assured 开始实践)&lt;/li&gt;
 &lt;li&gt;前端性能测试实战，之前用 lighthouse 初步了解过一点，但是远远不够&lt;/li&gt;
 &lt;li&gt;k6(目前来说 K6 性能测试已经自学了一段时间了，也进行了一定的实践，调整优先级)&lt;/li&gt;
