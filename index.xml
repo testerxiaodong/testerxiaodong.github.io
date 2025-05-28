@@ -864,8 +864,8 @@
 &lt;li&gt;appium 实战(从 python 开始吧，之前自己提过 pr，看看之后能不能多做点贡献)&lt;/li&gt;
 &lt;li&gt;java 测试技术栈，有点抵触，目前倾向于 js/python(国外远程 java 的优先级还是够的，之后会从 rest-assured 开始实践)&lt;/li&gt;
 &lt;li&gt;前端性能测试实战，之前用 lighthouse 初步了解过一点，但是远远不够&lt;/li&gt;
-&lt;li&gt;k6(目前来说 K6 性能测试已经自学了一段时间了，也进行了一定的实践，调整优先级)&lt;/li&gt;
-&lt;li&gt;cypress(虽然有一定的 playwright 实践，但是 job 要求 cypress 的也不少，实际上来说 cypress 不如 webdriver)&lt;/li&gt;
+&lt;li&gt;k6(目前来说 K6 性能测试已经自学了一段时间了，也进行了一定的实践，之后会继续实践，但也调整优先级)&lt;/li&gt;
+&lt;li&gt;cypress(实际上来说 cypress 不如 webdriver，要不就一步到位 playwright，感觉目前来说选 playwright 是正确的)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;正在做的事&#34;&gt;正在做的事
 &lt;/h2&gt;&lt;ul&gt;
