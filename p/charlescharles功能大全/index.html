@@ -322,7 +322,7 @@ name='description' content="为什么要写 Charles 最近又重返测试岗位�
 
 
                 <time class="article-time--reading">
-                    阅读时长: 1 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -354,17 +354,21 @@ name='description' content="为什么要写 Charles 最近又重返测试岗位�
 </ul>
 <h3 id="并发测试">并发测试
 </h3><p>其实不算是什么并发，就是 repeat 请求，advanced repeat 可以指定并发数</p>
+<p>在少量的批量接口调用时可以方便使用，会默认新建一个 seesion</p>
 <h3 id="断点">断点
-</h3><p>breaking points 可以对请求和响应进行截断并修改，最近在支付测试的时候用的多</p>
+</h3><p><code>breaking points</code>可以对请求和响应进行截断并修改，最近在支付测试的时候用的多</p>
+<p>对符合<code>breaking points</code>规则的每一个请求/响应都会进行截断</p>
+<p>如果是需要每次都修改响应，可以使用<code>map local</code>更为方便</p>
 <h3 id="compose">compose
 </h3><p>compose 可以生成一个新的请求，代替 postman 接口测试？</p>
 <h3 id="重定向">重定向
 </h3><ul>
-<li>map local (本地重定向， 可以先 save response 到本地，再把接口请求重定向到保存的响应去)</li>
-<li>map remote (重定向到远程服务器, nginx 转发？)</li>
+<li><code>map local</code>(本地重定向，可以先<code>save response</code>到本地，再把接口请求重定向到保存的响应去)</li>
+<li><code>map remote</code>(重定向到远程服务器, 客户端进行后端服务器替换，替换为<code>mock</code>服务器)</li>
 </ul>
+<p>感觉这两个功能如果想要更高的灵活性，可以使用<code>mitmproxy</code></p>
 <h3 id="节流器">节流器
-</h3><p>可以进行网弱测试，没怎么用过</p>
+</h3><p>可以进行网弱测试，没怎么用过(devTools 也有相应功能)</p>
 <h3 id="端口转发">端口转发
 </h3><p>没用过，不做评价</p>
 

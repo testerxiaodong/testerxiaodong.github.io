@@ -30,17 +30,21 @@
 &lt;/ul&gt;
 &lt;h3 id=&#34;并发测试&#34;&gt;并发测试
 &lt;/h3&gt;&lt;p&gt;其实不算是什么并发，就是 repeat 请求，advanced repeat 可以指定并发数&lt;/p&gt;
+&lt;p&gt;在少量的批量接口调用时可以方便使用，会默认新建一个 seesion&lt;/p&gt;
 &lt;h3 id=&#34;断点&#34;&gt;断点
-&lt;/h3&gt;&lt;p&gt;breaking points 可以对请求和响应进行截断并修改，最近在支付测试的时候用的多&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;breaking points&lt;/code&gt;可以对请求和响应进行截断并修改，最近在支付测试的时候用的多&lt;/p&gt;
+&lt;p&gt;对符合&lt;code&gt;breaking points&lt;/code&gt;规则的每一个请求/响应都会进行截断&lt;/p&gt;
+&lt;p&gt;如果是需要每次都修改响应，可以使用&lt;code&gt;map local&lt;/code&gt;更为方便&lt;/p&gt;
 &lt;h3 id=&#34;compose&#34;&gt;compose
 &lt;/h3&gt;&lt;p&gt;compose 可以生成一个新的请求，代替 postman 接口测试？&lt;/p&gt;
 &lt;h3 id=&#34;重定向&#34;&gt;重定向
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;map local (本地重定向， 可以先 save response 到本地，再把接口请求重定向到保存的响应去)&lt;/li&gt;
-&lt;li&gt;map remote (重定向到远程服务器, nginx 转发？)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;map local&lt;/code&gt;(本地重定向，可以先&lt;code&gt;save response&lt;/code&gt;到本地，再把接口请求重定向到保存的响应去)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;map remote&lt;/code&gt;(重定向到远程服务器, 客户端进行后端服务器替换，替换为&lt;code&gt;mock&lt;/code&gt;服务器)&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;感觉这两个功能如果想要更高的灵活性，可以使用&lt;code&gt;mitmproxy&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;节流器&#34;&gt;节流器
-&lt;/h3&gt;&lt;p&gt;可以进行网弱测试，没怎么用过&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;可以进行网弱测试，没怎么用过(devTools 也有相应功能)&lt;/p&gt;
 &lt;h3 id=&#34;端口转发&#34;&gt;端口转发
 &lt;/h3&gt;&lt;p&gt;没用过，不做评价&lt;/p&gt;
 </description>
