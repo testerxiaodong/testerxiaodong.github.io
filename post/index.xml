@@ -7,7 +7,33 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Sun, 18 May 2025 20:55:24 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 01 Jun 2025 23:09:49 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【AI编程】AI编程技巧</title>
+        <link>https://www.cengdong.store/p/ai%E7%BC%96%E7%A8%8Bai%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/</link>
+        <pubDate>Sun, 01 Jun 2025 23:09:49 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/ai%E7%BC%96%E7%A8%8Bai%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/</guid>
+        <description>&lt;h2 id=&#34;为什么要写这个&#34;&gt;为什么要写这个
+&lt;/h2&gt;&lt;p&gt;目前来说 AI 编程的功能越来越强大，已经可以解决一些简单的项目问题&lt;/p&gt;
+&lt;p&gt;短时间来说程序员不会被 AI 替代，因为 AI 有幻觉会胡乱回答，而且写出的代码有 bug 的概率不低&lt;/p&gt;
+&lt;p&gt;作为一位 IT 从业者来说学好 AI 可以提高工作效率&lt;/p&gt;
+&lt;h2 id=&#34;ai-的应用场景&#34;&gt;AI 的应用场景
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;代码编辑助手&lt;/li&gt;
+&lt;li&gt;agent&lt;/li&gt;
+&lt;li&gt;mcp&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ai-编辑助手的选择&#34;&gt;AI 编辑助手的选择
+&lt;/h2&gt;&lt;p&gt;目前来说 AI 编辑助手有不少：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;github copilot&lt;/li&gt;
+&lt;li&gt;cursor&lt;/li&gt;
+&lt;li&gt;trae&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;目前我的选择是 cursor&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【K6性能测试】K6学习笔记</title>
         <link>https://www.cengdong.store/p/k6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95k6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <pubDate>Sun, 18 May 2025 20:55:24 +0800</pubDate>
