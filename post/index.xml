@@ -30,7 +30,78 @@
 &lt;li&gt;cursor&lt;/li&gt;
 &lt;li&gt;trae&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;目前我的选择是 cursor&lt;/p&gt;
+&lt;p&gt;目前我的选择是 cursor，因为它是目前最强的 AI 编辑器&lt;/p&gt;
+&lt;h2 id=&#34;cursor-的核心功能&#34;&gt;cursor 的核心功能
+&lt;/h2&gt;&lt;p&gt;cursor 是一款 AI 编辑器，数百万工程师都在使用。由一系列自定义模型驱动，生成的代码量比世界上任何 LLM 都要大&lt;/p&gt;
+&lt;p&gt;核心功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tab：点击&lt;code&gt;Tab&lt;/code&gt;可实现智能代码补全&lt;/li&gt;
+&lt;li&gt;Chat：使用&lt;code&gt;Cmd + L&lt;/code&gt;打开统一的 AI 界面，其中包含询问、编辑和 Agent 模式&lt;/li&gt;
+&lt;li&gt;Command-K：使用&lt;code&gt;Cmd + K&lt;/code&gt;进行內联代码编辑&lt;/li&gt;
+&lt;li&gt;MCP：模型上下文，比较新的功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tab-智能补全&#34;&gt;Tab 智能补全
+&lt;/h3&gt;&lt;p&gt;Cursor 中的 Tab 键补全功能由先进的 AI 模型提供支持，这些模型能够理解你的代码上下文。输入时，你会收到以下智能建议：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;完成当前代码行&lt;/li&gt;
+&lt;li&gt;建议整个函数实现&lt;/li&gt;
+&lt;li&gt;帮助处理常见模式和样板&lt;/li&gt;
+&lt;li&gt;随着时间的推移适应你的编码风格&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当&lt;code&gt;Cursor&lt;/code&gt;仅添加附加文本时，补全将显示为灰色文本。如果建议修改了现有代码，它将以差异弹出窗口的形式显示在当前行的右侧。&lt;/li&gt;
+&lt;li&gt;你可以按&lt;code&gt;Tab&lt;/code&gt;接受建议，或按&lt;code&gt;Esc&lt;/code&gt;拒绝建议。要逐字逐句地接受部分建议，按&lt;code&gt;Ctrl/⌘ →&lt;/code&gt;键。要拒绝建议，只需继续输入，或使用&lt;code&gt;Escape&lt;/code&gt;取消/隐藏建议。&lt;/li&gt;
+&lt;li&gt;每次按键或光标移动，&lt;code&gt;Cursor&lt;/code&gt;都会尝试根据您最近的更改提供建议。但是，&lt;code&gt;Cursor&lt;/code&gt;并非总是会显示建议；有时模型会预测无需进行任何更改。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;要打开或关闭该功能，请将鼠标悬停在应用程序右下角状态栏上的&lt;code&gt;Cursor Tab&lt;/code&gt;图标上。&lt;/p&gt;
+&lt;h3 id=&#34;chat&#34;&gt;Chat
+&lt;/h3&gt;&lt;p&gt;Cursor 提供统一的 AI 界面，具有三种可无缝协作的模式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Agent Mode (默认的)
+&lt;ul&gt;
+&lt;li&gt;进行代码库范围的更改和重构&lt;/li&gt;
+&lt;li&gt;根据需求实现新功能&lt;/li&gt;
+&lt;li&gt;调试多个文件中的复杂问题&lt;/li&gt;
+&lt;li&gt;生成测试和文档&lt;/li&gt;
+&lt;li&gt;保持整个项目的一致性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Ask Mode
+&lt;ul&gt;
+&lt;li&gt;询问有关特定代码部分的问题&lt;/li&gt;
+&lt;li&gt;获取复杂函数的解释&lt;/li&gt;
+&lt;li&gt;查找代码模式和示例&lt;/li&gt;
+&lt;li&gt;发现并了解你的代码库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Custom modes
+&lt;ul&gt;
+&lt;li&gt;创建适合你工作流程的模式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;核心能力：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;理解代码：询问有关不熟悉的代码的问题、获取解释或探索你的代码库&lt;/li&gt;
+&lt;li&gt;编辑代码：无需手动浏览文件即可进行小的调整或大的多个文件更改&lt;/li&gt;
+&lt;li&gt;运行命令：获取针对你的特定用例的终端命令建议&lt;/li&gt;
+&lt;li&gt;自动化工作流程：让 Cursor 搜索、推理和执行来自动化你的工作流程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;context&#34;&gt;Context
+&lt;/h3&gt;&lt;p&gt;上下文是 Cursor 所有 AI 功能的基础。其工作原理如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当你打开代码库时，&lt;code&gt;Cursor&lt;/code&gt;会自动索引你的代码 ，以使其可用作上下文&lt;/li&gt;
+&lt;li&gt;使用 @符号来精确控制你提供的上下文：
+&lt;ul&gt;
+&lt;li&gt;@files 和 @folders 用于特定路径&lt;/li&gt;
+&lt;li&gt;@web 用于外部文档&lt;/li&gt;
+&lt;li&gt;@git 用于版本控制上下文&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;配置&lt;code&gt;rules&lt;/code&gt;以自定义行为&lt;/li&gt;
+&lt;li&gt;为外部上下文提供者设置&lt;code&gt;MCP&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
