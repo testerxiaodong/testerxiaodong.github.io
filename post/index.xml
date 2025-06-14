@@ -1003,6 +1003,7 @@
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;把一些重复的工作通过自动化解决&lt;/li&gt;
 &lt;li&gt;接口封装&lt;/li&gt;
+&lt;li&gt;通过diff工具快速校验测试生成的接口响应字段变化&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;sql-进阶&#34;&gt;sql 进阶
 &lt;/h2&gt;&lt;ul&gt;
