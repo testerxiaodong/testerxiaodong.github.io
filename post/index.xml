@@ -961,21 +961,22 @@
 &lt;h2 id=&#34;需要提升的技能&#34;&gt;需要提升的技能
 &lt;/h2&gt;&lt;p&gt;优先级从高到低&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;雅思 6.5，预期在两年内完成，虽然不报班，但是还是需要规划学习路线&lt;/li&gt;
+&lt;li&gt;k6(k6进行了一定的实践，公司也有全链路压测需求，自己搭建了一个框架)&lt;/li&gt;
+&lt;li&gt;java 测试技术栈（从Appium开始进行实践，在cursor和chatgpt帮助下搭建一个使用Java的企业级实践框架）&lt;/li&gt;
 &lt;li&gt;开源项目参与，目前来说 github 的提交内容都是博客以及完全没有用途的抄袭代码，可以从 playwright 入手参与开源项目&lt;/li&gt;
-&lt;li&gt;是不是从原生的测试框架开始会好一点（swift kotlin）?&lt;/li&gt;
-&lt;li&gt;java 测试技术栈，有点抵触，目前倾向于 js/python(国外远程 java 的优先级还是够的，之后会从 rest-assured 开始实践)&lt;/li&gt;
 &lt;li&gt;前端性能测试实战，之前用 lighthouse 初步了解过一点，但是远远不够&lt;/li&gt;
-&lt;li&gt;k6(目前来说 K6 性能测试已经自学了一段时间了，也进行了一定的实践，之后会继续实践，但也调整优先级)&lt;/li&gt;
 &lt;li&gt;cypress(实际上来说 cypress 不如 webdriver，要不就一步到位 playwright，感觉目前来说选 playwright 是正确的)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;正在做的事&#34;&gt;正在做的事
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;参与开源项目(最近从一个开源playwright项目中学到不少，也正准备参与一个开源项目，希望可以被接受)&lt;/li&gt;
-&lt;li&gt;看上去有些开源项目star数虽然多，但是不一定开放的接受pr，小的项目有不太想做，看来自己还是太功利化了。&lt;/li&gt;
-&lt;li&gt;k6 学习，最近使用k6做了一些压测实战，收获了不少&lt;/li&gt;
-&lt;li&gt;前端性能测试&lt;/li&gt;
+&lt;li&gt;k6 学习，最近使用k6做了一些压测实战，收获了不少，搭建了框架&lt;/li&gt;
+&lt;li&gt;搜索引擎压测(elasticsearch与meilisearch的压测比较)&lt;/li&gt;
 &lt;li&gt;单词记忆(目前来说没坚持下来，准备调整学习策略，而不是只记单词)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;工作中需要的技能&#34;&gt;工作中需要的技能
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;mongo/pg（之前没怎么使用过）&lt;/li&gt;
+&lt;li&gt;elasticsearch dsl（大数据测试还是有门槛，也有需求的）&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
@@ -1333,7 +1334,7 @@
 &lt;li&gt;snore (v.)打鼾 (n.)呼噜声、鼾声&lt;/li&gt;
 &lt;li&gt;kiss (v.)亲吻 (n.)轻吻&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;heading&#34;&gt;
+&lt;h2 id=&#34;&#34;&gt;
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;breathe (v.)呼吸&lt;/li&gt;
 &lt;li&gt;smell (v.)闻 (n.)气味&lt;/li&gt;

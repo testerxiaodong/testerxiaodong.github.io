@@ -6,7 +6,7 @@ name='description' content="1. 介绍 RabbitMQ is the most widely deployed open 
 
 <link rel="canonical" href="https://www.cengdong.store/p/gorabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" />
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【Go】RabbitMQ学习笔记">
+<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="【Go】RabbitMQ学习笔记">
 <meta property='og:description' content="1. 介绍 RabbitMQ is the most widely deployed open source message broker.\n直接把 RabbitMQ 官网的介绍抄过来：它是部署最广泛的消息代理\n2. 作用 消息代理中间件的作用：\n削峰：大量请求写入消息中间件，服务器按照自己能力去消费 解耦：服务上游与下游解耦，上游只需把请求写入消息代理，下游只需要去消息中间件消费 异步：实时性不高的功能放入代理，快速响应客户端请求 3. 竞品 ActiveMQ(已经寄了) RocketMQ（阿里开源，广泛应用在电商场景） Kafka（大数据利器，日志系统重要组件） 4. 系统架构 生产者：消息发送方 channel：通信信道，一个连接里有多个可用信道（感觉是资源池），生产者和消费者都会与 broker 建立连接 exchange：交换机，生产者将消息发送给对应交换机（生产者只与交换机打交道），交换机通过 routingKey 将消息发送给消息队列 queue：消息队列，存放消息的实体 消费者：从消息队列中消费消息 虚拟主机：多租户的资源隔离（不想深入，也不做过多了解） 5. 工作模式 RabbitMQ 官方给出了七种工作模式\n">
 <meta property='og:url' content='https://www.cengdong.store/p/gorabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>
 <meta property='og:site_name' content='cengdong的技术博客'>

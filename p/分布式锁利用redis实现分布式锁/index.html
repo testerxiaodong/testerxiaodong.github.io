@@ -6,7 +6,7 @@ name='description' content="1. go-zero 分布式锁实现 看下 go-zero 中 red
 
 <link rel="canonical" href="https://www.cengdong.store/p/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%88%A9%E7%94%A8redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" />
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【分布式锁】利用Redis实现分布式锁">
+<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="【分布式锁】利用Redis实现分布式锁">
 <meta property='og:description' content="1. go-zero 分布式锁实现 看下 go-zero 中 redis 分布式锁的实现\n1 2 3 4 5 6 7 8 9 10 11 12 13 var ( lockScript = NewScript(`if redis.call(&#34;GET&#34;, KEYS[1]) == ARGV[1] then redis.call(&#34;SET&#34;, KEYS[1], ARGV[1], &#34;PX&#34;, ARGV[2]) return &#34;OK&#34; else return redis.call(&#34;SET&#34;, KEYS[1], ARGV[1], &#34;NX&#34;, &#34;PX&#34;, ARGV[2]) end`) delScript = NewScript(`if redis.call(&#34;GET&#34;, KEYS[1]) == ARGV[1] then return redis.call(&#34;DEL&#34;, KEYS[1]) else return 0 end`) ) 加锁和解锁的过程都是通过 lua 脚本实现的，因为 lua 脚本能够保证 redis 的原子性。\n">
 <meta property='og:url' content='https://www.cengdong.store/p/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%88%A9%E7%94%A8redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/'>
 <meta property='og:site_name' content='cengdong的技术博客'>

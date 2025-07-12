@@ -6,7 +6,7 @@ name='description' content="ui 自动化需要跳转新的 tab 页 1 2 3 4 5 6 7
 
 <link rel="canonical" href="https://www.cengdong.store/p/playwrightplaywright%E6%A0%87%E7%AD%BE%E9%A1%B5%E5%88%87%E6%8D%A2/" />
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【Playwright】playwright标签页切换">
+<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="【Playwright】playwright标签页切换">
 <meta property='og:description' content="ui 自动化需要跳转新的 tab 页 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 async addMonitorEnterprise() { const pagePromise = this.page.context().waitForEvent(&#39;page&#39;) await this.searchInput.focus() await this.searchInput.fill(&#39;乐视&#39;) await expect(this.hisEntList).toBeVisible({}) await this.hisEntItem.first().click() // 等待新页面跳转并获取新的页面 const newPage = await pagePromise // 使用新页面的定位器 const addMonitorButton = newPage .locator(&#39;.info-basic-box&#39;) .getByRole(&#39;button&#39;, { name: &#39; 添加监控&#39;, }) await expect(addMonitorButton).toBeVisible() await addMonitorButton.click() } 注意点 使用page.context().waitForEvent()得到新页面的 promise 等待自动化代码触发打开新页面 await 这个 promise 获得新页面 使用新页面的对象调用方法 ">
 <meta property='og:url' content='https://www.cengdong.store/p/playwrightplaywright%E6%A0%87%E7%AD%BE%E9%A1%B5%E5%88%87%E6%8D%A2/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
