@@ -1045,11 +1045,10 @@
 &lt;h2 id=&#34;需要提升的技能&#34;&gt;需要提升的技能
 &lt;/h2&gt;&lt;p&gt;优先级从高到低&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;k6(k6进行了一定的实践，公司也有全链路压测需求，自己搭建了一个框架)&lt;/li&gt;
 &lt;li&gt;java 测试技术栈（从Appium开始进行实践，在cursor和chatgpt帮助下搭建一个使用Java的企业级实践框架）&lt;/li&gt;
+&lt;li&gt;java/python/js（不能好高骛远，测试需要的就是这些技术栈）&lt;/li&gt;
 &lt;li&gt;开源项目参与，目前来说 github 的提交内容都是博客以及完全没有用途的抄袭代码，可以从 playwright 入手参与开源项目&lt;/li&gt;
 &lt;li&gt;前端性能测试实战，之前用 lighthouse 初步了解过一点，但是远远不够&lt;/li&gt;
-&lt;li&gt;cypress(实际上来说 cypress 不如 webdriver，要不就一步到位 playwright，感觉目前来说选 playwright 是正确的)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;正在做的事&#34;&gt;正在做的事
 &lt;/h2&gt;&lt;ul&gt;
