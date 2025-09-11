@@ -530,17 +530,15 @@ name='description' content="精灵图 为什么需要精灵图技术 很多小�
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
-</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">box {
-</span></span><span class="line"><span class="cl">  width: 0;
-</span></span><span class="line"><span class="cl">  height: 0;
-</span></span><span class="line"><span class="cl">  border-color: transparent red transparent transparent;
-</span></span><span class="line"><span class="cl">  border-style: solid;
-</span></span><span class="line"><span class="cl">  border-width: 22px 8px 0 0;
-</span></span><span class="line"><span class="cl">}
-</span></span><span class="line"><span class="cl">``
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">box</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">width</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">height</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">border-color</span><span class="p">:</span> <span class="kc">transparent</span> <span class="kc">red</span> <span class="kc">transparent</span> <span class="kc">transparent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">border-style</span><span class="p">:</span> <span class="kc">solid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">border-width</span><span class="p">:</span> <span class="mi">22</span><span class="kt">px</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="css-初始化">CSS 初始化
@@ -616,73 +614,73 @@ name='description' content="精灵图 为什么需要精灵图技术 很多小�
 </span><span class="lnt">67
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/* 清除元素默认内外边距 */
-</span></span><span class="line"><span class="cl">* {
-</span></span><span class="line"><span class="cl">  margin: 0;
-</span></span><span class="line"><span class="cl">  padding: 0
-</span></span><span class="line"><span class="cl">}
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* 清除元素默认内外边距 */</span>
+</span></span><span class="line"><span class="cl"><span class="o">*</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/* 斜体样式正常化 */
-</span></span><span class="line"><span class="cl">em,
-</span></span><span class="line"><span class="cl">i {
-</span></span><span class="line"><span class="cl">  font-style: normal
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="c">/* 斜体样式正常化 */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">em</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">i</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-style</span><span class="p">:</span> <span class="kc">normal</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/* 清除列表默认样式：小圆点 */
-</span></span><span class="line"><span class="cl">li {
-</span></span><span class="line"><span class="cl">  list-style: none
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="c">/* 清除列表默认样式：小圆点 */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">li</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">list-style</span><span class="p">:</span> <span class="kc">none</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/* 图片与文字垂直对齐 */
-</span></span><span class="line"><span class="cl">img {
-</span></span><span class="line"><span class="cl">  border: 0;
-</span></span><span class="line"><span class="cl">  vertical-align: middle
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="c">/* 图片与文字垂直对齐 */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">img</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">border</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">vertical-align</span><span class="p">:</span> <span class="kc">middle</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/* 用户界面：按钮鼠标变为小手 */
-</span></span><span class="line"><span class="cl">button {
-</span></span><span class="line"><span class="cl">  cursor: pointer
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="c">/* 用户界面：按钮鼠标变为小手 */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">button</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">cursor</span><span class="p">:</span> <span class="kc">pointer</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/* 清除链接下划线 */
-</span></span><span class="line"><span class="cl">a {
-</span></span><span class="line"><span class="cl">  color: #666;
-</span></span><span class="line"><span class="cl">  text-decoration: none
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="c">/* 清除链接下划线 */</span>
+</span></span><span class="line"><span class="cl"><span class="nt">a</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="mh">#666</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">text-decoration</span><span class="p">:</span> <span class="kc">none</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">a:hover {
-</span></span><span class="line"><span class="cl">  color: #c81623
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="nt">a</span><span class="p">:</span><span class="nd">hover</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="mh">#c81623</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">button,
-</span></span><span class="line"><span class="cl">input {
-</span></span><span class="line"><span class="cl">  font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, &#34;\5B8B\4F53&#34;, sans-serif
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="nt">button</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">input</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-family</span><span class="p">:</span> <span class="n">Microsoft</span> <span class="n">YaHei</span><span class="p">,</span> <span class="n">Heiti</span> <span class="n">SC</span><span class="p">,</span> <span class="n">tahoma</span><span class="p">,</span> <span class="n">arial</span><span class="p">,</span> <span class="n">Hiragino</span> <span class="n">Sans</span> <span class="n">GB</span><span class="p">,</span> <span class="s2">&#34;\5B8B\4F53&#34;</span><span class="p">,</span> <span class="kc">sans-serif</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">body {
-</span></span><span class="line"><span class="cl">  -webkit-font-smoothing: antialiased;
-</span></span><span class="line"><span class="cl">  background-color: #fff;
-</span></span><span class="line"><span class="cl">  font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, &#34;\5B8B\4F53&#34;, sans-serif;
-</span></span><span class="line"><span class="cl">  color: #666
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="nt">body</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">background-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font</span><span class="p">:</span> <span class="mi">12</span><span class="kt">px</span><span class="o">/</span><span class="mf">1.5</span> <span class="n">Microsoft</span> <span class="n">YaHei</span><span class="p">,</span> <span class="n">Heiti</span> <span class="n">SC</span><span class="p">,</span> <span class="n">tahoma</span><span class="p">,</span> <span class="n">arial</span><span class="p">,</span> <span class="n">Hiragino</span> <span class="n">Sans</span> <span class="n">GB</span><span class="p">,</span> <span class="s2">&#34;\5B8B\4F53&#34;</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="mh">#666</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">.hide,
-</span></span><span class="line"><span class="cl">.none {
-</span></span><span class="line"><span class="cl">  display: none
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">hide</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">none</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">display</span><span class="p">:</span> <span class="kc">none</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/* 清除浮动 */
-</span></span><span class="line"><span class="cl">.clearfix:after {
-</span></span><span class="line"><span class="cl">  visibility: hidden;
-</span></span><span class="line"><span class="cl">  clear: both;
-</span></span><span class="line"><span class="cl">  display: block;
-</span></span><span class="line"><span class="cl">  content: &#34;.&#34;;
-</span></span><span class="line"><span class="cl">  height: 0
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="c">/* 清除浮动 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">clearfix</span><span class="p">:</span><span class="nd">after</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">visibility</span><span class="p">:</span> <span class="kc">hidden</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">clear</span><span class="p">:</span> <span class="kc">both</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">content</span><span class="p">:</span> <span class="s2">&#34;.&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">height</span><span class="p">:</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">.clearfix {
-</span></span><span class="line"><span class="cl">  *zoom: 1
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">clearfix</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="err">*</span><span class="n">zoom</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div>

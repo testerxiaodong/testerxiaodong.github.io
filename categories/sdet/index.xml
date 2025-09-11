@@ -28,21 +28,20 @@
 &lt;h2 id=&#34;需要提升的技能&#34;&gt;需要提升的技能
 &lt;/h2&gt;&lt;p&gt;优先级从高到低&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;java 测试技术栈（从Appium开始进行实践，在cursor和chatgpt帮助下搭建一个使用Java的企业级实践框架）&lt;/li&gt;
-&lt;li&gt;java/python/js（不能好高骛远，测试需要的就是这些技术栈）&lt;/li&gt;
-&lt;li&gt;开源项目参与，目前来说 github 的提交内容都是博客以及完全没有用途的抄袭代码，可以从 playwright 入手参与开源项目&lt;/li&gt;
-&lt;li&gt;前端性能测试实战，之前用 lighthouse 初步了解过一点，但是远远不够&lt;/li&gt;
+&lt;li&gt;Python/Js/Java（不能好高骛远，测试需要的就是这些技术栈）&lt;/li&gt;
+&lt;li&gt;开源项目参与，从 Playwright 入手参与开源项目&lt;/li&gt;
+&lt;li&gt;前端性能测试实战，之前用 Lighthouse 初步了解过一点，但是远远不够&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;正在做的事&#34;&gt;正在做的事
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;k6 学习，最近使用k6做了一些压测实战，收获了不少，搭建了框架&lt;/li&gt;
 &lt;li&gt;搜索引擎压测(elasticsearch与meilisearch的压测比较)&lt;/li&gt;
-&lt;li&gt;单词记忆(目前来说没坚持下来，准备调整学习策略，而不是只记单词)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;工作中需要的技能&#34;&gt;工作中需要的技能
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;mongo/pg（之前没怎么使用过）&lt;/li&gt;
-&lt;li&gt;elasticsearch dsl（大数据测试还是有门槛，也有需求的）&lt;/li&gt;
+&lt;li&gt;Mongo/Postgres（之前没怎么使用过）&lt;/li&gt;
+&lt;li&gt;Elasticsearch DSL（大数据测试还是有门槛，也有需求的）&lt;/li&gt;
+&lt;li&gt;All in Python/Js 以及 AI&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
