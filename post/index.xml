@@ -7,7 +7,109 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Sun, 31 Aug 2025 23:42:32 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 10 Oct 2025 11:26:22 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【App专项测试】App弱网测试</title>
+        <link>https://www.cengdong.store/p/app%E4%B8%93%E9%A1%B9%E6%B5%8B%E8%AF%95app%E5%BC%B1%E7%BD%91%E6%B5%8B%E8%AF%95/</link>
+        <pubDate>Fri, 10 Oct 2025 11:26:22 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/app%E4%B8%93%E9%A1%B9%E6%B5%8B%E8%AF%95app%E5%BC%B1%E7%BD%91%E6%B5%8B%E8%AF%95/</guid>
+        <description>&lt;h2 id=&#34;测试场景设计&#34;&gt;测试场景设计
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;场景&lt;/th&gt;
+          &lt;th&gt;带宽限制&lt;/th&gt;
+          &lt;th&gt;延迟&lt;/th&gt;
+          &lt;th&gt;丢包率&lt;/th&gt;
+          &lt;th&gt;判定标准&lt;/th&gt;
+          &lt;th&gt;建议优化措施&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;2G 网络&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;≤ 250 kbps&lt;/td&gt;
+          &lt;td&gt;300–500 ms&lt;/td&gt;
+          &lt;td&gt;5–10%&lt;/td&gt;
+          &lt;td&gt;- 页面首屏时间 ≤ 10s&lt;br&gt;- 主要接口响应 ≤ 5s&lt;br&gt;- 核心功能可用率 ≥ 95%&lt;/td&gt;
+          &lt;td&gt;- 图片懒加载&lt;br&gt;- 压缩资源（JS/CSS/图片）&lt;br&gt;- 接口返回精简数据&lt;br&gt;- 异步加载非核心内容&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;弱 3G 网络&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;400–700 kbps&lt;/td&gt;
+          &lt;td&gt;150–300 ms&lt;/td&gt;
+          &lt;td&gt;2–5%&lt;/td&gt;
+          &lt;td&gt;- 页面首屏时间 ≤ 6s&lt;br&gt;- 核心接口响应 ≤ 3s&lt;br&gt;- 核心功能可用率 ≥ 98%&lt;/td&gt;
+          &lt;td&gt;- 启用缓存策略&lt;br&gt;- 使用 CDN 加速&lt;br&gt;- 减少请求数量&lt;br&gt;- 使用骨架屏&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;普通 4G 网络&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;1–4 Mbps&lt;/td&gt;
+          &lt;td&gt;50–150 ms&lt;/td&gt;
+          &lt;td&gt;1–2%&lt;/td&gt;
+          &lt;td&gt;- 页面首屏时间 ≤ 3s&lt;br&gt;- 接口响应 ≤ 1s&lt;br&gt;- 核心功能可用率 ≥ 99%&lt;/td&gt;
+          &lt;td&gt;- 压缩资源&lt;br&gt;- 合理预加载&lt;br&gt;- 接口优化（减少 SQL 查询复杂度）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;高延迟网络&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;网络正常&lt;/td&gt;
+          &lt;td&gt;延迟 ≥ 300 ms&lt;/td&gt;
+          &lt;td&gt;≤ 2%&lt;/td&gt;
+          &lt;td&gt;- 页面首屏时间 ≤ 2×正常网络&lt;br&gt;- 接口响应延迟 ≤ 2×正常&lt;br&gt;- 无明显卡顿&lt;/td&gt;
+          &lt;td&gt;- 接口异步加载&lt;br&gt;- 数据缓存&lt;br&gt;- 合理降级（低质量图片、减少动画）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;高丢包网络&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;网络正常&lt;/td&gt;
+          &lt;td&gt;延迟正常&lt;/td&gt;
+          &lt;td&gt;丢包率 ≥ 5%&lt;/td&gt;
+          &lt;td&gt;- 页面加载成功率 ≥ 95%&lt;br&gt;- 核心功能可用率 ≥ 98%&lt;br&gt;- 重试机制正常&lt;/td&gt;
+          &lt;td&gt;- 接口幂等化&lt;br&gt;- 重试策略（指数退避）&lt;br&gt;- 使用稳定协议（HTTP/2）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;离线或弱信号&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;无网络 / 极低带宽&lt;/td&gt;
+          &lt;td&gt;极高延迟&lt;/td&gt;
+          &lt;td&gt;丢包率高&lt;/td&gt;
+          &lt;td&gt;- 应用不崩溃&lt;br&gt;- 可缓存核心功能&lt;br&gt;- 给用户提示网络不可用&lt;/td&gt;
+          &lt;td&gt;- 离线缓存（Service Worker / localStorage）&lt;br&gt;- 数据同步机制&lt;br&gt;- 提示用户网络状态&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;测试执行流程&#34;&gt;测试执行流程
+&lt;/h2&gt;&lt;h3 id=&#34;确定测试目标&#34;&gt;确定测试目标
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;页面加载性能 / 核心功能（登录、列表、下单、支付） / 交互流畅度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;选择弱网模拟工具&#34;&gt;选择弱网模拟工具
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;H5 页面 → Chrome DevTools Throttling&lt;/li&gt;
+&lt;li&gt;App（Android/iOS）→ Network Link Conditioner / Charles&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;配置网络条件&#34;&gt;配置网络条件
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;按对照表选择带宽、延迟、丢包率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;执行测试&#34;&gt;执行测试
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;记录页面首屏时间（FCP / LCP）&lt;/li&gt;
+&lt;li&gt;测试关键接口响应时间&lt;/li&gt;
+&lt;li&gt;检查功能可用性（是否能正常执行核心操作）&lt;/li&gt;
+&lt;li&gt;检查 UI 流畅度（FPS / 卡顿情况）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;对照判定标准&#34;&gt;对照判定标准
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;符合对照表中的判定标准即为“弱网测试通过”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;输出报告&#34;&gt;输出报告
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;网络条件配置&lt;/li&gt;
+&lt;li&gt;测试结果（加载时间、接口耗时、错误率、可用性）&lt;/li&gt;
+&lt;li&gt;优化建议&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>【Android】Android编程</title>
         <link>https://www.cengdong.store/p/androidandroid%E7%BC%96%E7%A8%8B/</link>
         <pubDate>Sun, 31 Aug 2025 23:42:32 +0800</pubDate>
