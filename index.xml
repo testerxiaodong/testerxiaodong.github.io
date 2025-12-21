@@ -7,7 +7,17 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Fri, 10 Oct 2025 11:26:22 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 21 Dec 2025 23:56:02 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【ElasticSearch】ElasticSearch知识点</title>
+        <link>https://www.cengdong.store/p/elasticsearchelasticsearch%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+        <pubDate>Sun, 21 Dec 2025 23:56:02 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/elasticsearchelasticsearch%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+        <description>&lt;h2 id=&#34;elasticsearch介绍&#34;&gt;ElasticSearch介绍
+&lt;/h2&gt;&lt;p&gt;最近工作和ElasticSearch相关，写一篇博客记录一下Es相关知识点&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【App专项测试】App弱网测试</title>
         <link>https://www.cengdong.store/p/app%E4%B8%93%E9%A1%B9%E6%B5%8B%E8%AF%95app%E5%BC%B1%E7%BD%91%E6%B5%8B%E8%AF%95/</link>
         <pubDate>Fri, 10 Oct 2025 11:26:22 +0800</pubDate>
