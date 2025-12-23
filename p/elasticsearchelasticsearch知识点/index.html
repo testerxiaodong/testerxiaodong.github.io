@@ -2,17 +2,17 @@
 <html lang="zh-cn" dir="ltr">
     <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" /><meta
-name='description' content="ElasticSearch介绍 最近工作和ElasticSearch相关，写一篇博客记录一下Es相关知识点\n"> <title>【ElasticSearch】ElasticSearch知识点</title>
+name='description' content="Elasticsearch介绍 Elasticsearch是一个分布式数据存储，能够近实时地导入、索引和管理各种类型的数据，使其既可搜索又可分析。凭借专业的用户界面和工具，它提供了创建、部署和运行各种应用的灵活性，从搜索到分析再到 AI 驱动的解决方案。\n"> <title>【Elasticsearch】Elasticsearch知识点</title>
 
 <link rel="canonical" href="https://www.cengdong.store/p/elasticsearchelasticsearch%E7%9F%A5%E8%AF%86%E7%82%B9/" />
 
-<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="【ElasticSearch】ElasticSearch知识点">
-<meta property='og:description' content="ElasticSearch介绍 最近工作和ElasticSearch相关，写一篇博客记录一下Es相关知识点\n">
+<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="【Elasticsearch】Elasticsearch知识点">
+<meta property='og:description' content="Elasticsearch介绍 Elasticsearch是一个分布式数据存储，能够近实时地导入、索引和管理各种类型的数据，使其既可搜索又可分析。凭借专业的用户界面和工具，它提供了创建、部署和运行各种应用的灵活性，从搜索到分析再到 AI 驱动的解决方案。\n">
 <meta property='og:url' content='https://www.cengdong.store/p/elasticsearchelasticsearch%E7%9F%A5%E8%AF%86%E7%82%B9/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-12-21T23:56:02&#43;08:00'/><meta property='article:modified_time' content='2025-12-21T23:56:02&#43;08:00'/>
-<meta name="twitter:title" content="【ElasticSearch】ElasticSearch知识点">
-<meta name="twitter:description" content="ElasticSearch介绍 最近工作和ElasticSearch相关，写一篇博客记录一下Es相关知识点\n">
+<meta name="twitter:title" content="【Elasticsearch】Elasticsearch知识点">
+<meta name="twitter:description" content="Elasticsearch介绍 Elasticsearch是一个分布式数据存储，能够近实时地导入、索引和管理各种类型的数据，使其既可搜索又可分析。凭借专业的用户界面和工具，它提供了创建、部署和运行各种应用的灵活性，从搜索到分析再到 AI 驱动的解决方案。\n">
     </head>
     <body class="
     article-page
@@ -245,7 +245,36 @@ name='description' content="ElasticSearch介绍 最近工作和ElasticSearch相�
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#elasticsearch介绍">ElasticSearch介绍</a></li>
+    <li><a href="#elasticsearch介绍">Elasticsearch介绍</a></li>
+    <li><a href="#索引基础">索引基础</a>
+      <ol>
+        <li><a href="#documents">Documents</a></li>
+        <li><a href="#metadata-fields">Metadata fields</a></li>
+        <li><a href="#mappings-and-data-types">Mappings and data types</a></li>
+        <li><a href="#创建索引">创建索引</a></li>
+        <li><a href="#添加单一文档">添加单一文档</a></li>
+        <li><a href="#添加多份文档">添加多份文档</a></li>
+      </ol>
+    </li>
+    <li><a href="#querydsl">QueryDSL</a>
+      <ol>
+        <li><a href="#match-单字段查询">match 单字段查询</a>
+          <ol>
+            <li><a href="#包含查询中所有匹配的术语">包含查询中所有匹配的术语</a></li>
+            <li><a href="#指定匹配的最低词数">指定匹配的最低词数</a></li>
+          </ol>
+        </li>
+        <li><a href="#multi_match-跨多个字段搜索">multi_match 跨多个字段搜索</a>
+          <ol>
+            <li><a href="#使用字段增强来调整每个字段的重要性">使用字段增强来调整每个字段的重要性</a></li>
+          </ol>
+        </li>
+        <li><a href="#filter-筛选查询">filter 筛选查询</a></li>
+        <li><a href="#range-范围查询">range 范围查询</a></li>
+        <li><a href="#term-查询找到完全匹配的">term 查询找到完全匹配的</a></li>
+        <li><a href="#复合查询-结合多个搜索条件">复合查询 结合多个搜索条件</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -262,10 +291,18 @@ name='description' content="ElasticSearch介绍 最近工作和ElasticSearch相�
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/elasticsearch/" >
+                Elasticsearch
+            </a>
+        
+    </header>
+    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/elasticsearchelasticsearch%E7%9F%A5%E8%AF%86%E7%82%B9/">【ElasticSearch】ElasticSearch知识点</a>
+            <a href="/p/elasticsearchelasticsearch%E7%9F%A5%E8%AF%86%E7%82%B9/">【Elasticsearch】Elasticsearch知识点</a>
         </h2>
     
         
@@ -302,7 +339,7 @@ name='description' content="ElasticSearch介绍 最近工作和ElasticSearch相�
 
 
                 <time class="article-time--reading">
-                    阅读时长: 1 分钟
+                    阅读时长: 5 分钟
                 </time>
             </div>
         
@@ -317,9 +354,662 @@ name='description' content="ElasticSearch介绍 最近工作和ElasticSearch相�
     <section class="article-content">
     
     
-    <h2 id="elasticsearch介绍">ElasticSearch介绍
-</h2><p>最近工作和ElasticSearch相关，写一篇博客记录一下Es相关知识点</p>
-
+    <h2 id="elasticsearch介绍">Elasticsearch介绍
+</h2><p><code>Elasticsearch</code>是一个分布式数据存储，能够近实时地导入、索引和管理各种类型的数据，使其既可搜索又可分析。凭借专业的用户界面和工具，它提供了创建、部署和运行各种应用的灵活性，从搜索到分析再到 AI 驱动的解决方案。</p>
+<p>以下是<code>Elasticsearch</code>的使用案例：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>用例</th>
+          <th>业务目标</th>
+          <th>技术要求</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>向量搜索/混合搜索</td>
+          <td>运行最近邻搜索，结合文本生成混合结果</td>
+          <td>密集嵌入、稀疏嵌入，结合文本/BM25</td>
+      </tr>
+      <tr>
+          <td>电子商务/产品目录搜索</td>
+          <td>提供快速、相关且最新的结果，分面导航</td>
+          <td>库存同步、用户行为跟踪、结果缓存</td>
+      </tr>
+      <tr>
+          <td>工作场所/知识库搜索</td>
+          <td>跨数据源搜索，执行权限</td>
+          <td>第三方连接器、文档级安全、角色映射</td>
+      </tr>
+      <tr>
+          <td>网站搜索</td>
+          <td>提供相关且最新的结果</td>
+          <td>网页爬取、增量索引、查询缓存</td>
+      </tr>
+      <tr>
+          <td>客户支持搜索</td>
+          <td>呈现相关解决方案，管理访问控制，跟踪指标</td>
+          <td>知识图谱、基于角色的访问、分析</td>
+      </tr>
+      <tr>
+          <td>聊天机器人/RAG</td>
+          <td>促进自然对话，提供背景，保持知识</td>
+          <td>矢量搜索、机器学习模型、知识库集成</td>
+      </tr>
+      <tr>
+          <td>地理空间搜索</td>
+          <td>进程位置查询，按距离排序，按区域筛选</td>
+          <td>地理映射、空间索引、距离计算</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>最近工作内容和<code>Elasticsearch</code>相关，包括<code>Elasticsearch</code>查询<code>压测</code>以及<code>性能优化</code>，因此写一篇博客记录一下相关知识点。</p>
+<h2 id="索引基础">索引基础
+</h2><p>索引是<code>Elasticsearch</code>中存储的基本单位。它是一组通过名字或别名唯一标识的文件。这个唯一名称很重要，因为它用于搜索查询和其他作中针对该索引。</p>
+<p>索引由以下组成部分组成：</p>
+<ul>
+<li>Documents(文档)</li>
+<li>Metadata fields(元数据字段)</li>
+<li>Mappings and data types(映射与数据类型)</li>
+</ul>
+<h3 id="documents">Documents
+</h3><p><code>Elasticsearch</code>以<code>JSON</code>文档的形式序列化和存储数据。文档是一组字段，这些字段是包含你数据的键值对。每个文档都有唯一的<code>ID</code>，你可以创建<code>ID</code>，也可以让<code>Elasticsearch</code>自动生成。</p>
+<p>一个简单的 Elasticsearch 文档可能如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;_index&#34;</span><span class="p">:</span> <span class="s2">&#34;my-first-elasticsearch-index&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;_id&#34;</span><span class="p">:</span> <span class="s2">&#34;DyFpo5EBxE8fzbb95DOa&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;_version&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;_seq_no&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;_primary_term&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;found&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;_source&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;email&#34;</span><span class="p">:</span> <span class="s2">&#34;john@smith.com&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;first_name&#34;</span><span class="p">:</span> <span class="s2">&#34;John&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;last_name&#34;</span><span class="p">:</span> <span class="s2">&#34;Smith&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;info&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;bio&#34;</span><span class="p">:</span> <span class="s2">&#34;Eco-warrior and defender of the weak&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;age&#34;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;interests&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;dolphins&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;whales&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;join_date&#34;</span><span class="p">:</span> <span class="s2">&#34;2024/05/01&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="metadata-fields">Metadata fields
+</h3><p>索引文档包含数据和元数据。 元数据字段是存储文档信息的系统字段。在 Elasticsearch 中，元数据字段前加下划线。例如，以下字段是元数据字段：</p>
+<ul>
+<li>_index：文档存储的索引名称。</li>
+<li>_id：文档的 ID。ID 必须在每个索引中唯一。</li>
+</ul>
+<h3 id="mappings-and-data-types">Mappings and data types
+</h3><p>每个索引都有一个<code>mapping</code>或<code>schema</code>，用于描述文档中字段的索引方式。映射定义了每个字段的数据类型 、字段应如何索引以及存储方式。</p>
+<h3 id="创建索引">创建索引
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT /books
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="添加单一文档">添加单一文档
+</h3><p>请使用以下请求将单一文档添加到图书索引中。如果索引还不存在，这个请求会自动生成它。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">POST books/_doc
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;name&#34;: &#34;Snow Crash&#34;,
+</span></span><span class="line"><span class="cl">  &#34;author&#34;: &#34;Neal Stephenson&#34;,
+</span></span><span class="line"><span class="cl">  &#34;release_date&#34;: &#34;1992-06-01&#34;,
+</span></span><span class="line"><span class="cl">  &#34;page_count&#34;: 470
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="添加多份文档">添加多份文档
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">POST /_bulk
+</span></span><span class="line"><span class="cl">{ &#34;index&#34; : { &#34;_index&#34; : &#34;books&#34; } }
+</span></span><span class="line"><span class="cl">{&#34;name&#34;: &#34;Revelation Space&#34;, &#34;author&#34;: &#34;Alastair Reynolds&#34;, &#34;release_date&#34;: &#34;2000-03-15&#34;, &#34;page_count&#34;: 585}
+</span></span><span class="line"><span class="cl">{ &#34;index&#34; : { &#34;_index&#34; : &#34;books&#34; } }
+</span></span><span class="line"><span class="cl">{&#34;name&#34;: &#34;1984&#34;, &#34;author&#34;: &#34;George Orwell&#34;, &#34;release_date&#34;: &#34;1985-06-01&#34;, &#34;page_count&#34;: 328}
+</span></span><span class="line"><span class="cl">{ &#34;index&#34; : { &#34;_index&#34; : &#34;books&#34; } }
+</span></span><span class="line"><span class="cl">{&#34;name&#34;: &#34;Fahrenheit 451&#34;, &#34;author&#34;: &#34;Ray Bradbury&#34;, &#34;release_date&#34;: &#34;1953-10-15&#34;, &#34;page_count&#34;: 227}
+</span></span><span class="line"><span class="cl">{ &#34;index&#34; : { &#34;_index&#34; : &#34;books&#34; } }
+</span></span><span class="line"><span class="cl">{&#34;name&#34;: &#34;Brave New World&#34;, &#34;author&#34;: &#34;Aldous Huxley&#34;, &#34;release_date&#34;: &#34;1932-06-01&#34;, &#34;page_count&#34;: 268}
+</span></span><span class="line"><span class="cl">{ &#34;index&#34; : { &#34;_index&#34; : &#34;books&#34; } }
+</span></span><span class="line"><span class="cl">{&#34;name&#34;: &#34;The Handmaids Tale&#34;, &#34;author&#34;: &#34;Margaret Atwood&#34;, &#34;release_date&#34;: &#34;1985-06-01&#34;, &#34;page_count&#34;: 311}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="querydsl">QueryDSL
+</h2><p>全文搜索需要的是<code>_search</code> API 和 <code>Query DSL</code></p>
+<p>先创建索引</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT /cooking_blog
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建映射</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT /cooking_blog/_mapping
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;properties&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;title&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;type&#34;: &#34;text&#34;,
+</span></span><span class="line"><span class="cl">      &#34;analyzer&#34;: &#34;standard&#34;,
+</span></span><span class="line"><span class="cl">      &#34;fields&#34;: { 
+</span></span><span class="line"><span class="cl">        &#34;keyword&#34;: {
+</span></span><span class="line"><span class="cl">          &#34;type&#34;: &#34;keyword&#34;,
+</span></span><span class="line"><span class="cl">          &#34;ignore_above&#34;: 256
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;description&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;type&#34;: &#34;text&#34;,
+</span></span><span class="line"><span class="cl">      &#34;fields&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;keyword&#34;: {
+</span></span><span class="line"><span class="cl">          &#34;type&#34;: &#34;keyword&#34;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;author&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;type&#34;: &#34;text&#34;,
+</span></span><span class="line"><span class="cl">      &#34;fields&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;keyword&#34;: {
+</span></span><span class="line"><span class="cl">          &#34;type&#34;: &#34;keyword&#34;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;date&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;type&#34;: &#34;date&#34;,
+</span></span><span class="line"><span class="cl">      &#34;format&#34;: &#34;yyyy-MM-dd&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;category&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;type&#34;: &#34;text&#34;,
+</span></span><span class="line"><span class="cl">      &#34;fields&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;keyword&#34;: {
+</span></span><span class="line"><span class="cl">          &#34;type&#34;: &#34;keyword&#34;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;tags&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;type&#34;: &#34;text&#34;,
+</span></span><span class="line"><span class="cl">      &#34;fields&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;keyword&#34;: {
+</span></span><span class="line"><span class="cl">          &#34;type&#34;: &#34;keyword&#34;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;rating&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;type&#34;: &#34;float&#34;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>批量添加数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">POST /cooking_blog/_bulk?refresh=wait_for
+</span></span><span class="line"><span class="cl">{&#34;index&#34;:{&#34;_id&#34;:&#34;1&#34;}}
+</span></span><span class="line"><span class="cl">{&#34;title&#34;:&#34;Perfect Pancakes: A Fluffy Breakfast Delight&#34;,&#34;description&#34;:&#34;Learn the secrets to making the fluffiest pancakes, so amazing you won&#39;t believe your tastebuds. This recipe uses buttermilk and a special folding technique to create light, airy pancakes that are perfect for lazy Sunday mornings.&#34;,&#34;author&#34;:&#34;Maria Rodriguez&#34;,&#34;date&#34;:&#34;2023-05-01&#34;,&#34;category&#34;:&#34;Breakfast&#34;,&#34;tags&#34;:[&#34;pancakes&#34;,&#34;breakfast&#34;,&#34;easy recipes&#34;],&#34;rating&#34;:4.8}
+</span></span><span class="line"><span class="cl">{&#34;index&#34;:{&#34;_id&#34;:&#34;2&#34;}}
+</span></span><span class="line"><span class="cl">{&#34;title&#34;:&#34;Spicy Thai Green Curry: A Vegetarian Adventure&#34;,&#34;description&#34;:&#34;Dive into the flavors of Thailand with this vibrant green curry. Packed with vegetables and aromatic herbs, this dish is both healthy and satisfying. Don&#39;t worry about the heat - you can easily adjust the spice level to your liking.&#34;,&#34;author&#34;:&#34;Liam Chen&#34;,&#34;date&#34;:&#34;2023-05-05&#34;,&#34;category&#34;:&#34;Main Course&#34;,&#34;tags&#34;:[&#34;thai&#34;,&#34;vegetarian&#34;,&#34;curry&#34;,&#34;spicy&#34;],&#34;rating&#34;:4.6}
+</span></span><span class="line"><span class="cl">{&#34;index&#34;:{&#34;_id&#34;:&#34;3&#34;}}
+</span></span><span class="line"><span class="cl">{&#34;title&#34;:&#34;Classic Beef Stroganoff: A Creamy Comfort Food&#34;,&#34;description&#34;:&#34;Indulge in this rich and creamy beef stroganoff. Tender strips of beef in a savory mushroom sauce, served over a bed of egg noodles. It&#39;s the ultimate comfort food for chilly evenings.&#34;,&#34;author&#34;:&#34;Emma Watson&#34;,&#34;date&#34;:&#34;2023-05-10&#34;,&#34;category&#34;:&#34;Main Course&#34;,&#34;tags&#34;:[&#34;beef&#34;,&#34;pasta&#34;,&#34;comfort food&#34;],&#34;rating&#34;:4.7}
+</span></span><span class="line"><span class="cl">{&#34;index&#34;:{&#34;_id&#34;:&#34;4&#34;}}
+</span></span><span class="line"><span class="cl">{&#34;title&#34;:&#34;Vegan Chocolate Avocado Mousse&#34;,&#34;description&#34;:&#34;Discover the magic of avocado in this rich, vegan chocolate mousse. Creamy, indulgent, and secretly healthy, it&#39;s the perfect guilt-free dessert for chocolate lovers.&#34;,&#34;author&#34;:&#34;Alex Green&#34;,&#34;date&#34;:&#34;2023-05-15&#34;,&#34;category&#34;:&#34;Dessert&#34;,&#34;tags&#34;:[&#34;vegan&#34;,&#34;chocolate&#34;,&#34;avocado&#34;,&#34;healthy dessert&#34;],&#34;rating&#34;:4.5}
+</span></span><span class="line"><span class="cl">{&#34;index&#34;:{&#34;_id&#34;:&#34;5&#34;}}
+</span></span><span class="line"><span class="cl">{&#34;title&#34;:&#34;Crispy Oven-Fried Chicken&#34;,&#34;description&#34;:&#34;Get that perfect crunch without the deep fryer! This oven-fried chicken recipe delivers crispy, juicy results every time. A healthier take on the classic comfort food.&#34;,&#34;author&#34;:&#34;Maria Rodriguez&#34;,&#34;date&#34;:&#34;2023-05-20&#34;,&#34;category&#34;:&#34;Main Course&#34;,&#34;tags&#34;:[&#34;chicken&#34;,&#34;oven-fried&#34;,&#34;healthy&#34;],&#34;rating&#34;:4.9}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="match-单字段查询">match 单字段查询
+</h3><p><code>match</code> query是全文搜索的标准查询。查询文本将根据每个字段（或查询时）指定的分析器配置进行分析。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /cooking_blog/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;match&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;description&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;query&#34;: &#34;fluffy pancakes&#34;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="包含查询中所有匹配的术语">包含查询中所有匹配的术语
+</h4><p>指定<code>and</code>算符，使描述字段包含这两个术语。这种更严格的搜索对样本数据没有结果 ，因为没有文档同时包含“fluffy”和“pancakes”</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /cooking_blog/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;match&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;description&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;query&#34;: &#34;fluffy pancakes&#34;,
+</span></span><span class="line"><span class="cl">        &#34;operator&#34;: &#34;and&#34;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="指定匹配的最低词数">指定匹配的最低词数
+</h4><p>使用<code>minimum_should_match</code>参数指定文档搜索结果中应包含的最少词数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /cooking_blog/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;match&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;title&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;query&#34;: &#34;fluffy pancakes breakfast&#34;,
+</span></span><span class="line"><span class="cl">        &#34;minimum_should_match&#34;: 2
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="multi_match-跨多个字段搜索">multi_match 跨多个字段搜索
+</h3><p>当你输入搜索查询时，可能不知道搜索词是否出现在某个特定字段中。<code>multi_match</code>查询可以让你同时搜索多个字段。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /cooking_blog/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;multi_match&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;query&#34;: &#34;vegetarian curry&#34;,
+</span></span><span class="line"><span class="cl">      &#34;fields&#34;: [&#34;title&#34;, &#34;description&#34;, &#34;tags&#34;]
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="使用字段增强来调整每个字段的重要性">使用字段增强来调整每个字段的重要性
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /cooking_blog/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;multi_match&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;query&#34;: &#34;vegetarian curry&#34;,
+</span></span><span class="line"><span class="cl">      &#34;fields&#34;: [&#34;title^3&#34;, &#34;description^2&#34;, &#34;tags&#34;]
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="filter-筛选查询">filter 筛选查询
+</h3><p><code>filter</code>查询是<code>bool</code>查询的子查询</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /cooking_blog/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;bool&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;filter&#34;: [
+</span></span><span class="line"><span class="cl">        { &#34;term&#34;: { &#34;category.keyword&#34;: &#34;Breakfast&#34; } }
+</span></span><span class="line"><span class="cl">      ]
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="range-范围查询">range 范围查询
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /cooking_blog/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;range&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;gte&#34;: &#34;2023-05-01&#34;,
+</span></span><span class="line"><span class="cl">        &#34;lte&#34;: &#34;2023-05-31&#34;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="term-查询找到完全匹配的">term 查询找到完全匹配的
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /cooking_blog/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;term&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;author.keyword&#34;: &#34;Maria Rodriguez&#34;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="复合查询-结合多个搜索条件">复合查询 结合多个搜索条件
+</h3><p>你可以用<code>bool</code>查询组合多个查询子句，创建复杂的搜索。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /cooking_blog/_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;bool&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;must&#34;: [
+</span></span><span class="line"><span class="cl">        { &#34;term&#34;: { &#34;tags&#34;: &#34;vegetarian&#34; } },
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">          &#34;range&#34;: {
+</span></span><span class="line"><span class="cl">            &#34;rating&#34;: {
+</span></span><span class="line"><span class="cl">              &#34;gte&#34;: 4.5
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      ],
+</span></span><span class="line"><span class="cl">      &#34;should&#34;: [
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">          &#34;term&#34;: {
+</span></span><span class="line"><span class="cl">            &#34;category.keyword&#34;: &#34;Main Course&#34;
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">          &#34;multi_match&#34;: {
+</span></span><span class="line"><span class="cl">            &#34;query&#34;: &#34;curry spicy&#34;,
+</span></span><span class="line"><span class="cl">            &#34;fields&#34;: [
+</span></span><span class="line"><span class="cl">              &#34;title^2&#34;,
+</span></span><span class="line"><span class="cl">              &#34;description&#34;
+</span></span><span class="line"><span class="cl">            ]
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">          &#34;range&#34;: {
+</span></span><span class="line"><span class="cl">            &#34;date&#34;: {
+</span></span><span class="line"><span class="cl">              &#34;gte&#34;: &#34;now-1M/d&#34;
+</span></span><span class="line"><span class="cl">            }
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      ],
+</span></span><span class="line"><span class="cl">      &#34;must_not&#34;: [
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">          &#34;term&#34;: {
+</span></span><span class="line"><span class="cl">            &#34;category.keyword&#34;: &#34;Dessert&#34;
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      ]
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
