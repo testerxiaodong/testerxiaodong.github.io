@@ -272,7 +272,13 @@ name='description' content="Elasticsearch介绍 Elasticsearch是一个分布式�
         <li><a href="#filter-筛选查询">filter 筛选查询</a></li>
         <li><a href="#range-范围查询">range 范围查询</a></li>
         <li><a href="#term-查询找到完全匹配的">term 查询找到完全匹配的</a></li>
-        <li><a href="#复合查询-结合多个搜索条件">复合查询 结合多个搜索条件</a></li>
+        <li><a href="#结合多个搜索条件">结合多个搜索条件</a></li>
+      </ol>
+    </li>
+    <li><a href="#compound-queries-复合查询">Compound queries 复合查询</a>
+      <ol>
+        <li><a href="#boolean-查询">boolean 查询</a></li>
+        <li><a href="#boosting-query-提升查询">Boosting query 提升查询</a></li>
       </ol>
     </li>
   </ol>
@@ -339,7 +345,7 @@ name='description' content="Elasticsearch介绍 Elasticsearch是一个分布式�
 
 
                 <time class="article-time--reading">
-                    阅读时长: 5 分钟
+                    阅读时长: 6 分钟
                 </time>
             </div>
         
@@ -907,7 +913,7 @@ name='description' content="Elasticsearch介绍 Elasticsearch是一个分布式�
 </span></span><span class="line"><span class="cl">}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="复合查询-结合多个搜索条件">复合查询 结合多个搜索条件
+</div><h3 id="结合多个搜索条件">结合多个搜索条件
 </h3><p>你可以用<code>bool</code>查询组合多个查询子句，创建复杂的搜索。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1004,6 +1010,116 @@ name='description' content="Elasticsearch介绍 Elasticsearch是一个分布式�
 </span></span><span class="line"><span class="cl">          }
 </span></span><span class="line"><span class="cl">        }
 </span></span><span class="line"><span class="cl">      ]
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="compound-queries-复合查询">Compound queries 复合查询
+</h2><h3 id="boolean-查询">boolean 查询
+</h3><p>由一个或多个布尔子句构建，每个子句都带有类型出现。发生类型包括</p>
+<ul>
+<li>must</li>
+<li>must_not</li>
+<li>should</li>
+<li>filter</li>
+</ul>
+<p>其中<code>must</code>和<code>should</code>对得分有影响，不会被缓存。<code>must_not</code>和<code>filter</code>对得分没影响，会被缓存。</p>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">POST _search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;bool&#34; : {
+</span></span><span class="line"><span class="cl">      &#34;must&#34; : {
+</span></span><span class="line"><span class="cl">        &#34;term&#34; : { &#34;user.id&#34; : &#34;kimchy&#34; }
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">      &#34;filter&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;term&#34; : { &#34;tags&#34; : &#34;production&#34; }
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">      &#34;must_not&#34; : {
+</span></span><span class="line"><span class="cl">        &#34;range&#34; : {
+</span></span><span class="line"><span class="cl">          &#34;age&#34; : { &#34;gte&#34; : 10, &#34;lte&#34; : 20 }
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">      &#34;should&#34; : [
+</span></span><span class="line"><span class="cl">        { &#34;term&#34; : { &#34;tags&#34; : &#34;env1&#34; } },
+</span></span><span class="line"><span class="cl">        { &#34;term&#34; : { &#34;tags&#34; : &#34;deployed&#34; } }
+</span></span><span class="line"><span class="cl">      ],
+</span></span><span class="line"><span class="cl">      &#34;minimum_should_match&#34; : 1,
+</span></span><span class="line"><span class="cl">      &#34;boost&#34; : 1.0
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="boosting-query-提升查询">Boosting query 提升查询
+</h3><p>提升或者降低相关性得分，可以使用提升查询来降级某些文档，同时不排除它们在搜索结果中</p>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;boosting&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;positive&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;term&#34;: {
+</span></span><span class="line"><span class="cl">          &#34;text&#34;: &#34;apple&#34;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">      &#34;negative&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;term&#34;: {
+</span></span><span class="line"><span class="cl">          &#34;text&#34;: &#34;pie tart fruit crumble tree&#34;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">      &#34;negative_boost&#34;: 0.5
 </span></span><span class="line"><span class="cl">    }
 </span></span><span class="line"><span class="cl">  }
 </span></span><span class="line"><span class="cl">}
