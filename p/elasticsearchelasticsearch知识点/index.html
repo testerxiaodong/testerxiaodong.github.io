@@ -277,8 +277,11 @@ name='description' content="Elasticsearch介绍 Elasticsearch是一个分布式�
     </li>
     <li><a href="#compound-queries-复合查询">Compound queries 复合查询</a>
       <ol>
-        <li><a href="#boolean-查询">boolean 查询</a></li>
-        <li><a href="#boosting-query-提升查询">Boosting query 提升查询</a></li>
+        <li><a href="#boolean-query">boolean query</a></li>
+        <li><a href="#boosting-query">Boosting query</a></li>
+        <li><a href="#constant-score-query">Constant score query</a></li>
+        <li><a href="#disjunction-max-query">Disjunction max query</a></li>
+        <li><a href="#function-score-query">Function score query</a></li>
       </ol>
     </li>
   </ol>
@@ -1016,7 +1019,7 @@ name='description' content="Elasticsearch介绍 Elasticsearch是一个分布式�
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="compound-queries-复合查询">Compound queries 复合查询
-</h2><h3 id="boolean-查询">boolean 查询
+</h2><h3 id="boolean-query">boolean query
 </h3><p>由一个或多个布尔子句构建，每个子句都带有类型出现。发生类型包括</p>
 <ul>
 <li>must</li>
@@ -1080,8 +1083,8 @@ name='description' content="Elasticsearch介绍 Elasticsearch是一个分布式�
 </span></span><span class="line"><span class="cl">}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="boosting-query-提升查询">Boosting query 提升查询
-</h3><p>提升或者降低相关性得分，可以使用提升查询来降级某些文档，同时不排除它们在搜索结果中</p>
+</div><h3 id="boosting-query">Boosting query
+</h3><p>提升<code>positive</code>或者降低<code>negative</code>相关性得分，可以使用提升查询来降级某些文档，同时不排除它们在搜索结果中。</p>
 <p>示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1120,6 +1123,134 @@ name='description' content="Elasticsearch介绍 Elasticsearch是一个分布式�
 </span></span><span class="line"><span class="cl">        }
 </span></span><span class="line"><span class="cl">      },
 </span></span><span class="line"><span class="cl">      &#34;negative_boost&#34;: 0.5
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="constant-score-query">Constant score query
+</h3><p>对<code>filter query</code>进行封装，返回所有相关性评分等于<code>boost</code>参数值的匹配文档</p>
+<p>示例查询：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">GET</span> <span class="o">/</span><span class="n">_search</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;query&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;constant_score&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;filter&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;term&#34;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&#34;user.id&#34;</span><span class="p">:</span> <span class="s2">&#34;kimchy&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;boost&#34;</span><span class="p">:</span> <span class="mf">1.2</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="disjunction-max-query">Disjunction max query
+</h3><p>返回匹配一个或多个包裹查询的文档，称为查询子句或子句。</p>
+<p>如果返回的文档匹配多个查询子句，<code>dis_max query</code>将赋予该文档任何匹配子句中最高的相关性分数，并对任何额外的匹配子查询加成平局破坏分数。</p>
+<p>示例查询：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;dis_max&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;queries&#34;: [
+</span></span><span class="line"><span class="cl">        { &#34;term&#34;: { &#34;title&#34;: &#34;Quick pets&#34; } },
+</span></span><span class="line"><span class="cl">        { &#34;term&#34;: { &#34;body&#34;: &#34;Quick pets&#34; } }
+</span></span><span class="line"><span class="cl">      ],
+</span></span><span class="line"><span class="cl">      &#34;tie_breaker&#34;: 0.7
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查询参数：</p>
+<ul>
+<li>queries</li>
+<li>tie_breaker</li>
+</ul>
+<h3 id="function-score-query">Function score query
+</h3><p><code>function_score</code> 允许你修改查询检索到的文档分数</p>
+<p>使用<code>function_score</code>时，用户必须定义一个查询和一个或多个函数，这些函数为查询返回的每个文档计算新的分数</p>
+<p>查询示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /_search
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;query&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;function_score&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;query&#34;: { &#34;match_all&#34;: {} },
+</span></span><span class="line"><span class="cl">      &#34;boost&#34;: &#34;5&#34;,
+</span></span><span class="line"><span class="cl">      &#34;functions&#34;: [
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">          &#34;filter&#34;: { &#34;match&#34;: { &#34;test&#34;: &#34;bar&#34; } },
+</span></span><span class="line"><span class="cl">          &#34;random_score&#34;: {},
+</span></span><span class="line"><span class="cl">          &#34;weight&#34;: 23
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">        {
+</span></span><span class="line"><span class="cl">          &#34;filter&#34;: { &#34;match&#34;: { &#34;test&#34;: &#34;cat&#34; } },
+</span></span><span class="line"><span class="cl">          &#34;weight&#34;: 42
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      ],
+</span></span><span class="line"><span class="cl">      &#34;max_boost&#34;: 42,
+</span></span><span class="line"><span class="cl">      &#34;score_mode&#34;: &#34;max&#34;,
+</span></span><span class="line"><span class="cl">      &#34;boost_mode&#34;: &#34;multiply&#34;,
+</span></span><span class="line"><span class="cl">      &#34;min_score&#34;: 42
 </span></span><span class="line"><span class="cl">    }
 </span></span><span class="line"><span class="cl">  }
 </span></span><span class="line"><span class="cl">}
@@ -1207,7 +1338,7 @@ name='description' content="Elasticsearch介绍 Elasticsearch是一个分布式�
         
             2023 - 
         
-        2025 Cengdong
+        2026 Cengdong
     </section>
     
     <section class="powerby">
