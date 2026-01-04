@@ -15,79 +15,15 @@
         <guid>https://www.cengdong.store/p/androidandroid%E7%BC%96%E7%A8%8B/</guid>
         <description>&lt;h2 id=&#34;为什么要写这篇博客&#34;&gt;为什么要写这篇博客
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;对移动应用测试感兴趣&lt;/li&gt;
-&lt;li&gt;在移动应用除功能测试之外了解的很少&lt;/li&gt;
-&lt;li&gt;目前工作的移动应用性能很差，想进行优化&lt;/li&gt;
+&lt;li&gt;对移动应用测试感兴趣，想要提升移动端&lt;code&gt;代码走读&lt;/code&gt;能力&lt;/li&gt;
+&lt;li&gt;建设&lt;code&gt;Appium&lt;/code&gt;/&lt;code&gt;Espresso&lt;/code&gt;自动化测试能力&lt;/li&gt;
+&lt;li&gt;移动应用&lt;code&gt;性能测试&lt;/code&gt;与&lt;code&gt;调优&lt;/code&gt;的能力&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;kotlin基础知识&#34;&gt;Kotlin基础知识
-&lt;/h3&gt;&lt;h4 id=&#34;kotlin类型&#34;&gt;kotlin类型
-&lt;/h4&gt;&lt;p&gt;基本类型：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;数字
-&lt;ul&gt;
-&lt;li&gt;Byte&lt;/li&gt;
-&lt;li&gt;Short&lt;/li&gt;
-&lt;li&gt;Int(默认)&lt;/li&gt;
-&lt;li&gt;Long(2L)&lt;/li&gt;
-&lt;li&gt;Float(2.5f)&lt;/li&gt;
-&lt;li&gt;Double(默认)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;无符号整型
-&lt;ul&gt;
-&lt;li&gt;UByte&lt;/li&gt;
-&lt;li&gt;UShort&lt;/li&gt;
-&lt;li&gt;UInt&lt;/li&gt;
-&lt;li&gt;ULong&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;布尔
-&lt;ul&gt;
-&lt;li&gt;true&lt;/li&gt;
-&lt;li&gt;false&lt;/li&gt;
-&lt;li&gt;支持逻辑运算符(&amp;amp;&amp;amp; || !)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;字符
-&lt;ul&gt;
-&lt;li&gt;单引号&lt;/li&gt;
-&lt;li&gt;转义字符&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;字符串
-&lt;ul&gt;
-&lt;li&gt;双引号&lt;/li&gt;
-&lt;li&gt;下标遍历&lt;/li&gt;
-&lt;li&gt;不可变&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;数组
-&lt;ul&gt;
-&lt;li&gt;长度不可变&lt;/li&gt;
-&lt;li&gt;创建数组(arrayOf/arrayOfNulls/emptyArray，加上类型与长度)&lt;/li&gt;
-&lt;li&gt;比较数组(contentEquals/contentDeepEquals)&lt;/li&gt;
-&lt;li&gt;数组api(sum/shuffle)&lt;/li&gt;
-&lt;li&gt;转换为集合(toList/toSet/toMap)&lt;/li&gt;
-&lt;li&gt;原生类型数组&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;类型检测与类型转换：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;kotlin不支持隐式转换&lt;/li&gt;
-&lt;li&gt;支持编辑器智能转换
-&lt;ul&gt;
-&lt;li&gt;类型推断(is/!is)&lt;/li&gt;
-&lt;li&gt;流程控制&lt;/li&gt;
-&lt;li&gt;逻辑运算符&lt;/li&gt;
-&lt;li&gt;内联函数&lt;/li&gt;
-&lt;li&gt;异常处理&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;kotlin流程控制&#34;&gt;kotlin流程控制
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;if表达式&lt;/li&gt;
+&lt;h2 id=&#34;怎么做&#34;&gt;怎么做
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;了解&lt;code&gt;jetpack compose&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;完成&lt;code&gt;Google&lt;/code&gt;官方的&lt;code&gt;Android课程&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;找到一个&lt;code&gt;开源安卓项目&lt;/code&gt;，搭建自动化测试框架并编写用例，覆盖主要功能&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>

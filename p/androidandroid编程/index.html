@@ -2,17 +2,17 @@
 <html lang="zh-cn" dir="ltr">
     <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" /><meta
-name='description' content="为什么要写这篇博客 对移动应用测试感兴趣 在移动应用除功能测试之外了解的很少 目前工作的移动应用性能很差，想进行优化 Kotlin基础知识 kotlin类型 基本类型：\n数字 Byte Short Int(默认) Long(2L) Float(2.5f) Double(默认) 无符号整型 UByte UShort UInt ULong 布尔 true false 支持逻辑运算符(&amp;&amp; || !) 字符 单引号 转义字符 字符串 双引号 下标遍历 不可变 数组 长度不可变 创建数组(arrayOf/arrayOfNulls/emptyArray，加上类型与长度) 比较数组(contentEquals/contentDeepEquals) 数组api(sum/shuffle) 转换为集合(toList/toSet/toMap) 原生类型数组 类型检测与类型转换：\n"> <title>【Android】Android编程</title>
+name='description' content="为什么要写这篇博客 对移动应用测试感兴趣，想要提升移动端代码走读能力 建设Appium/Espresso自动化测试能力 移动应用性能测试与调优的能力 怎么做 了解jetpack compose 完成Google官方的Android课程 找到一个开源安卓项目，搭建自动化测试框架并编写用例，覆盖主要功能 "> <title>【Android】Android编程</title>
 
 <link rel="canonical" href="https://www.cengdong.store/p/androidandroid%E7%BC%96%E7%A8%8B/" />
 
 <link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="【Android】Android编程">
-<meta property='og:description' content="为什么要写这篇博客 对移动应用测试感兴趣 在移动应用除功能测试之外了解的很少 目前工作的移动应用性能很差，想进行优化 Kotlin基础知识 kotlin类型 基本类型：\n数字 Byte Short Int(默认) Long(2L) Float(2.5f) Double(默认) 无符号整型 UByte UShort UInt ULong 布尔 true false 支持逻辑运算符(&amp;&amp; || !) 字符 单引号 转义字符 字符串 双引号 下标遍历 不可变 数组 长度不可变 创建数组(arrayOf/arrayOfNulls/emptyArray，加上类型与长度) 比较数组(contentEquals/contentDeepEquals) 数组api(sum/shuffle) 转换为集合(toList/toSet/toMap) 原生类型数组 类型检测与类型转换：\n">
+<meta property='og:description' content="为什么要写这篇博客 对移动应用测试感兴趣，想要提升移动端代码走读能力 建设Appium/Espresso自动化测试能力 移动应用性能测试与调优的能力 怎么做 了解jetpack compose 完成Google官方的Android课程 找到一个开源安卓项目，搭建自动化测试框架并编写用例，覆盖主要功能 ">
 <meta property='og:url' content='https://www.cengdong.store/p/androidandroid%E7%BC%96%E7%A8%8B/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Android' /><meta property='article:published_time' content='2025-08-31T23:42:32&#43;08:00'/><meta property='article:modified_time' content='2025-08-31T23:42:32&#43;08:00'/>
 <meta name="twitter:title" content="【Android】Android编程">
-<meta name="twitter:description" content="为什么要写这篇博客 对移动应用测试感兴趣 在移动应用除功能测试之外了解的很少 目前工作的移动应用性能很差，想进行优化 Kotlin基础知识 kotlin类型 基本类型：\n数字 Byte Short Int(默认) Long(2L) Float(2.5f) Double(默认) 无符号整型 UByte UShort UInt ULong 布尔 true false 支持逻辑运算符(&amp;&amp; || !) 字符 单引号 转义字符 字符串 双引号 下标遍历 不可变 数组 长度不可变 创建数组(arrayOf/arrayOfNulls/emptyArray，加上类型与长度) 比较数组(contentEquals/contentDeepEquals) 数组api(sum/shuffle) 转换为集合(toList/toSet/toMap) 原生类型数组 类型检测与类型转换：\n">
+<meta name="twitter:description" content="为什么要写这篇博客 对移动应用测试感兴趣，想要提升移动端代码走读能力 建设Appium/Espresso自动化测试能力 移动应用性能测试与调优的能力 怎么做 了解jetpack compose 完成Google官方的Android课程 找到一个开源安卓项目，搭建自动化测试框架并编写用例，覆盖主要功能 ">
     </head>
     <body class="
     article-page
@@ -245,16 +245,8 @@ name='description' content="为什么要写这篇博客 对移动应用测试感
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#为什么要写这篇博客">为什么要写这篇博客</a>
-      <ol>
-        <li><a href="#kotlin基础知识">Kotlin基础知识</a>
-          <ol>
-            <li><a href="#kotlin类型">kotlin类型</a></li>
-            <li><a href="#kotlin流程控制">kotlin流程控制</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
+    <li><a href="#为什么要写这篇博客">为什么要写这篇博客</a></li>
+    <li><a href="#怎么做">怎么做</a></li>
   </ol>
 </nav>
         </div>
@@ -336,79 +328,15 @@ name='description' content="为什么要写这篇博客 对移动应用测试感
     
     <h2 id="为什么要写这篇博客">为什么要写这篇博客
 </h2><ul>
-<li>对移动应用测试感兴趣</li>
-<li>在移动应用除功能测试之外了解的很少</li>
-<li>目前工作的移动应用性能很差，想进行优化</li>
+<li>对移动应用测试感兴趣，想要提升移动端<code>代码走读</code>能力</li>
+<li>建设<code>Appium</code>/<code>Espresso</code>自动化测试能力</li>
+<li>移动应用<code>性能测试</code>与<code>调优</code>的能力</li>
 </ul>
-<h3 id="kotlin基础知识">Kotlin基础知识
-</h3><h4 id="kotlin类型">kotlin类型
-</h4><p>基本类型：</p>
-<ul>
-<li>数字
-<ul>
-<li>Byte</li>
-<li>Short</li>
-<li>Int(默认)</li>
-<li>Long(2L)</li>
-<li>Float(2.5f)</li>
-<li>Double(默认)</li>
-</ul>
-</li>
-<li>无符号整型
-<ul>
-<li>UByte</li>
-<li>UShort</li>
-<li>UInt</li>
-<li>ULong</li>
-</ul>
-</li>
-<li>布尔
-<ul>
-<li>true</li>
-<li>false</li>
-<li>支持逻辑运算符(&amp;&amp; || !)</li>
-</ul>
-</li>
-<li>字符
-<ul>
-<li>单引号</li>
-<li>转义字符</li>
-</ul>
-</li>
-<li>字符串
-<ul>
-<li>双引号</li>
-<li>下标遍历</li>
-<li>不可变</li>
-</ul>
-</li>
-<li>数组
-<ul>
-<li>长度不可变</li>
-<li>创建数组(arrayOf/arrayOfNulls/emptyArray，加上类型与长度)</li>
-<li>比较数组(contentEquals/contentDeepEquals)</li>
-<li>数组api(sum/shuffle)</li>
-<li>转换为集合(toList/toSet/toMap)</li>
-<li>原生类型数组</li>
-</ul>
-</li>
-</ul>
-<p>类型检测与类型转换：</p>
-<ul>
-<li>kotlin不支持隐式转换</li>
-<li>支持编辑器智能转换
-<ul>
-<li>类型推断(is/!is)</li>
-<li>流程控制</li>
-<li>逻辑运算符</li>
-<li>内联函数</li>
-<li>异常处理</li>
-</ul>
-</li>
-</ul>
-<h4 id="kotlin流程控制">kotlin流程控制
-</h4><ul>
-<li>if表达式</li>
+<h2 id="怎么做">怎么做
+</h2><ul>
+<li>了解<code>jetpack compose</code></li>
+<li>完成<code>Google</code>官方的<code>Android课程</code></li>
+<li>找到一个<code>开源安卓项目</code>，搭建自动化测试框架并编写用例，覆盖主要功能</li>
 </ul>
 
 </section>

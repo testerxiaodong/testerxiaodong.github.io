@@ -15,42 +15,38 @@
         <guid>https://www.cengdong.store/p/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/</guid>
         <description>&lt;h2 id=&#34;好的习惯&#34;&gt;好的习惯
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;测试用例的编写是重要的能力，需要专项提升(一个是测试用例设计方法，一个是全面了解前/后端技术方案)&lt;/li&gt;
-&lt;li&gt;测试发现与自己预期不一样的地方，先问是什么，再问是不是 bug，最后还要试着定位到底是谁的问题&lt;/li&gt;
-&lt;li&gt;考虑测试用例的时候不要仅仅考虑功能用例，还要考虑性能安全性等问题&lt;/li&gt;
-&lt;li&gt;在验证一个功能/回归一个 bug 时，要一次性验证所有的功能(相关所有平台)，防止重复返工&lt;/li&gt;
-&lt;li&gt;测试工程中要思考需求实现是不是合理&lt;/li&gt;
-&lt;li&gt;在测试环境进行的验证可能在生产环境不一样，因为测试环境架构与生产不一致（生产可能是集群），所以测试用例也要考虑到这种情况&lt;/li&gt;
-&lt;li&gt;在需求评审/测试的阶段首先要确定 UI 交互的问题&lt;/li&gt;
-&lt;li&gt;零碎的时间主要用于英语学习而不是技术学习&lt;/li&gt;
+&lt;li&gt;测试用例的编写是&lt;code&gt;最重要的能力&lt;/code&gt;，需要专项提升&lt;/li&gt;
+&lt;li&gt;测试发现与自己预期不一样的地方，先&lt;code&gt;记录&lt;/code&gt;，再问是不是 bug，还要定位到底是谁的问题&lt;/li&gt;
+&lt;li&gt;考虑测试用例的时候不要仅仅考虑&lt;code&gt;功能用例&lt;/code&gt;，还要考虑&lt;code&gt;性能/安全性&lt;/code&gt;等问题&lt;/li&gt;
+&lt;li&gt;在验证一个功能/回归一个 bug 时，要一次性验证所有的&lt;code&gt;相关功能&lt;/code&gt;，防止重复返工&lt;/li&gt;
+&lt;li&gt;测试工程中要思考需求实现&lt;code&gt;是不是合理&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;测试环境进行的验证可能在生产环境跑不通，因为&lt;code&gt;架构不一致&lt;/code&gt;，所以测试用例也要考虑&lt;/li&gt;
+&lt;li&gt;在需求评审/测试的阶段首先要确定&lt;code&gt;UI交互&lt;/code&gt;的问题&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;自动化进阶&#34;&gt;自动化进阶
+&lt;h2 id=&#34;工具开发能力&#34;&gt;工具开发能力
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;把一些重复的工作通过自动化解决&lt;/li&gt;
-&lt;li&gt;造数平台&lt;/li&gt;
+&lt;li&gt;把一些重复的工作通过&lt;code&gt;自动化脚本&lt;/code&gt;解决&lt;/li&gt;
+&lt;li&gt;造数平台(&lt;code&gt;fastapi&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;挡板(&lt;code&gt;mitmproxy&lt;/code&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;sql-进阶&#34;&gt;sql 进阶
+&lt;h2 id=&#34;sql编写能力&#34;&gt;sql编写能力
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;常用 sql 在 navicat 中保存成查询&lt;/li&gt;
-&lt;li&gt;业务需要的特殊数据用 sql 定期查询&lt;/li&gt;
+&lt;li&gt;常用&lt;code&gt;sql&lt;/code&gt;在&lt;code&gt;navicat&lt;/code&gt;中保存成查询&lt;/li&gt;
+&lt;li&gt;业务需要的特殊数据用&lt;code&gt;sql&lt;/code&gt;定期查询&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;线上回归&#34;&gt;线上回归
 &lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;接口自动化提效&lt;/li&gt;
 &lt;li&gt;基本功能需要过一遍&lt;/li&gt;
 &lt;li&gt;所有可能影响的功能都需要点一点&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;如何快速搞懂业务&#34;&gt;如何快速搞懂业务
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;平常多用功能&lt;/li&gt;
-&lt;li&gt;查看接口/接口文档(如果有的话)&lt;/li&gt;
-&lt;li&gt;查看数据库表/字段的注释&lt;/li&gt;
-&lt;li&gt;问同事的问题使用 typora 记录&lt;/li&gt;
-&lt;li&gt;组长不在的时候，快速找到业务负责人，问清楚有哪些数据库表，怎么进行测试&lt;/li&gt;
+&lt;li&gt;平常&lt;code&gt;多用功能&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;查看接口/接口文档，&lt;code&gt;抓包&lt;/code&gt;进行分析&lt;/li&gt;
+&lt;li&gt;查看数据库表/字段的&lt;code&gt;注释&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;拉取前后端代码进行&lt;code&gt;走读/review&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;副业&#34;&gt;副业
-&lt;/h2&gt;&lt;p&gt;最近有想法探索一点副业的方向，测试在业务开发中的地位太低了，而且互联网也确实不是很长久。准备搞短视频吧，记录生活玩玩而已。&lt;/p&gt;
-&lt;p&gt;方向就是互联网梗相关的，因为自己也喜欢玩梗&lt;/p&gt;
-&lt;p&gt;首先需要的就是视频剪辑能力，国内还是选择抖音吧&lt;/p&gt;
 &lt;h2 id=&#34;工作中需要的能力&#34;&gt;工作中需要的能力
 &lt;/h2&gt;&lt;h3 id=&#34;测试用例设计的高效以及功能覆盖率&#34;&gt;测试用例设计的高效以及功能覆盖率
 &lt;/h3&gt;&lt;ul&gt;
@@ -66,8 +62,10 @@
 &lt;/ul&gt;
 &lt;h3 id=&#34;解决问题的能力&#34;&gt;解决问题的能力
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;作为一名遇到问题首先想到的是记录(因为复现的成本比较高)&lt;/li&gt;
-&lt;li&gt;不能有任何侥幸的想法，还有就是接口自动化吧&lt;/li&gt;
+&lt;li&gt;遇到问题首先想到的是&lt;code&gt;记录&lt;/code&gt;(因为复现的成本比较高)&lt;/li&gt;
+&lt;li&gt;不能有任何侥幸心理&lt;/li&gt;
+&lt;li&gt;可观测性建设与能力提升(&lt;code&gt;logs&lt;/code&gt;/&lt;code&gt;traces&lt;/code&gt;/&lt;code&gt;metrics&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;code review&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>

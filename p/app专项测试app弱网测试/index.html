@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><meta charset="utf-8" />
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" /><meta
 name='description' content="测试场景设计 场景 带宽限制 延迟 丢包率 判定标准 建议优化措施 2G 网络 ≤ 250 kbps 300–500 ms 5–10% - 页面首屏时间 ≤ 10s\n- 主要接口响应 ≤ 5s\n- 核心功能可用率 ≥ 95% - 图片懒加载\n- 压缩资源（JS/CSS/图片）\n- 接口返回精简数据\n- 异步加载非核心内容 弱 3G 网络 400–700 kbps 150–300 ms 2–5% - 页面首屏时间 ≤ 6s\n- 核心接口响应 ≤ 3s\n- 核心功能可用率 ≥ 98% - 启用缓存策略\n- 使用 CDN 加速\n- 减少请求数量\n- 使用骨架屏 普通 4G 网络 1–4 Mbps 50–150 ms 1–2% - 页面首屏时间 ≤ 3s\n- 接口响应 ≤ 1s\n- 核心功能可用率 ≥ 99% - 压缩资源\n- 合理预加载\n- 接口优化（减少 SQL 查询复杂度） 高延迟网络 网络正常 延迟 ≥ 300 ms ≤ 2% - 页面首屏时间 ≤ 2×正常网络\n- 接口响应延迟 ≤ 2×正常\n- 无明显卡顿 - 接口异步加载\n- 数据缓存\n- 合理降级（低质量图片、减少动画） 高丢包网络 网络正常 延迟正常 丢包率 ≥ 5% - 页面加载成功率 ≥ 95%\n- 核心功能可用率 ≥ 98%\n- 重试机制正常 - 接口幂等化\n- 重试策略（指数退避）\n- 使用稳定协议（HTTP/2） 离线或弱信号 无网络 / 极低带宽 极高延迟 丢包率高 - 应用不崩溃\n- 可缓存核心功能\n- 给用户提示网络不可用 - 离线缓存（Service Worker / localStorage）\n- 数据同步机制\n- 提示用户网络状态 测试执行流程 确定测试目标 页面加载性能 / 核心功能（登录、列表、下单、支付） / 交互流畅度 选择弱网模拟工具 H5 页面 → Chrome DevTools Throttling App（Android/iOS）→ Network Link Conditioner / Charles 配置网络条件 按对照表选择带宽、延迟、丢包率 执行测试 记录页面首屏时间（FCP / LCP） 测试关键接口响应时间 检查功能可用性（是否能正常执行核心操作） 检查 UI 流畅度（FPS / 卡顿情况） 对照判定标准 符合对照表中的判定标准即为“弱网测试通过” 输出报告 网络条件配置 测试结果（加载时间、接口耗时、错误率、可用性） 优化建议 "> <title>【App专项测试】App弱网测试</title>
 
-<link rel="canonical" href="https://www.cengdong.store/p/app%E4%B8%93%E9%A1%B9%E6%B5%8B%E8%AF%95app%E5%BC%B1%E7%BD%91%E6%B5%8B%E8%AF%95/" />
+<link rel="canonical" href="http://localhost:1313/p/app%E4%B8%93%E9%A1%B9%E6%B5%8B%E8%AF%95app%E5%BC%B1%E7%BD%91%E6%B5%8B%E8%AF%95/" />
 
 <link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="【App专项测试】App弱网测试">
 <meta property='og:description' content="测试场景设计 场景 带宽限制 延迟 丢包率 判定标准 建议优化措施 2G 网络 ≤ 250 kbps 300–500 ms 5–10% - 页面首屏时间 ≤ 10s\n- 主要接口响应 ≤ 5s\n- 核心功能可用率 ≥ 95% - 图片懒加载\n- 压缩资源（JS/CSS/图片）\n- 接口返回精简数据\n- 异步加载非核心内容 弱 3G 网络 400–700 kbps 150–300 ms 2–5% - 页面首屏时间 ≤ 6s\n- 核心接口响应 ≤ 3s\n- 核心功能可用率 ≥ 98% - 启用缓存策略\n- 使用 CDN 加速\n- 减少请求数量\n- 使用骨架屏 普通 4G 网络 1–4 Mbps 50–150 ms 1–2% - 页面首屏时间 ≤ 3s\n- 接口响应 ≤ 1s\n- 核心功能可用率 ≥ 99% - 压缩资源\n- 合理预加载\n- 接口优化（减少 SQL 查询复杂度） 高延迟网络 网络正常 延迟 ≥ 300 ms ≤ 2% - 页面首屏时间 ≤ 2×正常网络\n- 接口响应延迟 ≤ 2×正常\n- 无明显卡顿 - 接口异步加载\n- 数据缓存\n- 合理降级（低质量图片、减少动画） 高丢包网络 网络正常 延迟正常 丢包率 ≥ 5% - 页面加载成功率 ≥ 95%\n- 核心功能可用率 ≥ 98%\n- 重试机制正常 - 接口幂等化\n- 重试策略（指数退避）\n- 使用稳定协议（HTTP/2） 离线或弱信号 无网络 / 极低带宽 极高延迟 丢包率高 - 应用不崩溃\n- 可缓存核心功能\n- 给用户提示网络不可用 - 离线缓存（Service Worker / localStorage）\n- 数据同步机制\n- 提示用户网络状态 测试执行流程 确定测试目标 页面加载性能 / 核心功能（登录、列表、下单、支付） / 交互流畅度 选择弱网模拟工具 H5 页面 → Chrome DevTools Throttling App（Android/iOS）→ Network Link Conditioner / Charles 配置网络条件 按对照表选择带宽、延迟、丢包率 执行测试 记录页面首屏时间（FCP / LCP） 测试关键接口响应时间 检查功能可用性（是否能正常执行核心操作） 检查 UI 流畅度（FPS / 卡顿情况） 对照判定标准 符合对照表中的判定标准即为“弱网测试通过” 输出报告 网络条件配置 测试结果（加载时间、接口耗时、错误率、可用性） 优化建议 ">
-<meta property='og:url' content='https://www.cengdong.store/p/app%E4%B8%93%E9%A1%B9%E6%B5%8B%E8%AF%95app%E5%BC%B1%E7%BD%91%E6%B5%8B%E8%AF%95/'>
+<meta property='og:url' content='http://localhost:1313/p/app%E4%B8%93%E9%A1%B9%E6%B5%8B%E8%AF%95app%E5%BC%B1%E7%BD%91%E6%B5%8B%E8%AF%95/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-10T11:26:22&#43;08:00'/><meta property='article:modified_time' content='2025-10-10T11:26:22&#43;08:00'/>
 <meta name="twitter:title" content="【App专项测试】App弱网测试">
@@ -597,7 +597,7 @@ name='description' content="测试场景设计 场景 带宽限制 延迟 丢包
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.8b28c81db47d49596ccc9b8c3794e6290e5abea98efd149dbdb1c7a9df80de60.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Postman on cengdong的技术博客</title>
-        <link>https://www.cengdong.store/categories/postman/</link>
+        <link>http://localhost:1313/categories/postman/</link>
         <description>Recent content in Postman on cengdong的技术博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Wed, 30 Apr 2025 10:47:52 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/postman/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 30 Apr 2025 10:47:52 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/postman/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【Postman】Postman学习笔记</title>
-        <link>https://www.cengdong.store/p/postmanpostman%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <link>http://localhost:1313/p/postmanpostman%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <pubDate>Wed, 30 Apr 2025 10:47:52 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/postmanpostman%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+        <guid>http://localhost:1313/p/postmanpostman%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
         <description>&lt;h2 id=&#34;什么是-postman&#34;&gt;什么是 Postman
 &lt;/h2&gt;&lt;p&gt;Postman 是一个用于使用、构建和测试 API 的平台。您可以使用 Postman 桌面应用来支持 API 生命周期的每个部分：&lt;/p&gt;
 &lt;ul&gt;
@@ -32,7 +32,7 @@
 &lt;li&gt;点击发送即可&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;成功发送请求之后你将看到&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.cengdong.store/images/%e5%8f%91%e9%80%81%e7%ac%ac%e4%b8%80%e4%b8%aa%e8%af%b7%e6%b1%82.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/%e5%8f%91%e9%80%81%e7%ac%ac%e4%b8%80%e4%b8%aa%e8%af%b7%e6%b1%82.png&#34;
 	
 	
 	
@@ -56,7 +56,7 @@
 &lt;li&gt;在请求中，选择脚本选项卡，然后选择后响应 。&lt;/li&gt;
 &lt;li&gt;选择代码编辑器右下角的 Code icon Snippets ，然后选择 Status code: Code is 200 。这样就会输入以下测试代码：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.cengdong.store/images/%e7%bc%96%e5%86%99%e7%ac%ac%e4%b8%80%e4%b8%aa%e6%b5%8b%e8%af%95.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/%e7%bc%96%e5%86%99%e7%ac%ac%e4%b8%80%e4%b8%aa%e6%b5%8b%e8%af%95.png&#34;
 	
 	
 	

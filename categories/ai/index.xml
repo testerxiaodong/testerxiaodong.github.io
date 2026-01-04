@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>AI on cengdong的技术博客</title>
-        <link>https://www.cengdong.store/categories/ai/</link>
+        <link>http://localhost:1313/categories/ai/</link>
         <description>Recent content in AI on cengdong的技术博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Sun, 01 Jun 2025 23:09:49 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/ai/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 01 Jun 2025 23:09:49 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/ai/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【AI编程】AI编程技巧</title>
-        <link>https://www.cengdong.store/p/ai%E7%BC%96%E7%A8%8Bai%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/</link>
+        <link>http://localhost:1313/p/ai%E7%BC%96%E7%A8%8Bai%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/</link>
         <pubDate>Sun, 01 Jun 2025 23:09:49 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/ai%E7%BC%96%E7%A8%8Bai%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/</guid>
+        <guid>http://localhost:1313/p/ai%E7%BC%96%E7%A8%8Bai%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/</guid>
         <description>&lt;h2 id=&#34;为什么要写这个&#34;&gt;为什么要写这个
 &lt;/h2&gt;&lt;p&gt;目前来说 AI 编程的功能越来越强大，已经可以解决一些简单的项目问题&lt;/p&gt;
 &lt;p&gt;短时间来说程序员不会被 AI 替代，因为 AI 有幻觉会胡乱回答，而且写出的代码有 bug 的概率不低&lt;/p&gt;

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>CSS on cengdong的技术博客</title>
-        <link>https://www.cengdong.store/tags/css/</link>
+        <link>http://localhost:1313/tags/css/</link>
         <description>Recent content in CSS on cengdong的技术博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Thu, 28 Nov 2024 22:09:23 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/tags/css/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 28 Nov 2024 22:09:23 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/css/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【CSS】css属性计算过程</title>
-        <link>https://www.cengdong.store/p/csscss%E5%B1%9E%E6%80%A7%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B/</link>
+        <link>http://localhost:1313/p/csscss%E5%B1%9E%E6%80%A7%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B/</link>
         <pubDate>Thu, 28 Nov 2024 22:09:23 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/csscss%E5%B1%9E%E6%80%A7%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B/</guid>
+        <guid>http://localhost:1313/p/csscss%E5%B1%9E%E6%80%A7%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B/</guid>
         <description>&lt;h3 id=&#34;css-属性计算过程&#34;&gt;CSS 属性计算过程
 &lt;/h3&gt;&lt;p&gt;CSS 属性计算过程是指元素从所有 CSS 属性都没有值到所有 CSS 属性都有值，中间经历的过程。&lt;/p&gt;
 &lt;p&gt;CSS 属性计算过程可以分为以下几个步骤：&lt;/p&gt;
@@ -39,10 +39,10 @@
         </item>
         <item>
         <title>【CSS】css层叠规则</title>
-        <link>https://www.cengdong.store/p/csscss%E5%B1%82%E5%8F%A0%E8%A7%84%E5%88%99/</link>
+        <link>http://localhost:1313/p/csscss%E5%B1%82%E5%8F%A0%E8%A7%84%E5%88%99/</link>
         <pubDate>Thu, 28 Nov 2024 21:56:37 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/csscss%E5%B1%82%E5%8F%A0%E8%A7%84%E5%88%99/</guid>
+        <guid>http://localhost:1313/p/csscss%E5%B1%82%E5%8F%A0%E8%A7%84%E5%88%99/</guid>
         <description>&lt;h3 id=&#34;层叠规则&#34;&gt;层叠规则
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;比较重要性&lt;/li&gt;
@@ -71,10 +71,10 @@
         </item>
         <item>
         <title>【前端】rem布局</title>
-        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFrem%E5%B8%83%E5%B1%80/</link>
+        <link>http://localhost:1313/p/%E5%89%8D%E7%AB%AFrem%E5%B8%83%E5%B1%80/</link>
         <pubDate>Sat, 20 Apr 2024 05:34:54 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFrem%E5%B8%83%E5%B1%80/</guid>
+        <guid>http://localhost:1313/p/%E5%89%8D%E7%AB%AFrem%E5%B8%83%E5%B1%80/</guid>
         <description>&lt;h2 id=&#34;rem-基础&#34;&gt;rem 基础
 &lt;/h2&gt;&lt;h3 id=&#34;rem-的优点&#34;&gt;rem 的优点
 &lt;/h3&gt;&lt;ul&gt;
@@ -337,10 +337,10 @@
         </item>
         <item>
         <title>【前端】移动端布局技巧</title>
-        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7/</link>
+        <link>http://localhost:1313/p/%E5%89%8D%E7%AB%AF%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7/</link>
         <pubDate>Thu, 18 Apr 2024 05:04:57 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7/</guid>
+        <guid>http://localhost:1313/p/%E5%89%8D%E7%AB%AF%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7/</guid>
         <description>&lt;h2 id=&#34;移动端基础&#34;&gt;移动端基础
 &lt;/h2&gt;&lt;h3 id=&#34;浏览器现状&#34;&gt;浏览器现状
 &lt;/h3&gt;&lt;p&gt;兼容&lt;code&gt;移动端主流浏览器&lt;/code&gt;，处理&lt;code&gt;Webkit内核浏览器&lt;/code&gt;即可&lt;/p&gt;
@@ -787,10 +787,10 @@
         </item>
         <item>
         <title>【前端】CSS3动画</title>
-        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss3%E5%8A%A8%E7%94%BB/</link>
+        <link>http://localhost:1313/p/%E5%89%8D%E7%AB%AFcss3%E5%8A%A8%E7%94%BB/</link>
         <pubDate>Thu, 18 Apr 2024 03:15:42 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss3%E5%8A%A8%E7%94%BB/</guid>
+        <guid>http://localhost:1313/p/%E5%89%8D%E7%AB%AFcss3%E5%8A%A8%E7%94%BB/</guid>
         <description>&lt;h2 id=&#34;2d-变换&#34;&gt;2D 变换
 &lt;/h2&gt;&lt;p&gt;2D 变换有三种形式：&lt;/p&gt;
 &lt;ul&gt;
@@ -967,10 +967,10 @@
         </item>
         <item>
         <title>【前端】Web端网页项目实战技巧</title>
-        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFweb%E7%AB%AF%E7%BD%91%E9%A1%B5%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/</link>
+        <link>http://localhost:1313/p/%E5%89%8D%E7%AB%AFweb%E7%AB%AF%E7%BD%91%E9%A1%B5%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/</link>
         <pubDate>Tue, 09 Apr 2024 09:04:08 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFweb%E7%AB%AF%E7%BD%91%E9%A1%B5%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/</guid>
+        <guid>http://localhost:1313/p/%E5%89%8D%E7%AB%AFweb%E7%AB%AF%E7%BD%91%E9%A1%B5%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E6%8A%80%E5%B7%A7/</guid>
         <description>&lt;h2 id=&#34;模块化开发&#34;&gt;模块化开发
 &lt;/h2&gt;&lt;h3 id=&#34;项目目录结构&#34;&gt;项目目录结构
 &lt;/h3&gt;&lt;p&gt;一个好的项目目录结构清晰：&lt;/p&gt;
@@ -1047,10 +1047,10 @@
         </item>
         <item>
         <title>【前端】HTML5CSS3</title>
-        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFhtml5css3/</link>
+        <link>http://localhost:1313/p/%E5%89%8D%E7%AB%AFhtml5css3/</link>
         <pubDate>Sun, 07 Apr 2024 19:32:51 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFhtml5css3/</guid>
+        <guid>http://localhost:1313/p/%E5%89%8D%E7%AB%AFhtml5css3/</guid>
         <description>&lt;h2 id=&#34;html5-新特性&#34;&gt;HTML5 新特性
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;新的标签&lt;/li&gt;
@@ -1292,10 +1292,10 @@
         </item>
         <item>
         <title>【前端】网页布局常用技巧</title>
-        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
+        <link>http://localhost:1313/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
         <pubDate>Sat, 06 Apr 2024 18:33:34 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
+        <guid>http://localhost:1313/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
         <description>&lt;h2 id=&#34;精灵图&#34;&gt;精灵图
 &lt;/h2&gt;&lt;h3 id=&#34;为什么需要精灵图技术&#34;&gt;为什么需要精灵图技术
 &lt;/h3&gt;&lt;p&gt;很多小图片，每一个小图片请求一次，浪费网络 IO&lt;/p&gt;
@@ -1612,10 +1612,10 @@
         </item>
         <item>
         <title>【前端】网页布局</title>
-        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/</link>
+        <link>http://localhost:1313/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/</link>
         <pubDate>Thu, 04 Apr 2024 19:32:48 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/</guid>
+        <guid>http://localhost:1313/p/%E5%89%8D%E7%AB%AF%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80/</guid>
         <description>&lt;h2 id=&#34;网页布局入门&#34;&gt;网页布局入门
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;网页布局&lt;/code&gt;的本质就是通过&lt;code&gt;CSS&lt;/code&gt;把&lt;code&gt;盒子&lt;/code&gt;摆到相应位置。&lt;/p&gt;
 &lt;h3 id=&#34;网页布局方式&#34;&gt;网页布局方式
@@ -1822,10 +1822,10 @@
         </item>
         <item>
         <title>【前端】CSS盒子模型</title>
-        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/</link>
+        <link>http://localhost:1313/p/%E5%89%8D%E7%AB%AFcss%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/</link>
         <pubDate>Wed, 03 Apr 2024 21:32:09 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/</guid>
+        <guid>http://localhost:1313/p/%E5%89%8D%E7%AB%AFcss%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/</guid>
         <description>&lt;h2 id=&#34;盒子模型组成&#34;&gt;盒子模型组成
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;盒子模型&lt;/code&gt;有以下四个成员：&lt;/p&gt;
 &lt;ul&gt;
@@ -2026,10 +2026,10 @@
         </item>
         <item>
         <title>【前端】CSS下</title>
-        <link>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss%E4%B8%8B/</link>
+        <link>http://localhost:1313/p/%E5%89%8D%E7%AB%AFcss%E4%B8%8B/</link>
         <pubDate>Tue, 02 Apr 2024 18:04:46 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/%E5%89%8D%E7%AB%AFcss%E4%B8%8B/</guid>
+        <guid>http://localhost:1313/p/%E5%89%8D%E7%AB%AFcss%E4%B8%8B/</guid>
         <description>&lt;h2 id=&#34;emmet-语法&#34;&gt;Emmet 语法
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;Emmet&lt;/code&gt;语法用于快速编写&lt;code&gt;html&lt;/code&gt;标签与&lt;code&gt;css&lt;/code&gt;样式&lt;/p&gt;
 &lt;h3 id=&#34;快速生成-html-结构&#34;&gt;快速生成 html 结构
