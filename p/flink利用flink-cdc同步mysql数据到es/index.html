@@ -6,7 +6,7 @@ name='description' content="1. 需求 需要把 mysql 的数据聚合同步到 e
 
 <link rel="canonical" href="https://www.cengdong.store/p/flink%E5%88%A9%E7%94%A8flink-cdc%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%B0es/" />
 
-<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="【Flink】利用flink Cdc同步mysql数据到es">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="【Flink】利用flink Cdc同步mysql数据到es">
 <meta property='og:description' content="1. 需求 需要把 mysql 的数据聚合同步到 es 以提供海量数据检索能力\n2. 解决方案 变更 mysql 数据时同步调用 es 的 api 变更 mysql 数据时异步调用 es 的 api(先发送消息到消息队列，搜索微服务调用 es 的 api 消费数据) canal 监听 mysql 的 binlog 日志，再同步到 es flink-cdc 监听 mysql 的 binlog 日志同步到 es 3. 选用方案 最终选择 flink-cdc 的方案，一是 go-canal 的仓库不活跃，就三个 issue，提了 bug 也没人修，而且后续可能有实时分析的大数据需求，本身就有 flink 集群的需求。 二是 canal 的 release 版本要最近才会更新，最后一次更新是 21 年 4 月，害怕烂尾。三是俺尝试部署 canal，最后失败了 💦。\n">
 <meta property='og:url' content='https://www.cengdong.store/p/flink%E5%88%A9%E7%94%A8flink-cdc%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%B0es/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
@@ -56,7 +56,7 @@ name='description' content="1. 需求 需要把 mysql 的数据聚合同步到 e
                     
                     
                         
-                        <img src="/img/avatar_hu_ba88ecd03c9124fe.png" width="300"
+                        <img src="/img/avatar_hu_c8b3888d588eadf8.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -438,7 +438,7 @@ name='description' content="1. 需求 需要把 mysql 的数据聚合同步到 e
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">elasticsearch</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">docker.elastic.co/elasticsearch/elasticsearch:7.17.13</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">elasticsearch</span><span class="w">
@@ -518,7 +518,7 @@ name='description' content="1. 需求 需要把 mysql 的数据聚合同步到 e
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">douyin_net</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">networks</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">douyin_net</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l">bridge</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ipam</span><span class="p">:</span><span class="w">

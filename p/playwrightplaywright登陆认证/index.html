@@ -6,7 +6,7 @@ name='description' content="遇到的问题 使用playwright.config.ts中的depe
 
 <link rel="canonical" href="https://www.cengdong.store/p/playwrightplaywright%E7%99%BB%E9%99%86%E8%AE%A4%E8%AF%81/" />
 
-<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="【Playwright】Playwright登陆认证">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="【Playwright】Playwright登陆认证">
 <meta property='og:description' content="遇到的问题 使用playwright.config.ts中的dependencies配置项来进行其他用例的前置登陆\n1 2 3 4 5 6 7 8 9 10 11 // Setup project { name: &#39;setup&#39;, testMatch: /setup\\.ts/ }, { name: &#39;chromium&#39;, use: { ...devices[&#39;Desktop Chrome&#39;], storageState: &#39;tests/.auth/zengdong.json&#39;, }, dependencies: [&#39;setup&#39;], }, 其中setup.ts的内容如下：\n">
 <meta property='og:url' content='https://www.cengdong.store/p/playwrightplaywright%E7%99%BB%E9%99%86%E8%AE%A4%E8%AF%81/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
@@ -56,7 +56,7 @@ name='description' content="遇到的问题 使用playwright.config.ts中的depe
                     
                     
                         
-                        <img src="/img/avatar_hu_ba88ecd03c9124fe.png" width="300"
+                        <img src="/img/avatar_hu_c8b3888d588eadf8.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -344,7 +344,7 @@ name='description' content="遇到的问题 使用playwright.config.ts中的depe
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="c1">// Setup project
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;setup&#39;</span><span class="p">,</span> <span class="nx">testMatch</span><span class="o">:</span> <span class="sr">/setup\.ts/</span> <span class="p">},</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;setup&#39;</span><span class="p">,</span> <span class="nx">testMatch</span><span class="o">:</span> <span class="sr">/setup\.ts/</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;chromium&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">
@@ -388,18 +388,18 @@ name='description' content="遇到的问题 使用playwright.config.ts中的depe
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nx">setup</span><span class="p">(</span><span class="s1">&#39;authenticate&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">({</span> <span class="nx">page</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// Perform authentication steps. Replace these actions with your own.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s1">&#39;/auth/login&#39;</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="kr">goto</span><span class="p">(</span><span class="s1">&#39;/auth/login&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">getByPlaceholder</span><span class="p">(</span><span class="s1">&#39;请输入邮箱地址&#39;</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;xxxxxxxx&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">getByPlaceholder</span><span class="p">(</span><span class="s1">&#39;请输入密码&#39;</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;xxxxxx&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;登 录&#39;</span> <span class="p">}).</span><span class="nx">click</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// Wait until the page receives the cookies.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">await</span> <span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s1">&#39;登录成功&#39;</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">()</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">await</span> <span class="nx">expect</span><span class="p">(</span><span class="nx">page</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s1">&#39;登录成功&#39;</span><span class="p">)).</span><span class="nx">toBeVisible</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// Alternatively, you can wait until the page reaches a state where all cookies are set.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">waitForURL</span><span class="p">(</span><span class="s1">&#39;http://xxxxxxxxxx&#39;</span><span class="p">,</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">waitUntil</span><span class="o">:</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="p">})</span> <span class="c1">// End of authentication steps.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">context</span><span class="p">().</span><span class="nx">storageState</span><span class="p">({</span> <span class="nx">path</span>: <span class="kt">authFile</span> <span class="p">})</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">context</span><span class="p">().</span><span class="nx">storageState</span><span class="p">({</span> <span class="nx">path</span>: <span class="kt">authFile</span> <span class="p">})</span>
 </span></span><span class="line"><span class="cl"><span class="p">})</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -445,7 +445,7 @@ name='description' content="遇到的问题 使用playwright.config.ts中的depe
 </span></span><span class="line"><span class="cl"><span class="p">}</span><span class="o">&gt;</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">authPage</span>: <span class="kt">async</span> <span class="p">({</span> <span class="nx">browser</span><span class="p">,</span> <span class="nx">storageState</span> <span class="p">},</span> <span class="nx">use</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// 👉 使用 test.use 传下来的 storageState 参数（默认或被覆盖）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kr">const</span> <span class="nx">context</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">newContext</span><span class="p">({</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">context</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">newContext</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">storageState</span>: <span class="kt">undefined</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="p">})</span>
 </span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">page</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">context</span><span class="p">.</span><span class="nx">newPage</span><span class="p">()</span>

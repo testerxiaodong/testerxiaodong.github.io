@@ -6,7 +6,7 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 
 <link rel="canonical" href="https://www.cengdong.store/p/k6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95k6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" />
 
-<link rel="stylesheet" href="/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="【K6性能测试】K6学习笔记">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="【K6性能测试】K6学习笔记">
 <meta property='og:description' content="什么是 k6 使用 k6，你可以测试应用程序和基础设施的可靠性和性能。\n工程团队（包括开发人员、QA 工程师、SDET 和 SRE）通常使用 k6 来：\n负载和性能测试 浏览器性能测试 性能和综合监控 性能测试自动化 混沌与弹性测试 安装 K6 K6 有能在多种平台安装：\n">
 <meta property='og:url' content='https://www.cengdong.store/p/k6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95k6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
@@ -56,7 +56,7 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
                     
                     
                         
-                        <img src="/img/avatar_hu_ba88ecd03c9124fe.png" width="300"
+                        <img src="/img/avatar_hu_c8b3888d588eadf8.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -442,22 +442,22 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 导入模块
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s1">&#39;k6/http&#39;</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s1">&#39;k6/http&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">sleep</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;k6&#39;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 定义可选项
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">iterations</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// The default exported function is gonna be picked up by k6 as the entry point for the test script. It will be executed repeatedly in &#34;iterations&#34; for the whole duration of the test.
 </span></span></span><span class="line"><span class="cl"><span class="c1">// 默认函数，测试脚本逻辑就在这里面，必选项
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1">// Make a GET request to the target URL
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://quickpizza.grafana.com&#39;</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://quickpizza.grafana.com&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="c1">// Sleep for 1 second to simulate real-world usage
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="cl">  <span class="nx">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 测试生命周期函数，可选的
@@ -711,7 +711,7 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// For http://example.com/1, note that the url is not present in the JSON.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;type&#34;</span><span class="o">:</span><span class="s2">&#34;Point&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;metric&#34;</span><span class="o">:</span><span class="s2">&#34;http_req_duration&#34;</span><span class="p">,</span>
@@ -728,7 +728,7 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// and for http://example.com/2
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;type&#34;</span><span class="o">:</span><span class="s2">&#34;Point&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;metric&#34;</span><span class="o">:</span><span class="s2">&#34;http_req_duration&#34;</span><span class="p">,</span>
@@ -795,7 +795,8 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 </ul>
 <blockquote>
 <p>换句话说，这些指标衡量流量、可用性和延迟，SRE 可能会将这些指标视为<a class="link" href="https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals"  target="_blank" rel="noopener"
-    >four Golden Signals</a></p></blockquote>
+    >four Golden Signals</a></p>
+</blockquote>
 <h3 id="示例输出">示例输出
 </h3><p>当你运行测试时，所有内置的和自定义指标的汇总摘要将输出到<code>stdout</code>:</p>
 <div class="highlight"><div class="chroma">
@@ -860,7 +861,7 @@ name='description' content="什么是 k6 使用 k6，你可以测试应用程序
 </span></span><span class="line"><span class="cl">         /<span class="se">\ </span>     Grafana   /‾‾/
 </span></span><span class="line"><span class="cl">    /<span class="se">\ </span> /  <span class="se">\ </span>    <span class="p">|</span><span class="se">\ </span> __   /  /
 </span></span><span class="line"><span class="cl">   /  <span class="se">\/</span>    <span class="se">\ </span>   <span class="p">|</span> <span class="p">|</span>/ /  /   ‾‾<span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  /          <span class="se">\ </span>  <span class="p">|</span>   <span class="o">(</span>  <span class="p">|</span>  <span class="o">(</span>‾<span class="o">)</span>  <span class="p">|</span>
+</span></span></span><span class="line"><span class="cl">  /          <span class="se">\ </span>  <span class="p">|</span>   <span class="o">(</span>  <span class="p">|</span>  <span class="o">(</span>‾<span class="o">)</span>  <span class="p">|</span>
 </span></span><span class="line"><span class="cl"> / __________ <span class="se">\ </span> <span class="p">|</span>_<span class="p">|</span><span class="se">\_\ </span> <span class="se">\_</span>____/
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
