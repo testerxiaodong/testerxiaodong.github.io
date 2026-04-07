@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Android on cengdong的技术博客</title>
-        <link>https://www.cengdong.store/tags/android/</link>
+        <link>http://localhost:1313/tags/android/</link>
         <description>Recent content in Android on cengdong的技术博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Sun, 31 Aug 2025 23:42:32 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/tags/android/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 31 Aug 2025 23:42:32 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【Android】Android编程</title>
-        <link>https://www.cengdong.store/p/androidandroid%E7%BC%96%E7%A8%8B/</link>
+        <link>http://localhost:1313/p/androidandroid%E7%BC%96%E7%A8%8B/</link>
         <pubDate>Sun, 31 Aug 2025 23:42:32 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/androidandroid%E7%BC%96%E7%A8%8B/</guid>
+        <guid>http://localhost:1313/p/androidandroid%E7%BC%96%E7%A8%8B/</guid>
         <description>&lt;h2 id=&#34;为什么要写这篇博客&#34;&gt;为什么要写这篇博客
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;对移动应用测试感兴趣，想要提升移动端&lt;code&gt;代码走读&lt;/code&gt;能力&lt;/li&gt;

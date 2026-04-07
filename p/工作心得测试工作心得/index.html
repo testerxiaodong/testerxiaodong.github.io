@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><meta charset="utf-8" />
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" /><meta
 name='description' content="好的习惯 测试用例的编写是最重要的能力，需要专项提升 测试发现与自己预期不一样的地方，先记录，再问是不是 bug，还要定位到底是谁的问题 考虑测试用例的时候不要仅仅考虑功能用例，还要考虑性能/安全性等问题 在验证一个功能/回归一个 bug 时，要一次性验证所有的相关功能，防止重复返工 测试工程中要思考需求实现是不是合理 测试环境进行的验证可能在生产环境跑不通，因为架构不一致，所以测试用例也要考虑 在需求评审/测试的阶段首先要确定UI交互的问题 工具开发能力 把一些重复的工作通过自动化脚本解决 造数平台(fastapi) 挡板(mitmproxy) sql编写能力 常用sql在navicat中保存成查询 业务需要的特殊数据用sql定期查询 线上回归 接口自动化提效 基本功能需要过一遍 所有可能影响的功能都需要点一点 如何快速搞懂业务 平常多用功能 查看接口/接口文档，抓包进行分析 查看数据库表/字段的注释 拉取前后端代码进行走读/review 工作中需要的能力 测试用例设计的高效以及功能覆盖率 功能点的 UI 校验（文字以及样式）(要学会使用 figma) 功能点输入的设计 功能点输出的设计 功能点状态的设计(状态机转移，状态是否可重入) 沟通能力 说明问题的能力（提 bug 是否清晰：复现步骤，必要时加上录屏） 请求问题（高效提问的能力） 解决问题的能力 遇到问题首先想到的是记录(因为复现的成本比较高) 不能有任何侥幸心理 可观测性建设与能力提升(logs/traces/metrics) code review "> <title>【工作心得】测试工作心得</title>
 
-<link rel="canonical" href="https://www.cengdong.store/p/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/" />
+<link rel="canonical" href="http://localhost:1313/p/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/" />
 
 <link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="【工作心得】测试工作心得">
 <meta property='og:description' content="好的习惯 测试用例的编写是最重要的能力，需要专项提升 测试发现与自己预期不一样的地方，先记录，再问是不是 bug，还要定位到底是谁的问题 考虑测试用例的时候不要仅仅考虑功能用例，还要考虑性能/安全性等问题 在验证一个功能/回归一个 bug 时，要一次性验证所有的相关功能，防止重复返工 测试工程中要思考需求实现是不是合理 测试环境进行的验证可能在生产环境跑不通，因为架构不一致，所以测试用例也要考虑 在需求评审/测试的阶段首先要确定UI交互的问题 工具开发能力 把一些重复的工作通过自动化脚本解决 造数平台(fastapi) 挡板(mitmproxy) sql编写能力 常用sql在navicat中保存成查询 业务需要的特殊数据用sql定期查询 线上回归 接口自动化提效 基本功能需要过一遍 所有可能影响的功能都需要点一点 如何快速搞懂业务 平常多用功能 查看接口/接口文档，抓包进行分析 查看数据库表/字段的注释 拉取前后端代码进行走读/review 工作中需要的能力 测试用例设计的高效以及功能覆盖率 功能点的 UI 校验（文字以及样式）(要学会使用 figma) 功能点输入的设计 功能点输出的设计 功能点状态的设计(状态机转移，状态是否可重入) 沟通能力 说明问题的能力（提 bug 是否清晰：复现步骤，必要时加上录屏） 请求问题（高效提问的能力） 解决问题的能力 遇到问题首先想到的是记录(因为复现的成本比较高) 不能有任何侥幸心理 可观测性建设与能力提升(logs/traces/metrics) code review ">
-<meta property='og:url' content='https://www.cengdong.store/p/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/'>
+<meta property='og:url' content='http://localhost:1313/p/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-04-21T19:08:21&#43;08:00'/><meta property='article:modified_time' content='2025-04-21T19:08:21&#43;08:00'/>
 <meta name="twitter:title" content="【工作心得】测试工作心得">
@@ -566,7 +566,7 @@ name='description' content="好的习惯 测试用例的编写是最重要的能
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.8b28c81db47d49596ccc9b8c3794e6290e5abea98efd149dbdb1c7a9df80de60.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

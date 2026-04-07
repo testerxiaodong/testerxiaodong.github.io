@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>工作心得 on cengdong的技术博客</title>
-        <link>https://www.cengdong.store/categories/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/</link>
+        <link>http://localhost:1313/categories/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/</link>
         <description>Recent content in 工作心得 on cengdong的技术博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Mon, 21 Apr 2025 19:08:21 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 21 Apr 2025 19:08:21 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【工作心得】测试工作心得</title>
-        <link>https://www.cengdong.store/p/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/</link>
+        <link>http://localhost:1313/p/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/</link>
         <pubDate>Mon, 21 Apr 2025 19:08:21 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/</guid>
+        <guid>http://localhost:1313/p/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/</guid>
         <description>&lt;h2 id=&#34;好的习惯&#34;&gt;好的习惯
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;测试用例的编写是&lt;code&gt;最重要的能力&lt;/code&gt;，需要专项提升&lt;/li&gt;

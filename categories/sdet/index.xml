@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>SDET on cengdong的技术博客</title>
-        <link>https://www.cengdong.store/categories/sdet/</link>
+        <link>http://localhost:1313/categories/sdet/</link>
         <description>Recent content in SDET on cengdong的技术博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Cengdong</copyright>
-        <lastBuildDate>Sat, 26 Apr 2025 22:58:44 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/categories/sdet/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 26 Apr 2025 22:58:44 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/sdet/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【SDET之路】待提升技能</title>
-        <link>https://www.cengdong.store/p/sdet%E4%B9%8B%E8%B7%AF%E5%BE%85%E6%8F%90%E5%8D%87%E6%8A%80%E8%83%BD/</link>
+        <link>http://localhost:1313/p/sdet%E4%B9%8B%E8%B7%AF%E5%BE%85%E6%8F%90%E5%8D%87%E6%8A%80%E8%83%BD/</link>
         <pubDate>Sat, 26 Apr 2025 22:58:44 +0800</pubDate>
         
-        <guid>https://www.cengdong.store/p/sdet%E4%B9%8B%E8%B7%AF%E5%BE%85%E6%8F%90%E5%8D%87%E6%8A%80%E8%83%BD/</guid>
+        <guid>http://localhost:1313/p/sdet%E4%B9%8B%E8%B7%AF%E5%BE%85%E6%8F%90%E5%8D%87%E6%8A%80%E8%83%BD/</guid>
         <description>&lt;h2 id=&#34;为什么要写这个&#34;&gt;为什么要写这个
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;转型失败，之前一直想从测试转到后端开发，但是国内互联网求职环境一再恶化&lt;/li&gt;
