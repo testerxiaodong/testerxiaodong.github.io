@@ -2337,8 +2337,7 @@ alt="cc switch配置"
 &lt;/div&gt;</description></item><item><title>About</title><link>https://www.cengdong.store/about/</link><pubDate>Mon, 31 Jul 2023 23:34:32 +0800</pubDate><guid>https://www.cengdong.store/about/</guid><description>&lt;h2 id="关于我"&gt;关于我
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;大学&lt;code&gt;通信工程&lt;/code&gt;混了四年&lt;/li&gt;
-&lt;li&gt;毕业之后测试点点点，写点&lt;code&gt;Python/Js&lt;/code&gt;脚本&lt;/li&gt;
-&lt;li&gt;攒点钱留学移民新西兰&lt;/li&gt;
+&lt;li&gt;测试点点点，写点&lt;code&gt;Python/Js&lt;/code&gt;脚本&lt;/li&gt;
 &lt;/ul&gt;</description></item><item><title>【Go】RabbitMQ学习笔记</title><link>https://www.cengdong.store/p/gorabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link><pubDate>Mon, 31 Jul 2023 00:02:07 +0800</pubDate><guid>https://www.cengdong.store/p/gorabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid><description>&lt;h2 id="1-介绍"&gt;1. 介绍
 &lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;RabbitMQ is the most widely deployed open source message broker.&lt;/p&gt;
@@ -3118,10 +3117,6 @@ alt="消费者2.png"
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;code&gt;image&lt;/code&gt; field accepts both local and external images.&lt;/p&gt;</description></item><item><title>Search</title><link>https://www.cengdong.store/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.cengdong.store/search/</guid><description/></item><item><title>关于</title><link>https://www.cengdong.store/%E5%85%B3%E4%BA%8E/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.cengdong.store/%E5%85%B3%E4%BA%8E/</guid><description>&lt;h3 id="关于我"&gt;关于我
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;大学通信工程混了四年&lt;/li&gt;
-&lt;li&gt;毕业之后测试点点点&lt;/li&gt;
-&lt;li&gt;测试写点python调接口&lt;/li&gt;
-&lt;li&gt;目前在学Go后端开发&lt;/li&gt;
-&lt;li&gt;无时无刻想躺和润&lt;/li&gt;
-&lt;li&gt;裸辞高手&lt;/li&gt;
+&lt;li&gt;大学&lt;code&gt;通信工程&lt;/code&gt;混了四年&lt;/li&gt;
+&lt;li&gt;测试点点点，写点&lt;code&gt;Python/Js&lt;/code&gt;脚本&lt;/li&gt;
 &lt;/ul&gt;</description></item></channel></rss>
