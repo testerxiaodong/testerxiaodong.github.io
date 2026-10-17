@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>测试 on cengdong的技术博客</title>
+        <link>https://www.cengdong.store/tags/%E6%B5%8B%E8%AF%95/</link>
+        <description>Recent content in 测试 on cengdong的技术博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Cengdong</copyright>
+        <lastBuildDate>Sat, 17 Oct 2026 00:00:00 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/tags/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Agent测试</title>
+        <link>https://www.cengdong.store/p/agent%E6%B5%8B%E8%AF%95/</link>
+        <pubDate>Sat, 17 Oct 2026 00:00:00 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/p/agent%E6%B5%8B%E8%AF%95/</guid>
+        <description>&lt;h2 id=&#34;为什么要学习-agent-测试&#34;&gt;为什么要学习 Agent 测试
+&lt;/h2&gt;&lt;p&gt;传统软件测试通常围绕明确输入、确定逻辑和可重复结果展开。AI Agent 则会根据上下文由模型决定下一步做什么：理解用户目标、检索资料、调用工具、观察执行结果，必要时继续规划和行动。相同输入也可能产生不同表达或执行轨迹，因此只检查最终文本是否“看起来正确”，往往无法定位问题。&lt;/p&gt;
+&lt;p&gt;Agent 测试要回答几个更实际的问题：它是否理解了用户目标？是否选了正确的工具并填对参数？是否遵守业务规则和权限？多轮对话中是否记住必要信息？任务是否真的完成？失败时能否安全恢复？这些问题既需要传统测试工程方法，也需要针对模型输出和执行轨迹的评测方法。&lt;/p&gt;
+&lt;p&gt;本文整理一份面向测试开发工程师的学习地图，覆盖通用能力、业务场景、测试方法和项目实践。文中的分类是为了学习和测试设计而整理的参考框架，不是行业官方标准；具体产品不一定具备所有能力，也不应为了覆盖清单而给产品增加无关功能。&lt;/p&gt;
+&lt;h2 id=&#34;应用场景与通用能力&#34;&gt;应用场景与通用能力
+&lt;/h2&gt;&lt;p&gt;先区分两个容易混淆的概念：&lt;strong&gt;应用场景描述 Agent 在业务中解决什么问题，通用能力描述它依靠什么机制完成任务。&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;应用场景&lt;/th&gt;
+					&lt;th&gt;典型任务&lt;/th&gt;
+					&lt;th&gt;常见通用能力&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;智能客服&lt;/td&gt;
+					&lt;td&gt;查订单、解释政策、退换货、创建工单&lt;/td&gt;
+					&lt;td&gt;意图识别、多轮对话、知识检索、工具调用、工作流、转人工&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;企业知识库&lt;/td&gt;
+					&lt;td&gt;查询制度、产品文档和内部流程&lt;/td&gt;
+					&lt;td&gt;文档解析、检索、重排、答案生成、引用溯源、权限过滤&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;文件分析&lt;/td&gt;
+					&lt;td&gt;总结合同、比较报表、提取表格数据&lt;/td&gt;
+					&lt;td&gt;文件解析、多模态理解、结构化输出、跨页或跨文件推理&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;数据分析&lt;/td&gt;
+					&lt;td&gt;用自然语言查询指标、生成图表&lt;/td&gt;
+					&lt;td&gt;意图理解、Text-to-SQL、数据库工具、安全校验、结果解释&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;浏览器 Agent&lt;/td&gt;
+					&lt;td&gt;搜索网页、填写表单、完成后台操作&lt;/td&gt;
+					&lt;td&gt;任务规划、页面理解、浏览器工具、状态确认、异常恢复&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;办公与工作流&lt;/td&gt;
+					&lt;td&gt;整理邮件、审批、创建任务&lt;/td&gt;
+					&lt;td&gt;工具调用、流程状态管理、权限控制、审计和幂等处理&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;编程 Agent&lt;/td&gt;
+					&lt;td&gt;分析代码、修复缺陷、运行测试&lt;/td&gt;
+					&lt;td&gt;代码生成、终端工具、文件操作、测试执行、沙箱隔离&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;语音 Agent&lt;/td&gt;
+					&lt;td&gt;电话客服、语音助手&lt;/td&gt;
+					&lt;td&gt;语音识别与合成、轮次管理、打断处理、低延迟响应&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;多 Agent 系统&lt;/td&gt;
+					&lt;td&gt;将复杂任务分派给多个专长 Agent&lt;/td&gt;
+					&lt;td&gt;任务拆解、路由、交接、共享状态、冲突处理&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;同一个智能客服可以同时使用知识检索、订单查询工具、工作流和长期记忆；同一种工具调用能力也可能出现在客服、数据分析和办公 Agent 中。测试时先根据业务场景确定“任务是否成功”和“哪些约束必须遵守”，再选择需要覆盖的通用能力。&lt;/p&gt;
+&lt;h2 id=&#34;agent-测试的基本视角&#34;&gt;Agent 测试的基本视角
+&lt;/h2&gt;&lt;p&gt;可以把一次 Agent 测试看成三个互补层次：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;端到端结果&lt;/strong&gt;：只看用户输入、最终答复和外部状态，判断目标是否达成、答案是否正确、是否产生了不允许的副作用。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;执行轨迹&lt;/strong&gt;：检查模型步骤、工具选择与参数、工具返回、重试、交接和最终状态，判断 Agent 是怎样完成或失败的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;组件行为&lt;/strong&gt;：单独测试意图分类器、检索器、参数解析、权限校验或某个工具适配器，快速定位回归来源。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;三种视角不能相互替代。端到端通过不能证明每个步骤都合理；某个组件分数高也不代表整个业务任务一定成功。测试报告最好同时保留最终结果和可追踪的关键步骤。&lt;/p&gt;
+&lt;h2 id=&#34;12-类通用能力与测试点&#34;&gt;12 类通用能力与测试点
+&lt;/h2&gt;&lt;p&gt;以下清单适用于需求分析和测试设计。项目可以按自身架构裁剪；比如纯知识问答产品可能没有外部工具，简单单轮助手也不需要长期记忆。&lt;/p&gt;
+&lt;h3 id=&#34;1-输入理解与意图识别&#34;&gt;1. 输入理解与意图识别
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;意图分类&lt;/strong&gt;：问答、查询、办理、投诉、闲聊等意图是否区分正确，低置信度时是否澄清或转人工。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实体与槽位抽取&lt;/strong&gt;：订单号、日期、地点、产品型号等信息是否提取准确；缺失、冲突、格式错误时是否追问。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;上下文消歧&lt;/strong&gt;：结合前文理解“它”“刚才那笔”“改成明天”等指代和修改请求。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;边界输入&lt;/strong&gt;：错别字、口语、省略表达、混合语言、超长输入和无关内容是否可控处理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-多轮对话与会话状态&#34;&gt;2. 多轮对话与会话状态
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;必要信息是否跨轮保留，用户更正后是否更新为新值。&lt;/li&gt;
+&lt;li&gt;对话切换主题、重复提问、撤回请求时，是否清理或保留了正确状态。&lt;/li&gt;
+&lt;li&gt;会话隔离：不同用户或会话之间不能串用历史信息。&lt;/li&gt;
+&lt;li&gt;达到上下文长度限制、会话过期或服务重启后，行为是否符合产品约定。&lt;/li&gt;
+&lt;li&gt;对不完整请求是否先澄清，而不是擅自补全关键事实。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-知识检索与-rag&#34;&gt;3. 知识检索与 RAG
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;检索质量&lt;/strong&gt;：相关文档能否召回，排名是否合理，改写问题后是否仍能命中。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;回答依据&lt;/strong&gt;：答案是否由检索内容支持；没有证据时是否明确说明未知，而非编造。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;引用与溯源&lt;/strong&gt;：引用是否指向正确文档和段落，文档版本、更新时间是否正确。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;权限与过滤&lt;/strong&gt;：用户无权访问的文档不能通过检索、摘要或引用泄露。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;知识更新&lt;/strong&gt;：新增、修改、删除文档后，索引和答案是否按预期更新。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;干扰内容&lt;/strong&gt;：无关文档、互相矛盾的资料或文档内的恶意指令是否被正确处理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-文件与多模态理解&#34;&gt;4. 文件与多模态理解
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;文件类型、编码、大小、页数、损坏文件和空文件的处理。&lt;/li&gt;
+&lt;li&gt;PDF 扫描件 OCR、表格跨页、图片文字、图表坐标和复杂布局抽取。&lt;/li&gt;
+&lt;li&gt;对合同或报表的字段提取，检查字段值、单位、币种、日期和来源页码。&lt;/li&gt;
+&lt;li&gt;多文件比较时，确认文件身份没有混淆，结论有逐项依据。&lt;/li&gt;
+&lt;li&gt;图片、音频或视频输入的格式限制、识别错误和无法识别时的降级提示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-记忆与个性化&#34;&gt;5. 记忆与个性化
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;会话内短期记忆是否准确，跨会话长期记忆是否按产品规则启用。&lt;/li&gt;
+&lt;li&gt;记忆写入是否经过用户授权或符合告知规则；敏感信息是否被禁止保存。&lt;/li&gt;
+&lt;li&gt;用户要求更正或删除记忆后，后续回答是否不再使用旧信息。&lt;/li&gt;
+&lt;li&gt;记忆冲突、过期和多人共享设备时的身份隔离。&lt;/li&gt;
+&lt;li&gt;记忆不可用或存储失败时，系统是否安全降级。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;6-任务规划与决策&#34;&gt;6. 任务规划与决策
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;多步骤请求是否拆解完整，步骤依赖关系和执行顺序是否正确。&lt;/li&gt;
+&lt;li&gt;是否能根据中间结果调整计划，而不是机械执行过期步骤。&lt;/li&gt;
+&lt;li&gt;约束检查：日期、预算、权限、用户偏好和不可执行事项是否纳入计划。&lt;/li&gt;
+&lt;li&gt;计划失败、工具返回空值或步骤超时时，是否重新规划、澄清或停止。&lt;/li&gt;
+&lt;li&gt;不需要复杂规划的简单请求，是否避免过度调用工具和无意义步骤。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;7-工具选择与调用&#34;&gt;7. 工具选择与调用
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;是否选择符合任务的工具；相似工具之间能否正确区分。&lt;/li&gt;
+&lt;li&gt;参数类型、必填字段、边界值、时区、金额精度和枚举值是否正确。&lt;/li&gt;
+&lt;li&gt;工具返回错误、超时、限流、重复响应或部分成功时，是否按约定重试或报错。&lt;/li&gt;
+&lt;li&gt;重试是否会造成重复扣款、重复建单等副作用；写操作是否支持幂等。&lt;/li&gt;
+&lt;li&gt;工具不可用、权限不足或用户拒绝授权时，是否停止相应操作并解释。&lt;/li&gt;
+&lt;li&gt;工具调用的结果是否经过验证，Agent 是否把“请求已发送”误报成“业务已完成”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;8-工作流与状态管理&#34;&gt;8. 工作流与状态管理
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;工作流状态转换是否合法，关键步骤是否可以跳过或重复。&lt;/li&gt;
+&lt;li&gt;审批、退款、下单等长流程中断后，恢复是否从正确节点继续。&lt;/li&gt;
+&lt;li&gt;并发操作、重复提交、回调延迟和状态不一致时的处理。&lt;/li&gt;
+&lt;li&gt;终态判定是否基于系统状态，而不是仅凭 Agent 自述。&lt;/li&gt;
+&lt;li&gt;流程取消、撤销、人工接管和超时补偿是否可用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;9-输出质量与格式&#34;&gt;9. 输出质量与格式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;事实正确性、完整性、相关性、可读性和语气是否符合要求。&lt;/li&gt;
+&lt;li&gt;JSON、表格、代码、Markdown 或业务字段是否满足结构约束，能否被下游解析。&lt;/li&gt;
+&lt;li&gt;是否包含必须说明的限制、风险和下一步；是否遗漏关键条件。&lt;/li&gt;
+&lt;li&gt;是否泄露隐藏提示词、内部数据或不应展示的推理内容。&lt;/li&gt;
+&lt;li&gt;同义表达或非确定性结果是否通过语义规则评估，而非只做脆弱的字符串匹配。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;10-安全权限与防护&#34;&gt;10. 安全、权限与防护
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;提示注入：用户输入、检索文档、网页内容或工具返回中的指令是否会越权改变行为。&lt;/li&gt;
+&lt;li&gt;权限边界：读取、写入、删除和转账等操作是否按身份和授权检查。&lt;/li&gt;
+&lt;li&gt;数据保护：个人信息、密钥、内部提示和跨租户数据是否泄露。&lt;/li&gt;
+&lt;li&gt;高风险操作：执行前是否进行确认，确认对象、范围和参数是否清楚。&lt;/li&gt;
+&lt;li&gt;有害请求、越狱、敏感内容和政策边界是否按产品规则处理。&lt;/li&gt;
+&lt;li&gt;拒绝回答时是否仍然避免通过工具或间接输出暴露受保护信息。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;11-异常处理恢复与可观测性&#34;&gt;11. 异常处理、恢复与可观测性
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;模型服务、检索服务和业务 API 的超时、错误码、断连及限流处理。&lt;/li&gt;
+&lt;li&gt;熔断、退避重试、降级回答和人工兜底是否按设计执行。&lt;/li&gt;
+&lt;li&gt;日志和 Trace 是否记录请求 ID、模型版本、工具、耗时、状态与错误；敏感字段是否脱敏。&lt;/li&gt;
+&lt;li&gt;用户取消、网络中断和进程重启后，任务是否能安全停止或恢复。&lt;/li&gt;
+&lt;li&gt;失败信息是否足以复现问题，同时不向终端用户暴露内部堆栈或秘密。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;12-性能成本与稳定性&#34;&gt;12. 性能、成本与稳定性
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;首 token 延迟、端到端延迟、工具耗时和长任务完成时间。&lt;/li&gt;
+&lt;li&gt;并发和持续运行下的成功率、超时率、错误率与资源占用。&lt;/li&gt;
+&lt;li&gt;Token、模型调用次数、检索次数和工具调用次数是否在预算内。&lt;/li&gt;
+&lt;li&gt;不同模型版本、提示词、数据集和并发水平下的质量变化。&lt;/li&gt;
+&lt;li&gt;对长对话、长文档和高频工具调用做容量及退化测试。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;多模态、多 Agent 协作和记忆可视为按产品需要启用的专项能力，也可以单列专项测试集；它们不是每个 Agent 都必须具备的基础功能。&lt;/p&gt;
+&lt;h2 id=&#34;常用评测指标&#34;&gt;常用评测指标
+&lt;/h2&gt;&lt;p&gt;指标应从业务目标和风险出发，明确分母、通过条件和数据来源。一个总分很难说明系统哪里出错，建议按维度保留指标和失败样本。&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;维度&lt;/th&gt;
+					&lt;th&gt;可选指标&lt;/th&gt;
+					&lt;th&gt;说明&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;任务结果&lt;/td&gt;
+					&lt;td&gt;任务成功率、业务状态正确率&lt;/td&gt;
+					&lt;td&gt;检查用户目标是否达成，以及数据库或外部系统是否处于预期状态&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;对话理解&lt;/td&gt;
+					&lt;td&gt;意图准确率、槽位精确率/召回率、澄清率&lt;/td&gt;
+					&lt;td&gt;适合有标签或明确预期的输入理解任务&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;工具行为&lt;/td&gt;
+					&lt;td&gt;工具选择准确率、参数准确率、无效调用率&lt;/td&gt;
+					&lt;td&gt;既检查调用哪种工具，也检查具体参数&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;轨迹质量&lt;/td&gt;
+					&lt;td&gt;计划遵循率、步骤效率、重试率、交接成功率&lt;/td&gt;
+					&lt;td&gt;检查执行路径、冗余操作和恢复行为&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;知识问答&lt;/td&gt;
+					&lt;td&gt;检索 Recall@K、MRR、答案正确性、忠实度、引用正确率&lt;/td&gt;
+					&lt;td&gt;检索和生成应分开评测；RAG 指标不能替代业务验收&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;安全&lt;/td&gt;
+					&lt;td&gt;越权成功率、提示注入成功率、敏感信息泄露率&lt;/td&gt;
+					&lt;td&gt;对高风险操作应以明确规则和可验证状态为主&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;可靠性&lt;/td&gt;
+					&lt;td&gt;成功率、超时率、错误率、恢复率&lt;/td&gt;
+					&lt;td&gt;通过重复运行或故障注入观察稳定性&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;性能与成本&lt;/td&gt;
+					&lt;td&gt;P50/P95 延迟、Token/任务、工具调用次数&lt;/td&gt;
+					&lt;td&gt;同时关注质量、速度与成本的变化&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;用户体验&lt;/td&gt;
+					&lt;td&gt;满意度、解决率、转人工率、重复咨询率&lt;/td&gt;
+					&lt;td&gt;更适合线上持续观察，不宜只用离线模型分数代替&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;指标怎么选&#34;&gt;指标怎么选
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;能用确定性断言的地方优先用规则：数据库状态、权限、Schema、金额和必需字段。&lt;/li&gt;
+&lt;li&gt;语义质量可以用人工标注集、模型评审或成对比较辅助评估。模型评审也会有偏差，应通过人工抽检校准，并记录评审模型、提示词和阈值。&lt;/li&gt;
+&lt;li&gt;任务成功率应基于可观察结果，例如订单状态或工单记录，不能只判断 Agent 是否说“已完成”。&lt;/li&gt;
+&lt;li&gt;对随机性较强的任务重复运行并报告样本数和置信范围；避免把一次通过当成稳定能力。&lt;/li&gt;
+&lt;li&gt;聚合分数之外保留单条输入、输出、工具轨迹和失败原因，方便复现与修复。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;示例测试用例智能客服退货&#34;&gt;示例测试用例：智能客服退货
+&lt;/h2&gt;&lt;p&gt;假设客服 Agent 可以查询订单、读取退货政策、创建退货申请。以下是测试设计示例，业务规则只是示例，落地时应替换为真实产品规则。&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;项目&lt;/th&gt;
+					&lt;th&gt;内容&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;前置数据&lt;/td&gt;
+					&lt;td&gt;用户 A 有订单 &lt;code&gt;O-1001&lt;/code&gt;，订单已签收 5 天，商品可退，订单属于用户 A&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;用户对话&lt;/td&gt;
+					&lt;td&gt;“帮我退掉上周买的耳机。”；若存在多个订单，Agent 应先确认是哪一笔&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;预期过程&lt;/td&gt;
+					&lt;td&gt;识别退货意图 → 查询当前用户订单 → 校验退货期限与商品条件 → 对订单有歧义时追问 → 用户确认后创建申请&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;预期结果&lt;/td&gt;
+					&lt;td&gt;仅为用户确认的订单创建一条退货申请；返回真实申请编号和当前状态&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;轨迹断言&lt;/td&gt;
+					&lt;td&gt;使用正确的查询和创建工具；参数中的用户、订单和商品匹配；创建前已完成资格校验&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;安全断言&lt;/td&gt;
+					&lt;td&gt;不接受用户提供的其他用户订单号绕过身份校验；未确认前不执行创建&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;异常分支&lt;/td&gt;
+					&lt;td&gt;订单不存在、超出期限、接口超时、重复提交、用户中途取消时，状态与回复均符合预期&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;可以把测试扩展成数据驱动用例：无订单、多个订单、过期订单、商品不可退、跨用户订单号、用户修改订单、接口超时、创建成功但响应丢失等。对于创建类操作，每条用例都要检查系统最终状态和重复执行的影响。&lt;/p&gt;
+&lt;h2 id=&#34;学习路线从基础测试到-agent-评测工程&#34;&gt;学习路线：从基础测试到 Agent 评测工程
+&lt;/h2&gt;&lt;p&gt;学习时先做一个范围可控、结果能验证的场景，例如带订单查询和退货申请工具的客服 Agent。围绕它逐步增加能力，能更快建立测试闭环。&lt;/p&gt;
+&lt;h3 id=&#34;阶段一补齐-llm-与对话测试基础&#34;&gt;阶段一：补齐 LLM 与对话测试基础
+&lt;/h3&gt;&lt;p&gt;理解模型输入输出、系统提示、上下文窗口、采样带来的非确定性和结构化输出。练习为同一意图设计正常、边界、歧义、拒绝和多轮样本；为每条样本写清楚预期行为和不可违反的约束。&lt;/p&gt;
+&lt;h3 id=&#34;阶段二测试工具调用与任务完成&#34;&gt;阶段二：测试工具调用与任务完成
+&lt;/h3&gt;&lt;p&gt;从 Mock 工具开始，覆盖工具路由、参数校验、错误重试、超时、权限、幂等和最终状态校验。加入轨迹记录，能够区分“模型选错工具”“参数错误”“工具失败”和“结果未核验”等故障。&lt;/p&gt;
+&lt;h3 id=&#34;阶段三加入知识库与文件场景&#34;&gt;阶段三：加入知识库与文件场景
+&lt;/h3&gt;&lt;p&gt;分别测试检索、生成和端到端问答。构建包含正确答案、无答案、冲突资料、权限隔离和更新文档的样本。文件场景增加 OCR、表格和结构化字段准确率检查。&lt;/p&gt;
+&lt;h3 id=&#34;阶段四做评测工程化&#34;&gt;阶段四：做评测工程化
+&lt;/h3&gt;&lt;p&gt;把样本、运行配置、评测器和报告分开管理；固定模型、提示词、工具版本和数据集版本。建立离线回归、关键安全门禁、失败样本归档和线上 Trace 回流流程。对不稳定的 LLM Judge 做人工抽检和一致性分析。&lt;/p&gt;
+&lt;h3 id=&#34;阶段五专项拓展&#34;&gt;阶段五：专项拓展
+&lt;/h3&gt;&lt;p&gt;按目标岗位或产品形态选择浏览器、多 Agent、语音、长流程或高并发专项。优先使用有环境、有任务定义和评分方式的基准学习，再补上自己的业务数据和风险规则。&lt;/p&gt;
+&lt;p&gt;对 Python SDET 来说，可以重点练习 pytest 参数化、Mock/契约测试、API 与数据库断言、异步测试、测试数据管理、CI 回归、Trace 解析和性能测试。关键能力不是堆叠评测库，而是把业务目标转为可执行、可复现、能定位问题的检查。&lt;/p&gt;
+&lt;h2 id=&#34;开源项目与学习材料&#34;&gt;开源项目与学习材料
+&lt;/h2&gt;&lt;p&gt;以下项目各自解决不同问题，不能简单理解为功能相同的“测试框架”。项目内容和接口会迭代，学习前请查看官方仓库当前说明、许可和运行要求。&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;项目&lt;/th&gt;
+					&lt;th&gt;适合学习什么&lt;/th&gt;
+					&lt;th&gt;说明&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sierra-research/tau2-bench&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;τ²-Bench&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;客服类多轮交互、业务工具、任务完成评测&lt;/td&gt;
+					&lt;td&gt;研究其任务、环境和评分设计；基准分数依赖特定任务与模拟设置&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ServiceNow/BrowserGym&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;BrowserGym&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;浏览器 Agent 环境、Web 任务执行和基准接入&lt;/td&gt;
+					&lt;td&gt;提供面向网页任务自动化的环境，可进一步了解其集成的基准&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/confident-ai/deepeval&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DeepEval&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Python/pytest 风格的 LLM 与 Agent 评测&lt;/td&gt;
+					&lt;td&gt;可研究端到端、轨迹和组件级评估；模型评审指标需结合人工校验&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/vibrantlabsai/ragas&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Ragas&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;RAG 与 LLM 应用评测指标、实验和数据集&lt;/td&gt;
+					&lt;td&gt;不只用于 RAG；使用哪些指标应按当前版本和任务需求选择&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/langchain-samples/eval-concepts&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;LangSmith Agent Evaluation Cookbook&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;最终回答、单步骤、轨迹和多轮模拟评估&lt;/td&gt;
+					&lt;td&gt;Cookbook 提供 LangSmith 与 LangGraph 示例，适合理解评估粒度&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/promptfoo/promptfoo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Promptfoo&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;提示词/模型对比与红队测试工作流&lt;/td&gt;
+					&lt;td&gt;适合学习配置化测试和对抗样本组织；具体能力以项目文档为准&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;建议先选一个项目深入读通：数据如何组织、Agent 如何运行、评分逻辑如何实现、失败如何呈现。不要只看 README 的功能列表；挑一条任务从输入追到工具调用、环境状态和最终评分。&lt;/p&gt;
+&lt;h2 id=&#34;一个可落地的-agent-测试框架&#34;&gt;一个可落地的 Agent 测试框架
+&lt;/h2&gt;&lt;p&gt;可以把自建项目拆成五层：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;业务场景与测试数据
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    客服 / 知识库 / 文件分析 / 数据分析 / 浏览器任务
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;通用能力检查
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    意图 / 对话 / 检索 / 规划 / 工具 / 工作流 / 安全 / 性能
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;统一执行与评测
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    pytest 调度 / 规则断言 / 模型评审 / 轨迹评测 / 状态校验
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Agent 适配层与测试环境
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    API/SDK 适配 / Mock 工具 / 沙箱 / 测试数据库 / 故障注入
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;报告与持续改进
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    质量指标 / Trace / 失败样本 / 回归门禁 / CI
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其中，&lt;strong&gt;Agent 适配层&lt;/strong&gt;把不同产品的调用方式统一起来；&lt;strong&gt;测试环境&lt;/strong&gt;负责隔离副作用并提供可重置数据；&lt;strong&gt;评测器&lt;/strong&gt;把确定性检查和语义检查组合起来；&lt;strong&gt;报告&lt;/strong&gt;保留配置、输入、结果、轨迹与错误分类。接入新 Agent 时，先实现调用适配和能力声明，再只运行产品实际支持的测试模块。&lt;/p&gt;
+&lt;p&gt;推荐的最小项目目录可以是：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;agent-test-platform/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── adapters/       # 不同 Agent 的调用适配
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── datasets/       # 场景样本与预期行为
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── environments/   # Mock 工具、测试数据库和沙箱
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── evaluators/     # 规则、状态、语义和轨迹评测器
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── tests/          # pytest 场景测试与回归测试
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── reports/        # 运行结果与失败样本
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└── configs/        # 模型、阈值、环境和版本配置
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;第一版不必做成支持所有 Agent 的通用平台。先选一个场景、十几条高价值用例和几类确定性检查，确保每次运行可复现、失败能定位；之后再扩充数据集、语义评估、Trace 分析和 CI 门禁。&lt;/p&gt;
+&lt;h2 id=&#34;项目实践建议python-sdet-的作品集&#34;&gt;项目实践建议：Python SDET 的作品集
+&lt;/h2&gt;&lt;p&gt;可以实现一个小型“多场景 Agent 评测平台”，先完成客服，再逐步加知识库或浏览器场景：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;定义统一测试样本结构：用户输入、会话历史、预期结果、允许工具、禁止行为、业务状态断言和标签。&lt;/li&gt;
+&lt;li&gt;为一个客服 Agent 实现 Adapter；用 Mock 订单服务和测试数据库，避免真实写入。&lt;/li&gt;
+&lt;li&gt;用 pytest 编写工具选择、参数、权限、幂等、多轮澄清和异常恢复测试。&lt;/li&gt;
+&lt;li&gt;保存每次运行的模型/提示词/数据集版本、延迟、成本、工具调用和 Trace。&lt;/li&gt;
+&lt;li&gt;组合确定性断言与可选的 LLM Judge，报告总体任务成功率和各错误类别；抽样人工复核模型评审结果。&lt;/li&gt;
+&lt;li&gt;在 CI 中跑快速、稳定的关键回归；耗时较长或带模拟用户的评估作为单独任务运行，并控制预算。&lt;/li&gt;
+&lt;li&gt;增加安全样本和故障注入，验证越权拒绝、提示注入防护、工具超时和用户取消。&lt;/li&gt;
+&lt;li&gt;展示一份失败分析：原始输入、预期行为、实际轨迹、根因、修复前后结果。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;作品集的重点是展示测试思路和可复现证据：如何把自然语言需求转成断言，如何确保副作用可控，如何从 Trace 定位问题，以及如何避免一个漂亮的总分掩盖关键安全缺陷。&lt;/p&gt;
+&lt;h2 id=&#34;结语&#34;&gt;结语
+&lt;/h2&gt;&lt;p&gt;Agent 测试不是单纯判断回答像不像人，也不是把所有任务交给一个 LLM Judge 打分。可靠的评测要从业务目标出发，结合最终状态、执行轨迹和组件行为；能够确定判断的地方用规则和真实状态校验，语义质量再用人工评审或模型评审补充。&lt;/p&gt;
+&lt;p&gt;学习顺序可以从对话和输出开始，接着练工具调用、业务流程、安全与异常，再扩展到 RAG、文件、浏览器、多 Agent 和性能。围绕一个真实场景持续积累数据、复现失败、修复并回归，逐步形成自己的 Agent 测试工程能力。&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sierra-research/tau2-bench&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;τ²-Bench 官方仓库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ServiceNow/BrowserGym&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;BrowserGym 官方仓库&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/confident-ai/deepeval&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DeepEval 官方仓库与文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/vibrantlabsai/ragas&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Ragas 官方仓库与文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/langchain-samples/eval-concepts&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;LangSmith Agent Evaluation Cookbook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/promptfoo/promptfoo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Promptfoo 官方仓库&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
