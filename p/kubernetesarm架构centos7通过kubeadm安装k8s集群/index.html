@@ -249,10 +249,12 @@ name='description' content="1. 环境准备 M1 Mac Vmware Fusion Tech Preview �
     <li><a href="#1-环境准备">1. 环境准备</a></li>
     <li><a href="#2-修改主机名">2. 修改主机名</a></li>
     <li><a href="#3-关闭-selinuxswap">3. 关闭 selinux、swap</a></li>
-    <li><a href="#4-ipvs-安装">4. ipvs 安装</a></li>
-  </ol>
-
-  <ol>
+    <li><a href="#4-ipvs-安装">4. ipvs 安装</a>
+      <ol>
+        <li><a href="#执行脚本">执行脚本</a></li>
+        <li><a href="#验证-ipvs-模块">验证 ipvs 模块</a></li>
+      </ol>
+    </li>
     <li><a href="#5-安装-docker">5. 安装 docker</a></li>
     <li><a href="#6-配置-k8s-源">6. 配置 k8s 源</a></li>
     <li><a href="#7-安装-kubeadmkubectlkubelet">7. 安装 kubeadm、kubectl、kubelet</a></li>
@@ -458,10 +460,10 @@ name='description' content="1. 环境准备 M1 Mac Vmware Fusion Tech Preview �
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">chmod a+x /etc/sysconfig/modules/ipvs.modules
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="执行脚本">执行脚本
-</h1><p>/etc/sysconfig/modules/ipvs.modules</p>
-<h1 id="验证-ipvs-模块">验证 ipvs 模块
-</h1><p>lsmod | grep -e ip_vs -e nf_conntrack_ipv4</p>
+</div><h3 id="执行脚本">执行脚本
+</h3><p>/etc/sysconfig/modules/ipvs.modules</p>
+<h3 id="验证-ipvs-模块">验证 ipvs 模块
+</h3><p>lsmod | grep -e ip_vs -e nf_conntrack_ipv4</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -471,11 +473,11 @@ name='description' content="1. 环境准备 M1 Mac Vmware Fusion Tech Preview �
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 执行脚本
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 执行脚本</span>
 </span></span><span class="line"><span class="cl">/etc/sysconfig/modules/ipvs.modules
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 验证ipvs模块
-</span></span><span class="line"><span class="cl">lsmod | grep -e ip_vs -e nf_conntrack_ipv4
+</span></span><span class="line"><span class="cl"><span class="c1"># 验证ipvs模块</span>
+</span></span><span class="line"><span class="cl">lsmod <span class="p">|</span> grep -e ip_vs -e nf_conntrack_ipv4
 </span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
