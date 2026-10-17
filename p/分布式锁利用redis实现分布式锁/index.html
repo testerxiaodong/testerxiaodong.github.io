@@ -6,7 +6,8 @@ name='description' content="1. go-zero 分布式锁实现 看下 go-zero 中 red
 
 <link rel="canonical" href="https://www.cengdong.store/p/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%88%A9%E7%94%A8redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" />
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="【分布式锁】利用Redis实现分布式锁">
+
+<link rel="stylesheet" href="/scss/style.min.9a6f47bb0cccb59cea32f2407a4d279494201cb8a12596986b2cc96158da0dea.css"><meta property='og:title' content="【分布式锁】利用Redis实现分布式锁">
 <meta property='og:description' content="1. go-zero 分布式锁实现 看下 go-zero 中 redis 分布式锁的实现\n1 2 3 4 5 6 7 8 9 10 11 12 13 var ( lockScript = NewScript(`if redis.call(&#34;GET&#34;, KEYS[1]) == ARGV[1] then redis.call(&#34;SET&#34;, KEYS[1], ARGV[1], &#34;PX&#34;, ARGV[2]) return &#34;OK&#34; else return redis.call(&#34;SET&#34;, KEYS[1], ARGV[1], &#34;NX&#34;, &#34;PX&#34;, ARGV[2]) end`) delScript = NewScript(`if redis.call(&#34;GET&#34;, KEYS[1]) == ARGV[1] then return redis.call(&#34;DEL&#34;, KEYS[1]) else return 0 end`) ) 加锁和解锁的过程都是通过 lua 脚本实现的，因为 lua 脚本能够保证 redis 的原子性。\n">
 <meta property='og:url' content='https://www.cengdong.store/p/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E5%88%A9%E7%94%A8redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
@@ -56,7 +57,7 @@ name='description' content="1. go-zero 分布式锁实现 看下 go-zero 中 red
                     
                     
                         
-                        <img src="/img/avatar_hu_c8b3888d588eadf8.png" width="300"
+                        <img src="/img/avatar_hu_9b122898dae96add.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -465,8 +466,9 @@ name='description' content="1. go-zero 分布式锁实现 看下 go-zero 中 red
         (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	
 </div>
 
 <style>

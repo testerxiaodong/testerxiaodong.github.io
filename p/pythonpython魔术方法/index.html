@@ -6,7 +6,8 @@ name='description' content="介绍 Python 的**魔术方法（Magic Methods）**
 
 <link rel="canonical" href="https://www.cengdong.store/p/pythonpython%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/" />
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="【Python】Python魔术方法">
+
+<link rel="stylesheet" href="/scss/style.min.9a6f47bb0cccb59cea32f2407a4d279494201cb8a12596986b2cc96158da0dea.css"><meta property='og:title' content="【Python】Python魔术方法">
 <meta property='og:description' content="介绍 Python 的**魔术方法（Magic Methods）**是以双下划线 __ 包围的特殊方法，常用于重载运算符、定义对象行为等。\n对象的创建与销毁 方法 作用 __new-_(cls, *args, **kwargs) 创建对象(在__init__之前调用) __init__(self, \\*args, \\*\\*kwargs) 初始化对象 __del__(self) 对象销毁时调用 1 2 3 4 5 6 7 8 9 10 11 12 13 class MyClass: def __new__(cls): print(&#34;Creating instance&#34;) return super().__new__(cls) def __init__(self): print(&#34;Initializing instance&#34;) def __del__(self): print(&#34;Destroying instance&#34;) obj = MyClass() del obj # 显式销毁对象 字符串表示 方法 作用 __str__(self) str(obj)，用于用户可读的字符串表示 __repr__(self) repr(obj)，用于调试的字符串表示 __format__(self, format_spec) format(obj, spec)，自定义格式化 1 2 3 4 5 6 7 8 9 10 11 12 13 class Person: def __init__(self, name): self.name = name def __str__(self): return f&#34;Person: {self.name}&#34; # 用户友好的描述 def __repr__(self): return f&#34;Person(name={self.name!r})&#34; # 开发者友好的表示 p = Person(&#34;Alice&#34;) print(str(p)) # Person: Alice print(repr(p)) # Person(name=&#39;Alice&#39;) 算数运算符重载 方法 作用 __add__(self, other) + 加法 __sub__(self, other) - 减法 __mul__(self, other) * 乘法 __truediv__(self, other) / 除法 __floordiv__(self, other) // 整除 __mod__(self, other) % 取余 __pow__(self, other) ** 幂运算 __neg__(self) - 取负 __abs__(self) abs(obj) 绝对值 1 2 3 4 5 6 7 8 9 10 11 12 13 class Vector: def __init__(self, x, y): self.x, self.y = x, y def __add__(self, other): return Vector(self.x + other.x, self.y + other.y) def __str__(self): return f&#34;Vector({self.x}, {self.y})&#34; v1 = Vector(1, 2) v2 = Vector(3, 4) print(v1 + v2) # Vector(4, 6) 比较运算符 方法 作用 __eq__(self, other) == 等于 __ne__(self, other) != 不等于 __lt__(self, other) &lt; 小于 __le__(self, other) &lt;= 小于等于 __gt__(self, other) &gt; 大于 __ge__(self, other) &gt;= 大于等于 1 2 3 4 5 6 7 8 9 10 class Person: def __init__(self, age): self.age = age def __lt__(self, other): return self.age &lt; other.age p1 = Person(25) p2 = Person(30) print(p1 &lt; p2) # True 容器相关 方法 作用 __len__(self) len(obj)，返回对象长度 __getitem__(self, key) obj[key]，获取元素 __setitem__(self, key, value) obj[key] = value设置元素 __delitem__(self, key) del obj[key]，删除元素 __contains__(self, item) item in obj检查是否包含 1 2 3 4 5 6 7 8 9 10 11 12 13 class CustomList: def __init__(self, data): self.data = data def __len__(self): return len(self.data) def __getitem__(self, index): return self.data[index] cl = CustomList([1, 2, 3]) print(len(cl)) # 3 print(cl[1]) # 2 迭代器 方法 作用 __iter__self) 使对象可迭代 __next__(self) next(obj)返回迭代器的下一个元素 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 class Counter: def __init__(self, max_count): self.max = max_count self.current = 0 def __iter__(self): return self # 迭代器返回自身 def __next__(self): if self.current &lt; self.max: self.current += 1 return self.current else: raise StopIteration c = Counter(3) for i in c: print(i) # 1, 2, 3 上下文管理（Context Manager） 方法 作用 __enter__(self) 进入 with 代码块 __exit__(self, exc_type, exc_value, traceback) 退出 with 代码块 1 2 3 4 5 6 7 8 9 10 11 12 class FileHandler: def __init__(self, filename, mode): self.file = open(filename, mode) def __enter__(self): return self.file def __exit__(self, exc_type, exc_value, traceback): self.file.close() with FileHandler(&#34;test.txt&#34;, &#34;w&#34;) as f: f.write(&#34;Hello, world!&#34;) ">
 <meta property='og:url' content='https://www.cengdong.store/p/pythonpython%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/'>
 <meta property='og:site_name' content='cengdong的技术博客'>
@@ -56,7 +57,7 @@ name='description' content="介绍 Python 的**魔术方法（Magic Methods）**
                     
                     
                         
-                        <img src="/img/avatar_hu_c8b3888d588eadf8.png" width="300"
+                        <img src="/img/avatar_hu_9b122898dae96add.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -336,26 +337,26 @@ name='description' content="介绍 Python 的**魔术方法（Magic Methods）**
 </h2><p>Python 的**魔术方法（Magic Methods）**是以双下划线 __ 包围的特殊方法，常用于重载运算符、定义对象行为等。</p>
 <h2 id="对象的创建与销毁">对象的创建与销毁
 </h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>方法</th>
-          <th>作用</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>__new-_(cls, *args, **kwargs)</code></td>
-          <td>创建对象(在<code>__init__</code>之前调用)</td>
-      </tr>
-      <tr>
-          <td><code>__init__(self, \*args, \*\*kwargs)</code></td>
-          <td>初始化对象</td>
-      </tr>
-      <tr>
-          <td><code>__del__(self)</code></td>
-          <td>对象销毁时调用</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>方法</th>
+					<th>作用</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>__new-_(cls, *args, **kwargs)</code></td>
+					<td>创建对象(在<code>__init__</code>之前调用)</td>
+			</tr>
+			<tr>
+					<td><code>__init__(self, \*args, \*\*kwargs)</code></td>
+					<td>初始化对象</td>
+			</tr>
+			<tr>
+					<td><code>__del__(self)</code></td>
+					<td>对象销毁时调用</td>
+			</tr>
+	</tbody>
 </table></div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -391,26 +392,26 @@ name='description' content="介绍 Python 的**魔术方法（Magic Methods）**
 </div>
 </div><h2 id="字符串表示">字符串表示
 </h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>方法</th>
-          <th>作用</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>__str__(self)</code></td>
-          <td><code>str(obj)</code>，用于用户可读的字符串表示</td>
-      </tr>
-      <tr>
-          <td><code>__repr__(self)</code></td>
-          <td><code>repr(obj)</code>，用于调试的字符串表示</td>
-      </tr>
-      <tr>
-          <td><code>__format__(self, format_spec)</code></td>
-          <td>format(obj, spec)，自定义格式化</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>方法</th>
+					<th>作用</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>__str__(self)</code></td>
+					<td><code>str(obj)</code>，用于用户可读的字符串表示</td>
+			</tr>
+			<tr>
+					<td><code>__repr__(self)</code></td>
+					<td><code>repr(obj)</code>，用于调试的字符串表示</td>
+			</tr>
+			<tr>
+					<td><code>__format__(self, format_spec)</code></td>
+					<td>format(obj, spec)，自定义格式化</td>
+			</tr>
+	</tbody>
 </table></div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -446,50 +447,50 @@ name='description' content="介绍 Python 的**魔术方法（Magic Methods）**
 </div>
 </div><h2 id="算数运算符重载">算数运算符重载
 </h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>方法</th>
-          <th>作用</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>__add__(self, other)</code></td>
-          <td>+ 加法</td>
-      </tr>
-      <tr>
-          <td><code>__sub__(self, other)</code></td>
-          <td>- 减法</td>
-      </tr>
-      <tr>
-          <td><code>__mul__(self, other)</code></td>
-          <td>* 乘法</td>
-      </tr>
-      <tr>
-          <td><code>__truediv__(self, other)</code></td>
-          <td>/ 除法</td>
-      </tr>
-      <tr>
-          <td><code>__floordiv__(self, other)</code></td>
-          <td>// 整除</td>
-      </tr>
-      <tr>
-          <td><code>__mod__(self, other)</code></td>
-          <td>% 取余</td>
-      </tr>
-      <tr>
-          <td><code>__pow__(self, other)</code></td>
-          <td>** 幂运算</td>
-      </tr>
-      <tr>
-          <td><code>__neg__(self)</code></td>
-          <td>- 取负</td>
-      </tr>
-      <tr>
-          <td><code>__abs__(self)</code></td>
-          <td>abs(obj) 绝对值</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>方法</th>
+					<th>作用</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>__add__(self, other)</code></td>
+					<td>+ 加法</td>
+			</tr>
+			<tr>
+					<td><code>__sub__(self, other)</code></td>
+					<td>- 减法</td>
+			</tr>
+			<tr>
+					<td><code>__mul__(self, other)</code></td>
+					<td>* 乘法</td>
+			</tr>
+			<tr>
+					<td><code>__truediv__(self, other)</code></td>
+					<td>/ 除法</td>
+			</tr>
+			<tr>
+					<td><code>__floordiv__(self, other)</code></td>
+					<td>// 整除</td>
+			</tr>
+			<tr>
+					<td><code>__mod__(self, other)</code></td>
+					<td>% 取余</td>
+			</tr>
+			<tr>
+					<td><code>__pow__(self, other)</code></td>
+					<td>** 幂运算</td>
+			</tr>
+			<tr>
+					<td><code>__neg__(self)</code></td>
+					<td>- 取负</td>
+			</tr>
+			<tr>
+					<td><code>__abs__(self)</code></td>
+					<td>abs(obj) 绝对值</td>
+			</tr>
+	</tbody>
 </table></div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -525,38 +526,38 @@ name='description' content="介绍 Python 的**魔术方法（Magic Methods）**
 </div>
 </div><h2 id="比较运算符">比较运算符
 </h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>方法</th>
-          <th>作用</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>__eq__(self, other)</code></td>
-          <td>== 等于</td>
-      </tr>
-      <tr>
-          <td><code>__ne__(self, other)</code></td>
-          <td>!= 不等于</td>
-      </tr>
-      <tr>
-          <td><code>__lt__(self, other)</code></td>
-          <td>&lt; 小于</td>
-      </tr>
-      <tr>
-          <td><code>__le__(self, other)</code></td>
-          <td>&lt;= 小于等于</td>
-      </tr>
-      <tr>
-          <td><code>__gt__(self, other)</code></td>
-          <td>&gt; 大于</td>
-      </tr>
-      <tr>
-          <td><code>__ge__(self, other)</code></td>
-          <td>&gt;= 大于等于</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>方法</th>
+					<th>作用</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>__eq__(self, other)</code></td>
+					<td>== 等于</td>
+			</tr>
+			<tr>
+					<td><code>__ne__(self, other)</code></td>
+					<td>!= 不等于</td>
+			</tr>
+			<tr>
+					<td><code>__lt__(self, other)</code></td>
+					<td>&lt; 小于</td>
+			</tr>
+			<tr>
+					<td><code>__le__(self, other)</code></td>
+					<td>&lt;= 小于等于</td>
+			</tr>
+			<tr>
+					<td><code>__gt__(self, other)</code></td>
+					<td>&gt; 大于</td>
+			</tr>
+			<tr>
+					<td><code>__ge__(self, other)</code></td>
+					<td>&gt;= 大于等于</td>
+			</tr>
+	</tbody>
 </table></div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -586,34 +587,34 @@ name='description' content="介绍 Python 的**魔术方法（Magic Methods）**
 </div>
 </div><h2 id="容器相关">容器相关
 </h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>方法</th>
-          <th>作用</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>__len__(self)</code></td>
-          <td>len(obj)，返回对象长度</td>
-      </tr>
-      <tr>
-          <td><code>__getitem__(self, key)</code></td>
-          <td><code>obj[key]</code>，获取元素</td>
-      </tr>
-      <tr>
-          <td><code>__setitem__(self, key, value)</code></td>
-          <td><code>obj[key] = value</code>设置元素</td>
-      </tr>
-      <tr>
-          <td><code>__delitem__(self, key)</code></td>
-          <td><code>del obj[key]</code>，删除元素</td>
-      </tr>
-      <tr>
-          <td><code>__contains__(self, item)</code></td>
-          <td><code>item in obj</code>检查是否包含</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>方法</th>
+					<th>作用</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>__len__(self)</code></td>
+					<td>len(obj)，返回对象长度</td>
+			</tr>
+			<tr>
+					<td><code>__getitem__(self, key)</code></td>
+					<td><code>obj[key]</code>，获取元素</td>
+			</tr>
+			<tr>
+					<td><code>__setitem__(self, key, value)</code></td>
+					<td><code>obj[key] = value</code>设置元素</td>
+			</tr>
+			<tr>
+					<td><code>__delitem__(self, key)</code></td>
+					<td><code>del obj[key]</code>，删除元素</td>
+			</tr>
+			<tr>
+					<td><code>__contains__(self, item)</code></td>
+					<td><code>item in obj</code>检查是否包含</td>
+			</tr>
+	</tbody>
 </table></div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -649,22 +650,22 @@ name='description' content="介绍 Python 的**魔术方法（Magic Methods）**
 </div>
 </div><h2 id="迭代器">迭代器
 </h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>方法</th>
-          <th>作用</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>__iter__self)</code></td>
-          <td>使对象可迭代</td>
-      </tr>
-      <tr>
-          <td><code>__next__(self)</code></td>
-          <td><code>next(obj)</code>返回迭代器的下一个元素</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>方法</th>
+					<th>作用</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>__iter__self)</code></td>
+					<td>使对象可迭代</td>
+			</tr>
+			<tr>
+					<td><code>__next__(self)</code></td>
+					<td><code>next(obj)</code>返回迭代器的下一个元素</td>
+			</tr>
+	</tbody>
 </table></div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -710,22 +711,22 @@ name='description' content="介绍 Python 的**魔术方法（Magic Methods）**
 </div>
 </div><h2 id="上下文管理context-manager">上下文管理（Context Manager）
 </h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>方法</th>
-          <th>作用</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>__enter__(self)</code></td>
-          <td>进入 with 代码块</td>
-      </tr>
-      <tr>
-          <td><code>__exit__(self, exc_type, exc_value, traceback)</code></td>
-          <td>退出 with 代码块</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>方法</th>
+					<th>作用</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>__enter__(self)</code></td>
+					<td>进入 with 代码块</td>
+			</tr>
+			<tr>
+					<td><code>__exit__(self, exc_type, exc_value, traceback)</code></td>
+					<td>退出 with 代码块</td>
+			</tr>
+	</tbody>
 </table></div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -882,8 +883,9 @@ name='description' content="介绍 Python 的**魔术方法（Magic Methods）**
         (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	
 </div>
 
 <style>
