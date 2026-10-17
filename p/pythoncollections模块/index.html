@@ -1,1161 +1,302 @@
-<!DOCTYPE html>
-<html lang="zh-cn" dir="ltr">
-    <head><meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" /><meta
-name='description' content="介绍 这个模块实现了一些专门化的容器，提供了对 Python 的通用内建容器 dict、list、set 和 tuple 的补充。\n类 作用 namedtuple() 一个工厂函数，用来创建元组的子类，子类的字段是有名称的。 deque 类似列表的容器，但 append 和 pop 在其两端的速度都很快。 ChainMap 类似字典的类，用于创建包含多个映射的单个视图。 Counter 用于计数 hashable 对象的字典子类 OrderedDict 字典的子类，能记住条目被添加进去的顺序。 defaultdict 字典的子类，通过调用用户指定的工厂函数，为键提供默认值。 UserDict 封装了字典对象，简化了字典子类化 UserList 封装了列表对象，简化了列表子类化 UserString 封装了字符串对象，简化了字符串子类化 ChainMap ChainMap 类将多个映射迅速地链到一起，这样它们就可以作为一个单元处理。这通常比创建一个新字典再重复地使用 update() 要快得多。\n"> <title>【Python】collections模块</title>
-
-<link rel="canonical" href="https://www.cengdong.store/p/pythoncollections%E6%A8%A1%E5%9D%97/" />
-
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="【Python】collections模块">
-<meta property='og:description' content="介绍 这个模块实现了一些专门化的容器，提供了对 Python 的通用内建容器 dict、list、set 和 tuple 的补充。\n类 作用 namedtuple() 一个工厂函数，用来创建元组的子类，子类的字段是有名称的。 deque 类似列表的容器，但 append 和 pop 在其两端的速度都很快。 ChainMap 类似字典的类，用于创建包含多个映射的单个视图。 Counter 用于计数 hashable 对象的字典子类 OrderedDict 字典的子类，能记住条目被添加进去的顺序。 defaultdict 字典的子类，通过调用用户指定的工厂函数，为键提供默认值。 UserDict 封装了字典对象，简化了字典子类化 UserList 封装了列表对象，简化了列表子类化 UserString 封装了字符串对象，简化了字符串子类化 ChainMap ChainMap 类将多个映射迅速地链到一起，这样它们就可以作为一个单元处理。这通常比创建一个新字典再重复地使用 update() 要快得多。\n">
-<meta property='og:url' content='https://www.cengdong.store/p/pythoncollections%E6%A8%A1%E5%9D%97/'>
-<meta property='og:site_name' content='cengdong的技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-07T16:45:07&#43;08:00'/><meta property='article:modified_time' content='2025-03-07T16:45:07&#43;08:00'/>
-<meta name="twitter:title" content="【Python】collections模块">
-<meta name="twitter:description" content="介绍 这个模块实现了一些专门化的容器，提供了对 Python 的通用内建容器 dict、list、set 和 tuple 的补充。\n类 作用 namedtuple() 一个工厂函数，用来创建元组的子类，子类的字段是有名称的。 deque 类似列表的容器，但 append 和 pop 在其两端的速度都很快。 ChainMap 类似字典的类，用于创建包含多个映射的单个视图。 Counter 用于计数 hashable 对象的字典子类 OrderedDict 字典的子类，能记住条目被添加进去的顺序。 defaultdict 字典的子类，通过调用用户指定的工厂函数，为键提供默认值。 UserDict 封装了字典对象，简化了字典子类化 UserList 封装了列表对象，简化了列表子类化 UserString 封装了字符串对象，简化了字符串子类化 ChainMap ChainMap 类将多个映射迅速地链到一起，这样它们就可以作为一个单元处理。这通常比创建一个新字典再重复地使用 update() 要快得多。\n">
-    </head>
-    <body class="
-    article-page
-    ">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "light");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header>
-        
-            
-            <figure class="site-avatar">
-                <a href="/">
-                
-                    
-                    
-                    
-                        
-                        <img src="/img/avatar_hu_c8b3888d588eadf8.png" width="300"
-                            height="300" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-                </a>
-                
-                    <span class="emoji">🍥</span>
-                
-            </figure>
-            
-        
-        
-        <div class="site-meta">
-            <h1 class="site-name"><a href="/">cengdong的技术博客</a></h1>
-            <h2 class="site-description">学习随笔</h2>
-        </div>
-    </header><ol class="menu-social">
-            
-                <li>
-                    <a 
-                        href='https://github.com/testerxiaodong'
-                        target="_blank"
-                        title="GitHub"
-                        rel="me"
-                    >
-                        
-                        
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-</svg>
-
-
-
-                        
-                    </a>
-                </li>
-            
-        </ol><ol class="menu" id="main-menu">
-        
-        
-        
-        <li >
-            <a href='/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
-
-
-
-                
-                <span>Home</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/%E5%85%B3%E4%BA%8E/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>关于</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/links/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
-  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
-</svg>
-
-
-
-                
-                <span>Links</span>
-            </a>
-        </li>
-        
-        <li class="menu-bottom-section">
-            <ol class="menu">
-
-                
-                    <li id="dark-mode-toggle">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
-
-
-
-                        <span>暗色模式</span>
-                    </li>
-                
-            </ol>
-        </li>
-    </ol>
-</aside>
-
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">目录</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
-  <ol>
-    <li><a href="#介绍">介绍</a></li>
-    <li><a href="#chainmap">ChainMap</a>
-      <ol>
-        <li><a href="#基本用法">基本用法</a></li>
-        <li><a href="#chainmap-的键值查找规则">ChainMap 的键值查找规则</a></li>
-        <li><a href="#chainmap-的修改规则">ChainMap 的修改规则</a></li>
-        <li><a href="#chainmap-的动态特性">ChainMap 的动态特性</a></li>
-        <li><a href="#chainmap-的方法">ChainMap 的方法</a>
-          <ol>
-            <li><a href="#maps---访问所有字典">maps - 访问所有字典</a></li>
-            <li><a href="#new_child---创建新的-chainmap">new_child() - 创建新的 ChainMap</a></li>
-          </ol>
-        </li>
-        <li><a href="#chainmap-的应用场景">ChainMap 的应用场景</a>
-          <ol>
-            <li><a href="#配置管理">配置管理</a></li>
-            <li><a href="#变量作用域">变量作用域</a></li>
-            <li><a href="#命令行参数解析">命令行参数解析</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-    <li><a href="#defaultdict">defaultdict</a>
-      <ol>
-        <li><a href="#defaultdict-基本用法">defaultdict 基本用法</a></li>
-        <li><a href="#defaultdict-的参数">defaultdict 的参数</a></li>
-        <li><a href="#常见默认工厂">常见默认工厂</a>
-          <ol>
-            <li><a href="#默认值为-int适用于计数器">默认值为 int（适用于计数器）</a></li>
-            <li><a href="#默认值为-list适用于分组">默认值为 list（适用于分组）</a></li>
-            <li><a href="#默认值为-set去重分组">默认值为 set（去重分组）</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-    <li><a href="#ordereddict">OrderedDict</a>
-      <ol>
-        <li><a href="#创建-ordereddict">创建 OrderedDict</a></li>
-        <li><a href="#ordereddict-关键特性">OrderedDict 关键特性</a>
-          <ol>
-            <li><a href="#按照插入顺序迭代">按照插入顺序迭代</a></li>
-            <li><a href="#支持-move_to_end-调整顺序">支持 move_to_end 调整顺序</a></li>
-            <li><a href="#支持-popitem取出fifolifo">支持 popitem()取出(FIFO/LIFO)</a></li>
-          </ol>
-        </li>
-        <li><a href="#ordereddict-应用场景">OrderedDict 应用场景</a></li>
-      </ol>
-    </li>
-  </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
-
-            <main class="main full-width">
-    <article class="main-article">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/categories/python/" >
-                Python
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/pythoncollections%E6%A8%A1%E5%9D%97/">【Python】collections模块</a>
-        </h2>
-    
-        
-    </div>
-
-    
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Mar 07, 2025</time>
-            </div>
-        
-
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    阅读时长: 4 分钟
-                </time>
-            </div>
-        
-    </footer>
-    
-
-    
-</div>
-
-</header>
-
-    <section class="article-content">
-    
-    
-    <h2 id="介绍">介绍
-</h2><p>这个模块实现了一些专门化的容器，提供了对 Python 的通用内建容器 dict、list、set 和 tuple 的补充。</p>
-<div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>类</th>
-          <th>作用</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>namedtuple()</td>
-          <td>一个工厂函数，用来创建元组的子类，子类的字段是有名称的。</td>
-      </tr>
-      <tr>
-          <td>deque</td>
-          <td>类似列表的容器，但 append 和 pop 在其两端的速度都很快。</td>
-      </tr>
-      <tr>
-          <td>ChainMap</td>
-          <td>类似字典的类，用于创建包含多个映射的单个视图。</td>
-      </tr>
-      <tr>
-          <td>Counter</td>
-          <td>用于计数 hashable 对象的字典子类</td>
-      </tr>
-      <tr>
-          <td>OrderedDict</td>
-          <td>字典的子类，能记住条目被添加进去的顺序。</td>
-      </tr>
-      <tr>
-          <td>defaultdict</td>
-          <td>字典的子类，通过调用用户指定的工厂函数，为键提供默认值。</td>
-      </tr>
-      <tr>
-          <td>UserDict</td>
-          <td>封装了字典对象，简化了字典子类化</td>
-      </tr>
-      <tr>
-          <td>UserList</td>
-          <td>封装了列表对象，简化了列表子类化</td>
-      </tr>
-      <tr>
-          <td>UserString</td>
-          <td>封装了字符串对象，简化了字符串子类化</td>
-      </tr>
-  </tbody>
-</table></div>
-<h2 id="chainmap">ChainMap
-</h2><p>ChainMap 类将多个映射迅速地链到一起，这样它们就可以作为一个单元处理。这通常比创建一个新字典再重复地使用 update() 要快得多。</p>
-<p><code>class collections.ChainMap(*maps)</code></p>
-<h3 id="基本用法">基本用法
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">ChainMap</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="n">dict2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">cm</span> <span class="o">=</span> <span class="n">ChainMap</span><span class="p">(</span><span class="n">dict1</span><span class="p">,</span> <span class="n">dict2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>  <span class="c1"># ChainMap({&#39;a&#39;: 1, &#39;b&#39;: 2}, {&#39;b&#39;: 3, &#39;c&#39;: 4})</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="chainmap-的键值查找规则">ChainMap 的键值查找规则
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">])</span>  <span class="c1"># 1  （来自 dict1）</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">])</span>  <span class="c1"># 2  （dict1 覆盖了 dict2 的 &#39;b&#39;）</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])</span>  <span class="c1"># 4  （来自 dict2）</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>ChainMap 按照 从左到右（即 从第一个字典到最后一个字典）的顺序进行查找。</li>
-<li>b 在 dict1 和 dict2 都存在，但 dict1 里的值 优先级更高。</li>
-</ul>
-<p>如果查找一个不存在的键，会报 KeyError：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">])</span>  <span class="c1"># KeyError: &#39;d&#39;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="chainmap-的修改规则">ChainMap 的修改规则
-</h3><p>修改 ChainMap 只会影响第一个字典</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">cm</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">dict1</span><span class="p">)</span>  <span class="c1"># {&#39;a&#39;: 1, &#39;b&#39;: 99}</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">dict2</span><span class="p">)</span>  <span class="c1"># {&#39;b&#39;: 3, &#39;c&#39;: 4}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>直接修改 cm[&lsquo;b&rsquo;] 只会影响 dict1，不会影响 dict2。</li>
-<li>ChainMap 只允许修改 第一个字典中的值。</li>
-<li>新增键值对也会加到第一个字典中</li>
-</ul>
-<h3 id="chainmap-的动态特性">ChainMap 的动态特性
-</h3><p>ChainMap 动态反映底层字典的变化：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">dict1</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">])</span>  <span class="c1"># 42  （dict1 改变后，ChainMap 也会更新）</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="chainmap-的方法">ChainMap 的方法
-</h3><h4 id="maps---访问所有字典">maps - 访问所有字典
-</h4><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">maps</span><span class="p">)</span>  <span class="c1"># [{&#39;a&#39;: 42, &#39;b&#39;: 99, &#39;d&#39;: 100}, {&#39;b&#39;: 3, &#39;c&#39;: 4}]</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="new_child---创建新的-chainmap">new_child() - 创建新的 ChainMap
-</h4><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">cm2</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">new_child</span><span class="p">({</span><span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">})</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cm2</span><span class="p">)</span>  <span class="c1"># ChainMap({&#39;e&#39;: 5}, {&#39;a&#39;: 42, &#39;b&#39;: 99, &#39;d&#39;: 100}, {&#39;b&#39;: 3, &#39;c&#39;: 4})</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>这样 cm2 里 e 只会影响最前面的新字典，cm 不受影响。</li>
-<li>这在作用域管理中很有用（比如 Python 解释器的变量查找）。</li>
-</ul>
-<h3 id="chainmap-的应用场景">ChainMap 的应用场景
-</h3><h4 id="配置管理">配置管理
-</h4><p>在应用程序中，我们通常有 默认配置，但也允许用户提供 自定义配置：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">default_config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;theme&#39;</span><span class="p">:</span> <span class="s1">&#39;light&#39;</span><span class="p">,</span> <span class="s1">&#39;font&#39;</span><span class="p">:</span> <span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="n">user_config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;theme&#39;</span><span class="p">:</span> <span class="s1">&#39;dark&#39;</span><span class="p">,</span> <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">config</span> <span class="o">=</span> <span class="n">ChainMap</span><span class="p">(</span><span class="n">user_config</span><span class="p">,</span> <span class="n">default_config</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;theme&#39;</span><span class="p">])</span>  <span class="c1"># dark  （用户配置覆盖默认配置）</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;font&#39;</span><span class="p">])</span>   <span class="c1"># Arial （用户未提供，使用默认值）</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>这样就能 优先使用用户配置，如果没有，就用默认值。</p>
-<h4 id="变量作用域">变量作用域
-</h4><p>Python 解释器在查找变量时，会按 局部 -&gt; 全局 -&gt; 内置 的顺序进行查找，这与 ChainMap 类似：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">global_scope</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="n">local_scope</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">env</span> <span class="o">=</span> <span class="n">ChainMap</span><span class="p">(</span><span class="n">local_scope</span><span class="p">,</span> <span class="n">global_scope</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>  <span class="c1"># 10  （来自全局作用域）</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>  <span class="c1"># 5   （局部作用域优先）</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">])</span>  <span class="c1"># 30  （来自局部作用域）</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="命令行参数解析">命令行参数解析
-</h4><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">argparse</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 定义命令行参数</span>
-</span></span><span class="line"><span class="cl"><span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--timeout&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--theme&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">([])</span>  <span class="c1"># 模拟不传递参数</span>
-</span></span><span class="line"><span class="cl"><span class="n">cli_args</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 默认配置</span>
-</span></span><span class="line"><span class="cl"><span class="n">default_settings</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;theme&#39;</span><span class="p">:</span> <span class="s1">&#39;light&#39;</span><span class="p">,</span> <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="n">config</span> <span class="o">=</span> <span class="n">ChainMap</span><span class="p">(</span><span class="n">cli_args</span><span class="p">,</span> <span class="n">default_settings</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;theme&#39;</span><span class="p">])</span>  <span class="c1"># light</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;timeout&#39;</span><span class="p">])</span>  <span class="c1"># 30</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="defaultdict">defaultdict
-</h2><p>defaultdict 是 Python collections 模块中的一个字典子类，它和普通的 dict 很相似，但有一个关键的区别：当访问不存在的键时，defaultdict 不会报 KeyError，而是返回一个默认值，这个默认值由一个工厂函数提供。</p>
-<h3 id="defaultdict-基本用法">defaultdict 基本用法
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 创建一个默认值为 list 的 defaultdict</span>
-</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 访问不存在的键，返回一个新的空列表</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&#34;key&#34;</span><span class="p">])</span>  <span class="c1"># 输出：[]</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>对比普通字典：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&#34;key&#34;</span><span class="p">])</span>  <span class="c1"># ❌ KeyError</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="defaultdict-的参数">defaultdict 的参数
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">defaultdict</span><span class="p">(</span><span class="n">default_factory</span><span class="p">[,</span> <span class="o">...</span><span class="p">])</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>default_factory：用于生成默认值的可调用对象（如 list、int、set、lambda 等）。</li>
-<li>其他参数和 dict 一样。</li>
-</ul>
-<h3 id="常见默认工厂">常见默认工厂
-</h3><h4 id="默认值为-int适用于计数器">默认值为 int（适用于计数器）
-</h4><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;apple&#34;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;banana&#34;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>  <span class="c1"># {&#39;apple&#39;: 1, &#39;banana&#39;: 1}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="默认值为-list适用于分组">默认值为 list（适用于分组）
-</h4><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;fruits&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34;apple&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;fruits&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34;banana&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;vegetables&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34;carrot&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># {&#39;fruits&#39;: [&#39;apple&#39;, &#39;banana&#39;], &#39;vegetables&#39;: [&#39;carrot&#39;]}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="默认值为-set去重分组">默认值为 set（去重分组）
-</h4><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;fruits&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;apple&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;fruits&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;banana&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;fruits&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&#34;apple&#34;</span><span class="p">)</span>  <span class="c1"># 重复添加，不会重复存储</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># {&#39;fruits&#39;: {&#39;apple&#39;, &#39;banana&#39;}}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="ordereddict">OrderedDict
-</h2><p>OrderedDict 是 collections 模块中的有序字典，它继承自 dict，但能够保持键值对的插入顺序（在 Python 3.7+ 的 dict 也默认保持顺序，但 OrderedDict 仍有一些额外功能）</p>
-<h3 id="创建-ordereddict">创建 OrderedDict
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 普通 dict（Python 3.7+ 默认保持顺序）</span>
-</span></span><span class="line"><span class="cl"><span class="n">d1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;a&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;b&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;c&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>  <span class="c1"># {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># OrderedDict（显式使用）</span>
-</span></span><span class="line"><span class="cl"><span class="n">d2</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">([(</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;b&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>  <span class="c1"># OrderedDict([(&#39;a&#39;, 1), (&#39;b&#39;, 2), (&#39;c&#39;, 3)])</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>特点：</p>
-<ul>
-<li>Python 3.6 及以下：普通 dict 不会 维持插入顺序，OrderedDict 可以。</li>
-<li>Python 3.7+：普通 dict 默认 维持顺序，但 OrderedDict 仍然提供额外方法。</li>
-</ul>
-<h3 id="ordereddict-关键特性">OrderedDict 关键特性
-</h3><h4 id="按照插入顺序迭代">按照插入顺序迭代
-</h4><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;x&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;y&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">[</span><span class="s2">&#34;z&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 输出：</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># x 10</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># y 20</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># z 30  ✅ 顺序保持不变</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="支持-move_to_end-调整顺序">支持 move_to_end 调整顺序
-</h4><p>move_to_end(key, last=True) 可以移动指定键到末尾或开头：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">([(</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;b&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">)</span>  <span class="c1"># 把 &#39;a&#39; 移到末尾</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>  <span class="c1"># OrderedDict([(&#39;b&#39;, 2), (&#39;c&#39;, 3), (&#39;a&#39;, 1)])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 把 &#39;c&#39; 移到开头</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>  <span class="c1"># OrderedDict([(&#39;c&#39;, 3), (&#39;b&#39;, 2), (&#39;a&#39;, 1)])</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="支持-popitem取出fifolifo">支持 popitem()取出(FIFO/LIFO)
-</h4><p>popitem(last=True):</p>
-<ul>
-<li>last=True（默认）➡ 后进先出（LIFO）</li>
-<li>last=False ➡ 先进先出（FIFO）</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">([(</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;b&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">())</span>       <span class="c1"># (&#39;c&#39;, 3)  ✅ 默认 LIFO</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">popitem</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>  <span class="c1"># (&#39;a&#39;, 1)  ✅ FIFO</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>  <span class="c1"># OrderedDict([(&#39;b&#39;, 2)])</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="ordereddict-应用场景">OrderedDict 应用场景
-</h3><p>由于 OrderedDict 维护顺序，它可以实现 LRU（最近最少使用）缓存：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">LRUCache</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span> <span class="o">=</span> <span class="n">capacity</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
-</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>  <span class="c1"># 最近访问的移动到末尾</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">move_to_end</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">popitem</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 移除最早插入的元素（FIFO）</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 示例</span>
-</span></span><span class="line"><span class="cl"><span class="n">cache</span> <span class="o">=</span> <span class="n">LRUCache</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">cache</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;A&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">cache</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;B&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cache</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span>  <span class="c1"># OrderedDict([(1, &#39;A&#39;), (2, &#39;B&#39;)])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 访问 1，使其变成最近使用</span>
-</span></span><span class="line"><span class="cl"><span class="n">cache</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&#34;C&#34;</span><span class="p">)</span>  <span class="c1"># 淘汰最久未使用的 2</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">cache</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span>  <span class="c1"># OrderedDict([(1, &#39;A&#39;), (3, &#39;C&#39;)])</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div>
-</section>
-
-
-    <footer class="article-footer">
-    
-
-    
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
-    </footer>
-
-
-    
-</article>
-
-    
-
-    
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">相关文章</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/p/pythonpython%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8Fre%E6%A8%A1%E5%9D%97/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【Python】Python正则表达式re模块</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/pythonpython%E6%9E%9A%E4%B8%BEenum/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【Python】Python枚举Enum</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/pythonpython%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【Python】Python魔术方法</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/python%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【Python】作用域与命名空间</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/pythonlogging%E6%A8%A1%E5%9D%97/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【Python】logging模块</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
-
-     
-    
-        
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
-
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2023 - 
-        
-        2026 Cengdong
-    </section>
-    
-    <section class="powerby">
-        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
-    </section>
-</footer>
-
-
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
-            >
-
-            </main>
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-    </body>
-</html>
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="介绍 这个模块实现了一些专门化的容器，提供了对 Python 的通用内建容器 dict、list、set 和 tuple 的补充。\n类 作用 namedtuple() 一个工厂函数，用来创建元组的子类，子类的字段是有名称的。 deque 类似列表的容器，但 append 和 pop 在其两端的速度都很快。 ChainMap 类似字典的类，用于创建包含多个映射的单个视图。 Counter 用于计数 hashable 对象的字典子类 OrderedDict 字典的子类，能记住条目被添加进去的顺序。 defaultdict 字典的子类，通过调用用户指定的工厂函数，为键提供默认值。 UserDict 封装了字典对象，简化了字典子类化 UserList 封装了列表对象，简化了列表子类化 UserString 封装了字符串对象，简化了字符串子类化 ChainMap ChainMap 类将多个映射迅速地链到一起，这样它们就可以作为一个单元处理。这通常比创建一个新字典再重复地使用 update() 要快得多。\n"><title>【Python】collections模块</title><link rel=canonical href=https://www.cengdong.store/p/pythoncollections%E6%A8%A1%E5%9D%97/><link rel=stylesheet href=/scss/style.min.9a6f47bb0cccb59cea32f2407a4d279494201cb8a12596986b2cc96158da0dea.css><meta property='og:title' content="【Python】collections模块"><meta property='og:description' content="介绍 这个模块实现了一些专门化的容器，提供了对 Python 的通用内建容器 dict、list、set 和 tuple 的补充。\n类 作用 namedtuple() 一个工厂函数，用来创建元组的子类，子类的字段是有名称的。 deque 类似列表的容器，但 append 和 pop 在其两端的速度都很快。 ChainMap 类似字典的类，用于创建包含多个映射的单个视图。 Counter 用于计数 hashable 对象的字典子类 OrderedDict 字典的子类，能记住条目被添加进去的顺序。 defaultdict 字典的子类，通过调用用户指定的工厂函数，为键提供默认值。 UserDict 封装了字典对象，简化了字典子类化 UserList 封装了列表对象，简化了列表子类化 UserString 封装了字符串对象，简化了字符串子类化 ChainMap ChainMap 类将多个映射迅速地链到一起，这样它们就可以作为一个单元处理。这通常比创建一个新字典再重复地使用 update() 要快得多。\n"><meta property='og:url' content='https://www.cengdong.store/p/pythoncollections%E6%A8%A1%E5%9D%97/'><meta property='og:site_name' content='cengdong的技术博客'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:published_time' content='2025-03-07T16:45:07+08:00'><meta property='article:modified_time' content='2025-03-07T16:45:07+08:00'><meta name=twitter:title content="【Python】collections模块"><meta name=twitter:description content="介绍 这个模块实现了一些专门化的容器，提供了对 Python 的通用内建容器 dict、list、set 和 tuple 的补充。\n类 作用 namedtuple() 一个工厂函数，用来创建元组的子类，子类的字段是有名称的。 deque 类似列表的容器，但 append 和 pop 在其两端的速度都很快。 ChainMap 类似字典的类，用于创建包含多个映射的单个视图。 Counter 用于计数 hashable 对象的字典子类 OrderedDict 字典的子类，能记住条目被添加进去的顺序。 defaultdict 字典的子类，通过调用用户指定的工厂函数，为键提供默认值。 UserDict 封装了字典对象，简化了字典子类化 UserList 封装了列表对象，简化了列表子类化 UserString 封装了字符串对象，简化了字符串子类化 ChainMap ChainMap 类将多个映射迅速地链到一起，这样它们就可以作为一个单元处理。这通常比创建一个新字典再重复地使用 update() 要快得多。\n"></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"light")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_9b122898dae96add.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>cengdong的技术博客</a></h1><h2 class=site-description>学习随笔</h2></div></header><ol class=menu-social><li><a href=https://github.com/testerxiaodong target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/%E5%85%B3%E4%BA%8E/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>Links</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#介绍>介绍</a></li><li><a href=#chainmap>ChainMap</a><ol><li><a href=#基本用法>基本用法</a></li><li><a href=#chainmap-的键值查找规则>ChainMap 的键值查找规则</a></li><li><a href=#chainmap-的修改规则>ChainMap 的修改规则</a></li><li><a href=#chainmap-的动态特性>ChainMap 的动态特性</a></li><li><a href=#chainmap-的方法>ChainMap 的方法</a><ol><li><a href=#maps---访问所有字典>maps - 访问所有字典</a></li><li><a href=#new_child---创建新的-chainmap>new_child() - 创建新的 ChainMap</a></li></ol></li><li><a href=#chainmap-的应用场景>ChainMap 的应用场景</a><ol><li><a href=#配置管理>配置管理</a></li><li><a href=#变量作用域>变量作用域</a></li><li><a href=#命令行参数解析>命令行参数解析</a></li></ol></li></ol></li><li><a href=#defaultdict>defaultdict</a><ol><li><a href=#defaultdict-基本用法>defaultdict 基本用法</a></li><li><a href=#defaultdict-的参数>defaultdict 的参数</a></li><li><a href=#常见默认工厂>常见默认工厂</a><ol><li><a href=#默认值为-int适用于计数器>默认值为 int（适用于计数器）</a></li><li><a href=#默认值为-list适用于分组>默认值为 list（适用于分组）</a></li><li><a href=#默认值为-set去重分组>默认值为 set（去重分组）</a></li></ol></li></ol></li><li><a href=#ordereddict>OrderedDict</a><ol><li><a href=#创建-ordereddict>创建 OrderedDict</a></li><li><a href=#ordereddict-关键特性>OrderedDict 关键特性</a><ol><li><a href=#按照插入顺序迭代>按照插入顺序迭代</a></li><li><a href=#支持-move_to_end-调整顺序>支持 move_to_end 调整顺序</a></li><li><a href=#支持-popitem取出fifolifo>支持 popitem()取出(FIFO/LIFO)</a></li></ol></li><li><a href=#ordereddict-应用场景>OrderedDict 应用场景</a></li></ol></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/python/>Python</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/p/pythoncollections%E6%A8%A1%E5%9D%97/>【Python】collections模块</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Mar 07, 2025</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 5 分钟</time></div></footer></div></header><section class=article-content><h2 id=介绍>介绍</h2><p>这个模块实现了一些专门化的容器，提供了对 Python 的通用内建容器 dict、list、set 和 tuple 的补充。</p><div class=table-wrapper><table><thead><tr><th>类</th><th>作用</th></tr></thead><tbody><tr><td>namedtuple()</td><td>一个工厂函数，用来创建元组的子类，子类的字段是有名称的。</td></tr><tr><td>deque</td><td>类似列表的容器，但 append 和 pop 在其两端的速度都很快。</td></tr><tr><td>ChainMap</td><td>类似字典的类，用于创建包含多个映射的单个视图。</td></tr><tr><td>Counter</td><td>用于计数 hashable 对象的字典子类</td></tr><tr><td>OrderedDict</td><td>字典的子类，能记住条目被添加进去的顺序。</td></tr><tr><td>defaultdict</td><td>字典的子类，通过调用用户指定的工厂函数，为键提供默认值。</td></tr><tr><td>UserDict</td><td>封装了字典对象，简化了字典子类化</td></tr><tr><td>UserList</td><td>封装了列表对象，简化了列表子类化</td></tr><tr><td>UserString</td><td>封装了字符串对象，简化了字符串子类化</td></tr></tbody></table></div><h2 id=chainmap>ChainMap</h2><p>ChainMap 类将多个映射迅速地链到一起，这样它们就可以作为一个单元处理。这通常比创建一个新字典再重复地使用 update() 要快得多。</p><p><code>class collections.ChainMap(*maps)</code></p><h3 id=基本用法>基本用法</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>collections</span> <span class=kn>import</span> <span class=n>ChainMap</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>dict1</span> <span class=o>=</span> <span class=p>{</span><span class=s1>&#39;a&#39;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=s1>&#39;b&#39;</span><span class=p>:</span> <span class=mi>2</span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=n>dict2</span> <span class=o>=</span> <span class=p>{</span><span class=s1>&#39;b&#39;</span><span class=p>:</span> <span class=mi>3</span><span class=p>,</span> <span class=s1>&#39;c&#39;</span><span class=p>:</span> <span class=mi>4</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>cm</span> <span class=o>=</span> <span class=n>ChainMap</span><span class=p>(</span><span class=n>dict1</span><span class=p>,</span> <span class=n>dict2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>cm</span><span class=p>)</span>  <span class=c1># ChainMap({&#39;a&#39;: 1, &#39;b&#39;: 2}, {&#39;b&#39;: 3, &#39;c&#39;: 4})</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=chainmap-的键值查找规则>ChainMap 的键值查找规则</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>cm</span><span class=p>[</span><span class=s1>&#39;a&#39;</span><span class=p>])</span>  <span class=c1># 1  （来自 dict1）</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>cm</span><span class=p>[</span><span class=s1>&#39;b&#39;</span><span class=p>])</span>  <span class=c1># 2  （dict1 覆盖了 dict2 的 &#39;b&#39;）</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>cm</span><span class=p>[</span><span class=s1>&#39;c&#39;</span><span class=p>])</span>  <span class=c1># 4  （来自 dict2）</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>ChainMap 按照 从左到右（即 从第一个字典到最后一个字典）的顺序进行查找。</li><li>b 在 dict1 和 dict2 都存在，但 dict1 里的值 优先级更高。</li></ul><p>如果查找一个不存在的键，会报 KeyError：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>cm</span><span class=p>[</span><span class=s1>&#39;d&#39;</span><span class=p>])</span>  <span class=c1># KeyError: &#39;d&#39;</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=chainmap-的修改规则>ChainMap 的修改规则</h3><p>修改 ChainMap 只会影响第一个字典</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>cm</span><span class=p>[</span><span class=s1>&#39;b&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=mi>99</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>dict1</span><span class=p>)</span>  <span class=c1># {&#39;a&#39;: 1, &#39;b&#39;: 99}</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>dict2</span><span class=p>)</span>  <span class=c1># {&#39;b&#39;: 3, &#39;c&#39;: 4}</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>直接修改 cm[&lsquo;b&rsquo;] 只会影响 dict1，不会影响 dict2。</li><li>ChainMap 只允许修改 第一个字典中的值。</li><li>新增键值对也会加到第一个字典中</li></ul><h3 id=chainmap-的动态特性>ChainMap 的动态特性</h3><p>ChainMap 动态反映底层字典的变化：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>dict1</span><span class=p>[</span><span class=s1>&#39;a&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=mi>42</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>cm</span><span class=p>[</span><span class=s1>&#39;a&#39;</span><span class=p>])</span>  <span class=c1># 42  （dict1 改变后，ChainMap 也会更新）</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=chainmap-的方法>ChainMap 的方法</h3><h4 id=maps---访问所有字典>maps - 访问所有字典</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>cm</span><span class=o>.</span><span class=n>maps</span><span class=p>)</span>  <span class=c1># [{&#39;a&#39;: 42, &#39;b&#39;: 99, &#39;d&#39;: 100}, {&#39;b&#39;: 3, &#39;c&#39;: 4}]</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=new_child---创建新的-chainmap>new_child() - 创建新的 ChainMap</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>cm2</span> <span class=o>=</span> <span class=n>cm</span><span class=o>.</span><span class=n>new_child</span><span class=p>({</span><span class=s1>&#39;e&#39;</span><span class=p>:</span> <span class=mi>5</span><span class=p>})</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>cm2</span><span class=p>)</span>  <span class=c1># ChainMap({&#39;e&#39;: 5}, {&#39;a&#39;: 42, &#39;b&#39;: 99, &#39;d&#39;: 100}, {&#39;b&#39;: 3, &#39;c&#39;: 4})</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>这样 cm2 里 e 只会影响最前面的新字典，cm 不受影响。</li><li>这在作用域管理中很有用（比如 Python 解释器的变量查找）。</li></ul><h3 id=chainmap-的应用场景>ChainMap 的应用场景</h3><h4 id=配置管理>配置管理</h4><p>在应用程序中，我们通常有 默认配置，但也允许用户提供 自定义配置：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>default_config</span> <span class=o>=</span> <span class=p>{</span><span class=s1>&#39;theme&#39;</span><span class=p>:</span> <span class=s1>&#39;light&#39;</span><span class=p>,</span> <span class=s1>&#39;font&#39;</span><span class=p>:</span> <span class=s1>&#39;Arial&#39;</span><span class=p>,</span> <span class=s1>&#39;timeout&#39;</span><span class=p>:</span> <span class=mi>30</span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=n>user_config</span> <span class=o>=</span> <span class=p>{</span><span class=s1>&#39;theme&#39;</span><span class=p>:</span> <span class=s1>&#39;dark&#39;</span><span class=p>,</span> <span class=s1>&#39;timeout&#39;</span><span class=p>:</span> <span class=mi>60</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>config</span> <span class=o>=</span> <span class=n>ChainMap</span><span class=p>(</span><span class=n>user_config</span><span class=p>,</span> <span class=n>default_config</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>config</span><span class=p>[</span><span class=s1>&#39;theme&#39;</span><span class=p>])</span>  <span class=c1># dark  （用户配置覆盖默认配置）</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>config</span><span class=p>[</span><span class=s1>&#39;font&#39;</span><span class=p>])</span>   <span class=c1># Arial （用户未提供，使用默认值）</span>
+</span></span></code></pre></td></tr></table></div></div><p>这样就能 优先使用用户配置，如果没有，就用默认值。</p><h4 id=变量作用域>变量作用域</h4><p>Python 解释器在查找变量时，会按 局部 -> 全局 -> 内置 的顺序进行查找，这与 ChainMap 类似：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>global_scope</span> <span class=o>=</span> <span class=p>{</span><span class=s1>&#39;x&#39;</span><span class=p>:</span> <span class=mi>10</span><span class=p>,</span> <span class=s1>&#39;y&#39;</span><span class=p>:</span> <span class=mi>20</span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=n>local_scope</span> <span class=o>=</span> <span class=p>{</span><span class=s1>&#39;y&#39;</span><span class=p>:</span> <span class=mi>5</span><span class=p>,</span> <span class=s1>&#39;z&#39;</span><span class=p>:</span> <span class=mi>30</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>env</span> <span class=o>=</span> <span class=n>ChainMap</span><span class=p>(</span><span class=n>local_scope</span><span class=p>,</span> <span class=n>global_scope</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>env</span><span class=p>[</span><span class=s1>&#39;x&#39;</span><span class=p>])</span>  <span class=c1># 10  （来自全局作用域）</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>env</span><span class=p>[</span><span class=s1>&#39;y&#39;</span><span class=p>])</span>  <span class=c1># 5   （局部作用域优先）</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>env</span><span class=p>[</span><span class=s1>&#39;z&#39;</span><span class=p>])</span>  <span class=c1># 30  （来自局部作用域）</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=命令行参数解析>命令行参数解析</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>argparse</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 定义命令行参数</span>
+</span></span><span class=line><span class=cl><span class=n>parser</span> <span class=o>=</span> <span class=n>argparse</span><span class=o>.</span><span class=n>ArgumentParser</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=n>parser</span><span class=o>.</span><span class=n>add_argument</span><span class=p>(</span><span class=s1>&#39;--timeout&#39;</span><span class=p>,</span> <span class=nb>type</span><span class=o>=</span><span class=nb>int</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>parser</span><span class=o>.</span><span class=n>add_argument</span><span class=p>(</span><span class=s1>&#39;--theme&#39;</span><span class=p>,</span> <span class=nb>type</span><span class=o>=</span><span class=nb>str</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>args</span> <span class=o>=</span> <span class=n>parser</span><span class=o>.</span><span class=n>parse_args</span><span class=p>([])</span>  <span class=c1># 模拟不传递参数</span>
+</span></span><span class=line><span class=cl><span class=n>cli_args</span> <span class=o>=</span> <span class=p>{</span><span class=n>k</span><span class=p>:</span> <span class=n>v</span> <span class=k>for</span> <span class=n>k</span><span class=p>,</span> <span class=n>v</span> <span class=ow>in</span> <span class=nb>vars</span><span class=p>(</span><span class=n>args</span><span class=p>)</span><span class=o>.</span><span class=n>items</span><span class=p>()</span> <span class=k>if</span> <span class=n>v</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 默认配置</span>
+</span></span><span class=line><span class=cl><span class=n>default_settings</span> <span class=o>=</span> <span class=p>{</span><span class=s1>&#39;theme&#39;</span><span class=p>:</span> <span class=s1>&#39;light&#39;</span><span class=p>,</span> <span class=s1>&#39;timeout&#39;</span><span class=p>:</span> <span class=mi>30</span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=n>config</span> <span class=o>=</span> <span class=n>ChainMap</span><span class=p>(</span><span class=n>cli_args</span><span class=p>,</span> <span class=n>default_settings</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>config</span><span class=p>[</span><span class=s1>&#39;theme&#39;</span><span class=p>])</span>  <span class=c1># light</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>config</span><span class=p>[</span><span class=s1>&#39;timeout&#39;</span><span class=p>])</span>  <span class=c1># 30</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=defaultdict>defaultdict</h2><p>defaultdict 是 Python collections 模块中的一个字典子类，它和普通的 dict 很相似，但有一个关键的区别：当访问不存在的键时，defaultdict 不会报 KeyError，而是返回一个默认值，这个默认值由一个工厂函数提供。</p><h3 id=defaultdict-基本用法>defaultdict 基本用法</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>collections</span> <span class=kn>import</span> <span class=n>defaultdict</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 创建一个默认值为 list 的 defaultdict</span>
+</span></span><span class=line><span class=cl><span class=n>d</span> <span class=o>=</span> <span class=n>defaultdict</span><span class=p>(</span><span class=nb>list</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 访问不存在的键，返回一个新的空列表</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>d</span><span class=p>[</span><span class=s2>&#34;key&#34;</span><span class=p>])</span>  <span class=c1># 输出：[]</span>
+</span></span></code></pre></td></tr></table></div></div><p>对比普通字典：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>d</span> <span class=o>=</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>d</span><span class=p>[</span><span class=s2>&#34;key&#34;</span><span class=p>])</span>  <span class=c1># ❌ KeyError</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=defaultdict-的参数>defaultdict 的参数</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>defaultdict</span><span class=p>(</span><span class=n>default_factory</span><span class=p>[,</span> <span class=o>...</span><span class=p>])</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>default_factory：用于生成默认值的可调用对象（如 list、int、set、lambda 等）。</li><li>其他参数和 dict 一样。</li></ul><h3 id=常见默认工厂>常见默认工厂</h3><h4 id=默认值为-int适用于计数器>默认值为 int（适用于计数器）</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>d</span> <span class=o>=</span> <span class=n>defaultdict</span><span class=p>(</span><span class=nb>int</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=p>[</span><span class=s2>&#34;apple&#34;</span><span class=p>]</span> <span class=o>+=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=p>[</span><span class=s2>&#34;banana&#34;</span><span class=p>]</span> <span class=o>+=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>d</span><span class=p>)</span>  <span class=c1># {&#39;apple&#39;: 1, &#39;banana&#39;: 1}</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=默认值为-list适用于分组>默认值为 list（适用于分组）</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>d</span> <span class=o>=</span> <span class=n>defaultdict</span><span class=p>(</span><span class=nb>list</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=p>[</span><span class=s2>&#34;fruits&#34;</span><span class=p>]</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=s2>&#34;apple&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=p>[</span><span class=s2>&#34;fruits&#34;</span><span class=p>]</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=s2>&#34;banana&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=p>[</span><span class=s2>&#34;vegetables&#34;</span><span class=p>]</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=s2>&#34;carrot&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>d</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c1># {&#39;fruits&#39;: [&#39;apple&#39;, &#39;banana&#39;], &#39;vegetables&#39;: [&#39;carrot&#39;]}</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=默认值为-set去重分组>默认值为 set（去重分组）</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>d</span> <span class=o>=</span> <span class=n>defaultdict</span><span class=p>(</span><span class=nb>set</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=p>[</span><span class=s2>&#34;fruits&#34;</span><span class=p>]</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=s2>&#34;apple&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=p>[</span><span class=s2>&#34;fruits&#34;</span><span class=p>]</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=s2>&#34;banana&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=p>[</span><span class=s2>&#34;fruits&#34;</span><span class=p>]</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=s2>&#34;apple&#34;</span><span class=p>)</span>  <span class=c1># 重复添加，不会重复存储</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>d</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c1># {&#39;fruits&#39;: {&#39;apple&#39;, &#39;banana&#39;}}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=ordereddict>OrderedDict</h2><p>OrderedDict 是 collections 模块中的有序字典，它继承自 dict，但能够保持键值对的插入顺序（在 Python 3.7+ 的 dict 也默认保持顺序，但 OrderedDict 仍有一些额外功能）</p><h3 id=创建-ordereddict>创建 OrderedDict</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>collections</span> <span class=kn>import</span> <span class=n>OrderedDict</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 普通 dict（Python 3.7+ 默认保持顺序）</span>
+</span></span><span class=line><span class=cl><span class=n>d1</span> <span class=o>=</span> <span class=p>{</span><span class=s2>&#34;a&#34;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=s2>&#34;b&#34;</span><span class=p>:</span> <span class=mi>2</span><span class=p>,</span> <span class=s2>&#34;c&#34;</span><span class=p>:</span> <span class=mi>3</span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>d1</span><span class=p>)</span>  <span class=c1># {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># OrderedDict（显式使用）</span>
+</span></span><span class=line><span class=cl><span class=n>d2</span> <span class=o>=</span> <span class=n>OrderedDict</span><span class=p>([(</span><span class=s2>&#34;a&#34;</span><span class=p>,</span> <span class=mi>1</span><span class=p>),</span> <span class=p>(</span><span class=s2>&#34;b&#34;</span><span class=p>,</span> <span class=mi>2</span><span class=p>),</span> <span class=p>(</span><span class=s2>&#34;c&#34;</span><span class=p>,</span> <span class=mi>3</span><span class=p>)])</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>d2</span><span class=p>)</span>  <span class=c1># OrderedDict([(&#39;a&#39;, 1), (&#39;b&#39;, 2), (&#39;c&#39;, 3)])</span>
+</span></span></code></pre></td></tr></table></div></div><p>特点：</p><ul><li>Python 3.6 及以下：普通 dict 不会 维持插入顺序，OrderedDict 可以。</li><li>Python 3.7+：普通 dict 默认 维持顺序，但 OrderedDict 仍然提供额外方法。</li></ul><h3 id=ordereddict-关键特性>OrderedDict 关键特性</h3><h4 id=按照插入顺序迭代>按照插入顺序迭代</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>d</span> <span class=o>=</span> <span class=n>OrderedDict</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=p>[</span><span class=s2>&#34;x&#34;</span><span class=p>]</span> <span class=o>=</span> <span class=mi>10</span>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=p>[</span><span class=s2>&#34;y&#34;</span><span class=p>]</span> <span class=o>=</span> <span class=mi>20</span>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=p>[</span><span class=s2>&#34;z&#34;</span><span class=p>]</span> <span class=o>=</span> <span class=mi>30</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=n>k</span><span class=p>,</span> <span class=n>v</span> <span class=ow>in</span> <span class=n>d</span><span class=o>.</span><span class=n>items</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>k</span><span class=p>,</span> <span class=n>v</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 输出：</span>
+</span></span><span class=line><span class=cl><span class=c1># x 10</span>
+</span></span><span class=line><span class=cl><span class=c1># y 20</span>
+</span></span><span class=line><span class=cl><span class=c1># z 30  ✅ 顺序保持不变</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=支持-move_to_end-调整顺序>支持 move_to_end 调整顺序</h4><p>move_to_end(key, last=True) 可以移动指定键到末尾或开头：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>d</span> <span class=o>=</span> <span class=n>OrderedDict</span><span class=p>([(</span><span class=s2>&#34;a&#34;</span><span class=p>,</span> <span class=mi>1</span><span class=p>),</span> <span class=p>(</span><span class=s2>&#34;b&#34;</span><span class=p>,</span> <span class=mi>2</span><span class=p>),</span> <span class=p>(</span><span class=s2>&#34;c&#34;</span><span class=p>,</span> <span class=mi>3</span><span class=p>)])</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=o>.</span><span class=n>move_to_end</span><span class=p>(</span><span class=s2>&#34;a&#34;</span><span class=p>)</span>  <span class=c1># 把 &#39;a&#39; 移到末尾</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>d</span><span class=p>)</span>  <span class=c1># OrderedDict([(&#39;b&#39;, 2), (&#39;c&#39;, 3), (&#39;a&#39;, 1)])</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>d</span><span class=o>.</span><span class=n>move_to_end</span><span class=p>(</span><span class=s2>&#34;c&#34;</span><span class=p>,</span> <span class=n>last</span><span class=o>=</span><span class=kc>False</span><span class=p>)</span>  <span class=c1># 把 &#39;c&#39; 移到开头</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>d</span><span class=p>)</span>  <span class=c1># OrderedDict([(&#39;c&#39;, 3), (&#39;b&#39;, 2), (&#39;a&#39;, 1)])</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=支持-popitem取出fifolifo>支持 popitem()取出(FIFO/LIFO)</h4><p>popitem(last=True):</p><ul><li>last=True（默认）➡ 后进先出（LIFO）</li><li>last=False ➡ 先进先出（FIFO）</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>d</span> <span class=o>=</span> <span class=n>OrderedDict</span><span class=p>([(</span><span class=s2>&#34;a&#34;</span><span class=p>,</span> <span class=mi>1</span><span class=p>),</span> <span class=p>(</span><span class=s2>&#34;b&#34;</span><span class=p>,</span> <span class=mi>2</span><span class=p>),</span> <span class=p>(</span><span class=s2>&#34;c&#34;</span><span class=p>,</span> <span class=mi>3</span><span class=p>)])</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>d</span><span class=o>.</span><span class=n>popitem</span><span class=p>())</span>       <span class=c1># (&#39;c&#39;, 3)  ✅ 默认 LIFO</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>d</span><span class=o>.</span><span class=n>popitem</span><span class=p>(</span><span class=n>last</span><span class=o>=</span><span class=kc>False</span><span class=p>))</span>  <span class=c1># (&#39;a&#39;, 1)  ✅ FIFO</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>d</span><span class=p>)</span>  <span class=c1># OrderedDict([(&#39;b&#39;, 2)])</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=ordereddict-应用场景>OrderedDict 应用场景</h3><p>由于 OrderedDict 维护顺序，它可以实现 LRU（最近最少使用）缓存：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>LRUCache</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>capacity</span><span class=p>:</span> <span class=nb>int</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>cache</span> <span class=o>=</span> <span class=n>OrderedDict</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>capacity</span> <span class=o>=</span> <span class=n>capacity</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>get</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>key</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>key</span> <span class=ow>not</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>cache</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=o>-</span><span class=mi>1</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>cache</span><span class=o>.</span><span class=n>move_to_end</span><span class=p>(</span><span class=n>key</span><span class=p>)</span>  <span class=c1># 最近访问的移动到末尾</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>cache</span><span class=p>[</span><span class=n>key</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>put</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>key</span><span class=p>,</span> <span class=n>value</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>key</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>cache</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>cache</span><span class=o>.</span><span class=n>move_to_end</span><span class=p>(</span><span class=n>key</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>cache</span><span class=p>[</span><span class=n>key</span><span class=p>]</span> <span class=o>=</span> <span class=n>value</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=nb>len</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>cache</span><span class=p>)</span> <span class=o>&gt;</span> <span class=bp>self</span><span class=o>.</span><span class=n>capacity</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>cache</span><span class=o>.</span><span class=n>popitem</span><span class=p>(</span><span class=n>last</span><span class=o>=</span><span class=kc>False</span><span class=p>)</span>  <span class=c1># 移除最早插入的元素（FIFO）</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 示例</span>
+</span></span><span class=line><span class=cl><span class=n>cache</span> <span class=o>=</span> <span class=n>LRUCache</span><span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>cache</span><span class=o>.</span><span class=n>put</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=s2>&#34;A&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>cache</span><span class=o>.</span><span class=n>put</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=s2>&#34;B&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>cache</span><span class=o>.</span><span class=n>cache</span><span class=p>)</span>  <span class=c1># OrderedDict([(1, &#39;A&#39;), (2, &#39;B&#39;)])</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>cache</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span>  <span class=c1># 访问 1，使其变成最近使用</span>
+</span></span><span class=line><span class=cl><span class=n>cache</span><span class=o>.</span><span class=n>put</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=s2>&#34;C&#34;</span><span class=p>)</span>  <span class=c1># 淘汰最久未使用的 2</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>cache</span><span class=o>.</span><span class=n>cache</span><span class=p>)</span>  <span class=c1># OrderedDict([(1, &#39;A&#39;), (3, &#39;C&#39;)])</span>
+</span></span></code></pre></td></tr></table></div></div></section><footer class=article-footer><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/p/pythonpython%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8Fre%E6%A8%A1%E5%9D%97/><div class=article-details><h2 class=article-title>【Python】Python正则表达式re模块</h2></div></a></article><article><a href=/p/pythonpython%E6%9E%9A%E4%B8%BEenum/><div class=article-details><h2 class=article-title>【Python】Python枚举Enum</h2></div></a></article><article><a href=/p/pythonpython%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/><div class=article-details><h2 class=article-title>【Python】Python魔术方法</h2></div></a></article><article><a href=/p/python%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/><div class=article-details><h2 class=article-title>【Python】作用域与命名空间</h2></div></a></article><article><a href=/p/pythonlogging%E6%A8%A1%E5%9D%97/><div class=article-details><h2 class=article-title>【Python】logging模块</h2></div></a></article></div></div></aside><div class=disqus-container><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//hugo-theme-stack.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+2023 -
+2026 Cengdong</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.30.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
