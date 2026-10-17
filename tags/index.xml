@@ -1,1 +1,44 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on cengdong的技术博客</title><link>https://www.cengdong.store/tags/</link><description>Recent content in Tags on cengdong的技术博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>Cengdong</copyright><lastBuildDate>Wed, 14 Jan 2026 13:40:49 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>Clash</title><link>https://www.cengdong.store/tags/clash/</link><pubDate>Wed, 14 Jan 2026 13:40:49 +0800</pubDate><guid>https://www.cengdong.store/tags/clash/</guid><description/></item><item><title>K6</title><link>https://www.cengdong.store/tags/k6/</link><pubDate>Sun, 18 May 2025 20:55:24 +0800</pubDate><guid>https://www.cengdong.store/tags/k6/</guid><description/></item><item><title>K8s</title><link>https://www.cengdong.store/tags/k8s/</link><pubDate>Mon, 28 Aug 2023 19:51:03 +0800</pubDate><guid>https://www.cengdong.store/tags/k8s/</guid><description/></item><item><title>消息中间件</title><link>https://www.cengdong.store/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/</link><pubDate>Mon, 31 Jul 2023 00:02:07 +0800</pubDate><guid>https://www.cengdong.store/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Tags on cengdong的技术博客</title>
+        <link>https://www.cengdong.store/tags/</link>
+        <description>Recent content in Tags on cengdong的技术博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>Cengdong</copyright>
+        <lastBuildDate>Wed, 14 Jan 2026 13:40:49 +0800</lastBuildDate><atom:link href="https://www.cengdong.store/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Clash</title>
+        <link>https://www.cengdong.store/tags/clash/</link>
+        <pubDate>Wed, 14 Jan 2026 13:40:49 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/tags/clash/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>K6</title>
+        <link>https://www.cengdong.store/tags/k6/</link>
+        <pubDate>Sun, 18 May 2025 20:55:24 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/tags/k6/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>K8s</title>
+        <link>https://www.cengdong.store/tags/k8s/</link>
+        <pubDate>Mon, 28 Aug 2023 19:51:03 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/tags/k8s/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>消息中间件</title>
+        <link>https://www.cengdong.store/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/</link>
+        <pubDate>Mon, 31 Jul 2023 00:02:07 +0800</pubDate>
+        
+        <guid>https://www.cengdong.store/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

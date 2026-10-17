@@ -1,348 +1,1269 @@
-<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="什么是 k6 使用 k6，你可以测试应用程序和基础设施的可靠性和性能。\n工程团队（包括开发人员、QA 工程师、SDET 和 SRE）通常使用 k6 来：\n负载和性能测试 浏览器性能测试 性能和综合监控 性能测试自动化 混沌与弹性测试 安装 K6 K6 有能在多种平台安装：\n"><title>【K6性能测试】K6学习笔记</title><link rel=canonical href=https://www.cengdong.store/p/k6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95k6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/><link rel=stylesheet href=/scss/style.min.9a6f47bb0cccb59cea32f2407a4d279494201cb8a12596986b2cc96158da0dea.css><meta property='og:title' content="【K6性能测试】K6学习笔记"><meta property='og:description' content="什么是 k6 使用 k6，你可以测试应用程序和基础设施的可靠性和性能。\n工程团队（包括开发人员、QA 工程师、SDET 和 SRE）通常使用 k6 来：\n负载和性能测试 浏览器性能测试 性能和综合监控 性能测试自动化 混沌与弹性测试 安装 K6 K6 有能在多种平台安装：\n"><meta property='og:url' content='https://www.cengdong.store/p/k6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95k6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'><meta property='og:site_name' content='cengdong的技术博客'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='K6'><meta property='article:published_time' content='2025-05-18T20:55:24+08:00'><meta property='article:modified_time' content='2025-05-18T20:55:24+08:00'><meta name=twitter:title content="【K6性能测试】K6学习笔记"><meta name=twitter:description content="什么是 k6 使用 k6，你可以测试应用程序和基础设施的可靠性和性能。\n工程团队（包括开发人员、QA 工程师、SDET 和 SRE）通常使用 k6 来：\n负载和性能测试 浏览器性能测试 性能和综合监控 性能测试自动化 混沌与弹性测试 安装 K6 K6 有能在多种平台安装：\n"></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"light")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
-<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_9b122898dae96add.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
-</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>cengdong的技术博客</a></h1><h2 class=site-description>学习随笔</h2></div></header><ol class=menu-social><li><a href=https://github.com/testerxiaodong target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
-<span>Home</span></a></li><li><a href=/%E5%85%B3%E4%BA%8E/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
-<span>关于</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
-<span>Archives</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
-<span>Search</span></a></li><li><a href=/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
-<span>Links</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
-<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#什么是-k6>什么是 k6</a></li><li><a href=#安装-k6>安装 K6</a></li><li><a href=#编写第一个-k6-测试脚本>编写第一个 k6 测试脚本</a><ol><li><a href=#前提条件>前提条件</a></li><li><a href=#k6-测试脚本的结构>k6 测试脚本的结构</a></li><li><a href=#编写-k6-测试脚本>编写 k6 测试脚本</a></li></ol></li><li><a href=#更多的-http-请求方式>更多的 http 请求方式</a><ol><li><a href=#get-方法>get 方法</a></li><li><a href=#post-方法>post 方法</a></li></ol></li><li><a href=#http-请求标签>http 请求标签</a><ol><li><a href=#标签示例>标签示例</a></li><li><a href=#使用标签将-url-分组>使用标签将 URL 分组</a></li></ol></li><li><a href=#指标>指标</a><ol><li><a href=#指标分类>指标分类</a></li><li><a href=#要观测的指标>要观测的指标</a></li><li><a href=#示例输出>示例输出</a></li><li><a href=#指标名称限制>指标名称限制</a></li><li><a href=#内置指标>内置指标</a></li><li><a href=#http-内置指标>http 内置指标</a></li><li><a href=#浏览器指标>浏览器指标</a></li><li><a href=#内置-websocket-指标>内置 Websocket 指标</a></li></ol></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/>性能测试</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/p/k6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95k6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/>【K6性能测试】K6学习笔记</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published>May 18, 2025</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-<time class=article-time--reading>阅读时长: 7 分钟</time></div></footer></div></header><section class=article-content><h2 id=什么是-k6>什么是 k6</h2><p>使用 k6，你可以测试应用程序和基础设施的可靠性和性能。</p><p>工程团队（包括开发人员、QA 工程师、SDET 和 SRE）通常使用 k6 来：</p><ul><li>负载和性能测试</li><li>浏览器性能测试</li><li>性能和综合监控</li><li>性能测试自动化</li><li>混沌与弹性测试</li></ul><h2 id=安装-k6>安装 K6</h2><p>K6 有能在多种平台安装：</p><ul><li>windows</li><li>mac</li><li>linux</li></ul><p>除此之外，还可以通过 Docker 容器方式运行 k6</p><p>目前我用的开发主力机是 mac，在 mac 上安装 k6 的途径主要是通过<code>homebrew</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>brew install  k6
-</span></span></code></pre></td></tr></table></div></div><p>此外就是通过 Docker 安装 k6</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>docker pull grafana/k6
-</span></span></code></pre></td></tr></table></div></div><h2 id=编写第一个-k6-测试脚本>编写第一个 k6 测试脚本</h2><h3 id=前提条件>前提条件</h3><p>要编写 k6 测试脚本，需要以下前提：</p><ul><li>javascript 或者 typescript 知识</li><li>在电脑上安装 k6</li><li>用于编写测试脚本的代码编辑器(我目前使用的是 vscode)</li></ul><h3 id=k6-测试脚本的结构>k6 测试脚本的结构</h3><p>每个 k6 脚本都遵循一个通用结构，围绕几个核心组件：</p><ul><li>默认函数：这是测试逻辑所在的位置。它定义了测试将执行的操作以及在执行过程中的行为方式。它应作为脚本中的默认函数导出。</li><li>imports ：您可以进口额外的 k6 模块或 JavaScript 库 (jslibs) 用于扩展脚本功能，例如发出 HTTP 请求或模拟浏览器交互。请注意，k6 并非基于 Node.js 构建，而是使用其自身的 JavaScript 运行时。与某些 npm 模块的兼容性可能有所不同。</li><li>options（可选） ：允许您配置测试的执行，例如定义虚拟用户数量、测试时长或设置性能阈值。请参阅 选项以了解更多详细信息。</li><li>生命周期操作（可选） ：由于您的测试可能需要在执行测试逻辑之前和/或之后运行代码，例如从文件解析数据或从 Amazon S3 下载对象， 生命周期操作允许您编写代码，作为预定义函数或在特定代码范围内，这些代码将在测试执行的不同阶段执行。</li></ul><h3 id=编写-k6-测试脚本>编写 k6 测试脚本</h3><ul><li>创建测试脚本(手动创建一个 js 文件或者使用<code>k6 new test.js</code>)</li><li>导入模块(<code>import http from 'k6/http'</code>)</li><li>定义函数(<code>export default function() {}</code>)</li><li>声明测试选项(<code>export const options = {}</code>)</li></ul><p>接下来查看一个完整的示例：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// 导入模块
-</span></span></span><span class=line><span class=cl><span class=kr>import</span> <span class=nx>http</span> <span class=nx>from</span> <span class=s1>&#39;k6/http&#39;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=kr>import</span> <span class=p>{</span> <span class=nx>sleep</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;k6&#39;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=c1>// 定义可选项
-</span></span></span><span class=line><span class=cl><span class=kr>export</span> <span class=kr>const</span> <span class=nx>options</span> <span class=o>=</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=nx>iterations</span><span class=o>:</span> <span class=mi>10</span>
-</span></span><span class=line><span class=cl><span class=p>};</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=c1>// The default exported function is gonna be picked up by k6 as the entry point for the test script. It will be executed repeatedly in &#34;iterations&#34; for the whole duration of the test.
-</span></span></span><span class=line><span class=cl><span class=c1>// 默认函数，测试脚本逻辑就在这里面，必选项
-</span></span></span><span class=line><span class=cl><span class=kr>export</span> <span class=k>default</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=c1>// Make a GET request to the target URL
-</span></span></span><span class=line><span class=cl>  <span class=nx>http</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=s1>&#39;https://quickpizza.grafana.com&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>  <span class=c1>// Sleep for 1 second to simulate real-world usage
-</span></span></span><span class=line><span class=cl>  <span class=nx>sleep</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=c1>// 测试生命周期函数，可选的
-</span></span></span></code></pre></td></tr></table></div></div><h2 id=更多的-http-请求方式>更多的 http 请求方式</h2><p>k6 支持所有的 http 请求方法</p><ul><li>get(GET)</li><li>post(POST)</li><li>put(PUT)</li><li>del(DELETE)</li><li>patch(PATCH)</li><li>head(HEAD)</li><li>options(OPTIONS)</li><li>requests(类似于 python 的 request 库)</li><li>batch(批量请求)</li></ul><h3 id=get-方法>get 方法</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=nx>http</span> <span class=nx>from</span> <span class=s1>&#39;k6/http&#39;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kr>export</span> <span class=k>default</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=nx>http</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=s1>&#39;http://test.k6.io&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></td></tr></table></div></div><h3 id=post-方法>post 方法</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=nx>http</span> <span class=nx>from</span> <span class=s1>&#39;k6/http&#39;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kr>export</span> <span class=k>default</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>url</span> <span class=o>=</span> <span class=s1>&#39;http://test.k6.io/login&#39;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>payload</span> <span class=o>=</span> <span class=nx>JSON</span><span class=p>.</span><span class=nx>stringify</span><span class=p>({</span>
-</span></span><span class=line><span class=cl>    <span class=nx>email</span><span class=o>:</span> <span class=s1>&#39;aaa&#39;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>    <span class=nx>password</span><span class=o>:</span> <span class=s1>&#39;bbb&#39;</span>
-</span></span><span class=line><span class=cl>  <span class=p>});</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>params</span> <span class=o>=</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=nx>headers</span><span class=o>:</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>      <span class=s1>&#39;Content-Type&#39;</span><span class=o>:</span> <span class=s1>&#39;application/json&#39;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>  <span class=p>};</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>  <span class=nx>http</span><span class=p>.</span><span class=nx>post</span><span class=p>(</span><span class=nx>url</span><span class=p>,</span> <span class=nx>payload</span><span class=p>,</span> <span class=nx>params</span><span class=p>);</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></td></tr></table></div></div><h2 id=http-请求标签>http 请求标签</h2><h3 id=标签示例>标签示例</h3><p>k6 会自动应用内置标签到 http 请求中，我们可以使用标签来过滤结果并组织分析</p><p>以下是一些常用的 http 相关的标签</p><div class=table-wrapper><table><thead><tr><th>标签名</th><th>描述</th></tr></thead><tbody><tr><td>expected_response</td><td>是否是期望的响应，默认情况下 200-399 之间的都是 true，也可以通过<code>setResponseCallback</code>更改默认行为</td></tr><tr><td>group</td><td>当请求在某个 group 中时是组名，默认值是空</td></tr><tr><td>name</td><td>默认为请求的 url</td></tr><tr><td>method</td><td>http 请求方法</td></tr><tr><td>scenario</td><td>当请求在某个 scenario 中时，标签值是 scenario 名，默认为 default</td></tr><tr><td>status</td><td>响应状态码</td></tr><tr><td>url</td><td>默认为 url 请求地址</td></tr></tbody></table></div><p>以下代码展示了如何记录测试结果数据点的 JSON 示例，在此示例中，指标是 HTTP 请求的持续时间</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;Point&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>  <span class=nt>&#34;metric&#34;</span><span class=p>:</span> <span class=s2>&#34;http_req_duration&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>  <span class=nt>&#34;data&#34;</span><span class=p>:</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=nt>&#34;time&#34;</span><span class=p>:</span> <span class=s2>&#34;2017-06-02T23:10:29.52444541+02:00&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>    <span class=nt>&#34;value&#34;</span><span class=p>:</span> <span class=mf>586.831127</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>    <span class=nt>&#34;tags&#34;</span><span class=p>:</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>      <span class=nt>&#34;expected_response&#34;</span><span class=p>:</span> <span class=s2>&#34;true&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>      <span class=nt>&#34;group&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>      <span class=nt>&#34;method&#34;</span><span class=p>:</span> <span class=s2>&#34;GET&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>      <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;http://test.k6.io&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>      <span class=nt>&#34;scenario&#34;</span><span class=p>:</span> <span class=s2>&#34;default&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>      <span class=nt>&#34;status&#34;</span><span class=p>:</span> <span class=s2>&#34;200&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>      <span class=nt>&#34;url&#34;</span><span class=p>:</span> <span class=s2>&#34;http://test.k6.io&#34;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>  <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></td></tr></table></div></div><h3 id=使用标签将-url-分组>使用标签将 URL 分组</h3><p>默认情况下，标签会有一个<code>name</code>字段，用于保存请求的 URL 的值，如果测试包含动态 URL 路径，我们希望将数据聚合分析，而不是大量的唯一 URL 进入指标流。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span><span class=lnt>6
-</span><span class=lnt>7
-</span><span class=lnt>8
-</span><span class=lnt>9
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=nx>http</span> <span class=nx>from</span> <span class=s1>&#39;k6/http&#39;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kr>export</span> <span class=k>default</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>id</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=nx>id</span> <span class=o>&lt;=</span> <span class=mi>100</span><span class=p>;</span> <span class=nx>id</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=nx>http</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=sb>`http://example.com/posts/</span><span class=si>${</span><span class=nx>id</span><span class=si>}</span><span class=sb>`</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>  <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=c1>// tags.name=\&#34;http://example.com/posts/1\&#34;,
-</span></span></span><span class=line><span class=cl><span class=c1>// tags.name=\&#34;http://example.com/posts/2\&#34;,
-</span></span></span></code></pre></td></tr></table></div></div><p>我们更希望在单个指标中报告这个数据，要从动态的 URL 聚合数据，我们可以设置 http 请求的<code>name</code>标签</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=nx>http</span> <span class=nx>from</span> <span class=s1>&#39;k6/http&#39;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kr>export</span> <span class=k>default</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>id</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=nx>id</span> <span class=o>&lt;=</span> <span class=mi>100</span><span class=p>;</span> <span class=nx>id</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=nx>http</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=sb>`http://example.com/posts/</span><span class=si>${</span><span class=nx>id</span><span class=si>}</span><span class=sb>`</span><span class=p>,</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>      <span class=nx>tags</span><span class=o>:</span> <span class=p>{</span> <span class=nx>name</span><span class=o>:</span> <span class=s1>&#39;PostsItemURL&#39;</span> <span class=p>}</span>
-</span></span><span class=line><span class=cl>    <span class=p>});</span>
-</span></span><span class=line><span class=cl>  <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=c1>// tags.name=\&#34;PostsItemURL\&#34;,
-</span></span></span><span class=line><span class=cl><span class=c1>// tags.name=\&#34;PostsItemURL\&#34;,
-</span></span></span></code></pre></td></tr></table></div></div><p>上面的代码会产生如下的 JSON 输出</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=c1>// For http://example.com/1, note that the url is not present in the JSON.
-</span></span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=s2>&#34;type&#34;</span><span class=o>:</span><span class=s2>&#34;Point&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>    <span class=s2>&#34;metric&#34;</span><span class=o>:</span><span class=s2>&#34;http_req_duration&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>    <span class=s2>&#34;data&#34;</span><span class=o>:</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=s2>&#34;time&#34;</span><span class=o>:</span><span class=s2>&#34;2017-06-02T23:10:29.52444541+02:00&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>        <span class=s2>&#34;value&#34;</span><span class=o>:</span><span class=mf>586.831127</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>        <span class=s2>&#34;tags&#34;</span><span class=o>:</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=s2>&#34;method&#34;</span><span class=o>:</span><span class=s2>&#34;GET&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span><span class=o>:</span><span class=s2>&#34;PostsItemURL&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>            <span class=s2>&#34;status&#34;</span><span class=o>:</span><span class=s2>&#34;200&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>            <span class=s2>&#34;url&#34;</span><span class=o>:</span><span class=s2>&#34;PostsItemURL&#34;</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=c1>// and for http://example.com/2
-</span></span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=s2>&#34;type&#34;</span><span class=o>:</span><span class=s2>&#34;Point&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>    <span class=s2>&#34;metric&#34;</span><span class=o>:</span><span class=s2>&#34;http_req_duration&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>    <span class=s2>&#34;data&#34;</span><span class=o>:</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=s2>&#34;time&#34;</span><span class=o>:</span><span class=s2>&#34;2017-06-02T23:10:29.58582529+02:00&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>        <span class=s2>&#34;value&#34;</span><span class=o>:</span><span class=mf>580.839273</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>        <span class=s2>&#34;tags&#34;</span><span class=o>:</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=s2>&#34;method&#34;</span><span class=o>:</span><span class=s2>&#34;GET&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span><span class=o>:</span><span class=s2>&#34;PostsItemURL&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>            <span class=s2>&#34;status&#34;</span><span class=o>:</span><span class=s2>&#34;200&#34;</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>            <span class=s2>&#34;url&#34;</span><span class=o>:</span><span class=s2>&#34;PostsItemURL&#34;</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></td></tr></table></div></div><p>尽管两个对象的<code>url</code>不同，但是它们的<code>name</code>却是相同的</p><p>或者，你也可以使用<code>http.url</code>包装器来设置具有模版字符串值的<code>name</code>标签</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span><span class=lnt>6
-</span><span class=lnt>7
-</span><span class=lnt>8
-</span><span class=lnt>9
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=nx>http</span> <span class=nx>from</span> <span class=s1>&#39;k6/http&#39;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kr>export</span> <span class=k>default</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>id</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=nx>id</span> <span class=o>&lt;=</span> <span class=mi>100</span><span class=p>;</span> <span class=nx>id</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=nx>http</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=nx>http</span><span class=p>.</span><span class=nx>url</span><span class=sb>`http://example.com/posts/</span><span class=si>${</span><span class=nx>id</span><span class=si>}</span><span class=sb>`</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>  <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=c1>// tags.name=&#34;http://example.com/posts/${}&#34;,
-</span></span></span><span class=line><span class=cl><span class=c1>// tags.name=&#34;http://example.com/posts/${}&#34;,
-</span></span></span></code></pre></td></tr></table></div></div><h2 id=指标>指标</h2><p>指标衡量系统在测试条件下的性能。默认情况下，k6 会自动收集内置指标。除了内置指标外，还可以自定义指标。</p><h3 id=指标分类>指标分类</h3><p>指标大致分为四类：</p><ul><li>Counters 计算总和值。</li><li>Gauges 跟踪最小值、最大值和最新值。</li><li>Rates 跟踪非零值出现的频率。</li><li>Trends 计算多个值（如平均值、众数或百分位数）的统计数据。</li></ul><p>为了使测试不满足某些标准，你可以编写一个基于指标标准的阈值。</p><p>要过滤指标，你可以使用<code>tag</code>和<code>group</code></p><p>还可以导出各种摘要和粒度格式的指标，如<code>Result output</code></p><h3 id=要观测的指标>要观测的指标</h3><p>每个指标都提供了不同的绩效视角，因此，最合适分析的指标取决于自身的<code>目标</code></p><p>如果你不确定要关注哪些指标，则可以从衡量请求、错误和持续时间的指标开始(<a class=link href=https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/ target=_blank rel=noopener>RED 方法</a>)</p><ul><li>http_reqs ，用于测量请求</li><li>http_req_failed ，测量错误率</li><li>http_req_duration ，用于测量持续时间</li></ul><blockquote><p>换句话说，这些指标衡量流量、可用性和延迟，SRE 可能会将这些指标视为<a class=link href=https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals target=_blank rel=noopener>four Golden Signals</a></p></blockquote><h3 id=示例输出>示例输出</h3><p>当你运行测试时，所有内置的和自定义指标的汇总摘要将输出到<code>stdout</code>:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-javascript data-lang=javascript><span class=line><span class=cl><span class=kr>import</span> <span class=nx>http</span> <span class=nx>from</span> <span class=s1>&#39;k6/http&#39;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kr>export</span> <span class=k>default</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=nx>http</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=s1>&#39;https://quickpizza.grafana.com&#39;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></td></tr></table></div></div><p>上述脚本将输出如下内容：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span><span class=lnt>35
-</span><span class=lnt>36
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>$ k6 run script.js
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>         /<span class=se>\ </span>     Grafana   /‾‾/
-</span></span><span class=line><span class=cl>    /<span class=se>\ </span> /  <span class=se>\ </span>    <span class=p>|</span><span class=se>\ </span> __   /  /
-</span></span><span class=line><span class=cl>   /  <span class=se>\/</span>    <span class=se>\ </span>   <span class=p>|</span> <span class=p>|</span>/ /  /   ‾‾<span class=se>\
-</span></span></span><span class=line><span class=cl>  /          <span class=se>\ </span>  <span class=p>|</span>   <span class=o>(</span>  <span class=p>|</span>  <span class=o>(</span>‾<span class=o>)</span>  <span class=p>|</span>
-</span></span><span class=line><span class=cl> / __________ <span class=se>\ </span> <span class=p>|</span>_<span class=p>|</span><span class=se>\_\ </span> <span class=se>\_</span>____/
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>  execution: <span class=nb>local</span>
-</span></span><span class=line><span class=cl>     script: http_get.js
-</span></span><span class=line><span class=cl>     output: -
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>  scenarios: <span class=o>(</span>100.00%<span class=o>)</span> <span class=m>1</span> scenario, <span class=m>1</span> max VUs, 10m30s max duration <span class=o>(</span>incl. graceful stop<span class=o>)</span>:
-</span></span><span class=line><span class=cl>           * default: <span class=m>1</span> iterations <span class=k>for</span> each of <span class=m>1</span> VUs <span class=o>(</span>maxDuration: 10m0s, gracefulStop: 30s<span class=o>)</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>  █ TOTAL RESULTS
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    HTTP
-</span></span><span class=line><span class=cl>    http_req_duration.......................................................: <span class=nv>avg</span><span class=o>=</span>117.55ms <span class=nv>min</span><span class=o>=</span>117.55ms <span class=nv>med</span><span class=o>=</span>117.55ms <span class=nv>max</span><span class=o>=</span>117.55ms p<span class=o>(</span>90<span class=o>)=</span>117.55ms p<span class=o>(</span>95<span class=o>)=</span>117.55ms
-</span></span><span class=line><span class=cl>      <span class=o>{</span> expected_response:true <span class=o>}</span>............................................: <span class=nv>avg</span><span class=o>=</span>117.55ms <span class=nv>min</span><span class=o>=</span>117.55ms <span class=nv>med</span><span class=o>=</span>117.55ms <span class=nv>max</span><span class=o>=</span>117.55ms p<span class=o>(</span>90<span class=o>)=</span>117.55ms p<span class=o>(</span>95<span class=o>)=</span>117.55ms
-</span></span><span class=line><span class=cl>    http_req_failed.........................................................: 0.00%  <span class=m>0</span> out of <span class=m>1</span>
-</span></span><span class=line><span class=cl>    http_reqs...............................................................: <span class=m>1</span>      2.768749/s
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    EXECUTION
-</span></span><span class=line><span class=cl>    iteration_duration......................................................: <span class=nv>avg</span><span class=o>=</span>361.09ms <span class=nv>min</span><span class=o>=</span>361.09ms <span class=nv>med</span><span class=o>=</span>361.09ms <span class=nv>max</span><span class=o>=</span>361.09ms p<span class=o>(</span>90<span class=o>)=</span>361.09ms p<span class=o>(</span>95<span class=o>)=</span>361.09ms
-</span></span><span class=line><span class=cl>    iterations..............................................................: <span class=m>1</span>      2.768749/s
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    NETWORK
-</span></span><span class=line><span class=cl>    data_received...........................................................: 6.8 kB <span class=m>19</span> kB/s
-</span></span><span class=line><span class=cl>    data_sent...............................................................: <span class=m>541</span> B  1.5 kB/s
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>running <span class=o>(</span>00m03.8s<span class=o>)</span>, 0/1 VUs, <span class=m>1</span> <span class=nb>complete</span> and <span class=m>0</span> interrupted iterations
-</span></span><span class=line><span class=cl>default ✓ <span class=o>[======================================]</span> <span class=m>1</span> VUs  00m03.8s/10m0s  1/1 iters, <span class=m>1</span> per VU
-</span></span></code></pre></td></tr></table></div></div><p>在该输出中，所有以<code>http</code>、<code>interation</code>、<code>vu</code>开头的指标都是内置指标</p><h3 id=指标名称限制>指标名称限制</h3><p>指标名称必须符合 <code>OpenTelemetry</code> 和 <code>Prometheus</code> 的限制 。字符限制与 k6 在限制字符集之前的限制相同</p><p>意味着：</p><ul><li>包含最多 128 个符号（ASCII 字母、数字或下划线）。</li><li>以字母或下划线开头。</li></ul><h3 id=内置指标>内置指标</h3><p>无论测试什么协议(http/websocket/grpc)，k6 始终收集以下指标</p><div class=table-wrapper><table><thead><tr><th>指标名</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td>checks</td><td>Rate</td><td>检查成功率</td></tr><tr><td>data_received</td><td>Counter</td><td>已接收到的数据</td></tr><tr><td>data_send</td><td>Counter</td><td>已发送的数据</td></tr><tr><td>dropped_iterations</td><td>Counter</td><td>由于 vu 不足或时间不足而未启动的迭代次数</td></tr><tr><td>iteration_duration</td><td>Trend</td><td>完成一次完整的迭代所需的时间，包括<code>setup</code>和<code>teardown</code></td></tr><tr><td>iterations</td><td>Counter</td><td>vu 执行 js 脚本(default 函数)的总次数</td></tr><tr><td>vus</td><td>Gauge</td><td>当前活跃虚拟用户数</td></tr><tr><td>vus_max</td><td>Gauge</td><td>最大可能的虚拟用户数</td></tr></tbody></table></div><h3 id=http-内置指标>http 内置指标</h3><div class=table-wrapper><table><thead><tr><th>指标名称</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td>http_req_blocked</td><td>Trend</td><td>发起请求之前阻塞的时间<code>float</code></td></tr><tr><td>http_req_connecting</td><td>Trend</td><td>与远程主机建立 TCP 连接所花费的时间<code>float</code></td></tr><tr><td>http_req_duration</td><td>Trend</td><td>请求的总时间。它等于 http_req_sending + http_req_waiting + http_req_receiving （即远程服务器处理请求和响应所需的时间，不包括初始 DNS 查找/连接时间） <code>float</code></td></tr><tr><td>http_req_failed</td><td>Rate</td><td>根据 setResponseCallback 回调函数定义为失败的请求</td></tr><tr><td>http_req_receiving</td><td>Trend</td><td>从远程主机接收响应数据所花费的时间 <code>float</code></td></tr><tr><td>http_req_sending</td><td>Trend</td><td>向远程主机发送数据所花费的时间<code>float</code></td></tr><tr><td>http_req_tls_handshaking</td><td>Trend</td><td>与远程主机握手 TLS 会话所用的时间</td></tr><tr><td>http_req_waiting</td><td>Trend</td><td>等待远程主机响应的时间（又称“第一个字节的时间”或“TTFB”） <code>float</code></td></tr><tr><td>http_reqs</td><td>Counter</td><td>k6 总共生成了多少个 HTTP 请求</td></tr></tbody></table></div><h3 id=浏览器指标>浏览器指标</h3><p>K6 浏览器指标基于<code>Core Web Vitals</code></p><p>随着技术的变化，这些核心指标也会随之变化，目前，K6 跟踪以下核心网络生命力：</p><div class=table-wrapper><table><thead><tr><th>Metric name</th><th>Description</th></tr></thead><tbody><tr><td>browser_web_vital_cls</td><td>通过量化可见页面内容的意外布局偏移量来衡量网页的视觉稳定性。请参阅<a class=link href="https://web.dev/articles/cls?hl=zh-cn" target=_blank rel=noopener>Cumulative Layout Shift</a>以获取更多信息。</td></tr><tr><td>browser_web_vital_fid</td><td>通过量化用户首次交互（例如点击按钮）与浏览器响应之间的延迟来衡量网页的响应能力。请参阅<a class=link href="https://web.dev/articles/fid?hl=zh-cn" target=_blank rel=noopener>First Input Delay</a>了解更多信息。</td></tr><tr><td>browser_web_vital_lcp</td><td>测量页面上最大内容元素可见所需的时间。请参阅 请参阅<a class=link href="https://web.dev/articles/lcp?hl=zh-cn" target=_blank rel=noopener>Larger Contentful Paint</a> 以了解更多信息。</td></tr></tbody></table></div><p>除了核心 Web 指标外，浏览器模块还报告<a class=link href="https://web.dev/articles/vitals?hl=zh-cn#other-web-vitals" target=_blank rel=noopener>Other Web Vitals</a></p><div class=table-wrapper><table><thead><tr><th>指标名称</th><th>描述</th></tr></thead><tbody><tr><td>browser_web_vital_fcp</td><td>测量浏览器渲染页面上第一个 DOM 元素（无论是文本、图片还是标题）所需的时间。请参阅<a class=link href="https://web.dev/articles/fcp?hl=zh-cn" target=_blank rel=noopener>First Contentful Paint</a> 了解更多信息</td></tr><tr><td>browser_web_vital_inp</td><td>衡量页面响应能力的实验性指标请参阅<a class=link href="https://web.dev/articles/inp?hl=zh-cn" target=_blank rel=noopener>Interaction to Next Paint</a>以获取更多信息.</td></tr><tr><td>browser_web_vital_ttfb</td><td>测量浏览器请求和服务器响应之间的时间。请参阅<a class=link href="https://web.dev/articles/ttfb?hl=zh-cn" target=_blank rel=noopener>Time to First Byte</a>以获取更多信息</td></tr></tbody></table></div><h3 id=内置-websocket-指标>内置 Websocket 指标</h3></section><footer class=article-footer><section class=article-tags><a href=/tags/k6/>K6</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
-<span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><div class=disqus-container><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//hugo-theme-stack.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
-2023 -
-2026 Cengdong</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.30.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-<button class="pswp__button pswp__button--share" title=Share></button>
-<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-</button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" /><meta
+name='description' content="什么是 k6 使用 k6，你可以测试应用程序和基础设施的可靠性和性能。\n工程团队（包括开发人员、QA 工程师、SDET 和 SRE）通常使用 k6 来：\n负载和性能测试 浏览器性能测试 性能和综合监控 性能测试自动化 混沌与弹性测试 安装 K6 K6 有能在多种平台安装：\n"> <title>【K6性能测试】K6学习笔记</title>
+
+<link rel="canonical" href="https://www.cengdong.store/p/k6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95k6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" />
+
+
+<link rel="stylesheet" href="/scss/style.min.9a6f47bb0cccb59cea32f2407a4d279494201cb8a12596986b2cc96158da0dea.css"><meta property='og:title' content="【K6性能测试】K6学习笔记">
+<meta property='og:description' content="什么是 k6 使用 k6，你可以测试应用程序和基础设施的可靠性和性能。\n工程团队（包括开发人员、QA 工程师、SDET 和 SRE）通常使用 k6 来：\n负载和性能测试 浏览器性能测试 性能和综合监控 性能测试自动化 混沌与弹性测试 安装 K6 K6 有能在多种平台安装：\n">
+<meta property='og:url' content='https://www.cengdong.store/p/k6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95k6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>
+<meta property='og:site_name' content='cengdong的技术博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='K6' /><meta property='article:published_time' content='2025-05-18T20:55:24&#43;08:00'/><meta property='article:modified_time' content='2025-05-18T20:55:24&#43;08:00'/>
+<meta name="twitter:title" content="【K6性能测试】K6学习笔记">
+<meta name="twitter:description" content="什么是 k6 使用 k6，你可以测试应用程序和基础设施的可靠性和性能。\n工程团队（包括开发人员、QA 工程师、SDET 和 SRE）通常使用 k6 来：\n负载和性能测试 浏览器性能测试 性能和综合监控 性能测试自动化 混沌与弹性测试 安装 K6 K6 有能在多种平台安装：\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "light");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_9b122898dae96add.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">cengdong的技术博客</a></h1>
+            <h2 class="site-description">学习随笔</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/testerxiaodong'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#什么是-k6">什么是 k6</a></li>
+    <li><a href="#安装-k6">安装 K6</a></li>
+    <li><a href="#编写第一个-k6-测试脚本">编写第一个 k6 测试脚本</a>
+      <ol>
+        <li><a href="#前提条件">前提条件</a></li>
+        <li><a href="#k6-测试脚本的结构">k6 测试脚本的结构</a></li>
+        <li><a href="#编写-k6-测试脚本">编写 k6 测试脚本</a></li>
+      </ol>
+    </li>
+    <li><a href="#更多的-http-请求方式">更多的 http 请求方式</a>
+      <ol>
+        <li><a href="#get-方法">get 方法</a></li>
+        <li><a href="#post-方法">post 方法</a></li>
+      </ol>
+    </li>
+    <li><a href="#http-请求标签">http 请求标签</a>
+      <ol>
+        <li><a href="#标签示例">标签示例</a></li>
+        <li><a href="#使用标签将-url-分组">使用标签将 URL 分组</a></li>
+      </ol>
+    </li>
+    <li><a href="#指标">指标</a>
+      <ol>
+        <li><a href="#指标分类">指标分类</a></li>
+        <li><a href="#要观测的指标">要观测的指标</a></li>
+        <li><a href="#示例输出">示例输出</a></li>
+        <li><a href="#指标名称限制">指标名称限制</a></li>
+        <li><a href="#内置指标">内置指标</a></li>
+        <li><a href="#http-内置指标">http 内置指标</a></li>
+        <li><a href="#浏览器指标">浏览器指标</a></li>
+        <li><a href="#内置-websocket-指标">内置 Websocket 指标</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" >
+                性能测试
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/k6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95k6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">【K6性能测试】K6学习笔记</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 18, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 7 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="什么是-k6">什么是 k6
+</h2><p>使用 k6，你可以测试应用程序和基础设施的可靠性和性能。</p>
+<p>工程团队（包括开发人员、QA 工程师、SDET 和 SRE）通常使用 k6 来：</p>
+<ul>
+<li>负载和性能测试</li>
+<li>浏览器性能测试</li>
+<li>性能和综合监控</li>
+<li>性能测试自动化</li>
+<li>混沌与弹性测试</li>
+</ul>
+<h2 id="安装-k6">安装 K6
+</h2><p>K6 有能在多种平台安装：</p>
+<ul>
+<li>windows</li>
+<li>mac</li>
+<li>linux</li>
+</ul>
+<p>除此之外，还可以通过 Docker 容器方式运行 k6</p>
+<p>目前我用的开发主力机是 mac，在 mac 上安装 k6 的途径主要是通过<code>homebrew</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">brew install  k6
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此外就是通过 Docker 安装 k6</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull grafana/k6
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="编写第一个-k6-测试脚本">编写第一个 k6 测试脚本
+</h2><h3 id="前提条件">前提条件
+</h3><p>要编写 k6 测试脚本，需要以下前提：</p>
+<ul>
+<li>javascript 或者 typescript 知识</li>
+<li>在电脑上安装 k6</li>
+<li>用于编写测试脚本的代码编辑器(我目前使用的是 vscode)</li>
+</ul>
+<h3 id="k6-测试脚本的结构">k6 测试脚本的结构
+</h3><p>每个 k6 脚本都遵循一个通用结构，围绕几个核心组件：</p>
+<ul>
+<li>默认函数：这是测试逻辑所在的位置。它定义了测试将执行的操作以及在执行过程中的行为方式。它应作为脚本中的默认函数导出。</li>
+<li>imports ：您可以进口额外的 k6 模块或 JavaScript 库 (jslibs) 用于扩展脚本功能，例如发出 HTTP 请求或模拟浏览器交互。请注意，k6 并非基于 Node.js 构建，而是使用其自身的 JavaScript 运行时。与某些 npm 模块的兼容性可能有所不同。</li>
+<li>options（可选） ：允许您配置测试的执行，例如定义虚拟用户数量、测试时长或设置性能阈值。请参阅 选项以了解更多详细信息。</li>
+<li>生命周期操作（可选） ：由于您的测试可能需要在执行测试逻辑之前和/或之后运行代码，例如从文件解析数据或从 Amazon S3 下载对象， 生命周期操作允许您编写代码，作为预定义函数或在特定代码范围内，这些代码将在测试执行的不同阶段执行。</li>
+</ul>
+<h3 id="编写-k6-测试脚本">编写 k6 测试脚本
+</h3><ul>
+<li>创建测试脚本(手动创建一个 js 文件或者使用<code>k6 new test.js</code>)</li>
+<li>导入模块(<code>import http from 'k6/http'</code>)</li>
+<li>定义函数(<code>export default function() {}</code>)</li>
+<li>声明测试选项(<code>export const options = {}</code>)</li>
+</ul>
+<p>接下来查看一个完整的示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 导入模块
+</span></span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s1">&#39;k6/http&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">sleep</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;k6&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 定义可选项
+</span></span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">iterations</span><span class="o">:</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// The default exported function is gonna be picked up by k6 as the entry point for the test script. It will be executed repeatedly in &#34;iterations&#34; for the whole duration of the test.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 默认函数，测试脚本逻辑就在这里面，必选项
+</span></span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Make a GET request to the target URL
+</span></span></span><span class="line"><span class="cl">  <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://quickpizza.grafana.com&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// Sleep for 1 second to simulate real-world usage
+</span></span></span><span class="line"><span class="cl">  <span class="nx">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 测试生命周期函数，可选的
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="更多的-http-请求方式">更多的 http 请求方式
+</h2><p>k6 支持所有的 http 请求方法</p>
+<ul>
+<li>get(GET)</li>
+<li>post(POST)</li>
+<li>put(PUT)</li>
+<li>del(DELETE)</li>
+<li>patch(PATCH)</li>
+<li>head(HEAD)</li>
+<li>options(OPTIONS)</li>
+<li>requests(类似于 python 的 request 库)</li>
+<li>batch(批量请求)</li>
+</ul>
+<h3 id="get-方法">get 方法
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s1">&#39;k6/http&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://test.k6.io&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="post-方法">post 方法
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s1">&#39;k6/http&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;http://test.k6.io/login&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">email</span><span class="o">:</span> <span class="s1">&#39;aaa&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">password</span><span class="o">:</span> <span class="s1">&#39;bbb&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="http-请求标签">http 请求标签
+</h2><h3 id="标签示例">标签示例
+</h3><p>k6 会自动应用内置标签到 http 请求中，我们可以使用标签来过滤结果并组织分析</p>
+<p>以下是一些常用的 http 相关的标签</p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>标签名</th>
+					<th>描述</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>expected_response</td>
+					<td>是否是期望的响应，默认情况下 200-399 之间的都是 true，也可以通过<code>setResponseCallback</code>更改默认行为</td>
+			</tr>
+			<tr>
+					<td>group</td>
+					<td>当请求在某个 group 中时是组名，默认值是空</td>
+			</tr>
+			<tr>
+					<td>name</td>
+					<td>默认为请求的 url</td>
+			</tr>
+			<tr>
+					<td>method</td>
+					<td>http 请求方法</td>
+			</tr>
+			<tr>
+					<td>scenario</td>
+					<td>当请求在某个 scenario 中时，标签值是 scenario 名，默认为 default</td>
+			</tr>
+			<tr>
+					<td>status</td>
+					<td>响应状态码</td>
+			</tr>
+			<tr>
+					<td>url</td>
+					<td>默认为 url 请求地址</td>
+			</tr>
+	</tbody>
+</table></div>
+<p>以下代码展示了如何记录测试结果数据点的 JSON 示例，在此示例中，指标是 HTTP 请求的持续时间</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Point&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;metric&#34;</span><span class="p">:</span> <span class="s2">&#34;http_req_duration&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2017-06-02T23:10:29.52444541+02:00&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="mf">586.831127</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;expected_response&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;group&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;method&#34;</span><span class="p">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;http://test.k6.io&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;scenario&#34;</span><span class="p">:</span> <span class="s2">&#34;default&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;status&#34;</span><span class="p">:</span> <span class="s2">&#34;200&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;http://test.k6.io&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="使用标签将-url-分组">使用标签将 URL 分组
+</h3><p>默认情况下，标签会有一个<code>name</code>字段，用于保存请求的 URL 的值，如果测试包含动态 URL 路径，我们希望将数据聚合分析，而不是大量的唯一 URL 进入指标流。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s1">&#39;k6/http&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">id</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">id</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="sb">`http://example.com/posts/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// tags.name=\&#34;http://example.com/posts/1\&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1">// tags.name=\&#34;http://example.com/posts/2\&#34;,
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们更希望在单个指标中报告这个数据，要从动态的 URL 聚合数据，我们可以设置 http 请求的<code>name</code>标签</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s1">&#39;k6/http&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">id</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">id</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="sb">`http://example.com/posts/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">tags</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;PostsItemURL&#39;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// tags.name=\&#34;PostsItemURL\&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1">// tags.name=\&#34;PostsItemURL\&#34;,
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面的代码会产生如下的 JSON 输出</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// For http://example.com/1, note that the url is not present in the JSON.
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;type&#34;</span><span class="o">:</span><span class="s2">&#34;Point&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;metric&#34;</span><span class="o">:</span><span class="s2">&#34;http_req_duration&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;data&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;time&#34;</span><span class="o">:</span><span class="s2">&#34;2017-06-02T23:10:29.52444541+02:00&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;value&#34;</span><span class="o">:</span><span class="mf">586.831127</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;tags&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;method&#34;</span><span class="o">:</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;name&#34;</span><span class="o">:</span><span class="s2">&#34;PostsItemURL&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;status&#34;</span><span class="o">:</span><span class="s2">&#34;200&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;url&#34;</span><span class="o">:</span><span class="s2">&#34;PostsItemURL&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// and for http://example.com/2
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;type&#34;</span><span class="o">:</span><span class="s2">&#34;Point&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;metric&#34;</span><span class="o">:</span><span class="s2">&#34;http_req_duration&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;data&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;time&#34;</span><span class="o">:</span><span class="s2">&#34;2017-06-02T23:10:29.58582529+02:00&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;value&#34;</span><span class="o">:</span><span class="mf">580.839273</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;tags&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;method&#34;</span><span class="o">:</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;name&#34;</span><span class="o">:</span><span class="s2">&#34;PostsItemURL&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;status&#34;</span><span class="o">:</span><span class="s2">&#34;200&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;url&#34;</span><span class="o">:</span><span class="s2">&#34;PostsItemURL&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>尽管两个对象的<code>url</code>不同，但是它们的<code>name</code>却是相同的</p>
+<p>或者，你也可以使用<code>http.url</code>包装器来设置具有模版字符串值的<code>name</code>标签</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s1">&#39;k6/http&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">id</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">id</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">url</span><span class="sb">`http://example.com/posts/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// tags.name=&#34;http://example.com/posts/${}&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1">// tags.name=&#34;http://example.com/posts/${}&#34;,
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="指标">指标
+</h2><p>指标衡量系统在测试条件下的性能。默认情况下，k6 会自动收集内置指标。除了内置指标外，还可以自定义指标。</p>
+<h3 id="指标分类">指标分类
+</h3><p>指标大致分为四类：</p>
+<ul>
+<li>Counters 计算总和值。</li>
+<li>Gauges 跟踪最小值、最大值和最新值。</li>
+<li>Rates 跟踪非零值出现的频率。</li>
+<li>Trends 计算多个值（如平均值、众数或百分位数）的统计数据。</li>
+</ul>
+<p>为了使测试不满足某些标准，你可以编写一个基于指标标准的阈值。</p>
+<p>要过滤指标，你可以使用<code>tag</code>和<code>group</code></p>
+<p>还可以导出各种摘要和粒度格式的指标，如<code>Result output</code></p>
+<h3 id="要观测的指标">要观测的指标
+</h3><p>每个指标都提供了不同的绩效视角，因此，最合适分析的指标取决于自身的<code>目标</code></p>
+<p>如果你不确定要关注哪些指标，则可以从衡量请求、错误和持续时间的指标开始(<a class="link" href="https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/"  target="_blank" rel="noopener"
+    >RED 方法</a>)</p>
+<ul>
+<li>http_reqs ，用于测量请求</li>
+<li>http_req_failed ，测量错误率</li>
+<li>http_req_duration ，用于测量持续时间</li>
+</ul>
+<blockquote>
+<p>换句话说，这些指标衡量流量、可用性和延迟，SRE 可能会将这些指标视为<a class="link" href="https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals"  target="_blank" rel="noopener"
+    >four Golden Signals</a></p>
+</blockquote>
+<h3 id="示例输出">示例输出
+</h3><p>当你运行测试时，所有内置的和自定义指标的汇总摘要将输出到<code>stdout</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">http</span> <span class="nx">from</span> <span class="s1">&#39;k6/http&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://quickpizza.grafana.com&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述脚本将输出如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ k6 run script.js
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">         /<span class="se">\ </span>     Grafana   /‾‾/
+</span></span><span class="line"><span class="cl">    /<span class="se">\ </span> /  <span class="se">\ </span>    <span class="p">|</span><span class="se">\ </span> __   /  /
+</span></span><span class="line"><span class="cl">   /  <span class="se">\/</span>    <span class="se">\ </span>   <span class="p">|</span> <span class="p">|</span>/ /  /   ‾‾<span class="se">\
+</span></span></span><span class="line"><span class="cl">  /          <span class="se">\ </span>  <span class="p">|</span>   <span class="o">(</span>  <span class="p">|</span>  <span class="o">(</span>‾<span class="o">)</span>  <span class="p">|</span>
+</span></span><span class="line"><span class="cl"> / __________ <span class="se">\ </span> <span class="p">|</span>_<span class="p">|</span><span class="se">\_\ </span> <span class="se">\_</span>____/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  execution: <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">     script: http_get.js
+</span></span><span class="line"><span class="cl">     output: -
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  scenarios: <span class="o">(</span>100.00%<span class="o">)</span> <span class="m">1</span> scenario, <span class="m">1</span> max VUs, 10m30s max duration <span class="o">(</span>incl. graceful stop<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">           * default: <span class="m">1</span> iterations <span class="k">for</span> each of <span class="m">1</span> VUs <span class="o">(</span>maxDuration: 10m0s, gracefulStop: 30s<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  █ TOTAL RESULTS
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    HTTP
+</span></span><span class="line"><span class="cl">    http_req_duration.......................................................: <span class="nv">avg</span><span class="o">=</span>117.55ms <span class="nv">min</span><span class="o">=</span>117.55ms <span class="nv">med</span><span class="o">=</span>117.55ms <span class="nv">max</span><span class="o">=</span>117.55ms p<span class="o">(</span>90<span class="o">)=</span>117.55ms p<span class="o">(</span>95<span class="o">)=</span>117.55ms
+</span></span><span class="line"><span class="cl">      <span class="o">{</span> expected_response:true <span class="o">}</span>............................................: <span class="nv">avg</span><span class="o">=</span>117.55ms <span class="nv">min</span><span class="o">=</span>117.55ms <span class="nv">med</span><span class="o">=</span>117.55ms <span class="nv">max</span><span class="o">=</span>117.55ms p<span class="o">(</span>90<span class="o">)=</span>117.55ms p<span class="o">(</span>95<span class="o">)=</span>117.55ms
+</span></span><span class="line"><span class="cl">    http_req_failed.........................................................: 0.00%  <span class="m">0</span> out of <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    http_reqs...............................................................: <span class="m">1</span>      2.768749/s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    EXECUTION
+</span></span><span class="line"><span class="cl">    iteration_duration......................................................: <span class="nv">avg</span><span class="o">=</span>361.09ms <span class="nv">min</span><span class="o">=</span>361.09ms <span class="nv">med</span><span class="o">=</span>361.09ms <span class="nv">max</span><span class="o">=</span>361.09ms p<span class="o">(</span>90<span class="o">)=</span>361.09ms p<span class="o">(</span>95<span class="o">)=</span>361.09ms
+</span></span><span class="line"><span class="cl">    iterations..............................................................: <span class="m">1</span>      2.768749/s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    NETWORK
+</span></span><span class="line"><span class="cl">    data_received...........................................................: 6.8 kB <span class="m">19</span> kB/s
+</span></span><span class="line"><span class="cl">    data_sent...............................................................: <span class="m">541</span> B  1.5 kB/s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">running <span class="o">(</span>00m03.8s<span class="o">)</span>, 0/1 VUs, <span class="m">1</span> <span class="nb">complete</span> and <span class="m">0</span> interrupted iterations
+</span></span><span class="line"><span class="cl">default ✓ <span class="o">[======================================]</span> <span class="m">1</span> VUs  00m03.8s/10m0s  1/1 iters, <span class="m">1</span> per VU
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在该输出中，所有以<code>http</code>、<code>interation</code>、<code>vu</code>开头的指标都是内置指标</p>
+<h3 id="指标名称限制">指标名称限制
+</h3><p>指标名称必须符合 <code>OpenTelemetry</code> 和 <code>Prometheus</code> 的限制 。字符限制与 k6 在限制字符集之前的限制相同</p>
+<p>意味着：</p>
+<ul>
+<li>包含最多 128 个符号（ASCII 字母、数字或下划线）。</li>
+<li>以字母或下划线开头。</li>
+</ul>
+<h3 id="内置指标">内置指标
+</h3><p>无论测试什么协议(http/websocket/grpc)，k6 始终收集以下指标</p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>指标名</th>
+					<th>类型</th>
+					<th>描述</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>checks</td>
+					<td>Rate</td>
+					<td>检查成功率</td>
+			</tr>
+			<tr>
+					<td>data_received</td>
+					<td>Counter</td>
+					<td>已接收到的数据</td>
+			</tr>
+			<tr>
+					<td>data_send</td>
+					<td>Counter</td>
+					<td>已发送的数据</td>
+			</tr>
+			<tr>
+					<td>dropped_iterations</td>
+					<td>Counter</td>
+					<td>由于 vu 不足或时间不足而未启动的迭代次数</td>
+			</tr>
+			<tr>
+					<td>iteration_duration</td>
+					<td>Trend</td>
+					<td>完成一次完整的迭代所需的时间，包括<code>setup</code>和<code>teardown</code></td>
+			</tr>
+			<tr>
+					<td>iterations</td>
+					<td>Counter</td>
+					<td>vu 执行 js 脚本(default 函数)的总次数</td>
+			</tr>
+			<tr>
+					<td>vus</td>
+					<td>Gauge</td>
+					<td>当前活跃虚拟用户数</td>
+			</tr>
+			<tr>
+					<td>vus_max</td>
+					<td>Gauge</td>
+					<td>最大可能的虚拟用户数</td>
+			</tr>
+	</tbody>
+</table></div>
+<h3 id="http-内置指标">http 内置指标
+</h3><div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>指标名称</th>
+					<th>类型</th>
+					<th>描述</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>http_req_blocked</td>
+					<td>Trend</td>
+					<td>发起请求之前阻塞的时间<code>float</code></td>
+			</tr>
+			<tr>
+					<td>http_req_connecting</td>
+					<td>Trend</td>
+					<td>与远程主机建立 TCP 连接所花费的时间<code>float</code></td>
+			</tr>
+			<tr>
+					<td>http_req_duration</td>
+					<td>Trend</td>
+					<td>请求的总时间。它等于 http_req_sending + http_req_waiting + http_req_receiving （即远程服务器处理请求和响应所需的时间，不包括初始 DNS 查找/连接时间） <code>float</code></td>
+			</tr>
+			<tr>
+					<td>http_req_failed</td>
+					<td>Rate</td>
+					<td>根据 setResponseCallback 回调函数定义为失败的请求</td>
+			</tr>
+			<tr>
+					<td>http_req_receiving</td>
+					<td>Trend</td>
+					<td>从远程主机接收响应数据所花费的时间 <code>float</code></td>
+			</tr>
+			<tr>
+					<td>http_req_sending</td>
+					<td>Trend</td>
+					<td>向远程主机发送数据所花费的时间<code>float</code></td>
+			</tr>
+			<tr>
+					<td>http_req_tls_handshaking</td>
+					<td>Trend</td>
+					<td>与远程主机握手 TLS 会话所用的时间</td>
+			</tr>
+			<tr>
+					<td>http_req_waiting</td>
+					<td>Trend</td>
+					<td>等待远程主机响应的时间（又称“第一个字节的时间”或“TTFB”） <code>float</code></td>
+			</tr>
+			<tr>
+					<td>http_reqs</td>
+					<td>Counter</td>
+					<td>k6 总共生成了多少个 HTTP 请求</td>
+			</tr>
+	</tbody>
+</table></div>
+<h3 id="浏览器指标">浏览器指标
+</h3><p>K6 浏览器指标基于<code>Core Web Vitals</code></p>
+<p>随着技术的变化，这些核心指标也会随之变化，目前，K6 跟踪以下核心网络生命力：</p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>Metric name</th>
+					<th>Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>browser_web_vital_cls</td>
+					<td>通过量化可见页面内容的意外布局偏移量来衡量网页的视觉稳定性。请参阅<a class="link" href="https://web.dev/articles/cls?hl=zh-cn"  target="_blank" rel="noopener"
+    >Cumulative Layout Shift</a>以获取更多信息。</td>
+			</tr>
+			<tr>
+					<td>browser_web_vital_fid</td>
+					<td>通过量化用户首次交互（例如点击按钮）与浏览器响应之间的延迟来衡量网页的响应能力。请参阅<a class="link" href="https://web.dev/articles/fid?hl=zh-cn"  target="_blank" rel="noopener"
+    >First Input Delay</a>了解更多信息。</td>
+			</tr>
+			<tr>
+					<td>browser_web_vital_lcp</td>
+					<td>测量页面上最大内容元素可见所需的时间。请参阅 请参阅<a class="link" href="https://web.dev/articles/lcp?hl=zh-cn"  target="_blank" rel="noopener"
+    >Larger Contentful Paint</a> 以了解更多信息。</td>
+			</tr>
+	</tbody>
+</table></div>
+<p>除了核心 Web 指标外，浏览器模块还报告<a class="link" href="https://web.dev/articles/vitals?hl=zh-cn#other-web-vitals"  target="_blank" rel="noopener"
+    >Other Web Vitals</a></p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>指标名称</th>
+					<th>描述</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>browser_web_vital_fcp</td>
+					<td>测量浏览器渲染页面上第一个 DOM 元素（无论是文本、图片还是标题）所需的时间。请参阅<a class="link" href="https://web.dev/articles/fcp?hl=zh-cn"  target="_blank" rel="noopener"
+    >First Contentful Paint</a> 了解更多信息</td>
+			</tr>
+			<tr>
+					<td>browser_web_vital_inp</td>
+					<td>衡量页面响应能力的实验性指标请参阅<a class="link" href="https://web.dev/articles/inp?hl=zh-cn"  target="_blank" rel="noopener"
+    >Interaction to Next Paint</a>以获取更多信息.</td>
+			</tr>
+			<tr>
+					<td>browser_web_vital_ttfb</td>
+					<td>测量浏览器请求和服务器响应之间的时间。请参阅<a class="link" href="https://web.dev/articles/ttfb?hl=zh-cn"  target="_blank" rel="noopener"
+    >Time to First Byte</a>以获取更多信息</td>
+			</tr>
+	</tbody>
+</table></div>
+<h3 id="内置-websocket-指标">内置 Websocket 指标
+</h3>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/k6/">K6</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2026 Cengdong
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
