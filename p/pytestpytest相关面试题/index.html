@@ -1,0 +1,2327 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" /><meta
+name='description' content="这是一份从入门到深入的 Pytest 面试笔记，共 72 道题，覆盖基础使用、fixture、参数化、Mock、插件机制、并行与异步，以及接口自动化和 CI 的实际项目场景。\n"> <title>【Pytest】Pytest相关面试题</title>
+
+<link rel="canonical" href="https://www.cengdong.store/p/pytestpytest%E7%9B%B8%E5%85%B3%E9%9D%A2%E8%AF%95%E9%A2%98/" />
+
+
+<link rel="stylesheet" href="/scss/style.min.9a6f47bb0cccb59cea32f2407a4d279494201cb8a12596986b2cc96158da0dea.css"><meta property='og:title' content="【Pytest】Pytest相关面试题">
+<meta property='og:description' content="这是一份从入门到深入的 Pytest 面试笔记，共 72 道题，覆盖基础使用、fixture、参数化、Mock、插件机制、并行与异步，以及接口自动化和 CI 的实际项目场景。\n">
+<meta property='og:url' content='https://www.cengdong.store/p/pytestpytest%E7%9B%B8%E5%85%B3%E9%9D%A2%E8%AF%95%E9%A2%98/'>
+<meta property='og:site_name' content='cengdong的技术博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Python' /><meta property='article:tag' content='Pytest' /><meta property='article:tag' content='自动化测试' /><meta property='article:tag' content='面试' /><meta property='article:published_time' content='2026-10-24T10:10:42&#43;08:00'/><meta property='article:modified_time' content='2026-10-24T10:10:42&#43;08:00'/>
+<meta name="twitter:title" content="【Pytest】Pytest相关面试题">
+<meta name="twitter:description" content="这是一份从入门到深入的 Pytest 面试笔记，共 72 道题，覆盖基础使用、fixture、参数化、Mock、插件机制、并行与异步，以及接口自动化和 CI 的实际项目场景。\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "light");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_9b122898dae96add.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">cengdong的技术博客</a></h1>
+            <h2 class="site-description">学习随笔</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/testerxiaodong'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一入门发现执行与断言110">一、入门：发现、执行与断言（1—10）</a>
+      <ol>
+        <li><a href="#1-pytest-是什么为什么在自动化测试中使用它">1. Pytest 是什么？为什么在自动化测试中使用它？</a></li>
+        <li><a href="#2-pytest-与-unittest-有什么区别能混用吗">2. Pytest 与 unittest 有什么区别？能混用吗？</a></li>
+        <li><a href="#3-pytest-默认如何发现用例为什么有些测试没有被收集">3. Pytest 默认如何发现用例？为什么有些测试没有被收集？</a></li>
+        <li><a href="#4-常用执行命令有哪些-k-和--m-的区别是什么">4. 常用执行命令有哪些？<code>-k</code> 和 <code>-m</code> 的区别是什么？</a></li>
+        <li><a href="#5-pytest-与-python--m-pytest-有什么区别rootdir-会修复导入吗">5. <code>pytest</code> 与 <code>python -m pytest</code> 有什么区别？<code>rootdir</code> 会修复导入吗？</a></li>
+        <li><a href="#6-pytest-为什么能展示详细断言信息辅助模块也一样吗">6. Pytest 为什么能展示详细断言信息？辅助模块也一样吗？</a></li>
+        <li><a href="#7-浮点数集合和无序结果应如何断言">7. 浮点数、集合和无序结果应如何断言？</a></li>
+        <li><a href="#8-如何验证异常raises-和-xfail-能互相替代吗">8. 如何验证异常？<code>raises</code> 和 <code>xfail</code> 能互相替代吗？</a></li>
+        <li><a href="#9-测试有哪些阶段failed-和-error-如何区分">9. 测试有哪些阶段？FAILED 和 ERROR 如何区分？</a></li>
+        <li><a href="#10-如何调试失败退出码有哪些">10. 如何调试失败？退出码有哪些？</a></li>
+      </ol>
+    </li>
+    <li><a href="#二核心fixture-与资源生命周期1124">二、核心：fixture 与资源生命周期（11—24）</a>
+      <ol>
+        <li><a href="#11-fixture-是什么为什么不直接调用工具函数">11. fixture 是什么？为什么不直接调用工具函数？</a></li>
+        <li><a href="#12-fixture-有哪些-scope扩大-scope-一定更好吗">12. fixture 有哪些 scope？扩大 scope 一定更好吗？</a></li>
+        <li><a href="#13-fixture-为什么按名称注入一次测试中请求两次会创建两个对象吗">13. fixture 为什么按名称注入？一次测试中请求两次会创建两个对象吗？</a></li>
+        <li><a href="#14-fixture-执行顺序由什么决定">14. fixture 执行顺序由什么决定？</a></li>
+        <li><a href="#15-returnyield-和-requestaddfinalizer-如何选择">15. <code>return</code>、<code>yield</code> 和 <code>request.addfinalizer</code> 如何选择？</a></li>
+        <li><a href="#16-fixture-在-yield-前失败如何避免部分资源泄漏">16. fixture 在 <code>yield</code> 前失败，如何避免部分资源泄漏？</a></li>
+        <li><a href="#17-conftestpy-的作用和可见性是什么">17. <code>conftest.py</code> 的作用和可见性是什么？</a></li>
+        <li><a href="#18-autousetrueusefixtures-和参数注入的区别">18. <code>autouse=True</code>、<code>usefixtures</code> 和参数注入的区别？</a></li>
+        <li><a href="#19-为什么出现-scopemismatch怎么改">19. 为什么出现 <code>ScopeMismatch</code>？怎么改？</a></li>
+        <li><a href="#20-什么是工厂-fixture适合什么场景">20. 什么是工厂 fixture？适合什么场景？</a></li>
+        <li><a href="#21-fixture-能参数化吗与测试参数化有什么区别">21. fixture 能参数化吗？与测试参数化有什么区别？</a></li>
+        <li><a href="#22-如何覆盖上层-fixture动态获取-fixture-有什么风险">22. 如何覆盖上层 fixture？动态获取 fixture 有什么风险？</a></li>
+        <li><a href="#23-fixture-与-setup_methodteardown_method-怎么选">23. fixture 与 <code>setup_method</code>、<code>teardown_method</code> 怎么选？</a></li>
+        <li><a href="#24-如何查看-fixture-来源作用域和实际准备顺序">24. 如何查看 fixture 来源、作用域和实际准备顺序？</a></li>
+      </ol>
+    </li>
+    <li><a href="#三熟练使用参数化标记和配置2534">三、熟练使用：参数化、标记和配置（25—34）</a>
+      <ol>
+        <li><a href="#25-如何使用-parametrize为什么比循环断言更适合数据驱动">25. 如何使用 <code>parametrize</code>？为什么比循环断言更适合数据驱动？</a></li>
+        <li><a href="#26-多个参数化装饰器如何组合如何控制组合爆炸">26. 多个参数化装饰器如何组合？如何控制组合爆炸？</a></li>
+        <li><a href="#27-什么是间接参数化indirecttrue-到底改变了什么">27. 什么是间接参数化？<code>indirect=True</code> 到底改变了什么？</a></li>
+        <li><a href="#28-pytestparam-能做什么可变参数有什么坑">28. <code>pytest.param</code> 能做什么？可变参数有什么坑？</a></li>
+        <li><a href="#29-用例数据放在-yamljsoncsv-还是代码里">29. 用例数据放在 YAML、JSON、CSV 还是代码里？</a></li>
+        <li><a href="#30-skipskipifxfailxpass-有什么区别">30. <code>skip</code>、<code>skipif</code>、<code>xfail</code>、XPASS 有什么区别？</a></li>
+        <li><a href="#31-如何注册-marker为什么建议严格校验">31. 如何注册 marker？为什么建议严格校验？</a></li>
+        <li><a href="#32-配置文件如何选择多个文件会合并吗">32. 配置文件如何选择？多个文件会合并吗？</a></li>
+        <li><a href="#33-如何新增---env-参数并避免误连环境">33. 如何新增 <code>--env</code> 参数，并避免误连环境？</a></li>
+        <li><a href="#34-动态生成测试用例如何实现与普通参数化有什么区别">34. 动态生成测试用例如何实现？与普通参数化有什么区别？</a></li>
+      </ol>
+    </li>
+    <li><a href="#四深入测试设计mock输出和可测性3544">四、深入测试设计：Mock、输出和可测性（35—44）</a>
+      <ol>
+        <li><a href="#35-monkeypatchunittestmockmocker-有什么区别">35. <code>monkeypatch</code>、<code>unittest.mock</code>、<code>mocker</code> 有什么区别？</a></li>
+        <li><a href="#36-为什么-patch-没生效应该-patch-哪个位置">36. 为什么 patch 没生效？应该 patch 哪个位置？</a></li>
+        <li><a href="#37-return_valueside_effectspecautospec-怎么用">37. <code>return_value</code>、<code>side_effect</code>、<code>spec</code>、<code>autospec</code> 怎么用？</a></li>
+        <li><a href="#38-断言-mock-调用时常见错误有哪些">38. 断言 Mock 调用时常见错误有哪些？</a></li>
+        <li><a href="#39-mockstubfakespy-有什么区别mock-越多越好吗">39. Mock、Stub、Fake、Spy 有什么区别？Mock 越多越好吗？</a></li>
+        <li><a href="#40-如何断言标准输出capsys-与-capfd-有什么区别">40. 如何断言标准输出？<code>capsys</code> 与 <code>capfd</code> 有什么区别？</a></li>
+        <li><a href="#41-如何使用-caplog-验证日志">41. 如何使用 <code>caplog</code> 验证日志？</a></li>
+        <li><a href="#42-tmp_path-与-tmp_path_factory-如何选择">42. <code>tmp_path</code> 与 <code>tmp_path_factory</code> 如何选择？</a></li>
+        <li><a href="#43-如何测试时间随机数和超时逻辑">43. 如何测试时间、随机数和超时逻辑？</a></li>
+        <li><a href="#44-单元测试集成测试和端到端测试如何分工">44. 单元测试、集成测试和端到端测试如何分工？</a></li>
+      </ol>
+    </li>
+    <li><a href="#五框架进阶hook插件并行与异步4554">五、框架进阶：hook、插件、并行与异步（45—54）</a>
+      <ol>
+        <li><a href="#45-hook-与-fixture-有什么区别常用-hook-有哪些">45. hook 与 fixture 有什么区别？常用 hook 有哪些？</a></li>
+        <li><a href="#46-如何通过-pytest_runtest_makereport-获取真实执行结果">46. 如何通过 <code>pytest_runtest_makereport</code> 获取真实执行结果？</a></li>
+        <li><a href="#47-多个插件实现同一个-hook-时顺序和返回值如何处理">47. 多个插件实现同一个 hook 时，顺序和返回值如何处理？</a></li>
+        <li><a href="#48-如何把公共能力抽成插件插件本身如何测试">48. 如何把公共能力抽成插件？插件本身如何测试？</a></li>
+        <li><a href="#49-xdist-如何实现并行如何选择调度策略">49. xdist 如何实现并行？如何选择调度策略？</a></li>
+        <li><a href="#50-xdist-下-session-fixture-是否全局只执行一次如何真正只初始化一次">50. xdist 下 session fixture 是否全局只执行一次？如何真正只初始化一次？</a></li>
+        <li><a href="#51-为什么-xdist-提示不同-worker-收集到的用例不一致">51. 为什么 xdist 提示不同 worker 收集到的用例不一致？</a></li>
+        <li><a href="#52-如何测试-async-defpytest-asyncio-的-auto-与-strict-有什么区别">52. 如何测试 <code>async def</code>？<code>pytest-asyncio</code> 的 auto 与 strict 有什么区别？</a></li>
+        <li><a href="#53-异步-fixture-的-scope-与-loop_scope-有什么区别">53. 异步 fixture 的 <code>scope</code> 与 <code>loop_scope</code> 有什么区别？</a></li>
+        <li><a href="#54-覆盖率超时重试和报告分别是谁提供的">54. 覆盖率、超时、重试和报告分别是谁提供的？</a></li>
+      </ol>
+    </li>
+    <li><a href="#六实际项目架构数据稳定性与-ci5572">六、实际项目：架构、数据、稳定性与 CI（55—72）</a>
+      <ol>
+        <li><a href="#55-从零搭建接口自动化项目如何分层">55. 从零搭建接口自动化项目，如何分层？</a></li>
+        <li><a href="#56-登录只调用一次token-过期和多角色怎么办">56. 登录只调用一次，token 过期和多角色怎么办？</a></li>
+        <li><a href="#57-a-创建订单b-使用订单如何避免执行顺序依赖">57. A 创建订单，B 使用订单，如何避免执行顺序依赖？</a></li>
+        <li><a href="#58-如何隔离测试数据避免并行冲突">58. 如何隔离测试数据，避免并行冲突？</a></li>
+        <li><a href="#59-数据库事务回滚能解决所有数据清理问题吗">59. 数据库事务回滚能解决所有数据清理问题吗？</a></li>
+        <li><a href="#60-删除测试数据失败怎样既保留原始失败又避免泄漏">60. 删除测试数据失败，怎样既保留原始失败又避免泄漏？</a></li>
+        <li><a href="#61-用例偶发失败怎样判断是产品问题还是测试问题">61. 用例偶发失败，怎样判断是产品问题还是测试问题？</a></li>
+        <li><a href="#62-订单异步处理怎样避免-sleep10">62. 订单异步处理，怎样避免 <code>sleep(10)</code>？</a></li>
+        <li><a href="#63-请求超时后要不要重试如何测试幂等性">63. 请求超时后要不要重试？如何测试幂等性？</a></li>
+        <li><a href="#64-第三方支付短信或不稳定外部服务怎样测试">64. 第三方支付、短信或不稳定外部服务怎样测试？</a></li>
+        <li><a href="#65-串行通过并行失败按什么顺序排查">65. 串行通过、并行失败，按什么顺序排查？</a></li>
+        <li><a href="#66-3000-条用例运行两小时如何提速又不降低可信度">66. 3000 条用例运行两小时，如何提速又不降低可信度？</a></li>
+        <li><a href="#67-如何接入-ci如何定位本地通过ci-失败">67. 如何接入 CI？如何定位“本地通过、CI 失败”？</a></li>
+        <li><a href="#68-覆盖率-90-为什么还会漏严重缺陷如何制定门禁">68. 覆盖率 90% 为什么还会漏严重缺陷？如何制定门禁？</a></li>
+        <li><a href="#69-浏览器测试失败截图如何实现常见坑有哪些">69. 浏览器测试失败截图如何实现？常见坑有哪些？</a></li>
+        <li><a href="#70-消息队列缓存与最终一致性场景如何验证">70. 消息队列、缓存与最终一致性场景如何验证？</a></li>
+        <li><a href="#71-属性测试能补充参数化吗适合哪些规则">71. 属性测试能补充参数化吗？适合哪些规则？</a></li>
+        <li><a href="#72-面试官让你讲一个-pytest-项目怎样回答得具体可信">72. 面试官让你讲一个 Pytest 项目，怎样回答得具体可信？</a></li>
+      </ol>
+    </li>
+    <li><a href="#七易错说法纠正表">七、易错说法纠正表</a></li>
+    <li><a href="#八复习与现场练习清单">八、复习与现场练习清单</a></li>
+    <li><a href="#九官方资料索引">九、官方资料索引</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91/" >
+                测试开发
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/pytestpytest%E7%9B%B8%E5%85%B3%E9%9D%A2%E8%AF%95%E9%A2%98/">【Pytest】Pytest相关面试题</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 24, 2026</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 41 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>这是一份从入门到深入的 Pytest 面试笔记，共 <strong>72 道题</strong>，覆盖基础使用、fixture、参数化、Mock、插件机制、并行与异步，以及接口自动化和 CI 的实际项目场景。</p>
+<p><strong>热度说明：</strong> 以下星级是结合测试开发、自动化测试岗位常见考点做的经验判断，<strong>不是招聘平台统计或实时流行度排名</strong>，不同公司和职级会有差异。</p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>标记</th>
+					<th>经验热度</th>
+					<th>复习建议</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>★★★★★</td>
+					<td>高频核心</td>
+					<td>应能脱稿解释，并现场写基本代码</td>
+			</tr>
+			<tr>
+					<td>★★★★☆</td>
+					<td>常见追问</td>
+					<td>应能解释设计取舍和常见故障</td>
+			</tr>
+			<tr>
+					<td>★★★☆☆</td>
+					<td>进阶区分项</td>
+					<td>适合中高级测试开发岗位</td>
+			</tr>
+			<tr>
+					<td>★★☆☆☆</td>
+					<td>专项深入</td>
+					<td>按项目经验和岗位要求准备</td>
+			</tr>
+	</tbody>
+</table></div>
+<p><strong>阅读顺序：</strong> 第一轮掌握所有五星题；第二轮补齐四星题；第三轮练习插件机制、异步、并行和项目设计题。回答建议遵循“结论 → 原理 → 例子 → 边界与取舍”。</p>
+<p><strong>版本与示例约定：</strong> 核心内容采用 Pytest 常用稳定 API，整理时参考官方 stable 文档。插件行为会随版本变化，项目应固定 Python、Pytest 和插件版本。普通代码块是独立示例；标明文件名的多文件示例要按目录配套使用。项目场景中的业务客户端、数据库封装等属于设计说明，不代表 Pytest 自带能力。</p>
+<h2 id="一入门发现执行与断言110">一、入门：发现、执行与断言（1—10）
+</h2><h3 id="1-pytest-是什么为什么在自动化测试中使用它">1. Pytest 是什么？为什么在自动化测试中使用它？
+</h3><p><strong>热度：★★★★★｜难度：入门</strong></p>
+<p><strong>参考答案：</strong> Pytest 是 Python 测试框架，负责发现测试、组织依赖、运行用例和汇总结果。它既能执行函数级单元测试，也能组织接口、数据库、浏览器等集成测试。</p>
+<p>核心优势是普通函数即可成为测试用例，<code>assert</code> 失败时能显示表达式信息；fixture 可以复用准备与清理逻辑；参数化可以让同一测试逻辑覆盖多组输入；插件生态可以扩展报告、并行和覆盖率。</p>
+<p><strong>面试加分点：</strong> Pytest 本身不是 HTTP 客户端、浏览器驱动或压测工具。接口测试通常还需要 requests/httpx，浏览器测试需要相应驱动，Pytest 负责测试组织与执行。不要把项目中用到的所有能力都说成 Pytest 内置。</p>
+<h3 id="2-pytest-与-unittest-有什么区别能混用吗">2. Pytest 与 unittest 有什么区别？能混用吗？
+</h3><p><strong>热度：★★★★★｜难度：入门</strong></p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>对比项</th>
+					<th>Pytest</th>
+					<th>unittest</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>来源</td>
+					<td>通常额外安装</td>
+					<td>Python 标准库</td>
+			</tr>
+			<tr>
+					<td>用例组织</td>
+					<td>测试函数、普通测试类</td>
+					<td>通常继承 <code>TestCase</code></td>
+			</tr>
+			<tr>
+					<td>断言</td>
+					<td>普通 <code>assert</code></td>
+					<td><code>assertEqual</code> 等断言方法</td>
+			</tr>
+			<tr>
+					<td>前后置</td>
+					<td>fixture，兼容部分 xunit 风格</td>
+					<td><code>setUp</code>、<code>tearDown</code> 等</td>
+			</tr>
+			<tr>
+					<td>数据驱动</td>
+					<td>内置参数化</td>
+					<td>可用 <code>subTest</code> 或其他方案</td>
+			</tr>
+	</tbody>
+</table></div>
+<p><strong>参考答案：</strong> Pytest 能运行大多数 unittest 测试，因此迁移时可以先换执行器，再逐步改用 fixture 和参数化，不必一次重写。</p>
+<p><strong>常见追问：</strong> <code>unittest.TestCase</code> 测试方法不能像普通 Pytest 函数那样直接接收 fixture 参数，也不能直接使用 Pytest 参数化机制。部分 fixture 能通过 <code>autouse</code> 或 <code>usefixtures</code> 做环境准备，但不能由此推断两种测试模型完全一致。</p>
+<h3 id="3-pytest-默认如何发现用例为什么有些测试没有被收集">3. Pytest 默认如何发现用例？为什么有些测试没有被收集？
+</h3><p><strong>热度：★★★★★｜难度：入门</strong></p>
+<p><strong>参考答案：</strong> 对普通 Python 测试，默认收集 <code>test_*.py</code>、<code>*_test.py</code> 文件；收集 <code>test</code> 开头的测试函数，以及 <code>Test</code> 开头且没有自定义 <code>__init__</code> 的测试类中的测试方法。测试类通常不需要继承某个框架基类。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># test_math.py</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TestMath</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">test_add</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">assert</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>未收集时检查文件名、函数名、类名、执行路径、<code>testpaths</code>、忽略规则，以及模块导入是否报错。先运行 <code>python -m pytest --collect-only -q</code>，把“没发现”和“发现后执行失败”区分开。</p>
+<p><strong>易错点：</strong> 测试类中写 <code>__init__</code> 初始化数据可能导致不被正常收集，推荐用 fixture。参见<a class="link" href="https://docs.pytest.org/en/stable/explanation/goodpractices.html"  target="_blank" rel="noopener"
+    >测试发现与项目组织</a>。</p>
+<h3 id="4-常用执行命令有哪些-k-和--m-的区别是什么">4. 常用执行命令有哪些？<code>-k</code> 和 <code>-m</code> 的区别是什么？
+</h3><p><strong>热度：★★★★★｜难度：入门</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python -m pytest tests/                         <span class="c1"># 执行目录</span>
+</span></span><span class="line"><span class="cl">python -m pytest tests/test_user.py             <span class="c1"># 执行文件</span>
+</span></span><span class="line"><span class="cl">python -m pytest tests/test_user.py::TestUser::test_login  <span class="c1"># 指定测试项</span>
+</span></span><span class="line"><span class="cl">python -m pytest -k <span class="s1">&#39;login and not invalid&#39;</span>     <span class="c1"># 名称等关键字表达式</span>
+</span></span><span class="line"><span class="cl">python -m pytest -m <span class="s1">&#39;smoke and not slow&#39;</span>        <span class="c1"># marker 表达式</span>
+</span></span><span class="line"><span class="cl">python -m pytest -q                            <span class="c1"># 精简输出</span>
+</span></span><span class="line"><span class="cl">python -m pytest -v --tb<span class="o">=</span>short                  <span class="c1"># 详细名称、简短回溯</span>
+</span></span><span class="line"><span class="cl">python -m pytest -x                            <span class="c1"># 首次失败后停止</span>
+</span></span><span class="line"><span class="cl">python -m pytest --maxfail<span class="o">=</span><span class="m">3</span>                    <span class="c1"># 达到失败阈值后停止</span>
+</span></span><span class="line"><span class="cl">python -m pytest --lf                          <span class="c1"># 使用缓存重跑上次失败项</span>
+</span></span><span class="line"><span class="cl">python -m pytest --ff                          <span class="c1"># 上次失败项优先，随后运行其他项</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>参考答案：</strong> <code>-k</code> 根据名称和相关关键字筛选，<code>-m</code> 根据标记筛选。团队应使用 marker 表达测试分类，用测试项 ID 精确定位失败；只用模糊名称筛选容易选错或漏选。</p>
+<p><strong>追问：</strong> <code>--lf</code> 依赖本地缓存，不能替代一次完整回归，也不能假设全新 CI 环境拥有上次执行记录。参见<a class="link" href="https://docs.pytest.org/en/stable/how-to/usage.html"  target="_blank" rel="noopener"
+    >执行命令</a>。</p>
+<h3 id="5-pytest-与-python--m-pytest-有什么区别rootdir-会修复导入吗">5. <code>pytest</code> 与 <code>python -m pytest</code> 有什么区别？<code>rootdir</code> 会修复导入吗？
+</h3><p><strong>热度：★★★★☆｜难度：基础</strong></p>
+<p><strong>参考答案：</strong> <code>python -m pytest</code> 使用指定 Python 解释器中的 Pytest，适合避免虚拟环境不一致；还会遵循 <code>python -m</code> 的行为，将当前目录加入 <code>sys.path</code>。直接执行 <code>pytest</code> 时，要确认命令属于哪个环境。</p>
+<p><code>rootdir</code> 用于确定配置、测试项 ID 等上下文，<strong>不会自动把根目录加入 <code>sys.path</code></strong>。导入失败时，应检查项目包是否安装、目录布局和导入模式，不能仅靠设置 <code>--rootdir</code> 解决。</p>
+<p><strong>项目建议：</strong> 使用正确的打包配置，在虚拟环境中安装项目，必要时采用 <code>src/</code> 布局；减少到处修改 <code>sys.path</code> 的临时方案。参见<a class="link" href="https://docs.pytest.org/en/stable/explanation/pythonpath.html"  target="_blank" rel="noopener"
+    >导入机制</a>。</p>
+<h3 id="6-pytest-为什么能展示详细断言信息辅助模块也一样吗">6. Pytest 为什么能展示详细断言信息？辅助模块也一样吗？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> Pytest 会对符合条件的测试模块进行断言重写，在导入执行前处理断言表达式，因此失败时可以展示左右值等信息。它不是简单地捕获 <code>AssertionError</code> 后猜测表达式。</p>
+<p>辅助断言模块不一定自动获得相同的重写行为。如果插件或共享包需要重写，应在目标模块首次导入前调用 <code>pytest.register_assert_rewrite(&quot;package.assertions&quot;)</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 测试模块中的简单断言</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_response</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;code&#34;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Alice&#34;</span><span class="p">}}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">response</span><span class="p">[</span><span class="s2">&#34;code&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">response</span><span class="p">[</span><span class="s2">&#34;data&#34;</span><span class="p">][</span><span class="s2">&#34;name&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;Alice&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>易错点：</strong> 不要先导入辅助模块，再注册重写；也不要把生产代码中不可省略的参数校验建立在普通 <code>assert</code> 上。参见<a class="link" href="https://docs.pytest.org/en/stable/how-to/assert.html"  target="_blank" rel="noopener"
+    >断言与重写</a>。</p>
+<h3 id="7-浮点数集合和无序结果应如何断言">7. 浮点数、集合和无序结果应如何断言？
+</h3><p><strong>热度：★★★★☆｜难度：基础</strong></p>
+<p><strong>参考答案：</strong> 浮点数使用 <code>pytest.approx</code> 设置容差；无序数据根据业务语义选择集合、排序或 <code>Counter</code>，不能一律转换成集合。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_values</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">==</span> <span class="n">pytest</span><span class="o">.</span><span class="n">approx</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">abs</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">Counter</span><span class="p">([</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="s2">&#34;b&#34;</span><span class="p">])</span> <span class="o">==</span> <span class="n">Counter</span><span class="p">([</span><span class="s2">&#34;b&#34;</span><span class="p">,</span> <span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="s2">&#34;a&#34;</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>集合会忽略重复次数。如果接口返回的条目不能重复，转成集合后可能掩盖缺陷；<code>Counter</code> 更适合顺序无关但次数有意义的结果。金额规则优先使用明确的最小货币单位或 Decimal，容差不能替代业务精度设计。</p>
+<h3 id="8-如何验证异常raises-和-xfail-能互相替代吗">8. 如何验证异常？<code>raises</code> 和 <code>xfail</code> 能互相替代吗？
+</h3><p><strong>热度：★★★★★｜难度：基础</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">parse_age</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&#34;age must be non-negative&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">age</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_negative_age</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="k">match</span><span class="o">=</span><span class="s2">&#34;non-negative&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">exc_info</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">parse_age</span><span class="p">(</span><span class="s2">&#34;-1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">exc_info</span><span class="o">.</span><span class="n">type</span> <span class="ow">is</span> <span class="ne">ValueError</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>参考答案：</strong> <code>pytest.raises</code> 表示“抛出异常就是正确行为”，满足条件时测试通过；<code>xfail</code> 表示“当前测试预计不能满足正常预期”。两者语义不同。</p>
+<p><code>match</code> 是正则匹配；如果需要匹配用户输入中的特殊符号，应考虑 <code>re.escape</code>。<code>raises</code> 默认接受指定异常的子类，只有业务要求精确类型时才额外比较 <code>exc_info.type</code>。</p>
+<p><strong>易错点：</strong> 将过多准备逻辑放进 <code>raises</code> 块，可能把准备阶段的异常误判为目标异常；异常抛出后的同一块内代码也不会继续执行。</p>
+<h3 id="9-测试有哪些阶段failed-和-error-如何区分">9. 测试有哪些阶段？FAILED 和 ERROR 如何区分？
+</h3><p><strong>热度：★★★★★｜难度：基础</strong></p>
+<p><strong>参考答案：</strong> 一个正常运行的测试项通常经历 <code>setup → call → teardown</code>。<code>setup</code> 准备 fixture 等环境，<code>call</code> 执行测试函数，<code>teardown</code> 清理已准备的资源。</p>
+<p>测试函数中的断言或其他未处理异常通常显示为 FAILED；fixture 初始化或清理阶段出错通常显示为 ERROR。一个测试的调用阶段失败，清理阶段也可能再次报错，因此不能只记录单一“最终布尔值”。</p>
+<p><strong>追问：</strong> 若 setup 失败，call 通常不执行，但已经成功准备的 fixture 仍需清理。收集阶段的导入错误属于更早的问题，不能误认为测试函数已经运行。</p>
+<h3 id="10-如何调试失败退出码有哪些">10. 如何调试失败？退出码有哪些？
+</h3><p><strong>热度：★★★★☆｜难度：基础</strong></p>
+<p><strong>参考答案：</strong> 先使用测试项 ID 单独复现，再查看回溯、输入数据、日志和环境。可用 <code>--pdb</code> 在失败时进入调试器，<code>--trace</code> 在测试开始处进入调试；并行调试时先切回单进程，减少干扰。</p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>退出码</th>
+					<th>含义</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>测试执行成功</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>存在测试失败</td>
+			</tr>
+			<tr>
+					<td>2</td>
+					<td>执行被中断</td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>Pytest 内部错误</td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>命令行使用错误</td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>没有收集到测试</td>
+			</tr>
+	</tbody>
+</table></div>
+<p>CI 应检查退出码，不能只判断有没有报告文件。退出码 5 需要结合任务意图处理，不能无条件变成成功。参见<a class="link" href="https://docs.pytest.org/en/stable/reference/exit-codes.html"  target="_blank" rel="noopener"
+    >退出码定义</a>。</p>
+<h2 id="二核心fixture-与资源生命周期1124">二、核心：fixture 与资源生命周期（11—24）
+</h2><h3 id="11-fixture-是什么为什么不直接调用工具函数">11. fixture 是什么？为什么不直接调用工具函数？
+</h3><p><strong>热度：★★★★★｜难度：基础</strong></p>
+<p><strong>参考答案：</strong> fixture 提供测试依赖，并由框架管理创建、复用和释放。测试函数通过参数名称声明需求，Pytest 按依赖关系准备对象。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.fixture</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">user</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span><span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Alice&#34;</span><span class="p">,</span> <span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;admin&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_role</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">user</span><span class="p">[</span><span class="s2">&#34;role&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;admin&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>普通工具函数适合纯计算、格式转换等显式调用逻辑；fixture 适合客户端、账号、数据库连接等有生命周期的依赖。不要把所有工具函数都包装成 fixture，否则依赖图会难以理解。</p>
+<p><strong>追问：</strong> fixture 的名称是依赖解析入口，不应在测试中直接调用被装饰的 fixture 函数。需要复用其业务逻辑时，将逻辑拆到普通函数，再由 fixture 调用。</p>
+<h3 id="12-fixture-有哪些-scope扩大-scope-一定更好吗">12. fixture 有哪些 scope？扩大 scope 一定更好吗？
+</h3><p><strong>热度：★★★★★｜难度：基础</strong></p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>scope</th>
+					<th>通常的共享范围</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>function</code></td>
+					<td>每个测试调用，默认值</td>
+			</tr>
+			<tr>
+					<td><code>class</code></td>
+					<td>测试类</td>
+			</tr>
+			<tr>
+					<td><code>module</code></td>
+					<td>测试模块</td>
+			</tr>
+			<tr>
+					<td><code>package</code></td>
+					<td>测试包</td>
+			</tr>
+			<tr>
+					<td><code>session</code></td>
+					<td>当前测试会话</td>
+			</tr>
+	</tbody>
+</table></div>
+<p><strong>参考答案：</strong> scope 决定缓存和生命周期边界。低作用域隔离性好，高作用域减少重复初始化成本。选择时同时考虑资源价格、可变状态和并发安全。</p>
+<p>例如 HTTP 连接池可能适合会话复用，而订单、购物车和可变用户资料一般需要每个用例独立创建。参数化 fixture 即使在同一 scope 内也可能发生多次初始化，不能简化为“session 就一定只创建一个对象”。参见<a class="link" href="https://docs.pytest.org/en/stable/how-to/fixtures.html"  target="_blank" rel="noopener"
+    >fixture 使用指南</a>。</p>
+<h3 id="13-fixture-为什么按名称注入一次测试中请求两次会创建两个对象吗">13. fixture 为什么按名称注入？一次测试中请求两次会创建两个对象吗？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> Pytest 根据参数名称解析 fixture，并缓存当前有效实例。一个测试函数和它依赖的另一个 fixture 同时请求同一个 fixture，通常会拿到同一次创建的对象，而不是各创建一份。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.fixture</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.fixture</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">prepared</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&#34;ready&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">items</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_shared_in_one_test</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">prepared</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">items</span> <span class="ow">is</span> <span class="n">prepared</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">items</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&#34;ready&#34;</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>易错点：</strong> 同一用例内共享是依赖机制的一部分；跨用例是否共享取决于作用域和参数化。需要同一用例创建多个独立对象时，应使用工厂 fixture，而不是误以为重复声明依赖就会重新创建。</p>
+<h3 id="14-fixture-执行顺序由什么决定">14. fixture 执行顺序由什么决定？
+</h3><p><strong>热度：★★★★★｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> 主要看作用域、显式依赖和 <code>autouse</code>。高作用域资源先准备；依赖项先于依赖它的 fixture；同一作用域中适用的自动 fixture 会优先执行，其依赖也随之提前。</p>
+<p>假设 <code>client → token → account</code>，准备顺序为 <code>account → token → client</code>，正常清理时按相反方向释放。若两个 fixture 之间没有约束，不能把当前观察到的排列当成稳定接口。</p>
+<p><strong>面试陷阱：</strong> 函数定义位置、fixture 名字和测试参数的左右顺序，都不应承担强制执行顺序的职责。如果 B 必须等 A，直接让 B 声明依赖 A。参见<a class="link" href="https://docs.pytest.org/en/stable/reference/fixtures.html"  target="_blank" rel="noopener"
+    >fixture 可见性与执行顺序</a>。</p>
+<h3 id="15-returnyield-和-requestaddfinalizer-如何选择">15. <code>return</code>、<code>yield</code> 和 <code>request.addfinalizer</code> 如何选择？
+</h3><p><strong>热度：★★★★★｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> <code>return</code> 提供值；<code>yield</code> 在提供值的同时，把清理写在后半段；<code>addfinalizer</code> 可在运行过程中动态登记清理回调。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.fixture</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">resource_file</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">path</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="s2">&#34;resource.txt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s2">&#34;ready&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 资源创建成功后立即登记，之后的初始化即使失败也会触发回调。</span>
+</span></span><span class="line"><span class="cl">    <span class="n">request</span><span class="o">.</span><span class="n">addfinalizer</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">path</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">path</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_resource_file</span><span class="p">(</span><span class="n">resource_file</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">resource_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&#34;ready&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>yield</code> 的后置代码只有在执行到 <code>yield</code> 后才会进入清理流程；已登记的 finalizer 即使后面的 fixture 初始化失败，仍会被调用。通常优先选择清晰的 yield fixture；动态多资源场景可用 finalizer 或 <code>ExitStack</code>。</p>
+<p><strong>易错点：</strong> 先登记清理、后创建资源，可能在资源根本不存在时运行错误的清理。登记时机和清理幂等性都要设计。</p>
+<h3 id="16-fixture-在-yield-前失败如何避免部分资源泄漏">16. fixture 在 <code>yield</code> 前失败，如何避免部分资源泄漏？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> 将多个资源拆为彼此依赖的小 fixture，或每创建成功一个资源就登记对应清理。不要把“创建账号、开连接、启动任务”全部堆在一个 yield 前面，再假设末尾清理永远会执行。</p>
+<p>例如账号 fixture 创建成功并 yield，客户端 fixture 再依赖账号。即使客户端初始化失败，账号 fixture 已进入可清理状态，仍能删除账号。</p>
+<p><strong>项目边界：</strong> 进程被强杀、机器断电等情况下，Python 清理逻辑可能无法执行。对外部资源还要有测试运行标签、过期时间和定期回收机制。框架内清理保证不等于跨故障的绝对保证。</p>
+<h3 id="17-conftestpy-的作用和可见性是什么">17. <code>conftest.py</code> 的作用和可见性是什么？
+</h3><p><strong>热度：★★★★★｜难度：基础</strong></p>
+<p><strong>参考答案：</strong> <code>conftest.py</code> 是目录范围的本地插件入口，可定义 fixture 和 hook，Pytest 自动发现并加载。测试通常无需手动导入。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">project/
+</span></span><span class="line"><span class="cl">├── pytest.ini
+</span></span><span class="line"><span class="cl">└── tests/
+</span></span><span class="line"><span class="cl">    ├── conftest.py
+</span></span><span class="line"><span class="cl">    ├── test_login.py
+</span></span><span class="line"><span class="cl">    └── orders/
+</span></span><span class="line"><span class="cl">        ├── conftest.py
+</span></span><span class="line"><span class="cl">        └── test_order.py
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>orders</code> 下的测试可以使用上层 fixture，并通过更近的同名定义覆盖它；其他兄弟目录不会因为文件存在，就自动获得 <code>orders</code> 内的 fixture。</p>
+<p><strong>追问：</strong> 根目录放全项目通用资源，业务目录放局部资源。避免巨型 <code>conftest.py</code>，也不要把它当普通工具模块相互导入，否则容易产生导入歧义和循环依赖。</p>
+<h3 id="18-autousetrueusefixtures-和参数注入的区别">18. <code>autouse=True</code>、<code>usefixtures</code> 和参数注入的区别？
+</h3><p><strong>热度：★★★★★｜难度：基础</strong></p>
+<p><strong>参考答案：</strong> 参数注入既声明依赖又拿到返回值；<code>usefixtures</code> 显式要求某测试或测试类执行 fixture，但不提供变量；<code>autouse=True</code> 在可见且适用的范围自动执行。</p>
+<p>例如统一设置时区、禁止真实外部请求，可以考虑自动 fixture；订单数据、登录身份等业务依赖更适合显式声明，让读者一眼看出用例需要什么。</p>
+<p><strong>易错点：</strong> <code>usefixtures</code> 不会将返回值放进测试的局部变量；在 fixture 函数上写 <code>usefixtures</code> 也不能替代真正的参数依赖。自动 fixture 不是“整个仓库无条件执行”，它仍受可见性和作用域影响。</p>
+<h3 id="19-为什么出现-scopemismatch怎么改">19. 为什么出现 <code>ScopeMismatch</code>？怎么改？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> 长生命周期 fixture 请求了短生命周期 fixture。例如 session 资源依赖 function 资源，但后者每个测试变化一次，无法成为整个会话稳定的依赖。</p>
+<p>处理方式有两类：缩短请求方的生命周期；或者拆分高作用域的基础资源与低作用域的业务状态。例如 session 数据库引擎提供连接能力，function 事务或测试账号负责用例隔离。</p>
+<p><strong>易错点：</strong> 为了消除异常，把所有 fixture 都改成 session，可能把一个明显的生命周期错误变成难排查的数据污染。依赖方向应该与资源寿命一致。</p>
+<h3 id="20-什么是工厂-fixture适合什么场景">20. 什么是工厂 fixture？适合什么场景？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> fixture 返回一个可调用对象，测试可以按需多次调用，创建不同参数的资源。适合同一用例需要多个账号、订单或文件，并希望集中清理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.fixture</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_file</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">created</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">factory</span><span class="p">(</span><span class="n">content</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">path</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&#34;item_</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">created</span><span class="p">)</span><span class="si">}</span><span class="s2">.txt&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">created</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">path</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">yield</span> <span class="n">factory</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">created</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">path</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_two_files</span><span class="p">(</span><span class="n">make_file</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">left</span> <span class="o">=</span> <span class="n">make_file</span><span class="p">(</span><span class="s2">&#34;left&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">right</span> <span class="o">=</span> <span class="n">make_file</span><span class="p">(</span><span class="s2">&#34;right&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">left</span> <span class="o">!=</span> <span class="n">right</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">left</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&#34;left&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>追问：</strong> 资源创建成功后再加入清理清单；删除按逆序进行，适合存在父子依赖的资源。外部清理还需处理部分删除失败。</p>
+<h3 id="21-fixture-能参数化吗与测试参数化有什么区别">21. fixture 能参数化吗？与测试参数化有什么区别？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> fixture 可通过 <code>params</code> 生成多种依赖配置，值由 <code>request.param</code> 获取；所有请求它的测试都会覆盖这些配置。测试参数化则更适合某一个测试的输入输出组合。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.fixture</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;admin&#34;</span><span class="p">,</span> <span class="s2">&#34;viewer&#34;</span><span class="p">],</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;admin&#34;</span><span class="p">,</span> <span class="s2">&#34;viewer&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">role</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">request</span><span class="o">.</span><span class="n">param</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_known_role</span><span class="p">(</span><span class="n">role</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">role</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&#34;admin&#34;</span><span class="p">,</span> <span class="s2">&#34;viewer&#34;</span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>数据库类型、序列化协议等多用例共同维度适合 fixture 参数化；单个校验函数的边界值适合测试参数化。两者组合可能放大用例数，设计前先估算执行成本。</p>
+<h3 id="22-如何覆盖上层-fixture动态获取-fixture-有什么风险">22. 如何覆盖上层 fixture？动态获取 fixture 有什么风险？
+</h3><p><strong>热度：★★★☆☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> 在更近的测试模块或目录 <code>conftest.py</code> 中定义同名 fixture，可以覆盖上层定义。扩展上层同名 fixture 时，可以通过参数请求上层版本，再附加局部配置。</p>
+<p><code>request.getfixturevalue(name)</code> 能按运行时名称获取 fixture，适合依赖名确实由运行条件决定的场景。但会隐藏静态依赖、增加定位难度，也不能突破 scope 约束。</p>
+<p><strong>项目建议：</strong> 优先使用显式参数依赖；覆盖时保持语义一致，不要在某个目录把“只读客户端”同名替换成有写入副作用的对象，破坏调用方预期。</p>
+<h3 id="23-fixture-与-setup_methodteardown_method-怎么选">23. fixture 与 <code>setup_method</code>、<code>teardown_method</code> 怎么选？
+</h3><p><strong>热度：★★★★☆｜难度：基础</strong></p>
+<p><strong>参考答案：</strong> Pytest 支持 xunit 风格的前后置方法，简单类内准备可以使用；fixture 更适合跨模块复用、按依赖组合、控制 scope 和参数化。</p>
+<p>例如多个测试类都需要账号、客户端和订单时，用 fixture 可以只声明当前测试所需的资源，不必依赖深层继承。类属性式共享状态则更容易形成隐性耦合。</p>
+<p><strong>易错点：</strong> 不要在两个体系中重复创建和删除同一资源。渐进迁移时先明确每个资源归谁管理，再替换前后置机制，防止出现双重清理或先后顺序假设。</p>
+<h3 id="24-如何查看-fixture-来源作用域和实际准备顺序">24. 如何查看 fixture 来源、作用域和实际准备顺序？
+</h3><p><strong>热度：★★★☆☆｜难度：进阶</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python -m pytest --fixtures -v
+</span></span><span class="line"><span class="cl">python -m pytest tests/test_user.py::test_login --fixtures-per-test
+</span></span><span class="line"><span class="cl">python -m pytest tests/test_user.py::test_login --setup-show
+</span></span><span class="line"><span class="cl">python -m pytest tests/test_user.py::test_login --setup-plan
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>参考答案：</strong> <code>--fixtures</code> 查看可用 fixture，<code>--fixtures-per-test</code> 看某测试依赖，<code>--setup-show</code> 随执行显示准备清理，<code>--setup-plan</code> 展示计划而不实际运行测试和 fixture。</p>
+<p>定位问题时优先确认同名 fixture 是否被局部覆盖，再看参数化和 scope。盲目加 print 容易被输出捕获干扰，也难以还原完整依赖关系。</p>
+<h2 id="三熟练使用参数化标记和配置2534">三、熟练使用：参数化、标记和配置（25—34）
+</h2><h3 id="25-如何使用-parametrize为什么比循环断言更适合数据驱动">25. 如何使用 <code>parametrize</code>？为什么比循环断言更适合数据驱动？
+</h3><p><strong>热度：★★★★★｜难度：基础</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.mark.parametrize</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;left,right,expected&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;positive&#34;</span><span class="p">,</span> <span class="s2">&#34;zero&#34;</span><span class="p">,</span> <span class="s2">&#34;opposite&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_add</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">left</span> <span class="o">+</span> <span class="n">right</span> <span class="o">==</span> <span class="n">expected</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>参考答案：</strong> 每组数据生成独立测试项，可以独立统计、定位和重跑。普通循环中，第一条断言失败通常就终止整个测试，后续数据没有执行，报告粒度也更粗。</p>
+<p><code>ids</code> 应使用短而稳定的业务描述，不要放密码、token 或个人信息，因为 ID 会出现在日志和报告中。对于连续业务步骤，则不一定应拆成独立参数项，要看每项是否能独立准备环境。</p>
+<h3 id="26-多个参数化装饰器如何组合如何控制组合爆炸">26. 多个参数化装饰器如何组合？如何控制组合爆炸？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> 叠加参数化通常生成笛卡尔积，例如 3 个地区、4 种角色和 5 种支付方式会得到 60 组测试；若再叠加 fixture 参数化，数量继续增长。</p>
+<p>全组合适合维度少且交互风险高的情况。实际项目可以按业务约束剔除无效组合，对核心路径做完整组合，其余采用代表值、边界值或成对组合策略，并说明剩余风险。</p>
+<p><strong>易错点：</strong> 用例数量多不等于覆盖有效。大量永远被 skip 的组合既拖慢收集，又让报告难以阅读。参见<a class="link" href="https://docs.pytest.org/en/stable/how-to/parametrize.html"  target="_blank" rel="noopener"
+    >参数化行为与组合</a>。</p>
+<h3 id="27-什么是间接参数化indirecttrue-到底改变了什么">27. 什么是间接参数化？<code>indirect=True</code> 到底改变了什么？
+</h3><p><strong>热度：★★★★★｜难度：进阶</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.fixture</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">account</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span><span class="s2">&#34;role&#34;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&#34;enabled&#34;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.mark.parametrize</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;account,expected&#34;</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&#34;admin&#34;</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;viewer&#34;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">indirect</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;account&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_account</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">account</span><span class="p">[</span><span class="s2">&#34;enabled&#34;</span><span class="p">]</span> <span class="ow">is</span> <span class="n">expected</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>参考答案：</strong> 普通参数化把值直接传给测试；间接参数化先把值传给同名 fixture 的 <code>request.param</code>，再把 fixture 结果注入测试。这里测试拿到字典，fixture 拿到角色字符串。</p>
+<p>它适合把轻量配置转换为昂贵资源，初始化在 setup 阶段进行。<code>indirect=True</code> 表示相关参数都走 fixture；只需要部分参数时用名称列表。</p>
+<p><strong>常见错误：</strong> 误把 fixture 对象本身放进参数列表，期待框架自动解析；或者忘记定义对应 fixture。</p>
+<h3 id="28-pytestparam-能做什么可变参数有什么坑">28. <code>pytest.param</code> 能做什么？可变参数有什么坑？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> <code>pytest.param</code> 可以给单组数据设置 ID 和标记，例如只给已知缺陷对应的数据加 <code>xfail</code>，而不是把整组用例都标记为预期失败。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.mark.parametrize</span><span class="p">(</span><span class="s2">&#34;value,expected&#34;</span><span class="p">,</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pytest</span><span class="o">.</span><span class="n">param</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&#34;normal&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pytest</span><span class="o">.</span><span class="n">param</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&#34;another&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_square</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">value</span> <span class="o">*</span> <span class="n">value</span> <span class="o">==</span> <span class="n">expected</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>参数中的列表、字典不会自动深拷贝。如果不同测试项引用同一个可变对象，并在运行时修改它，可能造成相互污染。可以使用不可变输入，或在 fixture 中依据配置重新构建对象；不要把运行结果写回原始测试数据。</p>
+<h3 id="29-用例数据放在-yamljsoncsv-还是代码里">29. 用例数据放在 YAML、JSON、CSV 还是代码里？
+</h3><p><strong>热度：★★★★☆｜难度：项目应用</strong></p>
+<p><strong>参考答案：</strong> 小型输入输出表直接写在代码里更直观，也便于代码审查；跨工具共享的结构化数据可以选择 JSON/YAML；扁平大量数据可选择 CSV。选择标准是可读性、类型表达和维护成本，不是“文件越多越像框架”。</p>
+<p>外部数据要进行结构校验、稳定排序和唯一 ID 校验；文件路径应基于模块或明确配置定位，不能依赖偶然的工作目录。读取 YAML 时使用安全加载方式。</p>
+<p><strong>追问：</strong> 把逻辑表达式、循环和任意代码执行都塞进 YAML，会形成一套难调试的自制语言。数据文件负责输入与预期，业务行为留在可测试的代码中。</p>
+<h3 id="30-skipskipifxfailxpass-有什么区别">30. <code>skip</code>、<code>skipif</code>、<code>xfail</code>、XPASS 有什么区别？
+</h3><p><strong>热度：★★★★★｜难度：基础</strong></p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>机制</th>
+					<th>含义</th>
+					<th>典型使用</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>skip</code></td>
+					<td>不运行该测试</td>
+					<td>当前暂不适用</td>
+			</tr>
+			<tr>
+					<td><code>skipif</code></td>
+					<td>满足条件时跳过</td>
+					<td>系统或依赖条件不满足</td>
+			</tr>
+			<tr>
+					<td><code>xfail</code></td>
+					<td>正常执行但预计失败</td>
+					<td>已知缺陷，仍需跟踪</td>
+			</tr>
+			<tr>
+					<td>XPASS</td>
+					<td>预期失败的测试意外通过</td>
+					<td>缺陷可能已修复或预期失效</td>
+			</tr>
+	</tbody>
+</table></div>
+<p><strong>参考答案：</strong> <code>xfail</code> 通常仍执行测试，<code>strict=True</code> 会把意外通过变成失败，促使团队更新状态；特殊情况下可用 <code>run=False</code> 禁止执行，但需说明原因。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.mark.skipif</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s2">&#34;win32&#34;</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s2">&#34;仅验证 POSIX 行为&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_posix_platform</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">!=</span> <span class="s2">&#34;win32&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>项目要求：</strong> 跳过和预期失败应附原因、缺陷编号或到期条件，不应成为长期掩盖失败的入口。参见<a class="link" href="https://docs.pytest.org/en/stable/how-to/skipping.html"  target="_blank" rel="noopener"
+    >跳过与预期失败</a>。</p>
+<h3 id="31-如何注册-marker为什么建议严格校验">31. 如何注册 marker？为什么建议严格校验？
+</h3><p><strong>热度：★★★★★｜难度：基础</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="c1"># pytest.ini</span>
+</span></span><span class="line"><span class="cl"><span class="k">[pytest]</span>
+</span></span><span class="line"><span class="cl"><span class="na">testpaths</span> <span class="o">=</span> <span class="s">tests</span>
+</span></span><span class="line"><span class="cl"><span class="na">addopts</span> <span class="o">=</span> <span class="s">-ra --strict-markers</span>
+</span></span><span class="line"><span class="cl"><span class="na">markers</span> <span class="o">=</span><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">    smoke: 核心冒烟测试
+</span></span></span><span class="line"><span class="cl"><span class="s">    integration: 集成测试
+</span></span></span><span class="line"><span class="cl"><span class="s">    slow: 执行较慢的测试</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>参考答案：</strong> 自定义 marker 是测试分类和附加元数据，例如冒烟、集成或慢测试。注册后有统一说明，<code>--strict-markers</code> 能把拼写错误等未注册标记转成错误，防止筛选无声失效。</p>
+<p><code>@pytest.mark.smoke</code> 本身不会改变业务逻辑，实际选择由 <code>-m smoke</code> 或团队 hook 决定。不要把 marker 当权限控制机制，危险环境还需要执行前的硬校验。</p>
+<h3 id="32-配置文件如何选择多个文件会合并吗">32. 配置文件如何选择？多个文件会合并吗？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> 常见配置入口包括 <code>pytest.ini</code> 和 <code>pyproject.toml</code>；配置格式与发现优先级要以项目固定版本为准。团队应选定一个权威入口，避免同目录多份配置相互遮蔽。</p>
+<p>Pytest 的配置发现不是把找到的所有文件逐层合并。运行时应查看启动头部的 <code>rootdir</code>、配置文件和插件，必要时用 <code>-c</code> 指定配置。</p>
+<p>例如 <code>pyproject.toml</code> 的常用兼容写法是 <code>[tool.pytest.ini_options]</code>；<code>pytest.ini</code> 则是 <code>[pytest]</code>，不能直接复制节名。执行选项还可能来自环境变量和命令行，因此排查时要记录完整调用环境。参见<a class="link" href="https://docs.pytest.org/en/stable/reference/customize.html"  target="_blank" rel="noopener"
+    >官方配置说明</a>。</p>
+<h3 id="33-如何新增---env-参数并避免误连环境">33. 如何新增 <code>--env</code> 参数，并避免误连环境？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># conftest.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">pytest_addoption</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span><span class="o">.</span><span class="n">addoption</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;--env&#34;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&#34;store&#34;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&#34;dev&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;dev&#34;</span><span class="p">,</span> <span class="s2">&#34;staging&#34;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="s2">&#34;目标测试环境&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&#34;session&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">base_url</span><span class="p">(</span><span class="n">pytestconfig</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">urls</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;dev&#34;</span><span class="p">:</span> <span class="s2">&#34;https://dev.example.com&#34;</span><span class="p">,</span> <span class="s2">&#34;staging&#34;</span><span class="p">:</span> <span class="s2">&#34;https://staging.example.com&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">urls</span><span class="p">[</span><span class="n">pytestconfig</span><span class="o">.</span><span class="n">getoption</span><span class="p">(</span><span class="s2">&#34;--env&#34;</span><span class="p">)]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>参考答案：</strong> 用 <code>pytest_addoption</code> 注册命令行选项，通过配置对象或 fixture 读取；环境到地址的映射集中管理，测试用例只依赖客户端。</p>
+<p>示例是配置演示，不向这些地址发请求。真实项目中环境参数还应受允许列表、凭据和账号权限约束；不能因为传了一个字符串，就允许任意目标写入。机密信息不放在 URL 或测试项 ID 中。</p>
+<h3 id="34-动态生成测试用例如何实现与普通参数化有什么区别">34. 动态生成测试用例如何实现？与普通参数化有什么区别？
+</h3><p><strong>热度：★★★☆☆｜难度：深入</strong></p>
+<p><strong>参考答案：</strong> 可在收集阶段使用 <code>pytest_generate_tests(metafunc)</code>，根据测试所需参数和配置调用 <code>metafunc.parametrize</code>。适合多模块复用同一动态数据来源，而不是到处复制装饰器。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># conftest.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">pytest_generate_tests</span><span class="p">(</span><span class="n">metafunc</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s2">&#34;region&#34;</span> <span class="ow">in</span> <span class="n">metafunc</span><span class="o">.</span><span class="n">fixturenames</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">metafunc</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">&#34;region&#34;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&#34;cn&#34;</span><span class="p">,</span> <span class="s2">&#34;sg&#34;</span><span class="p">],</span> <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;cn&#34;</span><span class="p">,</span> <span class="s2">&#34;sg&#34;</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># test_region.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_region</span><span class="p">(</span><span class="n">region</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">region</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&#34;cn&#34;</span><span class="p">,</span> <span class="s2">&#34;sg&#34;</span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>收集阶段应快速、确定、无业务写入。不能一边从不稳定远程数据源实时取数，一边假设并行 worker 一定生成相同测试项。昂贵的资源初始化应推迟到 fixture setup，必要时使用间接参数化。</p>
+<h2 id="四深入测试设计mock输出和可测性3544">四、深入测试设计：Mock、输出和可测性（35—44）
+</h2><h3 id="35-monkeypatchunittestmockmocker-有什么区别">35. <code>monkeypatch</code>、<code>unittest.mock</code>、<code>mocker</code> 有什么区别？
+</h3><p><strong>热度：★★★★★｜难度：基础</strong></p>
+<p><strong>参考答案：</strong> <code>monkeypatch</code> 是 Pytest 内置 fixture，主要负责临时替换属性、字典项、环境变量、工作目录等，并在作用域结束后恢复；<code>unittest.mock</code> 是标准库，提供 Mock 对象、行为模拟和调用断言；<code>mocker</code> 来自额外的 <code>pytest-mock</code> 插件，便于管理 Mock 生命周期。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">region</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;APP_REGION&#34;</span><span class="p">,</span> <span class="s2">&#34;local&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_region</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setenv</span><span class="p">(</span><span class="s2">&#34;APP_REGION&#34;</span><span class="p">,</span> <span class="s2">&#34;cn&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">region</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&#34;cn&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以让 monkeypatch 安装一个 Mock 对象，由 Mock 记录交互。不要把“替换目标”和“检查调用”看成完全相同的职责。参见<a class="link" href="https://docs.pytest.org/en/stable/how-to/monkeypatch.html"  target="_blank" rel="noopener"
+    >monkeypatch 官方指南</a>。</p>
+<h3 id="36-为什么-patch-没生效应该-patch-哪个位置">36. 为什么 patch 没生效？应该 patch 哪个位置？
+</h3><p><strong>热度：★★★★★｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> 替换被测代码实际查找对象的位置，而不是机械地替换对象最初定义的位置。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># gateway.py</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&#34;示例中的真实网关禁止调用&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># service.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">gateway</span> <span class="kn">import</span> <span class="n">send</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">notify_user</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">send</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;hello </span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># test_service.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">patch</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">service</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_notify</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&#34;service.send&#34;</span><span class="p">,</span> <span class="n">return_value</span><span class="o">=</span><span class="s2">&#34;ok&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">send_mock</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">assert</span> <span class="n">service</span><span class="o">.</span><span class="n">notify_user</span><span class="p">(</span><span class="s2">&#34;Alice&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&#34;ok&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">send_mock</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span><span class="s2">&#34;hello Alice&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>service</code> 已绑定导入的 <code>send</code> 名称，只替换 <code>gateway.send</code> 不会自动重新绑定它。若代码通过 <code>gateway.send()</code> 访问，则围绕该访问路径替换。</p>
+<h3 id="37-return_valueside_effectspecautospec-怎么用">37. <code>return_value</code>、<code>side_effect</code>、<code>spec</code>、<code>autospec</code> 怎么用？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> <code>return_value</code> 设置调用结果；<code>side_effect</code> 可表示异常、连续结果或动态计算；<code>spec</code> 限制模拟对象可用的属性，<code>spec_set</code> 还限制设置不存在的属性；<code>autospec</code> 能基于真实对象约束调用签名，减少“接口已经改了，Mock 仍然通过”的问题。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">Mock</span><span class="p">,</span> <span class="n">create_autospec</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fetch</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">timeout</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="n">user_id</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_mock_contract</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">client</span> <span class="o">=</span> <span class="n">create_autospec</span><span class="p">(</span><span class="n">fetch</span><span class="p">,</span> <span class="n">return_value</span><span class="o">=</span><span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">client</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">client</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">flaky</span> <span class="o">=</span> <span class="n">Mock</span><span class="p">(</span><span class="n">side_effect</span><span class="o">=</span><span class="p">[</span><span class="ne">TimeoutError</span><span class="p">(</span><span class="s2">&#34;temporary&#34;</span><span class="p">),</span> <span class="s2">&#34;ok&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">TimeoutError</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">flaky</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">flaky</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&#34;ok&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>autospec</code> 不能保证业务协议正确，也不能取代真实接口或契约测试。参见<a class="link" href="https://docs.python.org/3/library/unittest.mock.html"  target="_blank" rel="noopener"
+    >标准库 Mock 文档</a>。</p>
+<h3 id="38-断言-mock-调用时常见错误有哪些">38. 断言 Mock 调用时常见错误有哪些？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> <code>assert_called_with</code> 检查最近一次调用，不代表只调用了一次；<code>assert_called_once_with</code> 同时检查次数和参数。验证顺序时可比较调用列表，但不要对无关实现细节过度约束。</p>
+<p>另一个隐蔽问题是可变参数：Mock 记录的可能是对象引用，调用后对象被修改，再检查历史参数时看到的已经不是原始内容。需要保留快照时，可以在副作用函数中复制必要字段。</p>
+<p><strong>项目取舍：</strong> 应验证业务上有意义的交互，例如扣款金额与幂等键，而不是把每个内部辅助函数调用次数都写死。后者会让正常重构引发大量无意义失败。</p>
+<h3 id="39-mockstubfakespy-有什么区别mock-越多越好吗">39. Mock、Stub、Fake、Spy 有什么区别？Mock 越多越好吗？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> 常用术语中，Stub 提供预设结果，Mock 强调交互期望，Fake 是可工作的简化实现，Spy 记录或观察调用。不同库命名可能不完全一致，面试重点是说清替身的用途。</p>
+<p>例如内存版仓库可作为 Fake，固定返回用户资料的是 Stub，验证支付网关只被正确调用一次可使用 Mock，包装真实函数观察调用可使用 Spy。</p>
+<p><strong>取舍：</strong> 外部网络、昂贵资源和难触发异常适合替换；核心业务逻辑应尽量真实执行。若把被测逻辑本身全部 Mock 掉，测试很可能只证明“预设返回值会被返回”。</p>
+<h3 id="40-如何断言标准输出capsys-与-capfd-有什么区别">40. 如何断言标准输出？<code>capsys</code> 与 <code>capfd</code> 有什么区别？
+</h3><p><strong>热度：★★★☆☆｜难度：进阶</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_output</span><span class="p">(</span><span class="n">capsys</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;created&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">captured</span> <span class="o">=</span> <span class="n">capsys</span><span class="o">.</span><span class="n">readouterr</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">captured</span><span class="o">.</span><span class="n">out</span> <span class="o">==</span> <span class="s2">&#34;created</span><span class="se">\n</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">captured</span><span class="o">.</span><span class="n">err</span> <span class="o">==</span> <span class="s2">&#34;&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>参考答案：</strong> <code>capsys</code> 捕获 Python 的 <code>sys.stdout</code>、<code>sys.stderr</code>；<code>capfd</code> 在文件描述符层捕获，适合还包含底层库或继承相关描述符的子进程输出。二进制输出有相应的 binary fixture。</p>
+<p><code>-s</code> 用于关闭普通输出捕获，适合本地观察；它不是日志断言方法，也不能保证 xdist 下每个 worker 的输出像串行一样实时展示。读取捕获结果后，应留意后续输出属于新的捕获段。参见<a class="link" href="https://docs.pytest.org/en/stable/how-to/capture-stdout-stderr.html"  target="_blank" rel="noopener"
+    >输出捕获说明</a>。</p>
+<h3 id="41-如何使用-caplog-验证日志">41. 如何使用 <code>caplog</code> 验证日志？
+</h3><p><strong>热度：★★★☆☆｜难度：进阶</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_warning_log</span><span class="p">(</span><span class="n">caplog</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&#34;payment&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">caplog</span><span class="o">.</span><span class="n">at_level</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="s2">&#34;payment&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&#34;payment declined&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="nb">any</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">r</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&#34;payment&#34;</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">levelno</span> <span class="o">==</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span>
+</span></span><span class="line"><span class="cl">        <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">getMessage</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&#34;payment declined&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">caplog</span><span class="o">.</span><span class="n">records</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>参考答案：</strong> 根据 logger、级别和关键字段断言，比只在整段文本中查一个词更准确。日志格式中的时间、线程号等常变化内容一般不应写死。</p>
+<p><strong>追问：</strong> 若被测代码重新配置 root logger 并移除了捕获 handler，caplog 可能失效；应检查日志配置，而不是先认定系统没有产生日志。测试日志也应脱敏，避免把认证头直接写进报告。</p>
+<h3 id="42-tmp_path-与-tmp_path_factory-如何选择">42. <code>tmp_path</code> 与 <code>tmp_path_factory</code> 如何选择？
+</h3><p><strong>热度：★★★★☆｜难度：基础</strong></p>
+<p><strong>参考答案：</strong> <code>tmp_path</code> 提供当前测试独立的临时目录，返回 <code>pathlib.Path</code>；<code>tmp_path_factory</code> 可以在高作用域 fixture 中创建目录，适合会话级准备昂贵静态文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_file</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">path</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="s2">&#34;result.txt&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s2">&#34;ok&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&#34;ok&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>不要让所有测试写同一个固定路径，也不要假设当前工作目录可写。Pytest 临时目录可能保留部分历史运行以便排查，因此临时目录并不意味着测试结束后立即安全擦除，敏感数据仍需专门管理。</p>
+<h3 id="43-如何测试时间随机数和超时逻辑">43. 如何测试时间、随机数和超时逻辑？
+</h3><p><strong>热度：★★★★☆｜难度：项目应用</strong></p>
+<p><strong>参考答案：</strong> 优先让业务函数接收时钟、随机源或等待器，以便测试显式控制。持续时间使用单调时钟，业务日期使用带明确定义时区的时间。</p>
+<p>测试重试逻辑时注入可控制的等待函数，验证重试上限和退避计算，无需真的等待几十秒。随机测试记录 seed 和输入，以便复现；固定 seed 也不能保证来自多个独立随机源的行为全部一致。</p>
+<p><strong>易错点：</strong> 只 patch 某个模块中的 <code>datetime</code>，不代表所有库和进程的时间都被冻结。系统时间、单调时间与事件循环时间也不是同一概念，测试应明确控制哪一个。</p>
+<h3 id="44-单元测试集成测试和端到端测试如何分工">44. 单元测试、集成测试和端到端测试如何分工？
+</h3><p><strong>热度：★★★★★｜难度：项目应用</strong></p>
+<p><strong>参考答案：</strong> 单元测试关注局部规则和边界，尽量快速确定；集成测试验证数据库、HTTP 协议或消息系统等真实协作；端到端测试覆盖少量关键业务路径。</p>
+<p>例如价格计算可以用大量单元参数化测试，订单持久化用真实测试数据库验证，购买链路用少量端到端用例检查系统是否协同工作。</p>
+<p><strong>面试加分点：</strong> 分类不应只按是否用 Pytest 或是否发 HTTP 请求决定，而要看验证边界。端到端用例通常更慢、故障面更大，因此应通过分层减少重复覆盖；同时保留真实集成测试，防止 Mock 与真实服务协议漂移。</p>
+<h2 id="五框架进阶hook插件并行与异步4554">五、框架进阶：hook、插件、并行与异步（45—54）
+</h2><h3 id="45-hook-与-fixture-有什么区别常用-hook-有哪些">45. hook 与 fixture 有什么区别？常用 hook 有哪些？
+</h3><p><strong>热度：★★★★☆｜难度：深入</strong></p>
+<p><strong>参考答案：</strong> fixture 管理测试需要的依赖与资源；hook 在框架生命周期事件发生时参与处理，可影响配置、收集、报告等。Pytest 基于 pluggy 组织插件和 hook 实现。</p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>hook</th>
+					<th>常见用途</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>pytest_addoption</code></td>
+					<td>注册命令行选项</td>
+			</tr>
+			<tr>
+					<td><code>pytest_configure</code></td>
+					<td>初始化插件配置、登记元数据</td>
+			</tr>
+			<tr>
+					<td><code>pytest_generate_tests</code></td>
+					<td>收集时生成参数组合</td>
+			</tr>
+			<tr>
+					<td><code>pytest_collection_modifyitems</code></td>
+					<td>调整收集后的测试项或标记</td>
+			</tr>
+			<tr>
+					<td><code>pytest_runtest_makereport</code></td>
+					<td>处理 setup/call/teardown 阶段报告</td>
+			</tr>
+			<tr>
+					<td><code>pytest_sessionfinish</code></td>
+					<td>会话结束时进行汇总</td>
+			</tr>
+	</tbody>
+</table></div>
+<p><strong>追问：</strong> 用 fixture 准备登录状态，用 hook 统一处理失败报告。不要在 hook 中隐藏业务测试前置条件，否则依赖会变得难以追踪。hook 的参数和返回值要遵循官方定义，不能任意返回自己想要的对象。</p>
+<h3 id="46-如何通过-pytest_runtest_makereport-获取真实执行结果">46. 如何通过 <code>pytest_runtest_makereport</code> 获取真实执行结果？
+</h3><p><strong>热度：★★★★☆｜难度：深入</strong></p>
+<p><strong>参考答案：</strong> 该 hook 会针对不同阶段生成报告。包装器可以先 <code>yield</code> 让其他实现产生结果，再读取报告，关注 <code>when</code>、<code>outcome</code> 和错误信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># conftest.py</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.hookimpl</span><span class="p">(</span><span class="n">hookwrapper</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">pytest_runtest_makereport</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">call</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">outcome</span> <span class="o">=</span> <span class="k">yield</span>
+</span></span><span class="line"><span class="cl">    <span class="n">report</span> <span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">report</span><span class="o">.</span><span class="n">when</span> <span class="o">==</span> <span class="s2">&#34;call&#34;</span> <span class="ow">and</span> <span class="n">report</span><span class="o">.</span><span class="n">failed</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">report</span><span class="o">.</span><span class="n">sections</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&#34;diagnostic&#34;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&#34;failed node: </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">nodeid</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>示例使用传统 <code>hookwrapper=True</code> 写法；新式 <code>wrapper=True</code> 的返回和异常处理协议不同，不能混用模板。</p>
+<p><strong>项目追问：</strong> 失败截图通常应在浏览器销毁前采集，保存路径要唯一；采集失败应作为附加诊断保留，不应覆盖原始业务异常。只检查 <code>when == &quot;call&quot;</code> 会漏掉 setup 和 teardown 错误，完整质量报告必须覆盖三个阶段。参见<a class="link" href="https://docs.pytest.org/en/stable/how-to/writing_hook_functions.html"  target="_blank" rel="noopener"
+    >hook 编写规则</a>。</p>
+<h3 id="47-多个插件实现同一个-hook-时顺序和返回值如何处理">47. 多个插件实现同一个 hook 时，顺序和返回值如何处理？
+</h3><p><strong>热度：★★★☆☆｜难度：深入</strong></p>
+<p><strong>参考答案：</strong> hook 有普通实现和包装器实现，<code>tryfirst</code>、<code>trylast</code> 可表达相对优先级，但不应将插件安装顺序当成业务契约。包装器包围普通实现，其 yield 前后处于不同执行阶段。</p>
+<p>部分 hook 采用 <code>firstresult</code> 语义，拿到第一个非 <code>None</code> 结果后不再继续查找普通结果；另一些收集多个实现结果。具体行为必须看 hook specification。</p>
+<p><strong>易错点：</strong> 不该有返回值的 hook 随意返回数据，或在一般 hook 中抛异常，可能破坏整个测试会话。可恢复的诊断错误应局部处理，真正的配置错误则应尽早、清晰地暴露。</p>
+<h3 id="48-如何把公共能力抽成插件插件本身如何测试">48. 如何把公共能力抽成插件？插件本身如何测试？
+</h3><p><strong>热度：★★★☆☆｜难度：深入</strong></p>
+<p><strong>参考答案：</strong> 项目内可从 <code>conftest.py</code> 起步；跨项目复用时封装成安装包，通过 <code>pytest11</code> entry point 注册插件，并管理依赖版本。用 <code>--trace-config</code> 检查加载情况，避免同一插件重复注册。</p>
+<p>插件测试不能只测内部函数，还应验证它对真实收集、执行和报告的影响。Pytest 提供 <code>pytester</code> 辅助创建临时测试工程并运行测试，需要先启用 <code>pytester</code> 插件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># test_plugin.py：独立插件测试示例</span>
+</span></span><span class="line"><span class="cl"><span class="n">pytest_plugins</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;pytester&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_generated_case</span><span class="p">(</span><span class="n">pytester</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pytester</span><span class="o">.</span><span class="n">makepyfile</span><span class="p">(</span><span class="s2">&#34;def test_ok():</span><span class="se">\n</span><span class="s2">    assert 1 + 1 == 2</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">pytester</span><span class="o">.</span><span class="n">runpytest</span><span class="p">(</span><span class="s2">&#34;-q&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span><span class="o">.</span><span class="n">assert_outcomes</span><span class="p">(</span><span class="n">passed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>测试重点：</strong> 正常通过、setup 失败、call 失败、清理失败、用户配置错误，以及需要支持的 Pytest/插件版本组合。参见<a class="link" href="https://docs.pytest.org/en/stable/how-to/writing_plugins.html"  target="_blank" rel="noopener"
+    >插件编写与测试</a>。</p>
+<h3 id="49-xdist-如何实现并行如何选择调度策略">49. xdist 如何实现并行？如何选择调度策略？
+</h3><p><strong>热度：★★★★★｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> <code>pytest-xdist</code> 启动多个工作进程，控制进程分发测试项并汇总结果。它不是让单个测试函数自动多线程执行。安装插件后可运行 <code>python -m pytest -n 4</code> 或 <code>-n auto</code>。</p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>策略</th>
+					<th>主要特点</th>
+					<th>适用取舍</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>load</code></td>
+					<td>按负载分发测试项</td>
+					<td>通用，但可能重复资源初始化</td>
+			</tr>
+			<tr>
+					<td><code>loadscope</code></td>
+					<td>按模块或类等作用域分组</td>
+					<td>减少部分 fixture 重复准备</td>
+			</tr>
+			<tr>
+					<td><code>loadfile</code></td>
+					<td>同文件测试放到同一 worker</td>
+					<td>适合文件级资源复用</td>
+			</tr>
+			<tr>
+					<td><code>loadgroup</code></td>
+					<td>按 <code>xdist_group</code> 分组</td>
+					<td>控制特定测试同 worker</td>
+			</tr>
+			<tr>
+					<td><code>worksteal</code></td>
+					<td>在 worker 间调整待执行工作</td>
+					<td>用例耗时差异较大时可评估</td>
+			</tr>
+	</tbody>
+</table></div>
+<p>调度策略与插件版本相关。多进程数量还应受下游服务容量约束，不能单纯追求 CPU 核数。参见<a class="link" href="https://pytest-xdist.readthedocs.io/en/stable/distribution.html"  target="_blank" rel="noopener"
+    >xdist 调度文档</a>。</p>
+<h3 id="50-xdist-下-session-fixture-是否全局只执行一次如何真正只初始化一次">50. xdist 下 session fixture 是否全局只执行一次？如何真正只初始化一次？
+</h3><p><strong>热度：★★★★★｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> 不是。每个 worker 都有自己的会话和进程内缓存，同一个 session fixture 可能在多个进程分别执行。普通全局变量也不能自动跨进程共享。</p>
+<p>若初始化结果可以序列化，可在单机共享目录中使用进程锁，锁内检查结果是否存在，不存在则初始化并原子写入，其他 worker 读取。若是共享数据库或远程任务，需要更可靠的外部协调、唯一约束或租约。</p>
+<p><strong>边界：</strong> 本地文件锁通常不能协调不同 CI 机器；“只创建一次”还涉及失败重试和进程崩溃。业务允许时，按 worker 创建独立资源往往比强制全局共享更稳健。参见<a class="link" href="https://pytest-xdist.readthedocs.io/en/stable/how-to.html"  target="_blank" rel="noopener"
+    >xdist 会话级初始化说明</a>。</p>
+<h3 id="51-为什么-xdist-提示不同-worker-收集到的用例不一致">51. 为什么 xdist 提示不同 worker 收集到的用例不一致？
+</h3><p><strong>热度：★★★★☆｜难度：深入</strong></p>
+<p><strong>参考答案：</strong> worker 需要收集到一致的测试项及顺序。参数来自无稳定顺序的集合、随机数、实时数据库、按当前时间变化的接口结果时，不同进程可能得到不同列表或 ID。</p>
+<p>应将测试输入固定为本次运行的快照，使用稳定排序和稳定 ID；随机数据的生成需要明确种子和边界。资源的随机名称通常可以在 setup 时生成，而不是让它改变收集项。</p>
+<p><strong>排查方法：</strong> 对比各 worker 的 node ID 列表、数据版本和配置；先单独验证收集过程，再检查调度。不要通过无限重试 worker 来掩盖收集不确定性。</p>
+<h3 id="52-如何测试-async-defpytest-asyncio-的-auto-与-strict-有什么区别">52. 如何测试 <code>async def</code>？<code>pytest-asyncio</code> 的 auto 与 strict 有什么区别？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<p><strong>参考答案：</strong> Pytest 核心不能独自完成一般异步测试的事件循环执行，需要适配插件。使用 <code>pytest-asyncio</code> 时可以显式标记测试，并用专用装饰器声明异步 fixture。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">asyncio</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pytest_asyncio</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest_asyncio.fixture</span>
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">payload</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">yield</span> <span class="p">{</span><span class="s2">&#34;ready&#34;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@pytest.mark.asyncio</span>
+</span></span><span class="line"><span class="cl"><span class="k">async</span> <span class="k">def</span> <span class="nf">test_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&#34;ready&#34;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>strict 模式要求相应的异步测试标记及异步 fixture 声明，适合与其他异步插件共存；auto 模式会自动接管 asyncio 测试和相应 fixture。示例采用显式写法，减少对隐含配置的依赖。</p>
+<p><strong>易错点：</strong> 仅写 <code>async def</code> 并不保证测试被正确等待；异步测试也不意味着所有测试会自动并发执行。参见<a class="link" href="https://pytest-asyncio.readthedocs.io/en/stable/concepts.html"  target="_blank" rel="noopener"
+    >pytest-asyncio 概念说明</a>。</p>
+<h3 id="53-异步-fixture-的-scope-与-loop_scope-有什么区别">53. 异步 fixture 的 <code>scope</code> 与 <code>loop_scope</code> 有什么区别？
+</h3><p><strong>热度：★★★☆☆｜难度：深入</strong></p>
+<p><strong>参考答案：</strong> fixture scope 管理对象缓存和清理边界，loop scope 管理异步代码使用哪个生命周期的事件循环。二者不是同一个参数。</p>
+<p>例如 session 缓存的异步客户端可能绑定创建它的事件循环。若测试在其他循环中继续使用它，可能出现跨循环 Future 错误或 <code>Event loop is closed</code>。需要使客户端、fixture 和使用者的循环安排兼容，而不是只扩大 fixture scope。</p>
+<p><code>pytest-asyncio</code> 的循环配置和旧版本差异较大，当前文档要求 loop scope 不小于 fixture 的缓存 scope。新项目不要照搬旧教程里重写 <code>event_loop</code> fixture 的方案，应依据固定插件版本配置，并确保关闭客户端和取消后台任务。参见<a class="link" href="https://pytest-asyncio.readthedocs.io/en/stable/reference/decorators/index.html"  target="_blank" rel="noopener"
+    >异步 fixture 装饰器</a>。</p>
+<h3 id="54-覆盖率超时重试和报告分别是谁提供的">54. 覆盖率、超时、重试和报告分别是谁提供的？
+</h3><p><strong>热度：★★★★☆｜难度：进阶</strong></p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>能力</th>
+					<th>常见实现</th>
+					<th>注意事项</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>JUnit XML</td>
+					<td>Pytest 内置 <code>--junitxml</code></td>
+					<td>适合 CI 结果接入</td>
+			</tr>
+			<tr>
+					<td>覆盖率</td>
+					<td><code>pytest-cov</code> 与 coverage.py</td>
+					<td>要正确指定源码范围</td>
+			</tr>
+			<tr>
+					<td>并行</td>
+					<td><code>pytest-xdist</code></td>
+					<td>外部资源隔离</td>
+			</tr>
+			<tr>
+					<td>异步 asyncio</td>
+					<td><code>pytest-asyncio</code></td>
+					<td>固定模式与循环配置</td>
+			</tr>
+			<tr>
+					<td>Mock fixture</td>
+					<td><code>pytest-mock</code> 的 <code>mocker</code></td>
+					<td>标准库 Mock 本身不依赖此插件</td>
+			</tr>
+			<tr>
+					<td>超时</td>
+					<td><code>pytest-timeout</code> 等</td>
+					<td>强制中断可能影响清理</td>
+			</tr>
+			<tr>
+					<td>失败重试</td>
+					<td><code>pytest-rerunfailures</code> 等</td>
+					<td>保留首次失败证据</td>
+			</tr>
+			<tr>
+					<td>Allure 报告</td>
+					<td><code>allure-pytest</code> 与报告工具链</td>
+					<td>结果采集与报告生成是不同环节</td>
+			</tr>
+	</tbody>
+</table></div>
+<p><strong>参考答案：</strong> 要明确框架本体和插件边界。命令行参数不存在时，先检查插件是否安装在当前环境、版本是否支持及是否成功加载，不要直接归因于用例代码。</p>
+<p><strong>版本追问：</strong> pytest-cov 7.0 起移除了自身原有的子进程覆盖率支持，需按 coverage.py 的子进程方案配置；不能认为测了父进程就自动覆盖所有子进程。参见<a class="link" href="https://pytest-cov.readthedocs.io/en/latest/subprocess-support.html"  target="_blank" rel="noopener"
+    >pytest-cov 子进程迁移说明</a>。</p>
+<h2 id="六实际项目架构数据稳定性与-ci5572">六、实际项目：架构、数据、稳定性与 CI（55—72）
+</h2><h3 id="55-从零搭建接口自动化项目如何分层">55. 从零搭建接口自动化项目，如何分层？
+</h3><p><strong>热度：★★★★★｜难度：项目设计</strong></p>
+<p><strong>场景：</strong> 有用户、订单、支付等多个模块，需要支持多个测试环境和日常回归。</p>
+<p><strong>参考答案：</strong> 先明确测试边界、运行环境和核心业务风险，再设计最小可用分层：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">project/
+</span></span><span class="line"><span class="cl">├── pyproject.toml       # 依赖与项目配置，固定兼容版本
+</span></span><span class="line"><span class="cl">├── clients/             # HTTP 连接、超时、认证与脱敏日志
+</span></span><span class="line"><span class="cl">├── services/            # 可复用的业务操作
+</span></span><span class="line"><span class="cl">├── tests/
+</span></span><span class="line"><span class="cl">│   ├── conftest.py      # 公共客户端、环境和依赖
+</span></span><span class="line"><span class="cl">│   ├── users/
+</span></span><span class="line"><span class="cl">│   ├── orders/
+</span></span><span class="line"><span class="cl">│   └── payments/
+</span></span><span class="line"><span class="cl">├── testdata/            # 稳定的输入与预期
+</span></span><span class="line"><span class="cl">└── reports/             # 执行产物，不放敏感凭据
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>请求层负责协议细节，业务层表达创建订单等操作，测试层表达预期和边界，fixture 管理数据生命周期。公共断言可以封装重复规则，但不应把所有业务预期藏在工具内部。</p>
+<p><strong>加分点：</strong> 先做一条可独立运行、可清理、可报告的核心路径，再扩展；框架价值在于失败可解释、数据可隔离和维护成本可控，而不是目录或装饰器数量。</p>
+<h3 id="56-登录只调用一次token-过期和多角色怎么办">56. 登录只调用一次，token 过期和多角色怎么办？
+</h3><p><strong>热度：★★★★★｜难度：项目设计</strong></p>
+<p><strong>场景：</strong> 大多数用例需要登录，测试执行一小时，token 十分钟过期，还存在管理员与普通用户。</p>
+<p><strong>参考答案：</strong> 将认证放在专门提供者中，按环境、账号和角色隔离缓存，并记录有效期；客户端使用前检查是否接近过期，按策略刷新。session fixture 可以复用提供者，而不是永久复用一个不会变化的字符串。</p>
+<p>刷新并发需要同步，避免多个请求同时刷新导致旧 token 失效。401 也可能代表权限、账号或服务问题，不能一律刷新并重发所有请求。</p>
+<p><strong>关键边界：</strong> 只有确认操作可安全重放时才自动重试；支付、创建资源等写请求需要幂等保障。注销、改密码等认证测试应使用独立账号，不能破坏共享登录态。xdist 下还需明确每个 worker 独立缓存或使用安全的集中式方案。</p>
+<h3 id="57-a-创建订单b-使用订单如何避免执行顺序依赖">57. A 创建订单，B 使用订单，如何避免执行顺序依赖？
+</h3><p><strong>热度：★★★★★｜难度：项目应用</strong></p>
+<p><strong>参考答案：</strong> 把订单创建放到 fixture，使用者显式依赖它，保证 B 单独运行也能得到完整环境。如果要覆盖“下单 → 支付 → 退款”的完整状态迁移，可在一个场景测试里组织连续步骤。</p>
+<p>独立接口行为测试和完整链路测试可以同时存在，但应明确各自目的。不要依赖文件名排序或排序插件来弥补缺失的前置条件。</p>
+<p><strong>追问：</strong> 共享一个订单会导致多个用例并发修改状态。默认按用例创建独立订单，只有只读资源才考虑高作用域共享；清理按业务允许的方式删除、取消或标记回收。</p>
+<h3 id="58-如何隔离测试数据避免并行冲突">58. 如何隔离测试数据，避免并行冲突？
+</h3><p><strong>热度：★★★★★｜难度：项目设计</strong></p>
+<p><strong>参考答案：</strong> 为每次运行创建 run ID，再结合 worker ID、用例或随机标识构造唯一资源名；所有可变数据显式归属于本次运行，清理按归属处理，不能按宽泛前缀误删其他任务的数据。</p>
+<p>隔离范围不仅是数据库主键，还包括手机号、邮箱、优惠券、库存、Redis key、消息消费者组、文件路径和端口。必要时按 worker 分配账号池或租户。</p>
+<p><strong>易错点：</strong> <code>worker_id</code> 只在一次运行内区分 worker，不足以区分两条同时执行的 CI 流水线。唯一名称解决冲突，权限、状态和容量配额仍需独立设计。</p>
+<h3 id="59-数据库事务回滚能解决所有数据清理问题吗">59. 数据库事务回滚能解决所有数据清理问题吗？
+</h3><p><strong>热度：★★★★★｜难度：项目设计</strong></p>
+<p><strong>参考答案：</strong> 同进程集成测试若被测代码和测试共用可控连接，可以通过事务和保存点回滚。但对远程 HTTP 服务发请求时，服务通常使用自己的连接并提交事务，测试侧的 rollback 无法撤销那些操作。</p>
+<p>数据库回滚也不能直接撤销消息发布、缓存更新、对象存储写入和第三方请求。应根据测试边界选择事务隔离、独立数据库/租户、业务清理 API 或按运行标签回收。</p>
+<p><strong>项目追问：</strong> 被测代码自行提交、后台任务切换连接、DDL 或不同数据库的事务行为，都可能破坏预想的隔离。方案必须用真实写入与回滚验证，不能只因为用了 fixture 就认为数据不会泄漏。</p>
+<h3 id="60-删除测试数据失败怎样既保留原始失败又避免泄漏">60. 删除测试数据失败，怎样既保留原始失败又避免泄漏？
+</h3><p><strong>热度：★★★★☆｜难度：项目设计</strong></p>
+<p><strong>参考答案：</strong> 用例失败与清理失败都需要保留，不能用一个 <code>except Exception: pass</code> 把后者吞掉。清理应幂等，按依赖逆序执行，并尽量尝试释放剩余资源，而不是第一项失败后全部放弃。</p>
+<p>可以维护清理清单，逐项收集异常，最后按项目支持的 Python 版本聚合报告；同时记录 run ID、资源 ID 和失败原因，交由受控回收机制补偿。</p>
+<p><strong>边界：</strong> 请求创建资源超时后，服务器可能已经创建成功，但客户端没拿到 ID。设计时要使用幂等键、业务关联号或可查询的测试标签，不能只清理“客户端确认成功”的资源。</p>
+<h3 id="61-用例偶发失败怎样判断是产品问题还是测试问题">61. 用例偶发失败，怎样判断是产品问题还是测试问题？
+</h3><p><strong>热度：★★★★★｜难度：故障排查</strong></p>
+<p><strong>参考答案：</strong> 首先保存首次失败的输入、时间线、请求关联号、服务版本和 worker 信息，再尝试最小化复现。按“单独运行是否失败、串行是否失败、特定顺序是否失败、是否集中在某环境”缩小范围。</p>
+<p>常见测试原因包括共享状态、固定 sleep、未等待后台任务、时区与时间边界、随机输入不可复现、过严的时间断言；产品并发缺陷或一致性错误同样可能表现为偶发。</p>
+<p><strong>处理策略：</strong> 使用有限重试帮助收集证据；隔离不稳定用例时指定负责人、原因和期限，并报告隔离数量及首次失败率。不能直接把“重跑通过”解释为产品没有问题。参见<a class="link" href="https://docs.pytest.org/en/stable/explanation/flaky.html"  target="_blank" rel="noopener"
+    >官方不稳定测试讨论</a>。</p>
+<h3 id="62-订单异步处理怎样避免-sleep10">62. 订单异步处理，怎样避免 <code>sleep(10)</code>？
+</h3><p><strong>热度：★★★★★｜难度：项目应用</strong></p>
+<p><strong>参考答案：</strong> 使用有截止时间的条件轮询，查询目标资源达到明确终态后断言。固定 sleep 既可能等得太久，也可能在环境变慢时仍然不够。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">Mock</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">wait_until</span><span class="p">(</span><span class="n">fetch</span><span class="p">,</span> <span class="n">predicate</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">timeout</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">interval</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&#34;timeout and interval must be positive&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">deadline</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">+</span> <span class="n">timeout</span>
+</span></span><span class="line"><span class="cl">    <span class="n">last</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">last</span> <span class="o">=</span> <span class="n">fetch</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">predicate</span><span class="p">(</span><span class="n">last</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">last</span>
+</span></span><span class="line"><span class="cl">        <span class="n">remaining</span> <span class="o">=</span> <span class="n">deadline</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">remaining</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">raise</span> <span class="ne">TimeoutError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;condition not met, last result: </span><span class="si">{</span><span class="n">last</span><span class="si">!r}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">remaining</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_wait_for_paid</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fetch</span> <span class="o">=</span> <span class="n">Mock</span><span class="p">(</span><span class="n">side_effect</span><span class="o">=</span><span class="p">[{</span><span class="s2">&#34;status&#34;</span><span class="p">:</span> <span class="s2">&#34;pending&#34;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&#34;status&#34;</span><span class="p">:</span> <span class="s2">&#34;paid&#34;</span><span class="p">}])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="n">wait_until</span><span class="p">(</span><span class="n">fetch</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s2">&#34;status&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;paid&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s2">&#34;status&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;paid&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>关键边界：</strong> 这是同步轮询示例，单次 <code>fetch</code> 自身也必须有请求超时；否则外层截止时间不能中断一次永久阻塞的调用。生产项目要处理终态失败、退避和脱敏，异步测试应使用非阻塞等待。不要用宽泛异常捕获把真实错误无限忽略。</p>
+<h3 id="63-请求超时后要不要重试如何测试幂等性">63. 请求超时后要不要重试？如何测试幂等性？
+</h3><p><strong>热度：★★★★★｜难度：项目设计</strong></p>
+<p><strong>参考答案：</strong> 超时只说明客户端没有按时获得完整响应，不证明服务器没有执行。查询类操作通常更容易安全重试，写操作应依据业务幂等协议处理，不能只按 GET/POST 名称机械判断。</p>
+<p>针对创建订单或扣款，测试同一幂等键的重复请求、并发请求、首次响应丢失后的重放、不同参数复用同一键，以及键过期边界。断言不仅看响应，还要核验最终只产生一次预期副作用。</p>
+<p><strong>追问：</strong> 用 Mock 模拟超时可以覆盖客户端重试策略；要证明服务端幂等，需要真实集成测试和可观测的持久化/业务结果。请求层自动重试不能掩盖重复扣款风险。</p>
+<h3 id="64-第三方支付短信或不稳定外部服务怎样测试">64. 第三方支付、短信或不稳定外部服务怎样测试？
+</h3><p><strong>热度：★★★★★｜难度：项目设计</strong></p>
+<p><strong>参考答案：</strong> 分层处理：单元测试使用替身覆盖成功、拒绝、限流、超时和格式异常；契约测试验证客户端与协议一致；少量受控沙箱集成测试验证真实联通和关键流程。</p>
+<p>设计适配层，让核心业务依赖明确接口，避免所有测试都依赖真实第三方可用性。测试不能调用真实付费或发信能力来验证基础逻辑，项目应有独立凭据和受限目标。</p>
+<p><strong>加分点：</strong> 替身响应要随协议变化维护，可从脱敏的固定样本构建；服务降级和失败恢复同样需要断言。只验证“返回了成功”不足以覆盖重复回调、签名校验和乱序事件。</p>
+<h3 id="65-串行通过并行失败按什么顺序排查">65. 串行通过、并行失败，按什么顺序排查？
+</h3><p><strong>热度：★★★★★｜难度：故障排查</strong></p>
+<p><strong>参考答案：</strong> 先用 <code>-n 0</code> 确认串行基线，再用两个 worker 复现，记录失败测试、worker、资源名和时间线。按共享账号/数据、文件与端口、服务限流、初始化协调、收集一致性逐层检查。</p>
+<p>若只在高并发失败，还要判断是否触发了真实容量或竞态问题，而不只是测试数据冲突。降低并发有助于定位，但不是自动证明测试设计正确。</p>
+<p><strong>临时措施与长期修复：</strong> 同文件调度或分组可缓解局部共享问题，但同 worker 不等于整个环境串行。长期应隔离资源、消除顺序依赖，并根据下游容量选择并发数。</p>
+<h3 id="66-3000-条用例运行两小时如何提速又不降低可信度">66. 3000 条用例运行两小时，如何提速又不降低可信度？
+</h3><p><strong>热度：★★★★★｜难度：项目优化</strong></p>
+<p><strong>参考答案：</strong> 先测量耗时分布，区分收集、fixture 初始化、测试调用、清理和报告开销。可用 <code>--durations=20</code> 找热点，并记录请求次数和等待时间。</p>
+<p>优先消除重复登录和重复准备，减少不必要的端到端重复覆盖，使用条件等待替代保守 sleep；只读昂贵资源可扩大作用域，可变数据保持隔离。之后再评估并行、分片和调度策略。</p>
+<p>PR 流水线可执行快速高风险集合，夜间运行完整回归，但必须说明选择依据和漏检风险，不能把没执行的测试计为通过。指标同时看总耗时、首次失败率、资源成本和缺陷检出，避免“提速后报告更绿但覆盖更弱”。</p>
+<h3 id="67-如何接入-ci如何定位本地通过ci-失败">67. 如何接入 CI？如何定位“本地通过、CI 失败”？
+</h3><p><strong>热度：★★★★★｜难度：项目应用</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python -m pytest tests/ --junitxml<span class="o">=</span>reports/junit.xml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>参考答案：</strong> 固定解释器和依赖，准备必要服务与环境配置，执行后无论成功失败都上传报告和脱敏日志，并按退出码设置任务状态。产物上传步骤不能覆盖原始测试失败状态。</p>
+<p>排查本地与 CI 的 Python/依赖版本、操作系统、工作目录、包安装、时区、locale、权限、环境变量、网络和并行配置。比较收集列表，使用同一个测试项和输入复现，而不是只比较启动命令。</p>
+<p><strong>追问：</strong> 干净 CI 环境通常没有本地缓存，且 Linux 路径大小写更严格；还要检查测试是否依赖未提交文件或执行顺序。定位时先追求环境可重建，再考虑增加重试。</p>
+<h3 id="68-覆盖率-90-为什么还会漏严重缺陷如何制定门禁">68. 覆盖率 90% 为什么还会漏严重缺陷？如何制定门禁？
+</h3><p><strong>热度：★★★★☆｜难度：项目设计</strong></p>
+<p><strong>参考答案：</strong> 行覆盖率表示代码执行过，不表示断言有效，也不能保证边界、分支、并发和跨服务协议被验证。一个只调用函数而没有检查结果的测试也可能贡献覆盖率。</p>
+<p>可结合分支覆盖、变更代码覆盖、关键规则用例和少量变异测试评估质量；设置分模块门槛，重点关注核心逻辑和新增代码。排除规则需要审查，避免通过排除难测代码美化数字。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 需要安装 pytest-cov；your_package 替换为真实源码包</span>
+</span></span><span class="line"><span class="cl">python -m pytest --cov<span class="o">=</span>your_package --cov-branch --cov-report<span class="o">=</span>term-missing
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>关键边界：</strong> 远程接口自动化测的是另一个服务进程，本地客户端的覆盖率不能当成服务端覆盖率。服务端、子进程和分布式执行都需要独立正确的采集与合并方案。</p>
+<h3 id="69-浏览器测试失败截图如何实现常见坑有哪些">69. 浏览器测试失败截图如何实现？常见坑有哪些？
+</h3><p><strong>热度：★★★★☆｜难度：项目设计</strong></p>
+<p><strong>参考答案：</strong> 浏览器由 fixture 创建并负责关闭，执行结果由报告 hook 获取。调用阶段失败时，在浏览器仍可使用的时点采集截图、当前页面、控制台或网络摘要，并将产物关联到测试项与阶段。</p>
+<p>路径可由 run ID、worker ID 和安全化的测试项标识组成，避免多个 worker 覆盖同名文件。setup 失败时浏览器可能尚未创建，teardown 失败时也可能已关闭，必须检查可用性。</p>
+<p><strong>易错点：</strong> 截图失败覆盖了真正的断言异常；只记录 call 阶段而漏掉初始化失败；附件含密码、token 或个人信息。Allure 等报告插件负责附件展示，但不能替代资源生命周期设计。</p>
+<h3 id="70-消息队列缓存与最终一致性场景如何验证">70. 消息队列、缓存与最终一致性场景如何验证？
+</h3><p><strong>热度：★★★★☆｜难度：项目设计</strong></p>
+<p><strong>参考答案：</strong> 用唯一业务关联号跟踪一次操作，验证它最终产生预期业务结果。必要时使用独立 topic、队列、消费者组或命名空间，避免测试消费者抢走其他系统需要的消息。</p>
+<p>等待应有截止时间，并区分处理中、成功终态和失败终态。重复投递场景要验证幂等，乱序场景要验证状态迁移约束；不能仅凭消费到一条消息就认定整个业务完成。</p>
+<p><strong>清理边界：</strong> 删除数据库记录并不代表已经清理在途消息或缓存。可以停止测试专属消费者、按 run ID 隔离数据并设置过期策略，但不能在共享环境里直接清空整个队列或 Redis。</p>
+<h3 id="71-属性测试能补充参数化吗适合哪些规则">71. 属性测试能补充参数化吗？适合哪些规则？
+</h3><p><strong>热度：★★★☆☆｜难度：深入</strong></p>
+<p><strong>参考答案：</strong> 参数化通常使用人工选择的有限示例；属性测试用工具生成输入，验证对一类输入成立的不变量。Hypothesis 等工具还能缩减失败输入，帮助定位最小反例，它不是 Pytest 核心自带的参数生成器。</p>
+<p>适合编解码往返、排序结果有序且元素守恒、金额分配总和不变等性质。应先定义有效输入空间，避免测试充满无意义数据；失败时保留最小反例和相关版本。</p>
+<p><strong>易错点：</strong> 若业务预期本身不明确，随机生成更多输入也无济于事。对涉及远程副作用的测试，还需控制调用量和清理，不能直接把大量生成案例压到共享环境。人工边界例和属性测试应互相补充。</p>
+<h3 id="72-面试官让你讲一个-pytest-项目怎样回答得具体可信">72. 面试官让你讲一个 Pytest 项目，怎样回答得具体可信？
+</h3><p><strong>热度：★★★★★｜难度：综合表达</strong></p>
+<p><strong>参考答案：</strong> 按“业务背景 → 原有问题 → 技术选择 → 实施细节 → 验证证据 → 后续限制”组织，用一个真实案例贯穿，而不是罗列插件名。</p>
+<p>例如可以围绕“订单用例串行耗时高、并行又出现共享账号污染”展开：先通过耗时和失败日志定位重复认证与共享订单；将认证提供者与用例级订单 fixture 分开；为每次运行和 worker 隔离账号及业务数据；增加幂等清理；最后用独立重跑、并行回归和故障注入验证。</p>
+<p>结果应引用真实记录中的耗时、首次失败率、清理失败数或维护成本，<strong>没有记录就坦诚说明，不能编造收益数字</strong>。最后讲清哪些测试仍需串行、哪些外部依赖还不稳定，以及为什么接受这些取舍。</p>
+<p><strong>高频追问准备：</strong> 你负责哪部分？为什么选这个 scope？worker 崩溃后谁清理？为什么不统一重试？怎么证明提速没有降低覆盖？这些问题比“用了哪些插件”更能体现实际经验。</p>
+<h2 id="七易错说法纠正表">七、易错说法纠正表
+</h2><div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>常见说法</th>
+					<th>更准确的表述</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>session fixture 整个系统只执行一次</td>
+					<td>当前进程的会话生命周期；并行 worker 各有会话</td>
+			</tr>
+			<tr>
+					<td>fixture 按测试参数左右顺序执行</td>
+					<td>按作用域、依赖和自动执行关系解析</td>
+			</tr>
+			<tr>
+					<td>yield 后的清理永远执行</td>
+					<td>必须到达 yield；进程强杀等也可能绕过清理</td>
+			</tr>
+			<tr>
+					<td>重试通过就代表没有缺陷</td>
+					<td>只能说明再次执行通过，首次失败仍需分析</td>
+			</tr>
+			<tr>
+					<td>xfail 就是不运行</td>
+					<td>通常仍执行，只是预期失败</td>
+			</tr>
+			<tr>
+					<td>raises 是已知缺陷标记</td>
+					<td>它验证“抛出异常”这个正常预期</td>
+			</tr>
+			<tr>
+					<td><code>rootdir</code> 会修复 Python 导入</td>
+					<td>它不自动修改导入搜索路径</td>
+			</tr>
+			<tr>
+					<td>用事务就能撤销远程接口写入</td>
+					<td>测试事务不能覆盖服务独立连接中的提交</td>
+			</tr>
+			<tr>
+					<td><code>-n auto</code> 是 Pytest 内置参数</td>
+					<td>来自 pytest-xdist 插件</td>
+			</tr>
+			<tr>
+					<td><code>mocker</code> 是内置 fixture</td>
+					<td>来自 pytest-mock；monkeypatch 才是内置</td>
+			</tr>
+			<tr>
+					<td>异步测试天然同时执行</td>
+					<td>事件循环执行能力与测试并发调度是两件事</td>
+			</tr>
+			<tr>
+					<td>覆盖率高就代表断言质量高</td>
+					<td>覆盖率只反映执行范围，还需检查预期和风险</td>
+			</tr>
+			<tr>
+					<td>Mock 原始定义位置总能生效</td>
+					<td>必须替换被测代码实际查找名称的位置</td>
+			</tr>
+			<tr>
+					<td>所有用例都可以直接重试</td>
+					<td>写入副作用、幂等性和故障证据必须先考虑</td>
+			</tr>
+	</tbody>
+</table></div>
+<h2 id="八复习与现场练习清单">八、复习与现场练习清单
+</h2><div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>阶段</th>
+					<th>推荐题目</th>
+					<th>应达到的程度</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>入门过关</td>
+					<td>1—5、7—13、17—18、25、30—31</td>
+					<td>能写测试函数、fixture、参数化和基本断言</td>
+			</tr>
+			<tr>
+					<td>中级扎实</td>
+					<td>14—16、19—24、26—29、35—44</td>
+					<td>能解释生命周期、数据隔离和 Mock 边界</td>
+			</tr>
+			<tr>
+					<td>进阶区分</td>
+					<td>33—34、45—54</td>
+					<td>能读懂 hook，解释并行与异步问题</td>
+			</tr>
+			<tr>
+					<td>项目表达</td>
+					<td>55—72</td>
+					<td>能说清真实约束、方案取舍、验证证据</td>
+			</tr>
+	</tbody>
+</table></div>
+<p>建议亲手完成以下练习，而不只背答案：</p>
+<ol>
+<li>写一个工厂 fixture，创建多个资源，模拟中途失败并验证已创建资源仍被清理。</li>
+<li>写三种参数化形式：普通、fixture 参数化、间接参数化；检查生成的 node ID。</li>
+<li>用两个模块演示“patch 定义位置失败、patch 查找位置成功”。</li>
+<li>编写一个 hook，同时记录 setup、call、teardown 的结果，分别制造三类失败。</li>
+<li>对同一组测试分别串行、双 worker 执行，观察 session 初始化次数和资源命名。</li>
+<li>写一个有期限的条件等待，并测试成功、失败终态、超时和查询异常。</li>
+<li>用一个自己的实际项目回答第 72 题，准备日志或真实指标支撑取舍。</li>
+</ol>
+<h2 id="九官方资料索引">九、官方资料索引
+</h2><p>以下链接用于核对 API 和版本差异；星级与项目设计建议属于本文的经验整理，不是官方的面试排名。</p>
+<ul>
+<li><a class="link" href="https://docs.pytest.org/en/stable/how-to/usage.html"  target="_blank" rel="noopener"
+    >Pytest 使用与命令行</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/explanation/goodpractices.html"  target="_blank" rel="noopener"
+    >测试发现与项目组织</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/how-to/assert.html"  target="_blank" rel="noopener"
+    >断言与异常验证</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/how-to/fixtures.html"  target="_blank" rel="noopener"
+    >fixture 使用指南</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/reference/fixtures.html"  target="_blank" rel="noopener"
+    >fixture 可见性与顺序</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/how-to/parametrize.html"  target="_blank" rel="noopener"
+    >参数化</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/how-to/skipping.html"  target="_blank" rel="noopener"
+    >skip 与 xfail</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/reference/customize.html"  target="_blank" rel="noopener"
+    >配置文件</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/explanation/pythonpath.html"  target="_blank" rel="noopener"
+    >Python 导入机制</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/how-to/monkeypatch.html"  target="_blank" rel="noopener"
+    >monkeypatch</a></li>
+<li><a class="link" href="https://docs.python.org/3/library/unittest.mock.html"  target="_blank" rel="noopener"
+    >Python 标准库 unittest.mock</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/how-to/capture-stdout-stderr.html"  target="_blank" rel="noopener"
+    >输出捕获</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/how-to/writing_hook_functions.html"  target="_blank" rel="noopener"
+    >hook 编写</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/how-to/writing_plugins.html"  target="_blank" rel="noopener"
+    >插件开发与 pytester</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/explanation/flaky.html"  target="_blank" rel="noopener"
+    >不稳定测试</a></li>
+<li><a class="link" href="https://docs.pytest.org/en/stable/reference/exit-codes.html"  target="_blank" rel="noopener"
+    >退出码</a></li>
+<li><a class="link" href="https://pytest-xdist.readthedocs.io/en/stable/distribution.html"  target="_blank" rel="noopener"
+    >pytest-xdist 调度</a></li>
+<li><a class="link" href="https://pytest-xdist.readthedocs.io/en/stable/how-to.html"  target="_blank" rel="noopener"
+    >pytest-xdist 使用技巧</a></li>
+<li><a class="link" href="https://pytest-asyncio.readthedocs.io/en/stable/concepts.html"  target="_blank" rel="noopener"
+    >pytest-asyncio 运行模式</a></li>
+<li><a class="link" href="https://pytest-asyncio.readthedocs.io/en/stable/reference/decorators/index.html"  target="_blank" rel="noopener"
+    >pytest-asyncio fixture 与 loop_scope</a></li>
+<li><a class="link" href="https://pytest-cov.readthedocs.io/en/latest/subprocess-support.html"  target="_blank" rel="noopener"
+    >pytest-cov 子进程覆盖率</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/python/">Python</a>
+        
+            <a href="/tags/pytest/">Pytest</a>
+        
+            <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a>
+        
+            <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2026 Cengdong
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
